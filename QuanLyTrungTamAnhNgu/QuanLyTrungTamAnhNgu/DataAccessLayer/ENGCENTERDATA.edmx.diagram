@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8df65b3162ea4f37b5ae517f73cbdbdb" Name="Diagram1" ZoomLevel="77">
+        <EntityTypeShape EntityType="QLTTModel.DANGKY" Width="1.5" PointX="5.25" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTTModel.GIANGVIEN" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTTModel.HOCPHI" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTTModel.HOCVIEN" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTTModel.KHOAHOC" Width="1.5" PointX="0.75" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTTModel.KIEMTRA" Width="1.5" PointX="6" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTTModel.LICHHOC" Width="1.5" PointX="3" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTTModel.LOPHOC" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTTModel.PHONGHOC" Width="1.5" PointX="3" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTTModel.THI" Width="1.5" PointX="8.25" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTTModel.THONGTINHOCPHI" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTTModel.TKB" Width="1.5" PointX="5.25" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTTModel.TT_LUONGGV" Width="1.5" PointX="3" PointY="10.5" IsExpanded="true" />
+        <AssociationConnector Association="QLTTModel.CTHV_FK_HV" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTTModel.CTHV_FK_KH" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTTModel.CTHV_FK_L" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTTModel.TT_FK_GV" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTTModel.L_FK_HP" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTTModel.THI_FK_HV" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTTModel.TTHP_FK_HV" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTTModel.L_FK_KH" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTTModel.THI_FK_KT" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTTModel.TKB_FK_LH" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTTModel.TKB_FK_L" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTTModel.TTHP_FK_LH" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTTModel.THI_FK_PH" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTTModel.TKB_FK_PH" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTTModel.CT_LOPHOC" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="QLTTModel.THAMSO" Width="1.5" PointX="5.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
