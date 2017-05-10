@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="QLTTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="QLTTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CT_LOPHOC">
           <Key>
             <PropertyRef Name="MALOP" />
@@ -105,13 +105,14 @@
           <Property Name="TANG" Type="int" />
           <Property Name="SOPHONG" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'QLTT.dbo.THAMSO' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="THAMSO">
-          <Property Name="LUONGCB" Type="varchar" MaxLength="20" />
+          <Key>
+            <PropertyRef Name="LUONGCB" />
+          </Key>
+          <Property Name="LUONGCB" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="SISOTOIDA" Type="int" />
           <Property Name="SISOTOITHIEU" Type="int" />
-        </EntityType>-->
+        </EntityType>
         <EntityType Name="THI">
           <Key>
             <PropertyRef Name="MAHV" />
@@ -358,6 +359,7 @@ warning 6013: The table/view 'QLTT.dbo.THAMSO' does not have a primary key defin
           <EntitySet Name="LICHHOC" EntityType="Self.LICHHOC" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LOPHOC" EntityType="Self.LOPHOC" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PHONGHOC" EntityType="Self.PHONGHOC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="THAMSO" EntityType="Self.THAMSO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="THI" EntityType="Self.THI" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="THONGTINHOCPHI" EntityType="Self.THONGTINHOCPHI" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TKB" EntityType="Self.TKB" Schema="dbo" store:Type="Tables" />
@@ -427,8 +429,7 @@ warning 6013: The table/view 'QLTT.dbo.THAMSO' does not have a primary key defin
             <End Role="THONGTINHOCPHI" EntitySet="THONGTINHOCPHI" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QLTTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -843,7 +844,16 @@ warning 6013: The table/view 'QLTT.dbo.THAMSO' does not have a primary key defin
             <End Role="GIANGVIEN" EntitySet="GIANGVIENs" />
             <End Role="LOPHOC" EntitySet="LOPHOCs" />
           </AssociationSet>
+          <EntitySet Name="THAMSOes" EntityType="QLTTModel.THAMSO" />
         </EntityContainer>
+        <EntityType Name="THAMSO">
+          <Key>
+            <PropertyRef Name="LUONGCB" />
+          </Key>
+          <Property Name="LUONGCB" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SISOTOIDA" Type="Int32" />
+          <Property Name="SISOTOITHIEU" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -999,6 +1009,15 @@ warning 6013: The table/view 'QLTT.dbo.THAMSO' does not have a primary key defin
               <ScalarProperty Name="MALOP" ColumnName="MALOP" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="THAMSOes">
+            <EntityTypeMapping TypeName="QLTTModel.THAMSO">
+              <MappingFragment StoreEntitySet="THAMSO">
+                <ScalarProperty Name="SISOTOITHIEU" ColumnName="SISOTOITHIEU" />
+                <ScalarProperty Name="SISOTOIDA" ColumnName="SISOTOIDA" />
+                <ScalarProperty Name="LUONGCB" ColumnName="LUONGCB" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -49,18 +49,65 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="CData.cs" />
+    <Compile Include="DANGKY.cs">
+      <DependentUpon>ENGCENTERDATA.tt</DependentUpon>
+    </Compile>
     <Compile Include="ENGCENTERDATA.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ENGCENTERDATA.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ENGCENTERDATA.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ENGCENTERDATA.tt</DependentUpon>
     </Compile>
     <Compile Include="ENGCENTERDATA.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ENGCENTERDATA.edmx</DependentUpon>
     </Compile>
+    <Compile Include="GIANGVIEN.cs">
+      <DependentUpon>ENGCENTERDATA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HOCPHI.cs">
+      <DependentUpon>ENGCENTERDATA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HOCVIEN.cs">
+      <DependentUpon>ENGCENTERDATA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KHOAHOC.cs">
+      <DependentUpon>ENGCENTERDATA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KIEMTRA.cs">
+      <DependentUpon>ENGCENTERDATA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LICHHOC.cs">
+      <DependentUpon>ENGCENTERDATA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOPHOC.cs">
+      <DependentUpon>ENGCENTERDATA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PHONGHOC.cs">
+      <DependentUpon>ENGCENTERDATA.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="THAMSO.cs">
+      <DependentUpon>ENGCENTERDATA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THI.cs">
+      <DependentUpon>ENGCENTERDATA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THONGTINHOCPHI.cs">
+      <DependentUpon>ENGCENTERDATA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TKB.cs">
+      <DependentUpon>ENGCENTERDATA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TT_LUONGGV.cs">
+      <DependentUpon>ENGCENTERDATA.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="ENGCENTERDATA.edmx">
@@ -79,6 +126,12 @@
     <Content Include="ENGCENTERDATA.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ENGCENTERDATA.Context.cs</LastGenOutput>
+      <DependentUpon>ENGCENTERDATA.edmx</DependentUpon>
+    </Content>
+    <Content Include="ENGCENTERDATA.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ENGCENTERDATA.edmx</DependentUpon>
+      <LastGenOutput>ENGCENTERDATA.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
