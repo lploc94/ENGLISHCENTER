@@ -11,17 +11,53 @@ namespace DataAccessLayer.Service
     {
         public int delete(string code)
         {
-            throw new NotImplementedException();
+            using (QLTTEntities qltt = new QLTTEntities())
+            {
+                HOCPHI hp = qltt.HOCPHIs.Where(p => p.MAHP == code).FirstOrDefault();
+                if (hp != null)
+                {
+                    qltt.HOCPHIs.Remove(hp);
+                    qltt.SaveChanges();
+                    return 1;
+                }
+            }
+            return 0;
         }
 
         public DataTable get(string code)
         {
-            throw new NotImplementedException();
+            using (QLTTEntities qltt = new QLTTEntities())
+            {
+                HOCPHI hp=qltt.HOCPHIs.Where(p => p.MAHP == code).FirstOrDefault();
+                if (hp != null)
+                {
+                    DataTable rtnTable = new DataTable();
+                    rtnTable.Columns.Add("MAHP",typeof(string));
+                    rtnTable.Columns.Add("TENHP", typeof(string));
+                    rtnTable.Columns.Add("SOTIEN", typeof(string));
+                    rtnTable.Rows.Add(hp.MAHP, hp.TENHP, hp.SOTIEN);
+                    return rtnTable;
+                }
+            }
+            return null;
         }
 
         public DataTable getAll()
         {
-            throw new NotImplementedException();
+            using (QLTTEntities qltt = new QLTTEntities())
+            {
+                HOCPHI hp = qltt.HOCPHIs.Where(p => p.MAHP == code).FirstOrDefault();
+                if (hp != null)
+                {
+                    DataTable rtnTable = new DataTable();
+                    rtnTable.Columns.Add("MAHP", typeof(string));
+                    rtnTable.Columns.Add("TENHP", typeof(string));
+                    rtnTable.Columns.Add("SOTIEN", typeof(string));
+                    rtnTable.Rows.Add(hp.MAHP, hp.TENHP, hp.SOTIEN);
+                    return rtnTable;
+                }
+            }
+            return null;
         }
     }
 }
