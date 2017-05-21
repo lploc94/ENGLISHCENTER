@@ -13,7 +13,7 @@ namespace DataAccessLayer.Service
         {
             using (QLTTEntities qltt = new QLTTEntities())
             {
-                TT_LUONGGV data = qltt.TT_LUONGGV.Where(p => p.MAGV == code).FirstOrDefault();
+                TT_LUONGGV data = qltt.TT_LUONGGV.Where(p => p.MATT == code).FirstOrDefault();
                 if (data != null)
                 {
                     qltt.TT_LUONGGV.Remove(data);
@@ -28,7 +28,7 @@ namespace DataAccessLayer.Service
         {
             using (QLTTEntities qltt = new QLTTEntities())
             {
-                TT_LUONGGV data = qltt.TT_LUONGGV.Where(p => p.MAGV == code).FirstOrDefault();
+                TT_LUONGGV data = qltt.TT_LUONGGV.Where(p => p.MATT == code).FirstOrDefault();
                 if (data != null)
                 {
                     DataTable rtnTable = new DataTable();
