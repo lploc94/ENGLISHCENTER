@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccessLayer
+namespace BusinessLogicLayer.service
 {
-    public class DAL
+    class ThamSo
     {
-        
     }
 }
