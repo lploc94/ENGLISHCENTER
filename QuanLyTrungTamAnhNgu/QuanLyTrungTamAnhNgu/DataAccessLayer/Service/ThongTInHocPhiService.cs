@@ -7,24 +7,87 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Service
 {
-    public class ThongTInHocPhiService : IService
+    public class ThongTinHocPhiService : IService
     {
         public int delete(string code)
         {
-            throw new NotImplementedException();
+            using (QLTTEntities qltt = new QLTTEntities())
+            {
+                THONGTINHOCPHI data = qltt.THONGTINHOCPHIs.Where(p => p.MAHV == code).FirstOrDefault();
+                if (data != null)
+                {
+                    qltt.THONGTINHOCPHIs.Remove(data);
+                    qltt.SaveChanges();
+                    return 1;
+                }
+            }
+            return 0;
         }
 
         public DataTable get(string code)
         {
-            throw new NotImplementedException();
+            using (QLTTEntities qltt = new QLTTEntities())
+            {
+                THONGTINHOCPHI data = qltt.THONGTINHOCPHIs.Where(p => p.MAHV == code).FirstOrDefault();
+                if (data != null)
+                {
+                    DataTable rtnTable = new DataTable();
+                    rtnTable.Columns.Add("MAHV", typeof(string));
+                    rtnTable.Columns.Add("MALOP", typeof(string));
+                    rtnTable.Columns.Add("SOTIENDADONG", typeof(string));
+                    rtnTable.Columns.Add("SOTIENCONNO", typeof(string));
+                    rtnTable.Columns.Add("NGAYDONG", typeof(DateTime));
+
+                    rtnTable.Rows.Add(data.MAHV, data.MALOP, data.SOTIENDADONG,data.SOTIENCONNO,data.NGAYDONG);
+                    return rtnTable;
+                }
+
+            }
+            return null;
         }
 
         public DataTable getAll()
         {
-            throw new NotImplementedException();
+            using (QLTTEntities qltt = new QLTTEntities())
+            {
+                var dataList = from r in qltt.THONGTINHOCPHIs select r;
+                DataTable rtnTable = new DataTable();
+                rtnTable.Columns.Add("MAHV", typeof(string));
+                rtnTable.Columns.Add("MALOP", typeof(string));
+                rtnTable.Columns.Add("SOTIENDADONG", typeof(string));
+                rtnTable.Columns.Add("SOTIENCONNO", typeof(string));
+                rtnTable.Columns.Add("NGAYDONG", typeof(DateTime));
+
+                foreach (THONGTINHOCPHI data in dataList)
+                {
+                    rtnTable.Rows.Add(data.MAHV, data.MALOP, data.SOTIENDADONG, data.SOTIENCONNO, data.NGAYDONG);
+                }
+
+                if (rtnTable.Rows[0][0] == DBNull.Value)
+                    return null;
+                else
+                    return rtnTable;
+
+
+            }
         }
         public int insert(string mahv,string malop,string sotiendadong,string sotienconno,DateTime ngaydong)
         {
+            using (QLTTEntities qltt = new QLTTEntities())
+            {
+                THONGTINHOCPHI data = new THONGTINHOCPHI()
+                {
+                    MAHV = mahv,
+                    MALOP = malop,
+                    SOTIENDADONG = sotiendadong,
+                    SOTIENCONNO = sotienconno,
+                    NGAYDONG = ngaydong
+                };
+                qltt.THONGTINHOCPHIs.Add(data);
+                qltt.SaveChanges();
+
+
+            }
             return 0;
         }
     }
