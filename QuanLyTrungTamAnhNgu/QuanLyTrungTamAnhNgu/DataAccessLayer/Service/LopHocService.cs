@@ -11,20 +11,86 @@ namespace DataAccessLayer.Service
     {
         public int delete(string code)
         {
-            throw new NotImplementedException();
+            using (QLTTEntities qltt = new QLTTEntities())
+            {
+                LOPHOC data = qltt.LOPHOCs.Where(p => p.MALOP == code).FirstOrDefault();
+                if (data != null)
+                {
+                    qltt.LOPHOCs.Remove(data);
+                    qltt.SaveChanges();
+                    return 1;
+                }
+            }
+            return 0;
         }
 
         public DataTable get(string code)
         {
-            throw new NotImplementedException();
+            using (QLTTEntities qltt = new QLTTEntities())
+            {
+                LOPHOC data = qltt.LOPHOCs.Where(p => p.MALOP == code).FirstOrDefault();
+                if (data != null)
+                {
+                    DataTable rtnTable = new DataTable();
+                    rtnTable.Columns.Add("MALOP", typeof(string));
+                    rtnTable.Columns.Add("MAKH", typeof(string));
+                    rtnTable.Columns.Add("NGAYBD", typeof(DateTime));
+                    rtnTable.Columns.Add("NGAYKT", typeof(DateTime));
+                    rtnTable.Columns.Add("SISO", typeof(int));
+                    rtnTable.Columns.Add("MAHP", typeof(string));
+
+                    rtnTable.Rows.Add(data.MALOP, data.MAKH, data.NGAYBD, data.NGAYKT, data.SISO, data.MAHP);
+                    return rtnTable;
+                }
+
+            }
+            return null;
         }
 
         public DataTable getAll()
         {
-            throw new NotImplementedException();
+            using (QLTTEntities qltt = new QLTTEntities())
+            {
+                var dataList = from r in qltt.LOPHOCs select r;
+                DataTable rtnTable = new DataTable();
+                rtnTable.Columns.Add("MALOP", typeof(string));
+                rtnTable.Columns.Add("MAKH", typeof(string));
+                rtnTable.Columns.Add("NGAYBD", typeof(DateTime));
+                rtnTable.Columns.Add("NGAYKT", typeof(DateTime));
+                rtnTable.Columns.Add("SISO", typeof(int));
+                rtnTable.Columns.Add("MAHP", typeof(string));
+
+                foreach (LOPHOC data in dataList)
+                {
+                    rtnTable.Rows.Add(data.MALOP, data.MAKH, data.NGAYBD, data.NGAYKT, data.SISO, data.MAHP);
+                }
+
+                if (rtnTable.Rows[0][0] == DBNull.Value)
+                    return null;
+                else
+                    return rtnTable;
+
+
+            }
         }
-        public int insert(string malop,string makh,DateTime ngaybt,DateTime ngaykt,int siso,string mahp)
+        public int insert(string malop,string makh,DateTime ngaybd,DateTime ngaykt,int siso,string mahp)
         {
+            using (QLTTEntities qltt = new QLTTEntities())
+            {
+                LOPHOC data = new LOPHOC()
+                {
+                    MALOP = malop,
+                    MAKH = makh,
+                    NGAYBD = ngaybd,
+                    NGAYKT = ngaykt,
+                    SISO = siso,
+                    MAHP = mahp
+                };
+                qltt.LOPHOCs.Add(data);
+                qltt.SaveChanges();
+
+
+            }
             return 0;
         }
     }
