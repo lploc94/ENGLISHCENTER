@@ -117,3 +117,10 @@ C:\Users\thorn\Documents\GitHub\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTa
 C:\Users\thorn\Documents\GitHub\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\obj\Debug\QuanLyTrungTamAnhNgu.exe.licenses
 C:\Users\thorn\Documents\GitHub\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\obj\Debug\QuanLyTrungTamAnhNgu.exe
 C:\Users\thorn\Documents\GitHub\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\obj\Debug\QuanLyTrungTamAnhNgu.pdb
+C:\Users\thorn\Documents\GitHub\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\bin\Debug\BusinessLogicLayer.dll
+C:\Users\thorn\Documents\GitHub\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\bin\Debug\DataAccessLayer.dll
+C:\Users\thorn\Documents\GitHub\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\bin\Debug\EntityFramework.dll
+C:\Users\thorn\Documents\GitHub\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\bin\Debug\BusinessLogicLayer.pdb
+C:\Users\thorn\Documents\GitHub\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\bin\Debug\DataAccessLayer.pdb
+C:\Users\thorn\Documents\GitHub\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\bin\Debug\DataAccessLayer.dll.config
+C:\Users\thorn\Documents\GitHub\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\bin\Debug\EntityFramework.xml
