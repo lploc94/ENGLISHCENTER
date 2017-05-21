@@ -25,7 +25,14 @@ namespace DataAccessLayer.Service
         }
         public int insert(int maphong,int tang,int sophong)
         {
-            return 0;
+            try
+            {
+
+            }
+            catch
+            {
+                return 0;
+            }
         }
     }
 }

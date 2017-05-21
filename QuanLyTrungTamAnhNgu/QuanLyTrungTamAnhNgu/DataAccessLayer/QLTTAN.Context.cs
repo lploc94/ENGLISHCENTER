@@ -38,5 +38,7 @@ namespace DataAccessLayer
         public virtual DbSet<TKB> TKBs { get; set; }
         public virtual DbSet<TT_LUONGGV> TT_LUONGGV { get; set; }
         public virtual DbSet<THAMSO> THAMSOes { get; set; }
+        public virtual DbSet<NHANVIEN> NHANVIENs { get; set; }
+        public virtual DbSet<PHANQUYEN> PHANQUYENs { get; set; }
     }
 }

@@ -73,22 +73,30 @@ namespace DataAccessLayer.Service
         }
         public int insert(string mahv,string malop,string sotiendadong,string sotienconno,DateTime ngaydong)
         {
-            using (QLTTEntities qltt = new QLTTEntities())
+            try
             {
-                THONGTINHOCPHI data = new THONGTINHOCPHI()
+                using (QLTTEntities qltt = new QLTTEntities())
                 {
-                    MAHV = mahv,
-                    MALOP = malop,
-                    SOTIENDADONG = sotiendadong,
-                    SOTIENCONNO = sotienconno,
-                    NGAYDONG = ngaydong
-                };
-                qltt.THONGTINHOCPHIs.Add(data);
-                qltt.SaveChanges();
+                    THONGTINHOCPHI data = new THONGTINHOCPHI()
+                    {
+                        MAHV = mahv,
+                        MALOP = malop,
+                        SOTIENDADONG = sotiendadong,
+                        SOTIENCONNO = sotienconno,
+                        NGAYDONG = ngaydong
+                    };
+                    qltt.THONGTINHOCPHIs.Add(data);
+                    qltt.SaveChanges();
 
+                    return 1;
+                }
 
             }
-            return 0;
+            catch
+            {
+                return 0;
+
+            }
         }
     }
 }

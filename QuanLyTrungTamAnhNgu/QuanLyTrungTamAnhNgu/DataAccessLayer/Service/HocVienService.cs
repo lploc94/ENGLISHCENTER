@@ -17,7 +17,18 @@ namespace DataAccessLayer
         /// <returns>0 là faile 1 là success</returns>
         public int delete(string code)
         {
-            throw new NotImplementedException();
+            using (QLTTEntities qltt = new QLTTEntities())
+            {
+                HOCVIEN hv = qltt.HOCVIENs.Where(p=>p.MAHV == code).FirstOrDefault();
+                if (hv != null)
+                {
+                    qltt.HOCVIENs.Remove(hv);
+                    qltt.SaveChanges();
+                    return 1;
+                }
+                
+            }
+            return 0;
         }
         /// <summary>
         /// trả lại bảng chứa thông tin của học viên (chỉ chứa 1 record)
@@ -26,17 +37,85 @@ namespace DataAccessLayer
         /// <returns></returns>
         public DataTable get(string code)
         {
-            throw new NotImplementedException();
+            using (QLTTEntities qltt = new QLTTEntities())
+            {
+                HOCVIEN hv = qltt.HOCVIENs.Where(p => p.MAHV == code).FirstOrDefault();
+                if (hv != null)
+                {
+                    DataTable rtnTable = new DataTable();
+                    rtnTable.Columns.Add("MAHV", typeof(string));
+                    rtnTable.Columns.Add("HOTEN", typeof(string));
+                    rtnTable.Columns.Add("GIOITINH", typeof(int));
+                    rtnTable.Columns.Add("NGSINH", typeof(DateTime));
+                    rtnTable.Columns.Add("DIACHI", typeof(string));
+                    rtnTable.Columns.Add("SDT", typeof(string));
+                    rtnTable.Columns.Add("EMAIL", typeof(string));
+                    rtnTable.Columns.Add("NGAYDK", typeof(DateTime));
+                    rtnTable.Columns.Add("TINHTRANG", typeof(int));
+                    rtnTable.Rows.Add(hv.MAHV, hv.HOTEN, hv.GIOITINH, hv.NGSINH, hv.DIACHI, hv.SDT, hv.EMAIL, hv.NGAYDK, hv.TINHTRANG);
+                    
+                    return rtnTable;
+                }
+
+            }
+            return null;
         }
 
         public DataTable getAll()
         {
-            throw new NotImplementedException();
+            using (QLTTEntities qltt = new QLTTEntities())
+            {
+                var hvList = from r in qltt.HOCVIENs select r;
+                DataTable rtnTable = new DataTable();
+                rtnTable.Columns.Add("MAHV", typeof(string));
+                rtnTable.Columns.Add("HOTEN", typeof(string));
+                rtnTable.Columns.Add("GIOITINH", typeof(int));
+                rtnTable.Columns.Add("NGSINH", typeof(DateTime));
+                rtnTable.Columns.Add("DIACHI", typeof(string));
+                rtnTable.Columns.Add("SDT", typeof(string));
+                rtnTable.Columns.Add("EMAIL", typeof(string));
+                rtnTable.Columns.Add("NGAYDK", typeof(DateTime));
+                rtnTable.Columns.Add("TINHTRANG", typeof(int));
+                foreach (HOCVIEN hv in hvList)
+                {
+                    rtnTable.Rows.Add(hv.MAHV, hv.HOTEN, hv.GIOITINH, hv.NGSINH, hv.DIACHI, hv.SDT, hv.EMAIL, hv.NGAYDK, hv.TINHTRANG);
+                }
+                if (rtnTable.Rows[0][0] == DBNull.Value)
+                    return null;
+                else
+                    return rtnTable;
+            }
+            
         }
 
-        public int insert(string mahv,string hoten,string gioitinh,string diachi,string sdt,string email,DateTime ngaydk,int tinhtrang)
+        public int insert(string mahv,string hoten,int gioitinh,string diachi,string sdt,string email,DateTime ngaydk,int tinhtrang)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (QLTTEntities qltt = new QLTTEntities())
+                {
+                    HOCVIEN hv = new HOCVIEN()
+                    {
+                        MAHV = mahv,
+                        HOTEN = hoten,
+                        GIOITINH = gioitinh,
+                        DIACHI = diachi,
+                        SDT = sdt,
+                        EMAIL = email,
+                        NGAYDK = ngaydk,
+                        TINHTRANG = tinhtrang
+
+                    };
+                    qltt.HOCVIENs.Add(hv);
+                    qltt.SaveChanges();
+                }
+                return 1;
+            }
+            catch
+            {
+                return 0;
+
+            }
         }
     }
 }

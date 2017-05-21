@@ -25,7 +25,14 @@ namespace DataAccessLayer.Service
         }
         public int insert(string malh,string ngayhoc,string giohoc)
         {
-            return 0;
+            try
+            {
+
+            }
+            catch
+            {
+                return 0;
+            }
         }
     }
 }

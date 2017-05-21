@@ -74,22 +74,30 @@ namespace DataAccessLayer.Service
         }
         public int insert(string makh,string tenkh,string mota,string tailieu,int thoigian)
         {
-            using (QLTTEntities qltt = new QLTTEntities())
+            try
             {
-                KHOAHOC data = new KHOAHOC()
+                using (QLTTEntities qltt = new QLTTEntities())
                 {
-                    MAKH = makh,
-                    TENKH = tenkh,
-                    MOTA = mota,
-                    TAILIEU = tailieu,
-                    THOIGIAN = thoigian
-                };
-                qltt.KHOAHOCs.Add(data);
-                qltt.SaveChanges();
+                    KHOAHOC data = new KHOAHOC()
+                    {
+                        MAKH = makh,
+                        TENKH = tenkh,
+                        MOTA = mota,
+                        TAILIEU = tailieu,
+                        THOIGIAN = thoigian
+                    };
+                    qltt.KHOAHOCs.Add(data);
+                    qltt.SaveChanges();
 
-
+                    return 1;
+                }
             }
-            return 0;
+            catch
+            {
+                return 0;
+            }
+            
+           
         }
     }
 }

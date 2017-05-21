@@ -69,20 +69,28 @@ namespace DataAccessLayer.Service
         }
         public int insert(string malop,int maphong,string malh)
         {
-            using (QLTTEntities qltt = new QLTTEntities())
+            try
             {
-                TKB data = new TKB()
+                using (QLTTEntities qltt = new QLTTEntities())
                 {
-                    MALOP = malop,
-                    MAPHONG = maphong,
-                    MALH = malh
-                };
-                qltt.TKBs.Add(data);
-                qltt.SaveChanges();
+                    TKB data = new TKB()
+                    {
+                        MALOP = malop,
+                        MAPHONG = maphong,
+                        MALH = malh
+                    };
+                    qltt.TKBs.Add(data);
+                    qltt.SaveChanges();
 
+                    return 1;
+                }
 
             }
-            return 0;
+            catch
+            {
+                return 0;
+            }
+            
         }
     }
 }

@@ -95,6 +95,30 @@
           <Property Name="SISO" Type="int" />
           <Property Name="MAHP" Type="char" MaxLength="4" />
         </EntityType>
+        <EntityType Name="NHANVIEN">
+          <Key>
+            <PropertyRef Name="MANV" />
+          </Key>
+          <Property Name="MANV" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="HOTEN" Type="nvarchar" MaxLength="50" />
+          <Property Name="GIOITINH" Type="int" />
+          <Property Name="NGSINH" Type="smalldatetime" />
+          <Property Name="DIACHI" Type="nvarchar" MaxLength="100" />
+          <Property Name="SDT" Type="varchar" MaxLength="11" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="50" />
+          <Property Name="HESOLUONG" Type="float" />
+          <Property Name="USERNAME" Type="varchar" MaxLength="50" />
+          <Property Name="PASS" Type="varchar" MaxLength="128" />
+          <Property Name="PHANQUYEN" Type="smallint" />
+          <Property Name="ACTIVE" Type="bit" />
+        </EntityType>
+        <EntityType Name="PHANQUYEN">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="smallint" Nullable="false" />
+          <Property Name="MOTA" Type="nvarchar" MaxLength="150" />
+        </EntityType>
         <EntityType Name="PHONGHOC">
           <Key>
             <PropertyRef Name="MAPHONG" />
@@ -229,6 +253,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="NV_FK_PQ">
+          <End Role="PHANQUYEN" Type="Self.PHANQUYEN" Multiplicity="0..1" />
+          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PHANQUYEN">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NHANVIEN">
+              <PropertyRef Name="PHANQUYEN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="THI_FK_HV">
           <End Role="HOCVIEN" Type="Self.HOCVIEN" Multiplicity="1" />
           <End Role="THI" Type="Self.THI" Multiplicity="*" />
@@ -359,6 +395,8 @@
           <EntitySet Name="KIEMTRA" EntityType="Self.KIEMTRA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LICHHOC" EntityType="Self.LICHHOC" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LOPHOC" EntityType="Self.LOPHOC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PHANQUYEN" EntityType="Self.PHANQUYEN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PHONGHOC" EntityType="Self.PHONGHOC" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="THAMSO" EntityType="Self.THAMSO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="THI" EntityType="Self.THI" Schema="dbo" store:Type="Tables" />
@@ -388,6 +426,10 @@
           <AssociationSet Name="L_FK_KH" Association="Self.L_FK_KH">
             <End Role="KHOAHOC" EntitySet="KHOAHOC" />
             <End Role="LOPHOC" EntitySet="LOPHOC" />
+          </AssociationSet>
+          <AssociationSet Name="NV_FK_PQ" Association="Self.NV_FK_PQ">
+            <End Role="PHANQUYEN" EntitySet="PHANQUYEN" />
+            <End Role="NHANVIEN" EntitySet="NHANVIEN" />
           </AssociationSet>
           <AssociationSet Name="THI_FK_HV" Association="Self.THI_FK_HV">
             <End Role="HOCVIEN" EntitySet="HOCVIEN" />
@@ -811,6 +853,12 @@
             <End Role="LOPHOC" EntitySet="LOPHOCs" />
           </AssociationSet>
           <EntitySet Name="THAMSOes" EntityType="QLTTModel.THAMSO" />
+          <EntitySet Name="NHANVIENs" EntityType="QLTTModel.NHANVIEN" />
+          <EntitySet Name="PHANQUYENs" EntityType="QLTTModel.PHANQUYEN" />
+          <AssociationSet Name="NV_FK_PQ" Association="QLTTModel.NV_FK_PQ">
+            <End Role="PHANQUYEN" EntitySet="PHANQUYENs" />
+            <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="THAMSO">
           <Key>
@@ -821,6 +869,44 @@
           <Property Name="SISOTOIDA" Type="Int32" />
           <Property Name="SISOTOITHIEU" Type="Int32" />
         </EntityType>
+        <EntityType Name="NHANVIEN">
+          <Key>
+            <PropertyRef Name="MANV" />
+          </Key>
+          <Property Name="MANV" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="HOTEN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GIOITINH" Type="Int32" />
+          <Property Name="NGSINH" Type="DateTime" Precision="0" />
+          <Property Name="DIACHI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SDT" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HESOLUONG" Type="Double" />
+          <Property Name="USERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PASS" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="PHANQUYEN" Type="Int16" />
+          <Property Name="ACTIVE" Type="Boolean" />
+          <NavigationProperty Name="PHANQUYEN1" Relationship="QLTTModel.NV_FK_PQ" FromRole="NHANVIEN" ToRole="PHANQUYEN" />
+        </EntityType>
+        <EntityType Name="PHANQUYEN">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int16" Nullable="false" />
+          <Property Name="MOTA" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="NHANVIENs" Relationship="QLTTModel.NV_FK_PQ" FromRole="PHANQUYEN" ToRole="NHANVIEN" />
+        </EntityType>
+        <Association Name="NV_FK_PQ">
+          <End Type="QLTTModel.PHANQUYEN" Role="PHANQUYEN" Multiplicity="0..1" />
+          <End Type="QLTTModel.NHANVIEN" Role="NHANVIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PHANQUYEN">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NHANVIEN">
+              <PropertyRef Name="PHANQUYEN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -983,6 +1069,32 @@
                 <ScalarProperty Name="SISOTOIDA" ColumnName="SISOTOIDA" />
                 <ScalarProperty Name="LUONGCB" ColumnName="LUONGCB" />
                 <ScalarProperty Name="STT" ColumnName="STT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NHANVIENs">
+            <EntityTypeMapping TypeName="QLTTModel.NHANVIEN">
+              <MappingFragment StoreEntitySet="NHANVIEN">
+                <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+                <ScalarProperty Name="PHANQUYEN" ColumnName="PHANQUYEN" />
+                <ScalarProperty Name="PASS" ColumnName="PASS" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="HESOLUONG" ColumnName="HESOLUONG" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+                <ScalarProperty Name="NGSINH" ColumnName="NGSINH" />
+                <ScalarProperty Name="GIOITINH" ColumnName="GIOITINH" />
+                <ScalarProperty Name="HOTEN" ColumnName="HOTEN" />
+                <ScalarProperty Name="MANV" ColumnName="MANV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PHANQUYENs">
+            <EntityTypeMapping TypeName="QLTTModel.PHANQUYEN">
+              <MappingFragment StoreEntitySet="PHANQUYEN">
+                <ScalarProperty Name="MOTA" ColumnName="MOTA" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

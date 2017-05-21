@@ -64,7 +64,26 @@ namespace DataAccessLayer.Service
         }
         public int insert(string mahp, string tenhp, string sotien)
         {
-            return 0;
+            try
+            {
+                using (QLTTEntities qltt = new QLTTEntities())
+                {
+                    HOCPHI hp = new HOCPHI()
+                    {
+                        MAHP=mahp,
+                        TENHP=tenhp,
+                        SOTIEN=sotien
+                    };
+                    qltt.HOCPHIs.Add(hp);
+                    qltt.SaveChanges();
+                    return 1;
+                }
+            }
+            catch
+            {
+                return 0;
+            }
+            
         }
     }
 }

@@ -83,26 +83,35 @@ namespace DataAccessLayer.Service
         }
         public int insert(string magv, string tengv, int gioitinh, DateTime ngaysinh, string diachi, string sdt, string email, string trinhdo, string bangcap, DateTime ngayvaolam, double heso)
         {
-            using (QLTTEntities qltt = new QLTTEntities())
+            try
             {
-                GIANGVIEN x = new GIANGVIEN()
+                using (QLTTEntities qltt = new QLTTEntities())
                 {
-                    MAGV = magv,
-                    TENGV = tengv,
-                    GIOITINH = gioitinh,
-                    NGSINH = ngaysinh,
-                    DIACHI=diachi,
-                    SDT=sdt,
-                    EMAIL=email,
-                    TRINHDO = trinhdo,
-                    BANGCAP = bangcap,
-                    NGAYVL = ngayvaolam,
-                    HESO = heso
-                };
-                qltt.GIANGVIENs.Add(x);
-                qltt.SaveChanges();
+                    GIANGVIEN x = new GIANGVIEN()
+                    {
+                        MAGV = magv,
+                        TENGV = tengv,
+                        GIOITINH = gioitinh,
+                        NGSINH = ngaysinh,
+                        DIACHI = diachi,
+                        SDT = sdt,
+                        EMAIL = email,
+                        TRINHDO = trinhdo,
+                        BANGCAP = bangcap,
+                        NGAYVL = ngayvaolam,
+                        HESO = heso
+                    };
+                    qltt.GIANGVIENs.Add(x);
+                    qltt.SaveChanges();
+                }
+                return 1;
             }
-            return 0;
+            catch
+            {
+                return 0;
+
+            }
+            
         }
     }
 }

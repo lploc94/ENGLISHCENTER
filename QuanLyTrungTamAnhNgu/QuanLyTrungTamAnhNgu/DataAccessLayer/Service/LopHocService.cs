@@ -75,23 +75,30 @@ namespace DataAccessLayer.Service
         }
         public int insert(string malop,string makh,DateTime ngaybd,DateTime ngaykt,int siso,string mahp)
         {
-            using (QLTTEntities qltt = new QLTTEntities())
+            try
             {
-                LOPHOC data = new LOPHOC()
+                using (QLTTEntities qltt = new QLTTEntities())
                 {
-                    MALOP = malop,
-                    MAKH = makh,
-                    NGAYBD = ngaybd,
-                    NGAYKT = ngaykt,
-                    SISO = siso,
-                    MAHP = mahp
-                };
-                qltt.LOPHOCs.Add(data);
-                qltt.SaveChanges();
+                    LOPHOC data = new LOPHOC()
+                    {
+                        MALOP = malop,
+                        MAKH = makh,
+                        NGAYBD = ngaybd,
+                        NGAYKT = ngaykt,
+                        SISO = siso,
+                        MAHP = mahp
+                    };
+                    qltt.LOPHOCs.Add(data);
+                    qltt.SaveChanges();
 
-
+                    return 1;
+                }
             }
-            return 0;
+            catch
+            {
+                return 0;
+            }
+            
         }
     }
 }

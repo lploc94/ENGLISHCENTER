@@ -25,7 +25,14 @@ namespace DataAccessLayer.Service
         }
         public int insert(string makt,string tenkt)
         {
-            return 0;
+            try
+            {
+
+            }
+            catch
+            {
+                return 0;
+            }
         }
     }
 }
