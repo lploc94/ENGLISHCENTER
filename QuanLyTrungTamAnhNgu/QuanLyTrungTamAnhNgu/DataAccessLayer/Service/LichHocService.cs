@@ -23,5 +23,9 @@ namespace DataAccessLayer.Service
         {
             throw new NotImplementedException();
         }
+        public int insert(string malh,string ngayhoc,string giohoc)
+        {
+            return 0;
+        }
     }
 }

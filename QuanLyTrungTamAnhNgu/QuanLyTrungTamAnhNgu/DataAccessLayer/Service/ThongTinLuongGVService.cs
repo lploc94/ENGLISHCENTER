@@ -23,5 +23,9 @@ namespace DataAccessLayer.Service
         {
             throw new NotImplementedException();
         }
+        public int insert(string matt,string magv,DateTime ngaynhan,int tinhtrang)
+        {
+            return 0;
+        }
     }
 }

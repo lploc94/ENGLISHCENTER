@@ -74,10 +74,12 @@ namespace DataAccessLayer.Service
                 {
                     rtnTable.Rows.Add(gv.MAGV, gv.TENGV, gv.GIOITINH, gv.NGSINH, gv.DIACHI, gv.SDT, gv.EMAIL, gv.TRINHDO, gv.BANGCAP, gv.NGAYVL, gv.HESO);
                 }
-                
-                return rtnTable;
+                if (rtnTable.Rows[0][0] == DBNull.Value)
+                    return null;
+                else
+                    return rtnTable;
             }
-            return null;
+            
         }
         public int insert(string magv, string tengv, int gioitinh, DateTime ngaysinh, string diachi, string sdt, string email, string trinhdo, string bangcap, DateTime ngayvaolam, double heso)
         {

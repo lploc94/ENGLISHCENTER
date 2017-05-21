@@ -46,18 +46,25 @@ namespace DataAccessLayer.Service
         {
             using (QLTTEntities qltt = new QLTTEntities())
             {
-                HOCPHI hp = qltt.HOCPHIs.Where(p => p.MAHP == code).FirstOrDefault();
-                if (hp != null)
+                var hpList = from r in qltt.HOCPHIs select r;
+                DataTable rtnTable = new DataTable();
+                rtnTable.Columns.Add("MAHP", typeof(string));
+                rtnTable.Columns.Add("TENHP", typeof(string));
+                rtnTable.Columns.Add("SOTIEN", typeof(string));
+                foreach (HOCPHI hp in hpList)
                 {
-                    DataTable rtnTable = new DataTable();
-                    rtnTable.Columns.Add("MAHP", typeof(string));
-                    rtnTable.Columns.Add("TENHP", typeof(string));
-                    rtnTable.Columns.Add("SOTIEN", typeof(string));
                     rtnTable.Rows.Add(hp.MAHP, hp.TENHP, hp.SOTIEN);
-                    return rtnTable;
                 }
+                if (rtnTable.Rows[0][0] == DBNull.Value)
+                    return null;
+                else
+                    return rtnTable;
             }
-            return null;
+            
+        }
+        public int insert(string mahp, string tenhp, string sotien)
+        {
+            return 0;
         }
     }
 }
