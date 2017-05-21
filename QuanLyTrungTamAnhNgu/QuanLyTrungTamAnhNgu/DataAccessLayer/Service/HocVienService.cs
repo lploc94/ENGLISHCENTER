@@ -8,7 +8,7 @@ using DataAccessLayer.Service;
 
 namespace DataAccessLayer
 {
-    class HocVienService : IService
+    public class HocVienService : IService
     {
         /// <summary>
         /// delete học viên với code = mã học viên

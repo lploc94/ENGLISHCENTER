@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Service
 {
-    class HocPhiService : IService
+    public class HocPhiService : IService
     {
         public int delete(string code)
         {

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Service
 {
-    class LichHocService : IService
+    public class LichHocService : IService
     {
         public int delete(string code)
         {

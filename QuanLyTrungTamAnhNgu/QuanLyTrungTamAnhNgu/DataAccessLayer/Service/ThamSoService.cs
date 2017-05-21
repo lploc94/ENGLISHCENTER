@@ -7,21 +7,8 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Service
 {
-    class ThamsoService : IService
+    public class ThamsoService
     {
-        public int delete(string code)
-        {
-            throw new NotImplementedException();
-        }
-
-        public DataTable get(string code)
-        {
-            throw new NotImplementedException();
-        }
-
-        public DataTable getAll()
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

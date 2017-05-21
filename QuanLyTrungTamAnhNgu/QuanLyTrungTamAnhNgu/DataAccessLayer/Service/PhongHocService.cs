@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Service
 {
-    class PhongHocService : IService
+    public class PhongHocService : IService
     {
         public int delete(string code)
         {
