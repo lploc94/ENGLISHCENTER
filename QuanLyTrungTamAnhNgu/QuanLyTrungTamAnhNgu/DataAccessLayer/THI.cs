@@ -16,6 +16,7 @@ namespace DataAccessLayer
     {
         public string MAHV { get; set; }
         public string MAKT { get; set; }
+        public string MALOP { get; set; }
         public int MAPHONG { get; set; }
         public Nullable<System.DateTime> NGAYTHI { get; set; }
         public Nullable<int> DIEMTHI { get; set; }
@@ -23,6 +24,7 @@ namespace DataAccessLayer
     
         public virtual HOCVIEN HOCVIEN { get; set; }
         public virtual KIEMTRA KIEMTRA { get; set; }
+        public virtual LOPHOC LOPHOC { get; set; }
         public virtual PHONGHOC PHONGHOC { get; set; }
     }
 }

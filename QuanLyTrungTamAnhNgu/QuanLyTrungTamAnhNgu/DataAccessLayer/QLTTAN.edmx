@@ -16,11 +16,9 @@
         <EntityType Name="DANGKY">
           <Key>
             <PropertyRef Name="MAHV" />
-            <PropertyRef Name="MAKH" />
             <PropertyRef Name="MALOP" />
           </Key>
           <Property Name="MAHV" Type="char" MaxLength="5" Nullable="false" />
-          <Property Name="MAKH" Type="char" MaxLength="3" Nullable="false" />
           <Property Name="MALOP" Type="char" MaxLength="3" Nullable="false" />
         </EntityType>
         <EntityType Name="GIANGVIEN">
@@ -107,9 +105,10 @@
         </EntityType>
         <EntityType Name="THAMSO">
           <Key>
-            <PropertyRef Name="LUONGCB" />
+            <PropertyRef Name="STT" />
           </Key>
-          <Property Name="LUONGCB" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="STT" Type="int" Nullable="false" />
+          <Property Name="LUONGCB" Type="varchar" MaxLength="20" />
           <Property Name="SISOTOIDA" Type="int" />
           <Property Name="SISOTOITHIEU" Type="int" />
         </EntityType>
@@ -117,10 +116,12 @@
           <Key>
             <PropertyRef Name="MAHV" />
             <PropertyRef Name="MAKT" />
+            <PropertyRef Name="MALOP" />
             <PropertyRef Name="MAPHONG" />
           </Key>
           <Property Name="MAHV" Type="char" MaxLength="5" Nullable="false" />
           <Property Name="MAKT" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="MALOP" Type="char" MaxLength="3" Nullable="false" />
           <Property Name="MAPHONG" Type="int" Nullable="false" />
           <Property Name="NGAYTHI" Type="datetime" />
           <Property Name="DIEMTHI" Type="int" />
@@ -165,18 +166,6 @@
             </Principal>
             <Dependent Role="DANGKY">
               <PropertyRef Name="MAHV" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="CTHV_FK_KH">
-          <End Role="KHOAHOC" Type="Self.KHOAHOC" Multiplicity="1" />
-          <End Role="DANGKY" Type="Self.DANGKY" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="KHOAHOC">
-              <PropertyRef Name="MAKH" />
-            </Principal>
-            <Dependent Role="DANGKY">
-              <PropertyRef Name="MAKH" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -261,6 +250,18 @@
             </Principal>
             <Dependent Role="THI">
               <PropertyRef Name="MAKT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="THI_FK_LH">
+          <End Role="LOPHOC" Type="Self.LOPHOC" Multiplicity="1" />
+          <End Role="THI" Type="Self.THI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOPHOC">
+              <PropertyRef Name="MALOP" />
+            </Principal>
+            <Dependent Role="THI">
+              <PropertyRef Name="MALOP" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -368,10 +369,6 @@
             <End Role="HOCVIEN" EntitySet="HOCVIEN" />
             <End Role="DANGKY" EntitySet="DANGKY" />
           </AssociationSet>
-          <AssociationSet Name="CTHV_FK_KH" Association="Self.CTHV_FK_KH">
-            <End Role="KHOAHOC" EntitySet="KHOAHOC" />
-            <End Role="DANGKY" EntitySet="DANGKY" />
-          </AssociationSet>
           <AssociationSet Name="CTHV_FK_L" Association="Self.CTHV_FK_L">
             <End Role="LOPHOC" EntitySet="LOPHOC" />
             <End Role="DANGKY" EntitySet="DANGKY" />
@@ -398,6 +395,10 @@
           </AssociationSet>
           <AssociationSet Name="THI_FK_KT" Association="Self.THI_FK_KT">
             <End Role="KIEMTRA" EntitySet="KIEMTRA" />
+            <End Role="THI" EntitySet="THI" />
+          </AssociationSet>
+          <AssociationSet Name="THI_FK_LH" Association="Self.THI_FK_LH">
+            <End Role="LOPHOC" EntitySet="LOPHOC" />
             <End Role="THI" EntitySet="THI" />
           </AssociationSet>
           <AssociationSet Name="THI_FK_PH" Association="Self.THI_FK_PH">
@@ -433,19 +434,6 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QLTTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="DANGKY">
-          <Key>
-            <PropertyRef Name="MAHV" />
-            <PropertyRef Name="MAKH" />
-            <PropertyRef Name="MALOP" />
-          </Key>
-          <Property Name="MAHV" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="MAKH" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="MALOP" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="HOCVIEN" Relationship="Self.CTHV_FK_HV" FromRole="DANGKY" ToRole="HOCVIEN" />
-          <NavigationProperty Name="KHOAHOC" Relationship="Self.CTHV_FK_KH" FromRole="DANGKY" ToRole="KHOAHOC" />
-          <NavigationProperty Name="LOPHOC" Relationship="Self.CTHV_FK_L" FromRole="DANGKY" ToRole="LOPHOC" />
-        </EntityType>
         <EntityType Name="GIANGVIEN">
           <Key>
             <PropertyRef Name="MAGV" />
@@ -486,9 +474,9 @@
           <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="NGAYDK" Type="DateTime" Precision="3" />
           <Property Name="TINHTRANG" Type="Int32" />
-          <NavigationProperty Name="DANGKies" Relationship="Self.CTHV_FK_HV" FromRole="HOCVIEN" ToRole="DANGKY" />
           <NavigationProperty Name="THIs" Relationship="Self.THI_FK_HV" FromRole="HOCVIEN" ToRole="THI" />
           <NavigationProperty Name="THONGTINHOCPHIs" Relationship="Self.TTHP_FK_HV" FromRole="HOCVIEN" ToRole="THONGTINHOCPHI" />
+          <NavigationProperty Name="LOPHOCs" Relationship="Self.DANGKY" FromRole="HOCVIEN" ToRole="LOPHOC" />
         </EntityType>
         <EntityType Name="KHOAHOC">
           <Key>
@@ -499,7 +487,6 @@
           <Property Name="MOTA" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="TAILIEU" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="THOIGIAN" Type="Int32" />
-          <NavigationProperty Name="DANGKies" Relationship="Self.CTHV_FK_KH" FromRole="KHOAHOC" ToRole="DANGKY" />
           <NavigationProperty Name="LOPHOCs" Relationship="Self.L_FK_KH" FromRole="KHOAHOC" ToRole="LOPHOC" />
         </EntityType>
         <EntityType Name="KIEMTRA">
@@ -529,12 +516,13 @@
           <Property Name="NGAYKT" Type="DateTime" Precision="3" />
           <Property Name="SISO" Type="Int32" />
           <Property Name="MAHP" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="DANGKies" Relationship="Self.CTHV_FK_L" FromRole="LOPHOC" ToRole="DANGKY" />
           <NavigationProperty Name="HOCPHI" Relationship="Self.L_FK_HP" FromRole="LOPHOC" ToRole="HOCPHI" />
           <NavigationProperty Name="KHOAHOC" Relationship="Self.L_FK_KH" FromRole="LOPHOC" ToRole="KHOAHOC" />
+          <NavigationProperty Name="THIs" Relationship="Self.THI_FK_LH" FromRole="LOPHOC" ToRole="THI" />
           <NavigationProperty Name="TKBs" Relationship="Self.TKB_FK_L" FromRole="LOPHOC" ToRole="TKB" />
           <NavigationProperty Name="THONGTINHOCPHIs" Relationship="Self.TTHP_FK_LH" FromRole="LOPHOC" ToRole="THONGTINHOCPHI" />
           <NavigationProperty Name="GIANGVIENs" Relationship="Self.CT_LOPHOC" FromRole="LOPHOC" ToRole="GIANGVIEN" />
+          <NavigationProperty Name="HOCVIENs" Relationship="Self.DANGKY" FromRole="LOPHOC" ToRole="HOCVIEN" />
         </EntityType>
         <EntityType Name="PHONGHOC">
           <Key>
@@ -550,16 +538,19 @@
           <Key>
             <PropertyRef Name="MAHV" />
             <PropertyRef Name="MAKT" />
+            <PropertyRef Name="MALOP" />
             <PropertyRef Name="MAPHONG" />
           </Key>
           <Property Name="MAHV" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="MAKT" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MALOP" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="MAPHONG" Type="Int32" Nullable="false" />
           <Property Name="NGAYTHI" Type="DateTime" Precision="3" />
           <Property Name="DIEMTHI" Type="Int32" />
           <Property Name="KETQUA" Type="Int32" />
           <NavigationProperty Name="HOCVIEN" Relationship="Self.THI_FK_HV" FromRole="THI" ToRole="HOCVIEN" />
           <NavigationProperty Name="KIEMTRA" Relationship="Self.THI_FK_KT" FromRole="THI" ToRole="KIEMTRA" />
+          <NavigationProperty Name="LOPHOC" Relationship="Self.THI_FK_LH" FromRole="THI" ToRole="LOPHOC" />
           <NavigationProperty Name="PHONGHOC" Relationship="Self.THI_FK_PH" FromRole="THI" ToRole="PHONGHOC" />
         </EntityType>
         <EntityType Name="THONGTINHOCPHI">
@@ -598,42 +589,6 @@
           <Property Name="TINHTRANG" Type="Int32" />
           <NavigationProperty Name="GIANGVIEN" Relationship="Self.TT_FK_GV" FromRole="TT_LUONGGV" ToRole="GIANGVIEN" />
         </EntityType>
-        <Association Name="CTHV_FK_HV">
-          <End Role="HOCVIEN" Type="Self.HOCVIEN" Multiplicity="1" />
-          <End Role="DANGKY" Type="Self.DANGKY" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="HOCVIEN">
-              <PropertyRef Name="MAHV" />
-            </Principal>
-            <Dependent Role="DANGKY">
-              <PropertyRef Name="MAHV" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="CTHV_FK_KH">
-          <End Role="KHOAHOC" Type="Self.KHOAHOC" Multiplicity="1" />
-          <End Role="DANGKY" Type="Self.DANGKY" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="KHOAHOC">
-              <PropertyRef Name="MAKH" />
-            </Principal>
-            <Dependent Role="DANGKY">
-              <PropertyRef Name="MAKH" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="CTHV_FK_L">
-          <End Role="LOPHOC" Type="Self.LOPHOC" Multiplicity="1" />
-          <End Role="DANGKY" Type="Self.DANGKY" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="LOPHOC">
-              <PropertyRef Name="MALOP" />
-            </Principal>
-            <Dependent Role="DANGKY">
-              <PropertyRef Name="MALOP" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="TT_FK_GV">
           <End Role="GIANGVIEN" Type="Self.GIANGVIEN" Multiplicity="0..1" />
           <End Role="TT_LUONGGV" Type="Self.TT_LUONGGV" Multiplicity="*" />
@@ -718,6 +673,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="THI_FK_LH">
+          <End Role="LOPHOC" Type="Self.LOPHOC" Multiplicity="1" />
+          <End Role="THI" Type="Self.THI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOPHOC">
+              <PropertyRef Name="MALOP" />
+            </Principal>
+            <Dependent Role="THI">
+              <PropertyRef Name="MALOP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="TKB_FK_L">
           <End Role="LOPHOC" Type="Self.LOPHOC" Multiplicity="1" />
           <End Role="TKB" Type="Self.TKB" Multiplicity="*" />
@@ -770,8 +737,11 @@
           <End Role="GIANGVIEN" Type="Self.GIANGVIEN" Multiplicity="*" />
           <End Role="LOPHOC" Type="Self.LOPHOC" Multiplicity="*" />
         </Association>
+        <Association Name="DANGKY">
+          <End Role="HOCVIEN" Type="Self.HOCVIEN" Multiplicity="*" />
+          <End Role="LOPHOC" Type="Self.LOPHOC" Multiplicity="*" />
+        </Association>
         <EntityContainer Name="QLTTEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="DANGKies" EntityType="Self.DANGKY" />
           <EntitySet Name="GIANGVIENs" EntityType="Self.GIANGVIEN" />
           <EntitySet Name="HOCPHIs" EntityType="Self.HOCPHI" />
           <EntitySet Name="HOCVIENs" EntityType="Self.HOCVIEN" />
@@ -784,18 +754,6 @@
           <EntitySet Name="THONGTINHOCPHIs" EntityType="Self.THONGTINHOCPHI" />
           <EntitySet Name="TKBs" EntityType="Self.TKB" />
           <EntitySet Name="TT_LUONGGV" EntityType="Self.TT_LUONGGV" />
-          <AssociationSet Name="CTHV_FK_HV" Association="Self.CTHV_FK_HV">
-            <End Role="HOCVIEN" EntitySet="HOCVIENs" />
-            <End Role="DANGKY" EntitySet="DANGKies" />
-          </AssociationSet>
-          <AssociationSet Name="CTHV_FK_KH" Association="Self.CTHV_FK_KH">
-            <End Role="KHOAHOC" EntitySet="KHOAHOCs" />
-            <End Role="DANGKY" EntitySet="DANGKies" />
-          </AssociationSet>
-          <AssociationSet Name="CTHV_FK_L" Association="Self.CTHV_FK_L">
-            <End Role="LOPHOC" EntitySet="LOPHOCs" />
-            <End Role="DANGKY" EntitySet="DANGKies" />
-          </AssociationSet>
           <AssociationSet Name="TT_FK_GV" Association="Self.TT_FK_GV">
             <End Role="GIANGVIEN" EntitySet="GIANGVIENs" />
             <End Role="TT_LUONGGV" EntitySet="TT_LUONGGV" />
@@ -824,6 +782,10 @@
             <End Role="LICHHOC" EntitySet="LICHHOCs" />
             <End Role="TKB" EntitySet="TKBs" />
           </AssociationSet>
+          <AssociationSet Name="THI_FK_LH" Association="Self.THI_FK_LH">
+            <End Role="LOPHOC" EntitySet="LOPHOCs" />
+            <End Role="THI" EntitySet="THIs" />
+          </AssociationSet>
           <AssociationSet Name="TKB_FK_L" Association="Self.TKB_FK_L">
             <End Role="LOPHOC" EntitySet="LOPHOCs" />
             <End Role="TKB" EntitySet="TKBs" />
@@ -844,13 +806,18 @@
             <End Role="GIANGVIEN" EntitySet="GIANGVIENs" />
             <End Role="LOPHOC" EntitySet="LOPHOCs" />
           </AssociationSet>
+          <AssociationSet Name="DANGKY" Association="Self.DANGKY">
+            <End Role="HOCVIEN" EntitySet="HOCVIENs" />
+            <End Role="LOPHOC" EntitySet="LOPHOCs" />
+          </AssociationSet>
           <EntitySet Name="THAMSOes" EntityType="QLTTModel.THAMSO" />
         </EntityContainer>
         <EntityType Name="THAMSO">
           <Key>
-            <PropertyRef Name="LUONGCB" />
+            <PropertyRef Name="STT" />
           </Key>
-          <Property Name="LUONGCB" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="STT" Type="Int32" Nullable="false" />
+          <Property Name="LUONGCB" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="SISOTOIDA" Type="Int32" />
           <Property Name="SISOTOITHIEU" Type="Int32" />
         </EntityType>
@@ -860,15 +827,6 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="QLTTModelStoreContainer" CdmEntityContainer="QLTTEntities">
-          <EntitySetMapping Name="DANGKies">
-            <EntityTypeMapping TypeName="QLTTModel.DANGKY">
-              <MappingFragment StoreEntitySet="DANGKY">
-                <ScalarProperty Name="MAHV" ColumnName="MAHV" />
-                <ScalarProperty Name="MAKH" ColumnName="MAKH" />
-                <ScalarProperty Name="MALOP" ColumnName="MALOP" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="GIANGVIENs">
             <EntityTypeMapping TypeName="QLTTModel.GIANGVIEN">
               <MappingFragment StoreEntitySet="GIANGVIEN">
@@ -964,6 +922,7 @@
               <MappingFragment StoreEntitySet="THI">
                 <ScalarProperty Name="MAHV" ColumnName="MAHV" />
                 <ScalarProperty Name="MAKT" ColumnName="MAKT" />
+                <ScalarProperty Name="MALOP" ColumnName="MALOP" />
                 <ScalarProperty Name="MAPHONG" ColumnName="MAPHONG" />
                 <ScalarProperty Name="NGAYTHI" ColumnName="NGAYTHI" />
                 <ScalarProperty Name="DIEMTHI" ColumnName="DIEMTHI" />
@@ -1009,12 +968,21 @@
               <ScalarProperty Name="MALOP" ColumnName="MALOP" />
             </EndProperty>
           </AssociationSetMapping>
+          <AssociationSetMapping Name="DANGKY" TypeName="QLTTModel.DANGKY" StoreEntitySet="DANGKY">
+            <EndProperty Name="HOCVIEN">
+              <ScalarProperty Name="MAHV" ColumnName="MAHV" />
+            </EndProperty>
+            <EndProperty Name="LOPHOC">
+              <ScalarProperty Name="MALOP" ColumnName="MALOP" />
+            </EndProperty>
+          </AssociationSetMapping>
           <EntitySetMapping Name="THAMSOes">
             <EntityTypeMapping TypeName="QLTTModel.THAMSO">
               <MappingFragment StoreEntitySet="THAMSO">
                 <ScalarProperty Name="SISOTOITHIEU" ColumnName="SISOTOITHIEU" />
                 <ScalarProperty Name="SISOTOIDA" ColumnName="SISOTOIDA" />
                 <ScalarProperty Name="LUONGCB" ColumnName="LUONGCB" />
+                <ScalarProperty Name="STT" ColumnName="STT" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

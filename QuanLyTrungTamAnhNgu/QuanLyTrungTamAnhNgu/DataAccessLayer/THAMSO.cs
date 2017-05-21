@@ -14,6 +14,7 @@ namespace DataAccessLayer
     
     public partial class THAMSO
     {
+        public int STT { get; set; }
         public string LUONGCB { get; set; }
         public Nullable<int> SISOTOIDA { get; set; }
         public Nullable<int> SISOTOITHIEU { get; set; }

@@ -25,7 +25,6 @@ namespace DataAccessLayer
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<DANGKY> DANGKies { get; set; }
         public virtual DbSet<GIANGVIEN> GIANGVIENs { get; set; }
         public virtual DbSet<HOCPHI> HOCPHIs { get; set; }
         public virtual DbSet<HOCVIEN> HOCVIENs { get; set; }

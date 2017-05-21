@@ -17,10 +17,11 @@ namespace DataAccessLayer
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public LOPHOC()
         {
-            this.DANGKies = new HashSet<DANGKY>();
+            this.THIs = new HashSet<THI>();
             this.TKBs = new HashSet<TKB>();
             this.THONGTINHOCPHIs = new HashSet<THONGTINHOCPHI>();
             this.GIANGVIENs = new HashSet<GIANGVIEN>();
+            this.HOCVIENs = new HashSet<HOCVIEN>();
         }
     
         public string MALOP { get; set; }
@@ -30,15 +31,17 @@ namespace DataAccessLayer
         public Nullable<int> SISO { get; set; }
         public string MAHP { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DANGKY> DANGKies { get; set; }
         public virtual HOCPHI HOCPHI { get; set; }
         public virtual KHOAHOC KHOAHOC { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<THI> THIs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TKB> TKBs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<THONGTINHOCPHI> THONGTINHOCPHIs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GIANGVIEN> GIANGVIENs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HOCVIEN> HOCVIENs { get; set; }
     }
 }

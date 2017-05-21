@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B3FF415D-98B2-454F-BFAC-2E61C89573D2}</ProjectGuid>
+    <ProjectGuid>{E86AB0B2-98AC-48B4-803A-8630F19D1122}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DataAccessLayer</RootNamespace>
@@ -49,89 +49,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CData.cs" />
-    <Compile Include="DANGKY.cs">
-      <DependentUpon>ENGCENTERDATA.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ENGCENTERDATA.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ENGCENTERDATA.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ENGCENTERDATA.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ENGCENTERDATA.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ENGCENTERDATA.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ENGCENTERDATA.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="GIANGVIEN.cs">
-      <DependentUpon>ENGCENTERDATA.tt</DependentUpon>
-    </Compile>
-    <Compile Include="HOCPHI.cs">
-      <DependentUpon>ENGCENTERDATA.tt</DependentUpon>
-    </Compile>
-    <Compile Include="HOCVIEN.cs">
-      <DependentUpon>ENGCENTERDATA.tt</DependentUpon>
-    </Compile>
-    <Compile Include="KHOAHOC.cs">
-      <DependentUpon>ENGCENTERDATA.tt</DependentUpon>
-    </Compile>
-    <Compile Include="KIEMTRA.cs">
-      <DependentUpon>ENGCENTERDATA.tt</DependentUpon>
-    </Compile>
-    <Compile Include="LICHHOC.cs">
-      <DependentUpon>ENGCENTERDATA.tt</DependentUpon>
-    </Compile>
-    <Compile Include="LOPHOC.cs">
-      <DependentUpon>ENGCENTERDATA.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PHONGHOC.cs">
-      <DependentUpon>ENGCENTERDATA.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="THAMSO.cs">
-      <DependentUpon>ENGCENTERDATA.tt</DependentUpon>
+    <Compile Include="QLTTAN.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLTTAN.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="THI.cs">
-      <DependentUpon>ENGCENTERDATA.tt</DependentUpon>
-    </Compile>
-    <Compile Include="THONGTINHOCPHI.cs">
-      <DependentUpon>ENGCENTERDATA.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TKB.cs">
-      <DependentUpon>ENGCENTERDATA.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TT_LUONGGV.cs">
-      <DependentUpon>ENGCENTERDATA.tt</DependentUpon>
+    <Compile Include="QLTTAN.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLTTAN.edmx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="ENGCENTERDATA.edmx">
+    <EntityDeploy Include="QLTTAN.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ENGCENTERDATA.Designer.cs</LastGenOutput>
+      <LastGenOutput>QLTTAN.Designer.cs</LastGenOutput>
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <None Include="ENGCENTERDATA.edmx.diagram">
-      <DependentUpon>ENGCENTERDATA.edmx</DependentUpon>
-    </None>
     <None Include="packages.config" />
+    <None Include="QLTTAN.edmx.diagram">
+      <DependentUpon>QLTTAN.edmx</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ENGCENTERDATA.Context.tt">
+    <Content Include="QLTTAN.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ENGCENTERDATA.Context.cs</LastGenOutput>
-      <DependentUpon>ENGCENTERDATA.edmx</DependentUpon>
-    </Content>
-    <Content Include="ENGCENTERDATA.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ENGCENTERDATA.edmx</DependentUpon>
-      <LastGenOutput>ENGCENTERDATA.cs</LastGenOutput>
+      <LastGenOutput>QLTTAN.Context.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

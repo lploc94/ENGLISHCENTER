@@ -17,7 +17,6 @@ namespace DataAccessLayer
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public KHOAHOC()
         {
-            this.DANGKies = new HashSet<DANGKY>();
             this.LOPHOCs = new HashSet<LOPHOC>();
         }
     
@@ -27,8 +26,6 @@ namespace DataAccessLayer
         public string TAILIEU { get; set; }
         public Nullable<int> THOIGIAN { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DANGKY> DANGKies { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LOPHOC> LOPHOCs { get; set; }
     }

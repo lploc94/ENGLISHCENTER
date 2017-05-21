@@ -17,9 +17,9 @@ namespace DataAccessLayer
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public HOCVIEN()
         {
-            this.DANGKies = new HashSet<DANGKY>();
             this.THIs = new HashSet<THI>();
             this.THONGTINHOCPHIs = new HashSet<THONGTINHOCPHI>();
+            this.LOPHOCs = new HashSet<LOPHOC>();
         }
     
         public string MAHV { get; set; }
@@ -33,10 +33,10 @@ namespace DataAccessLayer
         public Nullable<int> TINHTRANG { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DANGKY> DANGKies { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<THI> THIs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<THONGTINHOCPHI> THONGTINHOCPHIs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LOPHOC> LOPHOCs { get; set; }
     }
 }
