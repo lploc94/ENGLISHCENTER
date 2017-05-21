@@ -9,19 +9,17 @@ namespace BusinessLogicLayer.service
 {
     public class GiangVien
     {
+        //0 admin cho phép truy cập tất cả các quyền trong hệ thống.
+        //1 quyền nhân viên tiếp tân được thêm xóa sửa các bảng HOCVIEN, THONGTINHOCPHI, DANGKY các bảng còn lại chỉ được xem.
+        //2 quyền nhân viên học vụ được thêm xóa sửa các bảng KHOAHOC, PHONGHOC, LICHHOC, LOPHOC, CTLOPHOC, TKB, KIEMTRA, THI các bảng còn lại chỉ được xem
+        //3 quyền nhân viên kế toán được thêm xóa sửa các bảng GIANGVIEN, HOCPHI, TT_LUONGGV, NHANVIEN, các bảng còn lại chỉ được xem
         public static DataTable getAll(string id, string pass)
         {
             if (CheckService.checkID(id, pass) == 1)//kiểm tra id,pass này có đúng không.
             {
+                GiangVienService gvsv = new GiangVienService();
 
-                if (CheckService.checkRole(id, 1) == 1)//kiểm tra id này có quyền getall không... getall có roleID là 1.delete là 2.insert là 3... vâng vâng
-                {
-                    GiangVienService gvsv = new GiangVienService();
-
-                    return gvsv.getAll();
-
-                }
-
+                return gvsv.getAll();
 
             }
             return null;
@@ -30,8 +28,10 @@ namespace BusinessLogicLayer.service
         {
             if (CheckService.checkID(id, pass) == 1)
             {
-                if (CheckService.checkRole(id, 2) == 1)//kiểm tra id này có quyền insert không... 
+                if (CheckService.checkRole(id, 3) == 1)//kiểm tra id này có quyền insert không... 
                 {
+                    if (....)
+                        return 0;
                     GiangVienService gvsv = new GiangVienService();
                     return gvsv.insert(magv, tengv, gioitinh, ngaysinh, diachi, sdt, email, trinhdo, bangcap, ngayvaolam, heso); //ở giảng viên service có một hàm insert, Phuong Nguyên sau khi kiểm tra id và pass, role thì có thể dùng hàm này để thêm một giảng viên vào. nếu bên dưới trả lại 1, thì tức là đã thêm thành công, PN return luôn giá trị đó.
                 }

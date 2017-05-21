@@ -11,23 +11,71 @@ namespace DataAccessLayer.Service
     {
         public int delete(string code)
         {
-            throw new NotImplementedException();
+            using (QLTTEntities qltt = new QLTTEntities())
+            {
+                KIEMTRA kt = qltt.KIEMTRAs.Where(p => p.MAKT == code).FirstOrDefault();
+                if (kt != null)
+                {
+                    qltt.KIEMTRAs.Remove(kt);
+                    qltt.SaveChanges();
+                    return 1;
+                }
+            }
+            return 0;
         }
 
         public DataTable get(string code)
         {
-            throw new NotImplementedException();
+            using (QLTTEntities qltt = new QLTTEntities())
+            {
+                KIEMTRA kt = qltt.KIEMTRAs.Where(p => p.MAKT == code).FirstOrDefault();
+                if (kt != null)
+                {
+                    DataTable rtnTable = new DataTable();
+                    rtnTable.Columns.Add("MAKT", typeof(string));
+                    rtnTable.Columns.Add("TENKT", typeof(string));
+
+                    rtnTable.Rows.Add(kt.MAKT,kt.TENKT);
+                    return rtnTable;
+                }
+            }
+            return null;
         }
 
         public DataTable getAll()
         {
-            throw new NotImplementedException();
+            using (QLTTEntities qltt = new QLTTEntities())
+            {
+                var ktList = from r in qltt.KIEMTRAs select r;
+
+                DataTable rtnTable = new DataTable();
+                rtnTable.Columns.Add("MAKT", typeof(string));
+                rtnTable.Columns.Add("TENKT", typeof(string));
+                foreach (KIEMTRA kt in ktList)
+                {
+                    rtnTable.Rows.Add(kt.MAKT, kt.TENKT);
+                }
+                if (rtnTable.Rows[0][0] == DBNull.Value)
+                    return null;
+                else
+                    return rtnTable;
+            }
         }
         public int insert(string makt,string tenkt)
         {
             try
             {
-
+                using (QLTTEntities qltt = new QLTTEntities())
+                {
+                    KIEMTRA kt = new KIEMTRA()
+                    {
+                        MAKT = makt,
+                        TENKT = tenkt
+                    };
+                    qltt.KIEMTRAs.Add(kt);
+                    qltt.SaveChanges();
+                    return 1;
+                }
             }
             catch
             {
