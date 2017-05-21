@@ -1,0 +1,10 @@
+C:\Users\thorn\Documents\GitHub\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.dll
+C:\Users\thorn\Documents\GitHub\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.pdb
+C:\Users\thorn\Documents\GitHub\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\BusinessLogicLayer\bin\Debug\DataAccessLayer.dll
+C:\Users\thorn\Documents\GitHub\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\BusinessLogicLayer\bin\Debug\EntityFramework.dll
+C:\Users\thorn\Documents\GitHub\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\BusinessLogicLayer\bin\Debug\DataAccessLayer.pdb
+C:\Users\thorn\Documents\GitHub\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\BusinessLogicLayer\bin\Debug\DataAccessLayer.dll.config
+C:\Users\thorn\Documents\GitHub\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\BusinessLogicLayer\bin\Debug\EntityFramework.xml
+C:\Users\thorn\Documents\GitHub\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.csprojResolveAssemblyReference.cache
+C:\Users\thorn\Documents\GitHub\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.dll
+C:\Users\thorn\Documents\GitHub\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.pdb

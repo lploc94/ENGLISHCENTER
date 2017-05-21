@@ -49,17 +49,75 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="GIANGVIEN.cs">
+      <DependentUpon>QLTTAN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HOCPHI.cs">
+      <DependentUpon>QLTTAN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HOCVIEN.cs">
+      <DependentUpon>QLTTAN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\CheckService.cs" />
+    <Compile Include="Service\GiangVienService.cs" />
+    <Compile Include="Service\HocPhiService.cs" />
+    <Compile Include="Service\HocVienService.cs" />
+    <Compile Include="KHOAHOC.cs">
+      <DependentUpon>QLTTAN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KIEMTRA.cs">
+      <DependentUpon>QLTTAN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LICHHOC.cs">
+      <DependentUpon>QLTTAN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOPHOC.cs">
+      <DependentUpon>QLTTAN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PHONGHOC.cs">
+      <DependentUpon>QLTTAN.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QLTTAN.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>QLTTAN.Context.tt</DependentUpon>
     </Compile>
+    <Compile Include="QLTTAN.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLTTAN.tt</DependentUpon>
+    </Compile>
     <Compile Include="QLTTAN.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>QLTTAN.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IService.cs" />
+    <Compile Include="Service\KhoaHocService.cs" />
+    <Compile Include="Service\KiemTraService.cs" />
+    <Compile Include="Service\LichHocService.cs" />
+    <Compile Include="Service\LopHocService.cs" />
+    <Compile Include="Service\PhongHocService.cs" />
+    <Compile Include="Service\ThamSoService.cs" />
+    <Compile Include="Service\ThiService.cs" />
+    <Compile Include="Service\ThoiKhoaBieuService.cs" />
+    <Compile Include="Service\ThongTinHocPhiService.cs" />
+    <Compile Include="Service\ThongTinLuongGVService.cs" />
+    <Compile Include="THAMSO.cs">
+      <DependentUpon>QLTTAN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THI.cs">
+      <DependentUpon>QLTTAN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THONGTINHOCPHI.cs">
+      <DependentUpon>QLTTAN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TKB.cs">
+      <DependentUpon>QLTTAN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TT_LUONGGV.cs">
+      <DependentUpon>QLTTAN.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -79,6 +137,12 @@
     <Content Include="QLTTAN.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>QLTTAN.Context.cs</LastGenOutput>
+      <DependentUpon>QLTTAN.edmx</DependentUpon>
+    </Content>
+    <Content Include="QLTTAN.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QLTTAN.edmx</DependentUpon>
+      <LastGenOutput>QLTTAN.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
