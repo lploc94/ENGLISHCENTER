@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using DataAccessLayer.Service;
 
-namespace DataAccessLayer
+namespace DataAccessLayer.Service
 {
     public class HocVienService : IService
     {

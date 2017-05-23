@@ -124,3 +124,27 @@ C:\Users\thorn\Documents\GitHub\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTa
 C:\Users\thorn\Documents\GitHub\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\bin\Debug\DataAccessLayer.pdb
 C:\Users\thorn\Documents\GitHub\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\bin\Debug\DataAccessLayer.dll.config
 C:\Users\thorn\Documents\GitHub\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\bin\Debug\EntityFramework.xml
+D:\A-DAIHOC\B-Nam3\Phân tích\PhanMem\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\obj\Debug\QuanLyTrungTamAnhNgu.csprojResolveAssemblyReference.cache
+D:\A-DAIHOC\B-Nam3\Phân tích\PhanMem\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\obj\Debug\QuanLyTrungTamAnhNgu.DangNhap.resources
+D:\A-DAIHOC\B-Nam3\Phân tích\PhanMem\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\obj\Debug\QuanLyTrungTamAnhNgu.MainForm.resources
+D:\A-DAIHOC\B-Nam3\Phân tích\PhanMem\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\obj\Debug\QuanLyTrungTamAnhNgu.Properties.Resources.resources
+D:\A-DAIHOC\B-Nam3\Phân tích\PhanMem\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\obj\Debug\QuanLyTrungTamAnhNgu.QuanLyGiangDay.DanhSachLuongGiangVien.resources
+D:\A-DAIHOC\B-Nam3\Phân tích\PhanMem\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\obj\Debug\QuanLyTrungTamAnhNgu.QuanLyGiangDay.NhapGiangVien.resources
+D:\A-DAIHOC\B-Nam3\Phân tích\PhanMem\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\obj\Debug\QuanLyTrungTamAnhNgu.QuanLyGiangDay.NhapKhoaHoc.resources
+D:\A-DAIHOC\B-Nam3\Phân tích\PhanMem\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\obj\Debug\QuanLyTrungTamAnhNgu.QuanLyGiangDay.NhapLopHocMoi.resources
+D:\A-DAIHOC\B-Nam3\Phân tích\PhanMem\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\obj\Debug\QuanLyTrungTamAnhNgu.QuanLyGiangDay.TraCuuGiangVien.resources
+D:\A-DAIHOC\B-Nam3\Phân tích\PhanMem\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\obj\Debug\QuanLyTrungTamAnhNgu.QuanLyGiangDay.TraCuuKhoaHoc.resources
+D:\A-DAIHOC\B-Nam3\Phân tích\PhanMem\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\obj\Debug\QuanLyTrungTamAnhNgu.QuanLyGiangDay.TraCuuLopHoc.resources
+D:\A-DAIHOC\B-Nam3\Phân tích\PhanMem\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\obj\Debug\QuanLyTrungTamAnhNgu.QuanLyHocVien.CapNhatLichThi.resources
+D:\A-DAIHOC\B-Nam3\Phân tích\PhanMem\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\obj\Debug\QuanLyTrungTamAnhNgu.QuanLyHocVien.LapBienLaiThuHocPhi.resources
+D:\A-DAIHOC\B-Nam3\Phân tích\PhanMem\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\obj\Debug\QuanLyTrungTamAnhNgu.QuanLyHocVien.NhapDiemThi.resources
+D:\A-DAIHOC\B-Nam3\Phân tích\PhanMem\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\obj\Debug\QuanLyTrungTamAnhNgu.QuanLyHocVien.NhapHocVien.resources
+D:\A-DAIHOC\B-Nam3\Phân tích\PhanMem\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\obj\Debug\QuanLyTrungTamAnhNgu.QuanLyHocVien.TraCuuDiemThiCaNhan.resources
+D:\A-DAIHOC\B-Nam3\Phân tích\PhanMem\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\obj\Debug\QuanLyTrungTamAnhNgu.QuanLyHocVien.TraCuuDiemThiMotLop.resources
+D:\A-DAIHOC\B-Nam3\Phân tích\PhanMem\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\obj\Debug\QuanLyTrungTamAnhNgu.QuanLyHocVien.TraCuuHocVien.resources
+D:\A-DAIHOC\B-Nam3\Phân tích\PhanMem\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\obj\Debug\QuanLyTrungTamAnhNgu.QuanLyHocVien.TraCuuLichThi.resources
+D:\A-DAIHOC\B-Nam3\Phân tích\PhanMem\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\obj\Debug\QuanLyTrungTamAnhNgu.QuanLyHocVien.TraCuuThongTinHocPhi.resources
+D:\A-DAIHOC\B-Nam3\Phân tích\PhanMem\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\obj\Debug\QuanLyTrungTamAnhNgu.csproj.GenerateResource.Cache
+D:\A-DAIHOC\B-Nam3\Phân tích\PhanMem\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\obj\Debug\QuanLyTrungTamAnhNgu.exe.licenses
+D:\A-DAIHOC\B-Nam3\Phân tích\PhanMem\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\obj\Debug\QuanLyTrungTamAnhNgu.exe
+D:\A-DAIHOC\B-Nam3\Phân tích\PhanMem\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\obj\Debug\QuanLyTrungTamAnhNgu.pdb

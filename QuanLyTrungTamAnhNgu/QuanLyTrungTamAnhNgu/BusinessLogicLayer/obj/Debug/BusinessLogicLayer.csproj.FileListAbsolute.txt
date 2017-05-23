@@ -8,3 +8,13 @@ C:\Users\thorn\Documents\GitHub\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTa
 C:\Users\thorn\Documents\GitHub\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.csprojResolveAssemblyReference.cache
 C:\Users\thorn\Documents\GitHub\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.dll
 C:\Users\thorn\Documents\GitHub\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.pdb
+D:\A-DAIHOC\B-Nam3\Phân tích\PhanMem\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.csprojResolveAssemblyReference.cache
+D:\A-DAIHOC\B-Nam3\Phân tích\PhanMem\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.dll
+D:\A-DAIHOC\B-Nam3\Phân tích\PhanMem\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.pdb
+D:\A-DAIHOC\B-Nam3\Phân tích\PhanMem\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.dll
+D:\A-DAIHOC\B-Nam3\Phân tích\PhanMem\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.pdb
+D:\A-DAIHOC\B-Nam3\Phân tích\PhanMem\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\BusinessLogicLayer\bin\Debug\DataAccessLayer.dll
+D:\A-DAIHOC\B-Nam3\Phân tích\PhanMem\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\BusinessLogicLayer\bin\Debug\EntityFramework.dll
+D:\A-DAIHOC\B-Nam3\Phân tích\PhanMem\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\BusinessLogicLayer\bin\Debug\DataAccessLayer.pdb
+D:\A-DAIHOC\B-Nam3\Phân tích\PhanMem\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\BusinessLogicLayer\bin\Debug\DataAccessLayer.dll.config
+D:\A-DAIHOC\B-Nam3\Phân tích\PhanMem\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\BusinessLogicLayer\bin\Debug\EntityFramework.xml

@@ -377,6 +377,12 @@
       <End Role="LOPHOC" EntitySet="LOPHOCs" />
     </AssociationSet>
     <EntitySet Name="THAMSOes" EntityType="QLTTModel.THAMSO" />
+    <EntitySet Name="NHANVIENs" EntityType="QLTTModel.NHANVIEN" />
+    <EntitySet Name="PHANQUYENs" EntityType="QLTTModel.PHANQUYEN" />
+    <AssociationSet Name="NV_FK_PQ" Association="QLTTModel.NV_FK_PQ">
+      <End Role="PHANQUYEN" EntitySet="PHANQUYENs" />
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="THAMSO">
     <Key>
@@ -387,4 +393,42 @@
     <Property Name="SISOTOIDA" Type="Int32" />
     <Property Name="SISOTOITHIEU" Type="Int32" />
   </EntityType>
+  <EntityType Name="NHANVIEN">
+    <Key>
+      <PropertyRef Name="MANV" />
+    </Key>
+    <Property Name="MANV" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+    <Property Name="HOTEN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="GIOITINH" Type="Int32" />
+    <Property Name="NGSINH" Type="DateTime" Precision="0" />
+    <Property Name="DIACHI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SDT" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="HESOLUONG" Type="Double" />
+    <Property Name="USERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PASS" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="PHANQUYEN" Type="Int16" />
+    <Property Name="ACTIVE" Type="Boolean" />
+    <NavigationProperty Name="PHANQUYEN1" Relationship="QLTTModel.NV_FK_PQ" FromRole="NHANVIEN" ToRole="PHANQUYEN" />
+  </EntityType>
+  <EntityType Name="PHANQUYEN">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int16" Nullable="false" />
+    <Property Name="MOTA" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="NHANVIENs" Relationship="QLTTModel.NV_FK_PQ" FromRole="PHANQUYEN" ToRole="NHANVIEN" />
+  </EntityType>
+  <Association Name="NV_FK_PQ">
+    <End Type="QLTTModel.PHANQUYEN" Role="PHANQUYEN" Multiplicity="0..1" />
+    <End Type="QLTTModel.NHANVIEN" Role="NHANVIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PHANQUYEN">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="NHANVIEN">
+        <PropertyRef Name="PHANQUYEN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using DataAccessLayer.Service;
+
 namespace BusinessLogicLayer.service
 {
     public class GiangVien
@@ -28,10 +29,15 @@ namespace BusinessLogicLayer.service
         {
             if (CheckService.checkID(id, pass) == 1)
             {
-                if (CheckService.checkRole(id, 3) == 1)//kiểm tra id này có quyền insert không... 
+                if (CheckService.checkRole(id, 3) == 1 || CheckService.checkRole(id, 0) == 1)//kiểm tra id này có quyền insert không... 
                 {
-                    if (....)
+                    if (gioitinh != 1 && gioitinh != 0)
                         return 0;
+                    if (DateTime.Compare(ngaysinh, ngayvaolam) > 0)
+                        return 0;
+                    if (sdt.Length > 13)
+                        return 0;
+
                     GiangVienService gvsv = new GiangVienService();
                     return gvsv.insert(magv, tengv, gioitinh, ngaysinh, diachi, sdt, email, trinhdo, bangcap, ngayvaolam, heso); //ở giảng viên service có một hàm insert, Phuong Nguyên sau khi kiểm tra id và pass, role thì có thể dùng hàm này để thêm một giảng viên vào. nếu bên dưới trả lại 1, thì tức là đã thêm thành công, PN return luôn giá trị đó.
                 }
@@ -46,7 +52,7 @@ namespace BusinessLogicLayer.service
         {
             if (CheckService.checkID(id, pass) == 1)
             {
-                if (CheckService.checkRole(id, 3) == 1)//kiểm tra id này có quyền delete giảng viên không... 
+                if (CheckService.checkRole(id, 3) == 1 || CheckService.checkRole(id, 0) == 1)//kiểm tra id này có quyền delete giảng viên không... 
                 {
                     GiangVienService gvsv = new GiangVienService();
                     return gvsv.delete(magv);
@@ -54,14 +60,15 @@ namespace BusinessLogicLayer.service
             }
             return 0;
         }
-        public static DataTable get(string id, string pass, string magv)
+        public static DataTable get(string id, string pass, string magv) // Ý nghĩa của hàm này ???
         {
             if (CheckService.checkID(id, pass) == 1)
             {
-                if (CheckService.checkRole(id, 4)==1) //có thể Sinh và LA sẽ sửa các role ID này. trước mắt của get là 4.
+                if (CheckService.checkRole(id, 3) == 1 || CheckService.checkRole(id, 0) == 1) //có thể Sinh và LA sẽ sửa các role ID này. trước mắt của get là 4.
                 {
                     GiangVienService gvsv = new GiangVienService();
                     return gvsv.get(magv);
+              
                 }
 
             }
