@@ -18,3 +18,13 @@ D:\A-DAIHOC\B-Nam3\Phân tích\PhanMem\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanL
 D:\A-DAIHOC\B-Nam3\Phân tích\PhanMem\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\DataAccessLayer\obj\Debug\DataAccessLayer.csprojResolveAssemblyReference.cache
 D:\A-DAIHOC\B-Nam3\Phân tích\PhanMem\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\DataAccessLayer\obj\Debug\DataAccessLayer.dll
 D:\A-DAIHOC\B-Nam3\Phân tích\PhanMem\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
+E:\New folder (2)\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\DataAccessLayer\bin\Debug\DataAccessLayer.dll.config
+E:\New folder (2)\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\DataAccessLayer\bin\Debug\DataAccessLayer.dll
+E:\New folder (2)\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
+E:\New folder (2)\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\DataAccessLayer\bin\Debug\EntityFramework.dll
+E:\New folder (2)\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.dll
+E:\New folder (2)\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\DataAccessLayer\bin\Debug\EntityFramework.xml
+E:\New folder (2)\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.xml
+E:\New folder (2)\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\DataAccessLayer\obj\Debug\DataAccessLayer.csprojResolveAssemblyReference.cache
+E:\New folder (2)\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\DataAccessLayer\obj\Debug\DataAccessLayer.dll
+E:\New folder (2)\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
