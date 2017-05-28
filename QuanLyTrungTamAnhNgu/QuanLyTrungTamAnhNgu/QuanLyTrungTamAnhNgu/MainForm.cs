@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using DevExpress.XtraBars;
 using QuanLyTrungTamAnhNgu.QuanLyHocVien;
 using QuanLyTrungTamAnhNgu.QuanLyGiangDay;
-
+using BusinessLogicLayer.service;
 
 namespace QuanLyTrungTamAnhNgu
 {
@@ -22,6 +22,7 @@ namespace QuanLyTrungTamAnhNgu
         public MainForm()
         {
             InitializeComponent();
+            //DataTable x = HocVien.getAll("asd", "asd"); test
         }
 
         private void barButtonItem3_ItemClick(object sender, ItemClickEventArgs e)

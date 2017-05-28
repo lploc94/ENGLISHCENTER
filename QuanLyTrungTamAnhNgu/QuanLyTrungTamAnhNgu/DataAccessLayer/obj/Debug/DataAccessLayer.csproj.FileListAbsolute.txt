@@ -1,0 +1,9 @@
+C:\Users\thorn\Documents\GitHub\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\DataAccessLayer\bin\Debug\DataAccessLayer.dll.config
+C:\Users\thorn\Documents\GitHub\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\DataAccessLayer\bin\Debug\DataAccessLayer.dll
+C:\Users\thorn\Documents\GitHub\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
+C:\Users\thorn\Documents\GitHub\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\DataAccessLayer\bin\Debug\EntityFramework.dll
+C:\Users\thorn\Documents\GitHub\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\thorn\Documents\GitHub\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\DataAccessLayer\bin\Debug\EntityFramework.xml
+C:\Users\thorn\Documents\GitHub\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\thorn\Documents\GitHub\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\DataAccessLayer\obj\Debug\DataAccessLayer.dll
+C:\Users\thorn\Documents\GitHub\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\DataAccessLayer\obj\Debug\DataAccessLayer.pdb

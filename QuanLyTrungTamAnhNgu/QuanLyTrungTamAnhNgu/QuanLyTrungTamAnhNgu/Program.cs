@@ -23,6 +23,7 @@ namespace QuanLyTrungTamAnhNgu
             SkinManager.EnableFormSkins();
             UserLookAndFeel.Default.SetSkinStyle("DevExpress Style");
             Application.Run(new MainForm());
+
         }
     }
 }
