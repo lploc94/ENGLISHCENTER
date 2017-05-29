@@ -84,5 +84,30 @@ namespace DataAccessLayer.Service
                 return 0;
             }
         }
+        public int update(string malh, string ngayhoc, string giohoc)
+        {
+            try
+            {
+                using (QLTTEntities qltt = new QLTTEntities())
+                {
+                    LICHHOC lh = qltt.LICHHOCs.Where(p => p.MALH == malh).FirstOrDefault();
+                    if (lh!=null)
+                    {
+
+                        lh.NGAYHOC = ngayhoc;
+                        lh.GIOHOC = giohoc;
+                        qltt.SaveChanges();
+                        return 1;
+                    }
+                    
+                    
+                    return 0;
+                }
+            }
+            catch
+            {
+                return 0;
+            }
+        }
     }
 }

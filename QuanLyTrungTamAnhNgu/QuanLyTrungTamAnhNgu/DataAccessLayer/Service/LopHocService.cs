@@ -100,5 +100,9 @@ namespace DataAccessLayer.Service
             }
             
         }
+        public int update(string malop, string makh, DateTime ngaybd, DateTime ngaykt, int siso, string mahp)
+        {
+
+        }
     }
 }

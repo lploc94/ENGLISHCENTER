@@ -35,7 +35,7 @@ namespace DataAccessLayer.Service
                     rtnTable.Columns.Add("MAKT", typeof(string));
                     rtnTable.Columns.Add("TENKT", typeof(string));
 
-                    rtnTable.Rows.Add(kt.MAKT,kt.TENKT);
+                    rtnTable.Rows.Add(kt.MAKT, kt.TENKT);
                     return rtnTable;
                 }
             }
@@ -61,7 +61,7 @@ namespace DataAccessLayer.Service
                     return rtnTable;
             }
         }
-        public int insert(string makt,string tenkt)
+        public int insert(string makt, string tenkt)
         {
             try
             {
@@ -75,6 +75,31 @@ namespace DataAccessLayer.Service
                     qltt.KIEMTRAs.Add(kt);
                     qltt.SaveChanges();
                     return 1;
+                }
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+        public int update(string makt, string tenkt)
+        {
+            try
+            {
+                
+                using (QLTTEntities qltt = new QLTTEntities())
+                {
+                    KIEMTRA kt = qltt.KIEMTRAs.Where(p => p.MAKT == makt).FirstOrDefault();
+                    if (kt!=null)
+                    {
+                        
+                        kt.TENKT = tenkt;
+                        qltt.SaveChanges();
+                        return 1;
+                    }
+                    
+                    
+                    return 0;
                 }
             }
             catch

@@ -105,18 +105,17 @@ namespace DataAccessLayer.Service
             {
                 using (QLTTEntities qltt = new QLTTEntities())
                 {
-                    if()
+                    KHOAHOC data = qltt.KHOAHOCs.Where(p => p.MAKH == makh).FirstOrDefault();
+                    if (data!=null)
                     {
-                        MAKH = makh,
-                        TENKH = tenkh,
-                        MOTA = mota,
-                        TAILIEU = tailieu,
-                        THOIGIAN = thoigian
+                        data.TENKH = tenkh;
+                        data.MOTA = mota;
+                        data.TAILIEU = tailieu;
+                        data.THOIGIAN = thoigian;
                         qltt.SaveChanges();
+                        return 1;
                     }
-                    
-                    
-
+                   
                     return 0;
                 }
             }
