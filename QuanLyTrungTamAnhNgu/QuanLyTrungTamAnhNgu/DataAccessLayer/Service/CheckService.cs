@@ -15,6 +15,7 @@ namespace DataAccessLayer.Service
         public static int checkRole(string id, int roleid)
         {
             return 1;//đang đợi bảng role
+
         }
     }
 }

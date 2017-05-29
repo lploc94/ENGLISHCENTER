@@ -19,7 +19,7 @@ namespace DataAccessLayer
         {
             this.THIs = new HashSet<THI>();
             this.THONGTINHOCPHIs = new HashSet<THONGTINHOCPHI>();
-            this.LOPHOCs = new HashSet<LOPHOC>();
+            this.DANGKies = new HashSet<DANGKY>();
         }
     
         public string MAHV { get; set; }
@@ -37,6 +37,6 @@ namespace DataAccessLayer
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<THONGTINHOCPHI> THONGTINHOCPHIs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LOPHOC> LOPHOCs { get; set; }
+        public virtual ICollection<DANGKY> DANGKies { get; set; }
     }
 }

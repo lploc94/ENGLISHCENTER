@@ -49,6 +49,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DANGKY.cs">
+      <DependentUpon>QLTTAN.tt</DependentUpon>
+    </Compile>
     <Compile Include="GIANGVIEN.cs">
       <DependentUpon>QLTTAN.tt</DependentUpon>
     </Compile>
@@ -110,6 +113,9 @@
     <Compile Include="Service\ThoiKhoaBieuService.cs" />
     <Compile Include="Service\ThongTinHocPhiService.cs" />
     <Compile Include="Service\ThongTinLuongGVService.cs" />
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>QLTTAN.tt</DependentUpon>
+    </Compile>
     <Compile Include="THAMSO.cs">
       <DependentUpon>QLTTAN.tt</DependentUpon>
     </Compile>

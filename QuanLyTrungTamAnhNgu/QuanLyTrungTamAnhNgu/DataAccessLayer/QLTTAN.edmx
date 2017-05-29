@@ -18,6 +18,7 @@
             <PropertyRef Name="MAHV" />
             <PropertyRef Name="MALOP" />
           </Key>
+          <Property Name="STT" Type="int" Nullable="false" />
           <Property Name="MAHV" Type="char" MaxLength="5" Nullable="false" />
           <Property Name="MALOP" Type="char" MaxLength="3" Nullable="false" />
         </EntityType>
@@ -126,6 +127,16 @@
           <Property Name="MAPHONG" Type="int" Nullable="false" />
           <Property Name="TANG" Type="int" />
           <Property Name="SOPHONG" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="THAMSO">
           <Key>
@@ -398,6 +409,7 @@
           <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PHANQUYEN" EntityType="Self.PHANQUYEN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PHONGHOC" EntityType="Self.PHONGHOC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="THAMSO" EntityType="Self.THAMSO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="THI" EntityType="Self.THI" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="THONGTINHOCPHI" EntityType="Self.THONGTINHOCPHI" Schema="dbo" store:Type="Tables" />
@@ -518,7 +530,7 @@
           <Property Name="TINHTRANG" Type="Int32" />
           <NavigationProperty Name="THIs" Relationship="Self.THI_FK_HV" FromRole="HOCVIEN" ToRole="THI" />
           <NavigationProperty Name="THONGTINHOCPHIs" Relationship="Self.TTHP_FK_HV" FromRole="HOCVIEN" ToRole="THONGTINHOCPHI" />
-          <NavigationProperty Name="LOPHOCs" Relationship="Self.DANGKY" FromRole="HOCVIEN" ToRole="LOPHOC" />
+          <NavigationProperty Name="DANGKies" Relationship="QLTTModel.CTHV_FK_HV" FromRole="HOCVIEN" ToRole="DANGKY" />
         </EntityType>
         <EntityType Name="KHOAHOC">
           <Key>
@@ -564,7 +576,7 @@
           <NavigationProperty Name="TKBs" Relationship="Self.TKB_FK_L" FromRole="LOPHOC" ToRole="TKB" />
           <NavigationProperty Name="THONGTINHOCPHIs" Relationship="Self.TTHP_FK_LH" FromRole="LOPHOC" ToRole="THONGTINHOCPHI" />
           <NavigationProperty Name="GIANGVIENs" Relationship="Self.CT_LOPHOC" FromRole="LOPHOC" ToRole="GIANGVIEN" />
-          <NavigationProperty Name="HOCVIENs" Relationship="Self.DANGKY" FromRole="LOPHOC" ToRole="HOCVIEN" />
+          <NavigationProperty Name="DANGKies" Relationship="QLTTModel.CTHV_FK_L" FromRole="LOPHOC" ToRole="DANGKY" />
         </EntityType>
         <EntityType Name="PHONGHOC">
           <Key>
@@ -779,10 +791,6 @@
           <End Role="GIANGVIEN" Type="Self.GIANGVIEN" Multiplicity="*" />
           <End Role="LOPHOC" Type="Self.LOPHOC" Multiplicity="*" />
         </Association>
-        <Association Name="DANGKY">
-          <End Role="HOCVIEN" Type="Self.HOCVIEN" Multiplicity="*" />
-          <End Role="LOPHOC" Type="Self.LOPHOC" Multiplicity="*" />
-        </Association>
         <EntityContainer Name="QLTTEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="GIANGVIENs" EntityType="Self.GIANGVIEN" />
           <EntitySet Name="HOCPHIs" EntityType="Self.HOCPHI" />
@@ -848,10 +856,6 @@
             <End Role="GIANGVIEN" EntitySet="GIANGVIENs" />
             <End Role="LOPHOC" EntitySet="LOPHOCs" />
           </AssociationSet>
-          <AssociationSet Name="DANGKY" Association="Self.DANGKY">
-            <End Role="HOCVIEN" EntitySet="HOCVIENs" />
-            <End Role="LOPHOC" EntitySet="LOPHOCs" />
-          </AssociationSet>
           <EntitySet Name="THAMSOes" EntityType="QLTTModel.THAMSO" />
           <EntitySet Name="NHANVIENs" EntityType="QLTTModel.NHANVIEN" />
           <EntitySet Name="PHANQUYENs" EntityType="QLTTModel.PHANQUYEN" />
@@ -859,7 +863,17 @@
             <End Role="PHANQUYEN" EntitySet="PHANQUYENs" />
             <End Role="NHANVIEN" EntitySet="NHANVIENs" />
           </AssociationSet>
-        </EntityContainer>
+          <EntitySet Name="sysdiagrams" EntityType="QLTTModel.sysdiagram" />
+          <EntitySet Name="DANGKies" EntityType="QLTTModel.DANGKY" />
+          <AssociationSet Name="CTHV_FK_HV" Association="QLTTModel.CTHV_FK_HV">
+            <End Role="HOCVIEN" EntitySet="HOCVIENs" />
+            <End Role="DANGKY" EntitySet="DANGKies" />
+          </AssociationSet>
+          <AssociationSet Name="CTHV_FK_L" Association="QLTTModel.CTHV_FK_L">
+            <End Role="LOPHOC" EntitySet="LOPHOCs" />
+            <End Role="DANGKY" EntitySet="DANGKies" />
+          </AssociationSet>
+          </EntityContainer>
         <EntityType Name="THAMSO">
           <Key>
             <PropertyRef Name="STT" />
@@ -907,7 +921,52 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="DANGKY">
+          <Key>
+            <PropertyRef Name="MAHV" />
+            <PropertyRef Name="MALOP" />
+          </Key>
+          <Property Name="STT" Type="Int32" Nullable="false" />
+          <Property Name="MAHV" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="MALOP" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="HOCVIEN" Relationship="QLTTModel.CTHV_FK_HV" FromRole="DANGKY" ToRole="HOCVIEN" />
+          <NavigationProperty Name="LOPHOC" Relationship="QLTTModel.CTHV_FK_L" FromRole="DANGKY" ToRole="LOPHOC" />
+        </EntityType>
+        <Association Name="CTHV_FK_HV">
+          <End Type="QLTTModel.HOCVIEN" Role="HOCVIEN" Multiplicity="1" />
+          <End Type="QLTTModel.DANGKY" Role="DANGKY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOCVIEN">
+              <PropertyRef Name="MAHV" />
+            </Principal>
+            <Dependent Role="DANGKY">
+              <PropertyRef Name="MAHV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CTHV_FK_L">
+          <End Type="QLTTModel.LOPHOC" Role="LOPHOC" Multiplicity="1" />
+          <End Type="QLTTModel.DANGKY" Role="DANGKY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOPHOC">
+              <PropertyRef Name="MALOP" />
+            </Principal>
+            <Dependent Role="DANGKY">
+              <PropertyRef Name="MALOP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1054,14 +1113,6 @@
               <ScalarProperty Name="MALOP" ColumnName="MALOP" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="DANGKY" TypeName="QLTTModel.DANGKY" StoreEntitySet="DANGKY">
-            <EndProperty Name="HOCVIEN">
-              <ScalarProperty Name="MAHV" ColumnName="MAHV" />
-            </EndProperty>
-            <EndProperty Name="LOPHOC">
-              <ScalarProperty Name="MALOP" ColumnName="MALOP" />
-            </EndProperty>
-          </AssociationSetMapping>
           <EntitySetMapping Name="THAMSOes">
             <EntityTypeMapping TypeName="QLTTModel.THAMSO">
               <MappingFragment StoreEntitySet="THAMSO">
@@ -1098,6 +1149,26 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="QLTTModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DANGKies">
+            <EntityTypeMapping TypeName="QLTTModel.DANGKY">
+              <MappingFragment StoreEntitySet="DANGKY">
+                <ScalarProperty Name="MALOP" ColumnName="MALOP" />
+                <ScalarProperty Name="MAHV" ColumnName="MAHV" />
+                <ScalarProperty Name="STT" ColumnName="STT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1112,8 +1183,8 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>

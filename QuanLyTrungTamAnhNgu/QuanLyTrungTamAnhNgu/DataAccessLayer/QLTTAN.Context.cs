@@ -40,5 +40,7 @@ namespace DataAccessLayer
         public virtual DbSet<THAMSO> THAMSOes { get; set; }
         public virtual DbSet<NHANVIEN> NHANVIENs { get; set; }
         public virtual DbSet<PHANQUYEN> PHANQUYENs { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<DANGKY> DANGKies { get; set; }
     }
 }

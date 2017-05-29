@@ -14,6 +14,7 @@ namespace DataAccessLayer.Service
         {
             using (QLTTEntities qltt = new QLTTEntities())
             {
+               
                 GIANGVIEN gv = qltt.GIANGVIENs.Where(p => p.MAGV == code).FirstOrDefault();
                 if (gv != null)
                 {

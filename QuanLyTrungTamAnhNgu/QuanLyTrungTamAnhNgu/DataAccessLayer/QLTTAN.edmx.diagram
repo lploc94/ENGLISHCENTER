@@ -30,12 +30,15 @@
         <AssociationConnector Association="QLTTModel.THI_FK_PH" ManuallyRouted="false" />
         <AssociationConnector Association="QLTTModel.TKB_FK_PH" ManuallyRouted="false" />
         <AssociationConnector Association="QLTTModel.CT_LOPHOC" ManuallyRouted="false" />
-        <AssociationConnector Association="QLTTModel.DANGKY" ManuallyRouted="false" />
         <EntityTypeShape EntityType="QLTTModel.THAMSO" Width="1.5" PointX="5.375" PointY="9.75" />
         <EntityTypeShape EntityType="QLTTModel.NHANVIEN" Width="1.5" PointX="9.625" PointY="10" />
         <EntityTypeShape EntityType="QLTTModel.PHANQUYEN" Width="1.5" PointX="7.375" PointY="11" />
         <AssociationConnector Association="QLTTModel.NV_FK_PQ" />
-      </Diagram>
+        <EntityTypeShape EntityType="QLTTModel.sysdiagram" Width="1.5" PointX="10.375" PointY="0.75" />
+        <EntityTypeShape EntityType="QLTTModel.DANGKY" Width="1.5" PointX="11.25" PointY="6.25" />
+        <AssociationConnector Association="QLTTModel.CTHV_FK_HV" />
+        <AssociationConnector Association="QLTTModel.CTHV_FK_L" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>
