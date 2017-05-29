@@ -7,12 +7,14 @@
     </Key>
     <Property Name="MALOP" Type="char" MaxLength="3" Nullable="false" />
     <Property Name="MAGV" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="STT" Type="int" />
   </EntityType>
   <EntityType Name="DANGKY">
     <Key>
       <PropertyRef Name="MAHV" />
       <PropertyRef Name="MALOP" />
     </Key>
+    <Property Name="STT" Type="int" Nullable="false" />
     <Property Name="MAHV" Type="char" MaxLength="5" Nullable="false" />
     <Property Name="MALOP" Type="char" MaxLength="3" Nullable="false" />
   </EntityType>
@@ -121,6 +123,16 @@
     <Property Name="MAPHONG" Type="int" Nullable="false" />
     <Property Name="TANG" Type="int" />
     <Property Name="SOPHONG" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="THAMSO">
     <Key>
@@ -393,6 +405,7 @@
     <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PHANQUYEN" EntityType="Self.PHANQUYEN" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PHONGHOC" EntityType="Self.PHONGHOC" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="THAMSO" EntityType="Self.THAMSO" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="THI" EntityType="Self.THI" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="THONGTINHOCPHI" EntityType="Self.THONGTINHOCPHI" Schema="dbo" store:Type="Tables" />

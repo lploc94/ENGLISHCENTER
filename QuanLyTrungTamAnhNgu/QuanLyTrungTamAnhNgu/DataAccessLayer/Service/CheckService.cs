@@ -10,11 +10,32 @@ namespace DataAccessLayer.Service
     {
         public static int checkID(string id, string pass)
         {
-            return 1;//đợi bảng user tạm thời return 1.
+            using (QLTTEntities qltt = new QLTTEntities())
+            {
+                NHANVIEN nv = qltt.NHANVIENs.Where(p => p.USERNAME == id && p.PASS == pass).FirstOrDefault();
+                if (nv != null)
+                {
+                    return 1;
+                }
+                else
+                    return 0;
+            }
         }
         public static int checkRole(string id, int roleid)
         {
-            return 1;//đang đợi bảng role
+            using (QLTTEntities qltt = new QLTTEntities())
+            {
+                NHANVIEN nv = qltt.NHANVIENs.Where(p => p.USERNAME == id).FirstOrDefault();
+                if (nv != null)
+                {
+                    if (nv.PHANQUYEN == roleid)
+                        return 1;
+                    else
+                        return 0;
+                }
+                else
+                    return 0;
+            }
 
         }
     }

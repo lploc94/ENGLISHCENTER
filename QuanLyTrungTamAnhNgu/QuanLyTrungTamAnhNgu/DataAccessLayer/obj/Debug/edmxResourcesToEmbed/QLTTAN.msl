@@ -134,22 +134,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="CT_LOPHOC" TypeName="QLTTModel.CT_LOPHOC" StoreEntitySet="CT_LOPHOC">
-      <EndProperty Name="GIANGVIEN">
-        <ScalarProperty Name="MAGV" ColumnName="MAGV" />
-      </EndProperty>
-      <EndProperty Name="LOPHOC">
-        <ScalarProperty Name="MALOP" ColumnName="MALOP" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="DANGKY" TypeName="QLTTModel.DANGKY" StoreEntitySet="DANGKY">
-      <EndProperty Name="HOCVIEN">
-        <ScalarProperty Name="MAHV" ColumnName="MAHV" />
-      </EndProperty>
-      <EndProperty Name="LOPHOC">
-        <ScalarProperty Name="MALOP" ColumnName="MALOP" />
-      </EndProperty>
-    </AssociationSetMapping>
     <EntitySetMapping Name="THAMSOes">
       <EntityTypeMapping TypeName="QLTTModel.THAMSO">
         <MappingFragment StoreEntitySet="THAMSO">
@@ -183,6 +167,35 @@
         <MappingFragment StoreEntitySet="PHANQUYEN">
           <ScalarProperty Name="MOTA" ColumnName="MOTA" />
           <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="QLTTModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DANGKies">
+      <EntityTypeMapping TypeName="QLTTModel.DANGKY">
+        <MappingFragment StoreEntitySet="DANGKY">
+          <ScalarProperty Name="MALOP" ColumnName="MALOP" />
+          <ScalarProperty Name="MAHV" ColumnName="MAHV" />
+          <ScalarProperty Name="STT" ColumnName="STT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CT_LOPHOC">
+      <EntityTypeMapping TypeName="QLTTModel.CT_LOPHOC">
+        <MappingFragment StoreEntitySet="CT_LOPHOC">
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="MAGV" ColumnName="MAGV" />
+          <ScalarProperty Name="MALOP" ColumnName="MALOP" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -11,7 +11,7 @@ using DevExpress.XtraBars;
 using QuanLyTrungTamAnhNgu.QuanLyHocVien;
 using QuanLyTrungTamAnhNgu.QuanLyGiangDay;
 using BusinessLogicLayer.service;
-
+using DataAccessLayer.Service;
 namespace QuanLyTrungTamAnhNgu
 {
     /// <summary>
@@ -22,7 +22,7 @@ namespace QuanLyTrungTamAnhNgu
         public MainForm()
         {
             InitializeComponent();
-            //DataTable x = HocVien.getAll("asd", "asd"); test
+           
         }
 
         private void barButtonItem3_ItemClick(object sender, ItemClickEventArgs e)

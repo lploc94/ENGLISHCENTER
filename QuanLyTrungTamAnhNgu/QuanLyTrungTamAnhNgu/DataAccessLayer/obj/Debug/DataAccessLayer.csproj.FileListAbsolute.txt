@@ -7,3 +7,4 @@ C:\Users\thorn\Documents\GitHub\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTa
 C:\Users\thorn\Documents\GitHub\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\thorn\Documents\GitHub\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\DataAccessLayer\obj\Debug\DataAccessLayer.dll
 C:\Users\thorn\Documents\GitHub\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
+C:\Users\thorn\Documents\GitHub\ENGLISHCENTER\QuanLyTrungTamAnhNgu\QuanLyTrungTamAnhNgu\DataAccessLayer\obj\Debug\DataAccessLayer.csprojResolveAssemblyReference.cache
