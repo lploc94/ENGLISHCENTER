@@ -19,14 +19,14 @@ namespace DataAccessLayer.Service
         {
             using (QLTTEntities qltt = new QLTTEntities())
             {
-                HOCVIEN hv = qltt.HOCVIENs.Where(p=>p.MAHV == code).FirstOrDefault();
+                HOCVIEN hv = qltt.HOCVIENs.Where(p => p.MAHV == code).FirstOrDefault();
                 if (hv != null)
                 {
                     qltt.HOCVIENs.Remove(hv);
                     qltt.SaveChanges();
                     return 1;
                 }
-                
+
             }
             return 0;
         }
@@ -53,7 +53,7 @@ namespace DataAccessLayer.Service
                     rtnTable.Columns.Add("NGAYDK", typeof(DateTime));
                     rtnTable.Columns.Add("TINHTRANG", typeof(int));
                     rtnTable.Rows.Add(hv.MAHV, hv.HOTEN, hv.GIOITINH, hv.NGSINH, hv.DIACHI, hv.SDT, hv.EMAIL, hv.NGAYDK, hv.TINHTRANG);
-                    
+
                     return rtnTable;
                 }
 
@@ -85,10 +85,10 @@ namespace DataAccessLayer.Service
                 else
                     return rtnTable;
             }
-            
+
         }
 
-        public int insert(string mahv,string hoten,int gioitinh,string diachi,string sdt,string email,DateTime ngaydk,int tinhtrang)
+        public int insert(string mahv, string hoten, int gioitinh, string diachi, string sdt, string email, DateTime ngaydk, int tinhtrang)
         {
             try
             {
@@ -110,6 +110,35 @@ namespace DataAccessLayer.Service
                     qltt.SaveChanges();
                 }
                 return 1;
+            }
+            catch
+            {
+                return 0;
+
+            }
+        }
+        public int update(string mahv, string hoten, int gioitinh, string diachi, string sdt, string email, DateTime ngaydk, int tinhtrang)
+        {
+            try
+            {
+                using (QLTTEntities qltt = new QLTTEntities())
+                {
+                    HOCVIEN hv = qltt.HOCVIENs.Where(p => p.MAHV == mahv).FirstOrDefault();
+                    if (hv != null)
+                    {
+                        hv.HOTEN = hoten;
+                        hv.GIOITINH = gioitinh;
+                        hv.DIACHI = diachi;
+                        hv.SDT = sdt;
+                        hv.EMAIL = email;
+                        hv.NGAYDK = ngaydk;
+                        hv.TINHTRANG = tinhtrang;
+                        qltt.SaveChanges();
+                        return 1;
+                    }
+                    return 0;
+                }
+                
             }
             catch
             {

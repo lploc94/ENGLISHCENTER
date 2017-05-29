@@ -114,5 +114,39 @@ namespace DataAccessLayer.Service
             }
             
         }
+        public int update(string magv, string tengv, int gioitinh, DateTime ngaysinh, string diachi, string sdt, string email, string trinhdo, string bangcap, DateTime ngayvaolam, double heso)
+        {
+            try
+            {
+                using (QLTTEntities qltt = new QLTTEntities())
+                {
+                    GIANGVIEN gv = qltt.GIANGVIENs.Where(p => p.MAGV == magv).FirstOrDefault();
+                    if (gv != null)
+                    {
+                        gv.TENGV = tengv;
+                        gv.GIOITINH = gioitinh;
+                        gv.NGSINH = ngaysinh;
+                        gv.DIACHI = diachi;
+                        gv.SDT = sdt;
+                        gv.EMAIL = email;
+                        gv.TRINHDO = trinhdo;
+                        gv.BANGCAP = bangcap;
+                        gv.NGAYVL = ngayvaolam;
+                        gv.HESO = heso;
+                        qltt.SaveChanges();
+                        return 1;
+                    }
+                    return 0;
+                }
+                
+            }
+            catch
+            {
+                return 0;
+
+            }
+
+        }
+
     }
 }

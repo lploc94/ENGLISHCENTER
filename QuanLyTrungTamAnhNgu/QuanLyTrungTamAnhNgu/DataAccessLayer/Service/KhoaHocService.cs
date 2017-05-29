@@ -99,5 +99,31 @@ namespace DataAccessLayer.Service
             
            
         }
+        public int update(string makh, string tenkh, string mota, string tailieu, int thoigian)
+        {
+            try
+            {
+                using (QLTTEntities qltt = new QLTTEntities())
+                {
+                    if()
+                    {
+                        MAKH = makh,
+                        TENKH = tenkh,
+                        MOTA = mota,
+                        TAILIEU = tailieu,
+                        THOIGIAN = thoigian
+                        qltt.SaveChanges();
+                    }
+                    
+                    
+
+                    return 0;
+                }
+            }
+            catch
+            {
+                return 0;
+            }
+        }
     }
 }

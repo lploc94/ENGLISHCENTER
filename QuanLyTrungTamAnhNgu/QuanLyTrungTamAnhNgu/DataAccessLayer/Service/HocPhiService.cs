@@ -28,11 +28,11 @@ namespace DataAccessLayer.Service
         {
             using (QLTTEntities qltt = new QLTTEntities())
             {
-                HOCPHI hp=qltt.HOCPHIs.Where(p => p.MAHP == code).FirstOrDefault();
+                HOCPHI hp = qltt.HOCPHIs.Where(p => p.MAHP == code).FirstOrDefault();
                 if (hp != null)
                 {
                     DataTable rtnTable = new DataTable();
-                    rtnTable.Columns.Add("MAHP",typeof(string));
+                    rtnTable.Columns.Add("MAHP", typeof(string));
                     rtnTable.Columns.Add("TENHP", typeof(string));
                     rtnTable.Columns.Add("SOTIEN", typeof(string));
                     rtnTable.Rows.Add(hp.MAHP, hp.TENHP, hp.SOTIEN);
@@ -60,7 +60,7 @@ namespace DataAccessLayer.Service
                 else
                     return rtnTable;
             }
-            
+
         }
         public int insert(string mahp, string tenhp, string sotien)
         {
@@ -70,9 +70,9 @@ namespace DataAccessLayer.Service
                 {
                     HOCPHI hp = new HOCPHI()
                     {
-                        MAHP=mahp,
-                        TENHP=tenhp,
-                        SOTIEN=sotien
+                        MAHP = mahp,
+                        TENHP = tenhp,
+                        SOTIEN = sotien
                     };
                     qltt.HOCPHIs.Add(hp);
                     qltt.SaveChanges();
@@ -83,7 +83,30 @@ namespace DataAccessLayer.Service
             {
                 return 0;
             }
-            
+
+        }
+        public int update(string mahp, string tenhp, string sotien)
+        {
+            try
+            {
+                using (QLTTEntities qltt = new QLTTEntities())
+                {
+                    HOCPHI hp = qltt.HOCPHIs.Where(p => p.MAHP == mahp).FirstOrDefault();
+                    if (hp != null)
+                    {
+                        hp.TENHP = tenhp;
+                        hp.SOTIEN = sotien;
+                        qltt.SaveChanges();
+                        return 1;
+                    }
+                    return 0;
+
+                }
+            }
+            catch
+            {
+                return 0;
+            }
         }
     }
 }
