@@ -42,5 +42,6 @@ namespace DataAccessLayer
         public virtual DbSet<PHANQUYEN> PHANQUYENs { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<DANGKY> DANGKies { get; set; }
+        public virtual DbSet<CT_LOPHOC> CT_LOPHOC { get; set; }
     }
 }

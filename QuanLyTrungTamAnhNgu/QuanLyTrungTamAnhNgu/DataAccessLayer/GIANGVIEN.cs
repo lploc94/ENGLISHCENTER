@@ -18,7 +18,7 @@ namespace DataAccessLayer
         public GIANGVIEN()
         {
             this.TT_LUONGGV = new HashSet<TT_LUONGGV>();
-            this.LOPHOCs = new HashSet<LOPHOC>();
+            this.CT_LOPHOC = new HashSet<CT_LOPHOC>();
         }
     
         public string MAGV { get; set; }
@@ -36,6 +36,6 @@ namespace DataAccessLayer
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TT_LUONGGV> TT_LUONGGV { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LOPHOC> LOPHOCs { get; set; }
+        public virtual ICollection<CT_LOPHOC> CT_LOPHOC { get; set; }
     }
 }

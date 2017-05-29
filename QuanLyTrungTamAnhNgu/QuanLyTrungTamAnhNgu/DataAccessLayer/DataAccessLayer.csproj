@@ -49,6 +49,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CT_LOPHOC.cs">
+      <DependentUpon>QLTTAN.tt</DependentUpon>
+    </Compile>
     <Compile Include="DANGKY.cs">
       <DependentUpon>QLTTAN.tt</DependentUpon>
     </Compile>

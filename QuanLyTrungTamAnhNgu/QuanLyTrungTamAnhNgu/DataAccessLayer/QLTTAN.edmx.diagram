@@ -10,7 +10,7 @@
         <EntityTypeShape EntityType="QLTTModel.HOCVIEN" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
         <EntityTypeShape EntityType="QLTTModel.KHOAHOC" Width="1.5" PointX="0.75" PointY="12.5" IsExpanded="true" />
         <EntityTypeShape EntityType="QLTTModel.KIEMTRA" Width="1.5" PointX="3" PointY="11.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLTTModel.LICHHOC" Width="1.5" PointX="6" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTTModel.LICHHOC" Width="1.5" PointX="6" PointY="3" IsExpanded="true" />
         <EntityTypeShape EntityType="QLTTModel.LOPHOC" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
         <EntityTypeShape EntityType="QLTTModel.PHONGHOC" Width="1.5" PointX="3" PointY="13.875" IsExpanded="true" />
         <EntityTypeShape EntityType="QLTTModel.THI" Width="1.5" PointX="5.25" PointY="5.625" IsExpanded="true" />
@@ -29,7 +29,6 @@
         <AssociationConnector Association="QLTTModel.TTHP_FK_LH" ManuallyRouted="false" />
         <AssociationConnector Association="QLTTModel.THI_FK_PH" ManuallyRouted="false" />
         <AssociationConnector Association="QLTTModel.TKB_FK_PH" ManuallyRouted="false" />
-        <AssociationConnector Association="QLTTModel.CT_LOPHOC" ManuallyRouted="false" />
         <EntityTypeShape EntityType="QLTTModel.THAMSO" Width="1.5" PointX="5.375" PointY="9.75" />
         <EntityTypeShape EntityType="QLTTModel.NHANVIEN" Width="1.5" PointX="9.625" PointY="10" />
         <EntityTypeShape EntityType="QLTTModel.PHANQUYEN" Width="1.5" PointX="7.375" PointY="11" />
@@ -38,6 +37,9 @@
         <EntityTypeShape EntityType="QLTTModel.DANGKY" Width="1.5" PointX="11.25" PointY="6.25" />
         <AssociationConnector Association="QLTTModel.CTHV_FK_HV" />
         <AssociationConnector Association="QLTTModel.CTHV_FK_L" />
+        <EntityTypeShape EntityType="QLTTModel.CT_LOPHOC" Width="1.5" PointX="4.75" PointY="0.5" />
+        <AssociationConnector Association="QLTTModel.CTLH_FK_GV" />
+        <AssociationConnector Association="QLTTModel.CTLH_FK_L" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

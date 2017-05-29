@@ -12,6 +12,7 @@
           </Key>
           <Property Name="MALOP" Type="char" MaxLength="3" Nullable="false" />
           <Property Name="MAGV" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="STT" Type="int" />
         </EntityType>
         <EntityType Name="DANGKY">
           <Key>
@@ -504,7 +505,7 @@
           <Property Name="NGAYVL" Type="DateTime" Precision="3" />
           <Property Name="HESO" Type="Double" />
           <NavigationProperty Name="TT_LUONGGV" Relationship="Self.TT_FK_GV" FromRole="GIANGVIEN" ToRole="TT_LUONGGV" />
-          <NavigationProperty Name="LOPHOCs" Relationship="Self.CT_LOPHOC" FromRole="GIANGVIEN" ToRole="LOPHOC" />
+          <NavigationProperty Name="CT_LOPHOC" Relationship="QLTTModel.CTLH_FK_GV" FromRole="GIANGVIEN" ToRole="CT_LOPHOC" />
         </EntityType>
         <EntityType Name="HOCPHI">
           <Key>
@@ -575,8 +576,8 @@
           <NavigationProperty Name="THIs" Relationship="Self.THI_FK_LH" FromRole="LOPHOC" ToRole="THI" />
           <NavigationProperty Name="TKBs" Relationship="Self.TKB_FK_L" FromRole="LOPHOC" ToRole="TKB" />
           <NavigationProperty Name="THONGTINHOCPHIs" Relationship="Self.TTHP_FK_LH" FromRole="LOPHOC" ToRole="THONGTINHOCPHI" />
-          <NavigationProperty Name="GIANGVIENs" Relationship="Self.CT_LOPHOC" FromRole="LOPHOC" ToRole="GIANGVIEN" />
           <NavigationProperty Name="DANGKies" Relationship="QLTTModel.CTHV_FK_L" FromRole="LOPHOC" ToRole="DANGKY" />
+          <NavigationProperty Name="CT_LOPHOC" Relationship="QLTTModel.CTLH_FK_L" FromRole="LOPHOC" ToRole="CT_LOPHOC" />
         </EntityType>
         <EntityType Name="PHONGHOC">
           <Key>
@@ -787,10 +788,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="CT_LOPHOC">
-          <End Role="GIANGVIEN" Type="Self.GIANGVIEN" Multiplicity="*" />
-          <End Role="LOPHOC" Type="Self.LOPHOC" Multiplicity="*" />
-        </Association>
         <EntityContainer Name="QLTTEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="GIANGVIENs" EntityType="Self.GIANGVIEN" />
           <EntitySet Name="HOCPHIs" EntityType="Self.HOCPHI" />
@@ -852,10 +849,6 @@
             <End Role="PHONGHOC" EntitySet="PHONGHOCs" />
             <End Role="TKB" EntitySet="TKBs" />
           </AssociationSet>
-          <AssociationSet Name="CT_LOPHOC" Association="Self.CT_LOPHOC">
-            <End Role="GIANGVIEN" EntitySet="GIANGVIENs" />
-            <End Role="LOPHOC" EntitySet="LOPHOCs" />
-          </AssociationSet>
           <EntitySet Name="THAMSOes" EntityType="QLTTModel.THAMSO" />
           <EntitySet Name="NHANVIENs" EntityType="QLTTModel.NHANVIEN" />
           <EntitySet Name="PHANQUYENs" EntityType="QLTTModel.PHANQUYEN" />
@@ -872,6 +865,15 @@
           <AssociationSet Name="CTHV_FK_L" Association="QLTTModel.CTHV_FK_L">
             <End Role="LOPHOC" EntitySet="LOPHOCs" />
             <End Role="DANGKY" EntitySet="DANGKies" />
+          </AssociationSet>
+          <EntitySet Name="CT_LOPHOC" EntityType="QLTTModel.CT_LOPHOC" />
+          <AssociationSet Name="CTLH_FK_GV" Association="QLTTModel.CTLH_FK_GV">
+            <End Role="GIANGVIEN" EntitySet="GIANGVIENs" />
+            <End Role="CT_LOPHOC" EntitySet="CT_LOPHOC" />
+          </AssociationSet>
+          <AssociationSet Name="CTLH_FK_L" Association="QLTTModel.CTLH_FK_L">
+            <End Role="LOPHOC" EntitySet="LOPHOCs" />
+            <End Role="CT_LOPHOC" EntitySet="CT_LOPHOC" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="THAMSO">
@@ -962,6 +964,41 @@
               <PropertyRef Name="MALOP" />
             </Principal>
             <Dependent Role="DANGKY">
+              <PropertyRef Name="MALOP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CT_LOPHOC">
+          <Key>
+            <PropertyRef Name="MALOP" />
+            <PropertyRef Name="MAGV" />
+          </Key>
+          <Property Name="MALOP" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="MAGV" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="STT" Type="Int32" />
+          <NavigationProperty Name="GIANGVIEN" Relationship="QLTTModel.CTLH_FK_GV" FromRole="CT_LOPHOC" ToRole="GIANGVIEN" />
+          <NavigationProperty Name="LOPHOC" Relationship="QLTTModel.CTLH_FK_L" FromRole="CT_LOPHOC" ToRole="LOPHOC" />
+        </EntityType>
+        <Association Name="CTLH_FK_GV">
+          <End Type="QLTTModel.GIANGVIEN" Role="GIANGVIEN" Multiplicity="1" />
+          <End Type="QLTTModel.CT_LOPHOC" Role="CT_LOPHOC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GIANGVIEN">
+              <PropertyRef Name="MAGV" />
+            </Principal>
+            <Dependent Role="CT_LOPHOC">
+              <PropertyRef Name="MAGV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CTLH_FK_L">
+          <End Type="QLTTModel.LOPHOC" Role="LOPHOC" Multiplicity="1" />
+          <End Type="QLTTModel.CT_LOPHOC" Role="CT_LOPHOC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOPHOC">
+              <PropertyRef Name="MALOP" />
+            </Principal>
+            <Dependent Role="CT_LOPHOC">
               <PropertyRef Name="MALOP" />
             </Dependent>
           </ReferentialConstraint>
@@ -1105,14 +1142,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="CT_LOPHOC" TypeName="QLTTModel.CT_LOPHOC" StoreEntitySet="CT_LOPHOC">
-            <EndProperty Name="GIANGVIEN">
-              <ScalarProperty Name="MAGV" ColumnName="MAGV" />
-            </EndProperty>
-            <EndProperty Name="LOPHOC">
-              <ScalarProperty Name="MALOP" ColumnName="MALOP" />
-            </EndProperty>
-          </AssociationSetMapping>
           <EntitySetMapping Name="THAMSOes">
             <EntityTypeMapping TypeName="QLTTModel.THAMSO">
               <MappingFragment StoreEntitySet="THAMSO">
@@ -1166,6 +1195,15 @@
                 <ScalarProperty Name="MALOP" ColumnName="MALOP" />
                 <ScalarProperty Name="MAHV" ColumnName="MAHV" />
                 <ScalarProperty Name="STT" ColumnName="STT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CT_LOPHOC">
+            <EntityTypeMapping TypeName="QLTTModel.CT_LOPHOC">
+              <MappingFragment StoreEntitySet="CT_LOPHOC">
+                <ScalarProperty Name="STT" ColumnName="STT" />
+                <ScalarProperty Name="MAGV" ColumnName="MAGV" />
+                <ScalarProperty Name="MALOP" ColumnName="MALOP" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
