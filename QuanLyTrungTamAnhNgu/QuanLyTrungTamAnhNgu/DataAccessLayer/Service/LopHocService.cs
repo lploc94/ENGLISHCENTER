@@ -102,7 +102,29 @@ namespace DataAccessLayer.Service
         }
         public int update(string malop, string makh, DateTime ngaybd, DateTime ngaykt, int siso, string mahp)
         {
+            try
+            {
+                using (QLTTEntities qltt = new QLTTEntities())
+                {
+                    LOPHOC lh = qltt.LOPHOCs.Where(p => p.MALOP == malop).FirstOrDefault();
+                    if(lh!=null)
+                    {
 
+                        lh.MAKH = makh;
+                        lh.NGAYBD = ngaybd;
+                        lh.NGAYKT = ngaykt;
+                        lh.SISO = siso;
+                        lh.MAHP = mahp;
+                        qltt.SaveChanges();
+                        return 1;
+                    }
+                    return 0;
+                }
+            }
+            catch
+            {
+                return 0;
+            }
         }
     }
 }

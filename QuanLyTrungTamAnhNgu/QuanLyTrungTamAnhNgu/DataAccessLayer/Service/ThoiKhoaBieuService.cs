@@ -92,5 +92,32 @@ namespace DataAccessLayer.Service
             }
             
         }
+        public int update(string malop, int maphong, string malh)
+        {
+            try
+            {
+
+                using (QLTTEntities qltt = new QLTTEntities())
+                {
+                    TKB tkb = qltt.TKBs.Where(p => p.MALH == malop).FirstOrDefault();
+                    if (tkb != null)
+                    {
+                        
+                        tkb.MAPHONG = maphong;
+                        tkb.MALH = malh;
+                        qltt.SaveChanges();
+
+                        return 1;
+                    }
+
+                    return 0;
+                }
+
+            }
+            catch
+            {
+                return 0;
+            }
+        }
     }
 }

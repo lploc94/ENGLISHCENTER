@@ -96,8 +96,36 @@ namespace DataAccessLayer.Service
             }
 
         }
+        public int update(string matt, string magv, DateTime ngaynhan, int tinhtrang)
+        {
+            try
+            {
+                using (QLTTEntities qltt = new QLTTEntities())
+                {
+                    TT_LUONGGV data = qltt.TT_LUONGGV.Where(p => p.MATT == code).FirstOrDefault();
+                    if(data!=null)
+                    {
+                        data.MATT = matt;
+                        data.MAGV = magv;
+                        data.NGAYNHAN = ngaynhan;
+                        data.TINHTRANG = tinhtrang;
+                        qltt.SaveChanges();
 
-        
+                        return 1;
+                    }
+
+                    return 0;
+                }
+
+            }
+            catch
+            {
+
+                return 0;
+            }
+
+        }
+
 
     }
 }

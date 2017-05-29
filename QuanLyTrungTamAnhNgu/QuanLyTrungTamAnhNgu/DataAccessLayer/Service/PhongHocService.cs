@@ -85,5 +85,28 @@ namespace DataAccessLayer.Service
                 return 0;
             }
         }
+        public int update(int maphong, int tang, int sophong)
+        {
+            try
+            {
+                using (QLTTEntities qltt = new QLTTEntities())
+                {
+                    PHONGHOC ph = qltt.PHONGHOCs.Where(p => p.MAPHONG == maphong).FirstOrDefault();
+                    if(ph!=null)
+                    {
+                       
+                        ph.TANG = tang;
+                        ph.SOPHONG = sophong;
+                        qltt.SaveChanges();
+                        return 1;
+                    }
+                    return 0;
+                }
+            }
+            catch
+            {
+                return 0;
+            }
+        }
     }
 }

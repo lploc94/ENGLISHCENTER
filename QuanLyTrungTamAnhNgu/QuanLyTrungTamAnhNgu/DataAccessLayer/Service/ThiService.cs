@@ -100,5 +100,33 @@ namespace DataAccessLayer.Service
                 return 0;
             }
         }
+        public int update(string mahv, string makt, string malop, int maphong, DateTime ngaythi, int diemthi, int ketqua)
+        {
+            try
+            {
+                using (QLTTEntities qltt = new QLTTEntities())
+                {
+                    THI t = qltt.THIs.Where(p => p.MAKT == mahv).FirstOrDefault();
+                    if(t!=null)
+                    {
+
+                        t.MAKT = makt;
+                        t.MALOP = malop;
+                        t.MAPHONG = maphong;
+                        t.NGAYTHI = ngaythi;
+                        t.DIEMTHI = diemthi;
+                        t.KETQUA = ketqua;
+                        qltt.SaveChanges();
+                        return 1;
+                    }
+                    return 0;
+                    
+                }
+            }
+            catch
+            {
+                return 0;
+            }
+        }
     }
 }
