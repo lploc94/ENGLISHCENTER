@@ -71,6 +71,8 @@
       <DependentUpon>QLTTAN.tt</DependentUpon>
     </Compile>
     <Compile Include="Service\CheckService.cs" />
+    <Compile Include="Service\CT_LopHocService.cs" />
+    <Compile Include="Service\DangKyService.cs" />
     <Compile Include="Service\GiangVienService.cs" />
     <Compile Include="Service\HocPhiService.cs" />
     <Compile Include="Service\HocVienService.cs" />

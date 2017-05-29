@@ -48,6 +48,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="service\CT_LopHoc.cs" />
+    <Compile Include="service\DangKy.cs" />
     <Compile Include="service\GiangVien.cs" />
     <Compile Include="service\HocPhi.cs" />
     <Compile Include="service\HocVien.cs" />
