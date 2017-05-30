@@ -120,6 +120,7 @@ namespace DataAccessLayer.Service
                         
                     };
                     qltt.DANGKies.Add(dk);
+                    qltt.SaveChanges();
                     return 1;
                 }
             }
