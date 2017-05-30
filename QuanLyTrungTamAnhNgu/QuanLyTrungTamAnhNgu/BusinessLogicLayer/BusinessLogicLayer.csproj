@@ -56,6 +56,7 @@
     <Compile Include="service\KhoaHoc.cs" />
     <Compile Include="service\KiemTra.cs" />
     <Compile Include="service\LichHoc.cs" />
+    <Compile Include="service\Login.cs" />
     <Compile Include="service\LopHoc.cs" />
     <Compile Include="service\PhongHoc.cs" />
     <Compile Include="service\ThamSo.cs" />

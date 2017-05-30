@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Service
 {
-    class CT_LopHocService
+    public class CT_LopHocService
     {
         public int delete(string malop,string magv)
         {

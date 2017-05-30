@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAccessLayer.Service;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -15,8 +16,15 @@ namespace BusinessLogicLayer.service
         }
         public static DataTable getAll(string id, string pass)
         {
-            DataTable table = new DataTable();
-            return table;
+            if (CheckService.checkID(id, pass) == 1)
+            {
+                DangKyService dk = new DangKyService();
+
+
+                return dk.getAll();
+
+            }
+            return null;
         }
         public static DataTable getByMaLop(string id, string pass, string malop)
         {

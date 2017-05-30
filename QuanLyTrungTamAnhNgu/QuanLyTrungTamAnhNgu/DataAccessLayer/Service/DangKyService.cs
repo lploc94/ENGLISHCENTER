@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Service
 {
-    class DangKyService 
+    public class DangKyService 
     {
         public int delete(string mahv,string malop)
         {
