@@ -114,7 +114,7 @@ namespace DataAccessLayer.Service
 
                    DANGKY dk = new DANGKY()
                     {
-                        STT = qltt.CT_LOPHOC.Count() + 1,
+                        STT = qltt.DANGKies.Count() + 1,
                         MAHV = mahv,
                         MALOP = malop,
                         
