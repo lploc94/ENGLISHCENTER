@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAccessLayer.Service;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -11,26 +12,62 @@ namespace BusinessLogicLayer.service
     {
         public static int delete(string id, string pass, string malop, string magv)
         {
-            return 1;
+            if (CheckService.checkID(id, pass) == 1)
+            {
+                if (CheckService.checkRole(id, 2) == 1 || CheckService.checkRole(id, 0) == 1)
+                {
+                    CT_LopHocService ctlhsv = new CT_LopHocService();
+                    return ctlhsv.delete(malop, magv);
+                }
+            }
+            return 0;
         }
         public static DataTable getAll(string id, string pass)
         {
-            DataTable table = new DataTable();
-            return table;
+            if (CheckService.checkID(id, pass) == 1)
+            {
+                CT_LopHocService ctlhsv = new CT_LopHocService();
+
+                return ctlhsv.getAll();
+
+            }
+            return null;
         }
         public static DataTable getByMaLop(string id, string pass,string malop)
         {
-            DataTable table = new DataTable();
-            return table;
+            if (CheckService.checkID(id, pass) == 1)
+            {
+                if (CheckService.checkRole(id, 2) == 1 || CheckService.checkRole(id, 0) == 1)
+                {
+                    CT_LopHocService ctlhsv = new CT_LopHocService();
+                    return ctlhsv.getByMaLop(malop);
+                }
+            }
+            return null;
         }
         public static DataTable getByMaGV(string id, string pass, string magv)
         {
-            DataTable table = new DataTable();
-            return table;
+            if (CheckService.checkID(id, pass) == 1)
+            {
+                if (CheckService.checkRole(id, 2) == 1 || CheckService.checkRole(id, 0) == 1)
+                {
+                    CT_LopHocService ctlhsv = new CT_LopHocService();
+                    return ctlhsv.getByMaGV(magv);
+                }
+            }
+            return null;
         }
         public static int insert(string id, string pass, string malop, string magv)
         {
-            return 1;
+            if (CheckService.checkID(id, pass) == 1)
+            {
+                if (CheckService.checkRole(id, 2) == 1 || CheckService.checkRole(id, 0) == 1)
+                {
+                    CT_LopHocService ctlhsv = new CT_LopHocService();
+                    return ctlhsv.insert(malop,magv);
+                }
+            }
+            return 0;
         }
     }
 }

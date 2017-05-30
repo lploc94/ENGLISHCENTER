@@ -10,11 +10,19 @@ namespace BusinessLogicLayer.service
 {
     class DangKy
     {
-        public static int delete(string id, string pass, string malop, string magv)
+        public int delete(string id, string pass, string mahv, string malop)
         {
-            return 1;
+            if(CheckService.checkID(id, pass) == 1)
+            {
+                if (CheckService.checkRole(id, 1) == 1 || CheckService.checkRole(id, 0) == 1)
+                {
+                    DangKyService dksv = new DangKyService();
+                    return dksv.delete(mahv, malop);
+                }
+            }
+            return 0;
         }
-        public static DataTable getAll(string id, string pass)
+        public DataTable getAll(string id, string pass)
         {
             if (CheckService.checkID(id, pass) == 1)
             {
@@ -26,19 +34,43 @@ namespace BusinessLogicLayer.service
             }
             return null;
         }
-        public static DataTable getByMaLop(string id, string pass, string malop)
+        public DataTable getByMaLop(string id, string pass, string malop)
         {
-            DataTable table = new DataTable();
-            return table;
+            if (CheckService.checkID(id, pass) == 1)
+            {
+                DangKyService dk = new DangKyService();
+
+
+                return dk.getByMaLop(malop);
+
+            }
+            return null;
         }
-        public static DataTable getByMaHV(string id, string pass, string magv)
+        public DataTable getByMaHV(string id, string pass, string mahv)
         {
-            DataTable table = new DataTable();
-            return table;
+            if (CheckService.checkID(id, pass) == 1)
+            {
+                DangKyService dk = new DangKyService();
+
+
+                return dk.getByMaHV(mahv);
+
+            }
+            return null;
         }
-        public static int insert(string id, string pass, string malop, string mahv)
+        public int insert(string id, string pass, string malop, string mahv)
         {
-            return 1;
+            if (CheckService.checkID(id, pass) == 1)
+            {
+                if (CheckService.checkRole(id, 1) == 1 || CheckService.checkRole(id, 0) == 1)
+                {
+                    DangKyService dksv = new DangKyService();
+                    return dksv.insert(mahv, malop);
+                }
+            }
+            return 0;
         }
+        
+
     }
 }
