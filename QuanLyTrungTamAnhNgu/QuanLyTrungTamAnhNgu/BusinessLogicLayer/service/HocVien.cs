@@ -47,8 +47,8 @@ namespace BusinessLogicLayer.service
             {
                 if (CheckService.checkRole(id, 1) == 1 || CheckService.checkRole(id, 0) == 1)//kiểm tra id này có quyền delete giảng viên không... 
                 {
-                    GiangVienService gvsv = new GiangVienService();
-                    return gvsv.delete(mahv);
+                    HocVienService hvsv = new HocVienService();
+                    return hvsv.delete(mahv);
                 }
             }
             return 0;
@@ -66,6 +66,19 @@ namespace BusinessLogicLayer.service
             }
             return null;
 
+        }
+        public static int update(string id, string pass, string mahv, string hoten, int gioitinh, string diachi, string sdt, string email, DateTime ngaydk, int tinhtrang)
+        {
+            if (CheckService.checkID(id, pass) == 1)
+            {
+                if (CheckService.checkRole(id, 1) == 1 || CheckService.checkRole(id, 0) == 1)
+                {
+                    HocVienService hvsv = new HocVienService();
+                    return hvsv.update(mahv, hoten, gioitinh, diachi, sdt, email, ngaydk, tinhtrang);
+
+                }
+            }
+            return 0;
         }
     }
 }
