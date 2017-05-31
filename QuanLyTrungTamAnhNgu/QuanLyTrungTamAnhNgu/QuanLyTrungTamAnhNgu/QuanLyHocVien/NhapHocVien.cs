@@ -59,7 +59,7 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
             table_temp.Columns.Add("Ngày đăng ký");
             table_temp.Columns.Add("Tình trạng");
             table_temp.Columns.Add("Mã lớp");
-            DataTable tb = hv.join("admin", "mKFTdTmAshTS");
+            DataTable tb = hv.join(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword());
             int lenght = tb.Rows.Count;
             for (int i = 0; i < lenght; i++)
             {
