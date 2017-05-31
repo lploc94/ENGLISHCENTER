@@ -54,6 +54,7 @@
             // 
             // maLopComboBox
             // 
+            this.maLopComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.maLopComboBox.FormattingEnabled = true;
             this.maLopComboBox.Location = new System.Drawing.Point(98, 20);
             this.maLopComboBox.Name = "maLopComboBox";
