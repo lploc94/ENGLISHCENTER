@@ -55,14 +55,14 @@ namespace BusinessLogicLayer.service
         }
 
 
-        public int delete(string id, string pass, string mathi) //id và pass của nhân viên không phải id và pass của giảng viên
+        public int delete(string id, string pass, string maHV, string maKT, string maLop, int maPhong) //id và pass của nhân viên không phải id và pass của giảng viên
         {
             if (CheckService.checkID(id, pass) == 1)
             {
                 if (CheckService.checkRole(id, 2) == 1 || CheckService.checkRole(id, 0) == 1)//kiểm tra id này có quyền delete giảng viên không... 
                 {
                     ThiService tsv = new ThiService();
-                    return tsv.delete(mathi);
+                    return tsv.delete(maHV, maKT, maLop, maPhong);
                 }
             }
             return 0;

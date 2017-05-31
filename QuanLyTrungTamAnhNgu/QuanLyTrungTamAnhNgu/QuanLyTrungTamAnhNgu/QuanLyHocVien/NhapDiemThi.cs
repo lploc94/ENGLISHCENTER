@@ -37,29 +37,27 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
 
         private void xoaButton_Click(object sender, EventArgs e)
         {
-            var _maHV = getCurrentSelectedId();
-            if(_maHV == "")
+            var row = GetCurrentRow();
+            if(row == null)
             {
-                DialogHelper.ShowErrorDialog("Bạn phải chọn một dòng để xóa");
+                DialogHelper.ShowMissingSelectedRow();
                 return;
             }
-            thiService.delete(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), _maHV);
+            var _maHVRowValue = row.Cells["MAHV"].Value.ToString();
+            var _maLopRowValue = row.Cells["MALOP"].Value.ToString();
+            var _maPhongRowValue = int.Parse(row.Cells["MAPHONG"].Value.ToString());
+            var _maKTRowValue = row.Cells["MAKT"].Value.ToString();
+            if (row == null)
+            {
+                DialogHelper.ShowMissingSelectedRow();
+                return;
+            }
+            thiService.delete(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), _maHVRowValue, _maKTRowValue, _maLopRowValue, _maPhongRowValue);
+            PopulateBangDiemGridView();
         }
 
         private void suaButton_Click(object sender, EventArgs e)
         {
-            var _maHV = getCurrentSelectedId();
-            var _maHVTextBoxValue = maHocVienTextBox.Text;
-            if (_maHV == "")
-            {
-                DialogHelper.ShowErrorDialog("Bạn phải chọn một dòng để sửa");
-                return;
-            }
-            if (_maHV != _maHVTextBoxValue)
-            {
-                DialogHelper.ShowErrorDialog("Bạn không được sửa maHV");
-                return;
-            }
             InsertOrUpdateCurrentValueToDatabase(true);
 
         }
@@ -77,28 +75,51 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
                 _diemThiString == "" ||
                 !_isDiemThiValid)
             {
-                DialogHelper.ShowErrorDialog("Các trường không được rỗng");
+                DialogHelper.ShowMissingField();
                 return 1; 
+            }
+            if (isUpdate)
+            {
+                var row = GetCurrentRow();
+                if(row == null)
+                {
+                    DialogHelper.ShowMissingSelectedRow();
+                    return 1;
+
+                }
+                var _maHVRowValue = row.Cells["MAHV"].Value.ToString();
+                var _maLopRowValue = row.Cells["MALOP"].Value.ToString();
+                var _maPhongRowValue = int.Parse(row.Cells["MAPHONG"].Value.ToString());
+                var _maKTRowValue = row.Cells["MAKT"].Value.ToString();
+
+                if(_maHVRowValue != _maHV 
+                    || _maLopRowValue != _maLop
+                    || _maPhongRowValue != _maPhong
+                    || _maKTRowValue != _maKiemTra)
+                {
+                    DialogHelper.ShowCannotModifiyPrimaryKey();
+                    return 1;
+                }
             }
             int _ketQua = _diemThi >= 5 ? 1 : 0;
             bool isSuccess = true;
             if (!isUpdate)
             {
-                isSuccess = thiService.insert(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), _maHV, _maKiemTra, _maLop, _maPhong, _ngayThi, _diemThi, _ketQua) == 0;      
+                isSuccess = thiService.insert(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), _maHV, _maKiemTra, _maLop, _maPhong, _ngayThi, _diemThi, _ketQua) == 1;      
             }
             else
             {
-                isSuccess = thiService.update(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), _maHV, _maKiemTra, _maLop, _maPhong, _ngayThi, _diemThi, _ketQua) == 0;
+                isSuccess = thiService.update(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), _maHV, _maKiemTra, _maLop, _maPhong, _ngayThi, _diemThi, _ketQua) == 1;
             }
             if (isSuccess)
             {
                 PopulateBangDiemGridView();
-                return 0;
+                return 1;
             }
             else
             {
-                DialogHelper.ShowErrorDialog("Có lỗi xảy ra khi cập nhật dữ liệu");
-                return 1;
+                DialogHelper.ShowErrorOnUpdate();
+                return 0;
             }
 
         } 
@@ -119,6 +140,21 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
                 return "";
             }
            
+
+        }
+        private DataGridViewRow GetCurrentRow()
+        {
+
+            if (bangDiemGridView.SelectedRows.Count != 0)
+            {
+                DataGridViewRow row = bangDiemGridView.SelectedRows[0];
+                return row;
+
+            }
+            else
+            {
+                return null;
+            }
 
         }
         private int IntilializeService()
@@ -161,9 +197,9 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
         {
             DataGridViewRow row = bangDiemGridView.SelectedRows[0];
             maHocVienTextBox.Text = row.Cells["MAHV"].Value.ToString();
-            maLopComboBox.SelectedValue = row.Cells["MALOP"].Value.ToString();
-            maPhongComboBox.SelectedValue = row.Cells["MAPHONG"].Value.ToString();
-            maKiemTraComboBox.SelectedValue = row.Cells["MAKT"].Value.ToString();
+            UIHelper.SetComboBoxSelectedValueByString(maLopComboBox,row.Cells["MALOP"].Value.ToString());
+            UIHelper.SetComboBoxSelectedValueByString(maPhongComboBox,row.Cells["MAPHONG"].Value.ToString());
+            UIHelper.SetComboBoxSelectedValueByString(maKiemTraComboBox,row.Cells["MAKT"].Value.ToString());
             ngayThiDateTimePicker.Value = (DateTime)row.Cells["NGAYTHI"].Value;
             diemThiTextBox.Text = row.Cells["DIEMTHI"].Value.ToString();
         }

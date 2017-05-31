@@ -7,13 +7,17 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Service
 {
-    public class ThiService : IService
+    public class ThiService
     {
-        public int delete(string code)
+        public int delete(string mahv, string makt, string malop, int maphong)
         {
             using (QLTTEntities qltt = new QLTTEntities())
             {
-                THI t = qltt.THIs.Where(p => p.MAKT == code).FirstOrDefault();
+                THI t = qltt.THIs.Where(p => p.MAHV == mahv)
+                        .Where(p => p.MAKT == makt)
+                        .Where(p => p.MALOP == malop)
+                        .Where(p => p.MAPHONG == maphong)
+                    .FirstOrDefault();
                 if (t != null)
                 {
                     qltt.THIs.Remove(t);
@@ -21,7 +25,7 @@ namespace DataAccessLayer.Service
 
                     return 1;
                 }
-                
+
             }
             return 0;
         }
@@ -142,13 +146,15 @@ namespace DataAccessLayer.Service
             {
                 using (QLTTEntities qltt = new QLTTEntities())
                 {
-                    THI t = qltt.THIs.Where(p => p.MAKT == mahv).FirstOrDefault();
+                    THI t = qltt.THIs
+                        .Where(p => p.MAHV == mahv)
+                        .Where(p => p.MAKT == makt)
+                        .Where(p => p.MALOP == malop)
+                        .Where(p => p.MAPHONG == maphong)
+                        .FirstOrDefault();
                     if(t!=null)
                     {
-
-                        t.MAKT = makt;
-                        t.MALOP = malop;
-                        t.MAPHONG = maphong;
+                     
                         t.NGAYTHI = ngaythi;
                         t.DIEMTHI = diemthi;
                         t.KETQUA = ketqua;

@@ -28,7 +28,17 @@ namespace QuanLyTrungTamAnhNgu.Helper
         }
         public static void SetComboBoxSelectedValueByString(ComboBox comboBox, String value)
         {
-            //foreach(var cbValue in comboBox.)
+            int newIndex = 0;
+            for (int i = 0; i < comboBox.Items.Count; i++)
+            {
+                string cbValue = comboBox.GetItemText(comboBox.Items[i]);
+                if(cbValue == value)
+                {
+                    newIndex = i;
+                    break;
+                }
+            }
+            comboBox.SelectedIndex = newIndex;
         }
 
     }
