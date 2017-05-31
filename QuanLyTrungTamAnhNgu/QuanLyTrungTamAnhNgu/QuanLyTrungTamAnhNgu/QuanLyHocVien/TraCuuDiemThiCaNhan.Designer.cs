@@ -31,15 +31,16 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.bangDiemGridView = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaHV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiemGK = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiemCK = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongDiem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.KetQua = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bangDiemGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -63,27 +64,32 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.dataGridView1);
+            this.groupBox1.Controls.Add(this.bangDiemGridView);
             this.groupBox1.Location = new System.Drawing.Point(1, 73);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(761, 340);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             // 
-            // dataGridView1
+            // bangDiemGridView
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 17);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(755, 320);
-            this.dataGridView1.TabIndex = 0;
+            this.bangDiemGridView.AllowUserToAddRows = false;
+            this.bangDiemGridView.AllowUserToDeleteRows = false;
+            this.bangDiemGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.bangDiemGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.MaHV,
+            this.HoTen,
+            this.DiemGK,
+            this.DiemCK,
+            this.TongDiem,
+            this.KetQua});
+            this.bangDiemGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bangDiemGridView.Location = new System.Drawing.Point(3, 17);
+            this.bangDiemGridView.MultiSelect = false;
+            this.bangDiemGridView.Name = "bangDiemGridView";
+            this.bangDiemGridView.ReadOnly = true;
+            this.bangDiemGridView.Size = new System.Drawing.Size(755, 320);
+            this.bangDiemGridView.TabIndex = 0;
             // 
             // button1
             // 
@@ -95,30 +101,41 @@
             this.button1.Text = "Tra cứu";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // Column1
+            // MaHV
             // 
-            this.Column1.HeaderText = "Tên học viên";
-            this.Column1.Name = "Column1";
+            this.MaHV.DataPropertyName = "MaHV";
+            this.MaHV.HeaderText = "Mã học viên";
+            this.MaHV.Name = "MaHV";
             // 
-            // Column2
+            // HoTen
             // 
-            this.Column2.HeaderText = "Điểm phần 1";
-            this.Column2.Name = "Column2";
+            this.HoTen.DataPropertyName = "HOTEN";
+            this.HoTen.HeaderText = "Tên học viên";
+            this.HoTen.Name = "HoTen";
             // 
-            // Column3
+            // DiemGK
             // 
-            this.Column3.HeaderText = "Điểm phần 2";
-            this.Column3.Name = "Column3";
+            this.DiemGK.DataPropertyName = "DIEMGK";
+            this.DiemGK.HeaderText = "Điểm phần 1";
+            this.DiemGK.Name = "DiemGK";
             // 
-            // Column4
+            // DiemCK
             // 
-            this.Column4.HeaderText = "Tổng điểm";
-            this.Column4.Name = "Column4";
+            this.DiemCK.DataPropertyName = "DIEMCK";
+            this.DiemCK.HeaderText = "Điểm phần 2";
+            this.DiemCK.Name = "DiemCK";
             // 
-            // Column5
+            // TongDiem
             // 
-            this.Column5.HeaderText = "Kết quả";
-            this.Column5.Name = "Column5";
+            this.TongDiem.DataPropertyName = "TONGDIEM";
+            this.TongDiem.HeaderText = "Tổng điểm";
+            this.TongDiem.Name = "TongDiem";
+            // 
+            // KetQua
+            // 
+            this.KetQua.DataPropertyName = "KETQUA";
+            this.KetQua.HeaderText = "Kết quả";
+            this.KetQua.Name = "KetQua";
             // 
             // TraCuuDiemThiCaNhan
             // 
@@ -133,7 +150,7 @@
             this.Text = "Tra Cứu Điểm Thi Cá Nhân";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bangDiemGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -144,12 +161,13 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView bangDiemGridView;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaHV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DiemGK;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DiemCK;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TongDiem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn KetQua;
     }
 }

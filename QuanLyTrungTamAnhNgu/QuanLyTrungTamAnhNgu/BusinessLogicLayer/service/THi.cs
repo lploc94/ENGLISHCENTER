@@ -14,6 +14,18 @@ namespace BusinessLogicLayer.service
         //1 quyền nhân viên tiếp tân được thêm xóa sửa các bảng HOCVIEN, THONGTINHOCPHI, DANGKY các bảng còn lại chỉ được xem.
         //2 quyền nhân viên học vụ được thêm xóa sửa các bảng KHOAHOC, PHONGHOC, LICHHOC, LOPHOC, CTLOPHOC, TKB, KIEMTRA, THI các bảng còn lại chỉ được xem
         //3 quyền nhân viên kế toán được thêm xóa sửa các bảng GIANGVIEN, HOCPHI, TT_LUONGGV, NHANVIEN, các bảng còn lại chỉ được xem
+        public DataTable findDiemThiByMaHV(string id, string pass, string maHv)
+        {
+            if (CheckService.checkID(id, pass) == 1)//kiểm tra id,pass này có đúng không.
+            {
+                ThiService tsv = new ThiService();
+
+                return tsv.getAllfindDiemThiByMaHV(maHv);
+
+            }
+            return null;
+        }
+
         public DataTable getAll(string id, string pass)
         {
             if (CheckService.checkID(id, pass) == 1)//kiểm tra id,pass này có đúng không.

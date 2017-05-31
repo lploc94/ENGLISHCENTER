@@ -53,6 +53,54 @@ namespace DataAccessLayer.Service
             return null;
         }
 
+        public DataTable findDiemThiByMaHV(string maHv)
+        {
+            return findDiemThiByMaLopOrMaHV(maHv, true);
+        }
+        public DataTable findDiemThiByMaLop(string maHv)
+        {
+            return findDiemThiByMaLopOrMaHV(maHv, false);
+        }
+        public DataTable findDiemThiByMaLopOrMaHV(string ma, bool isMaHv)
+        {
+            using (QLTTEntities qltt = new QLTTEntities())
+            {
+                var rows = from r in qltt.THIs
+                           join hv in qltt.HOCVIENs
+                           on r.MAHV equals hv.MAHV
+                           where isMaHv ? r.MAHV == ma : r.MALOP == ma
+                           orderby r.MAHV
+                           select new
+                           {
+                               MaHV = r.MAHV,
+                               HOCTEN = hv.HOTEN,
+                               DIEMGK = r.MAKT == "KTGK" ? r.DIEMTHI : null,
+                               DIEMCK = r.MAKT == "KTCK" ? r.DIEMTHI : null,
+                               TONGDIEM = "",
+                               KETQUA = ""
+                           };
+                          
+                        
+                if (rows != null)
+                {
+
+
+
+
+                    DataTable rtnTable = new DataTable();
+                    rtnTable.Columns.Add("MAHV", typeof(string));
+                    rtnTable.Columns.Add("HOTEN", typeof(string));
+                    rtnTable.Columns.Add("DIEMGK", typeof(int));
+                    rtnTable.Columns.Add("DIEMCK", typeof(int));
+                    rtnTable.Columns.Add("TONGDIEM", typeof(float));
+                    rtnTable.Columns.Add("KETQUA", typeof(int));
+                    
+                    return rtnTable;
+                }
+
+            }
+            return null;
+        }
         public DataTable getAll()
         {
             using (QLTTEntities qltt = new QLTTEntities())
@@ -85,7 +133,7 @@ namespace DataAccessLayer.Service
                 var tList = from r in qltt.THIs
                             join hv in qltt.HOCVIENs
                             on r.MAHV equals hv.MAHV
-                            select new { THI = r, HOCTEN = hv.HOTEN };
+                            select new { THI = r, HOTEN = hv.HOTEN };
                 DataTable rtnTable = new DataTable();
                 rtnTable.Columns.Add("MAHV", typeof(string));
                 rtnTable.Columns.Add("HOTEN", typeof(string));
@@ -98,7 +146,7 @@ namespace DataAccessLayer.Service
                 foreach (var t in tList)
                 {
                     rtnTable.Rows.Add(t.THI.MAHV,
-                        t.HOCTEN,
+                        t.HOTEN,
                         t.THI.MAKT,
                         t.THI.MALOP, 
                         t.THI.MAPHONG, 
