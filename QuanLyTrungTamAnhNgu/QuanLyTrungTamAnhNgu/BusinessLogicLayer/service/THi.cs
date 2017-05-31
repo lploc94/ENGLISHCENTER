@@ -20,7 +20,7 @@ namespace BusinessLogicLayer.service
             {
                 ThiService tsv = new ThiService();
 
-                return tsv.getAllfindDiemThiByMaHV(maHv);
+                return tsv.findDiemThiByMaHV(maHv);
 
             }
             return null;

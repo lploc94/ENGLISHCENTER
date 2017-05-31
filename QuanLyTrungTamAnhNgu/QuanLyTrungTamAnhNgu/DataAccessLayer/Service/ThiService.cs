@@ -55,20 +55,12 @@ namespace DataAccessLayer.Service
 
         public DataTable findDiemThiByMaHV(string maHv)
         {
-            return findDiemThiByMaLopOrMaHV(maHv, true);
-        }
-        public DataTable findDiemThiByMaLop(string maHv)
-        {
-            return findDiemThiByMaLopOrMaHV(maHv, false);
-        }
-        public DataTable findDiemThiByMaLopOrMaHV(string ma, bool isMaHv)
-        {
             using (QLTTEntities qltt = new QLTTEntities())
             {
                 var rows = from r in qltt.THIs
                            join hv in qltt.HOCVIENs
                            on r.MAHV equals hv.MAHV
-                           where isMaHv ? r.MAHV == ma : r.MALOP == ma
+                           where r.MAHV == maHv 
                            orderby r.MAHV
                            select new
                            {
@@ -79,8 +71,8 @@ namespace DataAccessLayer.Service
                                TONGDIEM = "",
                                KETQUA = ""
                            };
-                          
-                        
+
+
                 if (rows != null)
                 {
 
@@ -94,7 +86,47 @@ namespace DataAccessLayer.Service
                     rtnTable.Columns.Add("DIEMCK", typeof(int));
                     rtnTable.Columns.Add("TONGDIEM", typeof(float));
                     rtnTable.Columns.Add("KETQUA", typeof(int));
-                    
+
+                    return rtnTable;
+                }
+
+            }
+            return null;
+        }
+        public DataTable findDiemThiByMaLop(string maLop)
+        {
+            using (QLTTEntities qltt = new QLTTEntities())
+            {
+                var rows = from r in qltt.THIs
+                           join hv in qltt.HOCVIENs
+                           on r.MAHV equals hv.MAHV
+                           where  r.MALOP == maLop
+                           orderby r.MAHV
+                           select new
+                           {
+                               MaHV = r.MAHV,
+                               HOCTEN = hv.HOTEN,
+                               DIEMGK = r.MAKT == "KTGK" ? r.DIEMTHI : null,
+                               DIEMCK = r.MAKT == "KTCK" ? r.DIEMTHI : null,
+                               TONGDIEM = "",
+                               KETQUA = ""
+                           };
+
+
+                if (rows != null)
+                {
+
+
+
+
+                    DataTable rtnTable = new DataTable();
+                    rtnTable.Columns.Add("MAHV", typeof(string));
+                    rtnTable.Columns.Add("HOTEN", typeof(string));
+                    rtnTable.Columns.Add("DIEMGK", typeof(int));
+                    rtnTable.Columns.Add("DIEMCK", typeof(int));
+                    rtnTable.Columns.Add("TONGDIEM", typeof(float));
+                    rtnTable.Columns.Add("KETQUA", typeof(int));
+
                     return rtnTable;
                 }
 
