@@ -53,7 +53,6 @@
             this.label2.Size = new System.Drawing.Size(78, 13);
             this.label2.TabIndex = 6;
             this.label2.Text = "New Password";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // txtOldPassword
             // 
@@ -67,10 +66,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(29, 28);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 13);
+            this.label1.Size = new System.Drawing.Size(53, 13);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Old Password";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.label1.Text = "Password";
             // 
             // txtVerifyPassword
             // 

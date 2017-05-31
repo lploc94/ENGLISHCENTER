@@ -13,7 +13,7 @@ namespace QuanLyTrungTamAnhNgu.QuanLyTaiKhoan
 {
     public partial class ThayDoiPassword : Form
     {
-        private String username;
+        private string username;
         public ThayDoiPassword()
         {
             InitializeComponent();
@@ -21,7 +21,7 @@ namespace QuanLyTrungTamAnhNgu.QuanLyTaiKhoan
             this.InitializeCustomInterface();
         }
 
-        public ThayDoiPassword(String username)
+        public ThayDoiPassword(string username)
         {
             InitializeComponent();
 
@@ -41,15 +41,6 @@ namespace QuanLyTrungTamAnhNgu.QuanLyTaiKhoan
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -58,9 +49,23 @@ namespace QuanLyTrungTamAnhNgu.QuanLyTaiKhoan
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (this.txtOldPassword.Text != AccountHelper.getPasswordByUserName(username))
+            {
+                //DialogHelper.ShowErrorDialog("Xin hãy nhập đúng password của bạn");
+                DialogHelper.ExtendedShowErrorDialog("Xin hãy nhập đúng password của bạn", "Password Incorrect", 3, 1);
+                return;
+            }
+
+            if (this.txtNewPassword.Text == "")
+            {
+                DialogHelper.ExtendedShowErrorDialog("Mời bạn nhập password mới", "New Password Error", 3, 4);
+                return;
+            }
+
             if (this.txtNewPassword.Text != this.txtVerifyPassword.Text)
             {
-                DialogHelper.ShowErrorDialog("Hello world");
+                //DialogHelper.ShowErrorDialog("Xin hãy xác nhận đúng password bạn thay đổi");
+                DialogHelper.ExtendedShowErrorDialog("Xin hãy xác nhận đúng password bạn thay đổi", "Verify Password Incorrect", 3, 1);
                 return;
             }
 

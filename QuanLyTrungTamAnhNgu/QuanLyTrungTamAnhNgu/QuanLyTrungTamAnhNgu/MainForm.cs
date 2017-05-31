@@ -264,7 +264,7 @@ namespace QuanLyTrungTamAnhNgu
         #region --------------------- Quan Ly Tai Khoan click -----------------
         private void barButtonItem23_ItemClick(object sender, ItemClickEventArgs e)
         {
-            String username = "admin";
+            string username = "admin";
             ThayDoiPassword form = new ThayDoiPassword(username);
             form.MdiParent = this;
             form.Show();
