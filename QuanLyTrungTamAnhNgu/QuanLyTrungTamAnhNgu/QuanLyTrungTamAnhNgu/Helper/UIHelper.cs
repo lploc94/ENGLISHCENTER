@@ -26,6 +26,10 @@ namespace QuanLyTrungTamAnhNgu.Helper
             comboBox.DataSource = dataTable;
             comboBox.SelectedIndex = 0;
         }
+        public static void SetComboBoxSelectedValueByString(ComboBox comboBox, String value)
+        {
+            //foreach(var cbValue in comboBox.)
+        }
 
     }
 }

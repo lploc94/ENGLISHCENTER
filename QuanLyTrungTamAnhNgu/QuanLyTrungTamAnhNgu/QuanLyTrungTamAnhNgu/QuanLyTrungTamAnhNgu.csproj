@@ -66,6 +66,7 @@
       <DependentUpon>DangNhap.cs</DependentUpon>
     </Compile>
     <Compile Include="Helper\AccountHelper.cs" />
+    <Compile Include="Helper\DialogHelper.cs" />
     <Compile Include="Helper\UIHelper.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>

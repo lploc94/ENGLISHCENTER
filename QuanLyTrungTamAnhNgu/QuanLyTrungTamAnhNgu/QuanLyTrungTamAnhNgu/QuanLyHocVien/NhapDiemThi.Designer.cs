@@ -122,9 +122,11 @@
             this.KETQUA});
             this.bangDiemGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bangDiemGridView.Location = new System.Drawing.Point(3, 17);
+            this.bangDiemGridView.MultiSelect = false;
             this.bangDiemGridView.Name = "bangDiemGridView";
             this.bangDiemGridView.Size = new System.Drawing.Size(766, 280);
             this.bangDiemGridView.TabIndex = 0;
+            this.bangDiemGridView.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.bangDiemGridView_RowHeaderMouseClick);
             // 
             // themButton
             // 

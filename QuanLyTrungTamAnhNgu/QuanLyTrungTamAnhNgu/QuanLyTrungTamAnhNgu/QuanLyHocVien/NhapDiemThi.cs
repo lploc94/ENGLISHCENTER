@@ -32,21 +32,93 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
 
         private void themButton_Click(object sender, EventArgs e)
         {
-
+            InsertOrUpdateCurrentValueToDatabase();
         }
 
         private void xoaButton_Click(object sender, EventArgs e)
         {
-
+            var _maHV = getCurrentSelectedId();
+            if(_maHV == "")
+            {
+                DialogHelper.ShowErrorDialog("Bạn phải chọn một dòng để xóa");
+                return;
+            }
+            thiService.delete(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), _maHV);
         }
 
         private void suaButton_Click(object sender, EventArgs e)
         {
+            var _maHV = getCurrentSelectedId();
+            var _maHVTextBoxValue = maHocVienTextBox.Text;
+            if (_maHV == "")
+            {
+                DialogHelper.ShowErrorDialog("Bạn phải chọn một dòng để sửa");
+                return;
+            }
+            if (_maHV != _maHVTextBoxValue)
+            {
+                DialogHelper.ShowErrorDialog("Bạn không được sửa maHV");
+                return;
+            }
+            InsertOrUpdateCurrentValueToDatabase(true);
 
         }
+        private int InsertOrUpdateCurrentValueToDatabase(bool isUpdate = false)
+        {
+            int _diemThi;
+            string _maHV = maHocVienTextBox.Text;
+            string _maLop = maLopComboBox.Text;
+            int _maPhong = int.Parse(maPhongComboBox.Text);
+            string _maKiemTra = maKiemTraComboBox.Text;
+            string _diemThiString = diemThiTextBox.Text;
+            DateTime _ngayThi = ngayThiDateTimePicker.Value;
+            bool _isDiemThiValid = int.TryParse(_diemThiString, out _diemThi);
+            if (_maHV == "" ||
+                _diemThiString == "" ||
+                !_isDiemThiValid)
+            {
+                DialogHelper.ShowErrorDialog("Các trường không được rỗng");
+                return 1; 
+            }
+            int _ketQua = _diemThi >= 5 ? 1 : 0;
+            bool isSuccess = true;
+            if (!isUpdate)
+            {
+                isSuccess = thiService.insert(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), _maHV, _maKiemTra, _maLop, _maPhong, _ngayThi, _diemThi, _ketQua) == 0;      
+            }
+            else
+            {
+                isSuccess = thiService.update(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), _maHV, _maKiemTra, _maLop, _maPhong, _ngayThi, _diemThi, _ketQua) == 0;
+            }
+            if (isSuccess)
+            {
+                PopulateBangDiemGridView();
+                return 0;
+            }
+            else
+            {
+                DialogHelper.ShowErrorDialog("Có lỗi xảy ra khi cập nhật dữ liệu");
+                return 1;
+            }
+
+        } 
 
         private void xoaTrangButton_Click(object sender, EventArgs e)
         {
+
+        }
+        private string getCurrentSelectedId()
+        {
+            if (bangDiemGridView.SelectedRows.Count != 0)
+            {
+                DataGridViewRow row = bangDiemGridView.SelectedRows[0];
+                return row.Cells["MAHV"].Value.ToString();
+
+            }else
+            {
+                return "";
+            }
+           
 
         }
         private int IntilializeService()
@@ -83,6 +155,17 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
             DataTable dataTable = kiemTraService.getAllId(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword());
             UIHelper.PopulateComboBoxWithDataTable(dataTable, maKiemTraComboBox);
             return 0;
+        }
+
+        private void bangDiemGridView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            DataGridViewRow row = bangDiemGridView.SelectedRows[0];
+            maHocVienTextBox.Text = row.Cells["MAHV"].Value.ToString();
+            maLopComboBox.SelectedValue = row.Cells["MALOP"].Value.ToString();
+            maPhongComboBox.SelectedValue = row.Cells["MAPHONG"].Value.ToString();
+            maKiemTraComboBox.SelectedValue = row.Cells["MAKT"].Value.ToString();
+            ngayThiDateTimePicker.Value = (DateTime)row.Cells["NGAYTHI"].Value;
+            diemThiTextBox.Text = row.Cells["DIEMTHI"].Value.ToString();
         }
     }
 }
