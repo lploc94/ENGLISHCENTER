@@ -57,41 +57,26 @@ namespace DataAccessLayer.Service
         {
             using (QLTTEntities qltt = new QLTTEntities())
             {
-                var rows = from r in qltt.THIs
-                           join hv in qltt.HOCVIENs
-                           on r.MAHV equals hv.MAHV
-                           where r.MAHV == maHv 
-                           orderby r.MAHV
-                           select new
-                           {
-                               MaHV = r.MAHV,
-                               HOCTEN = hv.HOTEN,
-                               DIEMGK = r.MAKT == "KTGK" ? r.DIEMTHI : null,
-                               DIEMCK = r.MAKT == "KTCK" ? r.DIEMTHI : null,
-                               TONGDIEM = "",
-                               KETQUA = ""
-                           };
+                var gk = from x in qltt.THIs where x.MAHV == maHv&&x.MAKT=="KTGK" select x;
+                var ck = from x in qltt.THIs where x.MAHV == maHv&&x.MAKT=="KTCK" select x;
+                var info = gk.FullOuterJoin(ck, g => g.MALOP, c => c.MALOP, (g, c, MALOP) => new {MALOP = g.MALOP, DIEMGK=g.DIEMTHI,DIEMCK= c.DIEMTHI });
 
-
-                if (rows != null)
+                string hoten = qltt.HOCVIENs.Where(p => p.MAHV == maHv).FirstOrDefault().HOTEN;
+                DataTable rtnTable = new DataTable();
+                rtnTable.Columns.Add("MAHV", typeof(string));
+                rtnTable.Columns.Add("MALOP", typeof(string));
+                rtnTable.Columns.Add("HOTEN", typeof(string));
+                rtnTable.Columns.Add("DIEMGK", typeof(int));
+                rtnTable.Columns.Add("DIEMCK", typeof(int));
+                rtnTable.Columns.Add("TONGDIEM", typeof(float));
+                rtnTable.Columns.Add("KETQUA", typeof(int));
+                foreach (var i in info)
                 {
-
-
-
-
-                    DataTable rtnTable = new DataTable();
-                    rtnTable.Columns.Add("MAHV", typeof(string));
-                    rtnTable.Columns.Add("HOTEN", typeof(string));
-                    rtnTable.Columns.Add("DIEMGK", typeof(int));
-                    rtnTable.Columns.Add("DIEMCK", typeof(int));
-                    rtnTable.Columns.Add("TONGDIEM", typeof(float));
-                    rtnTable.Columns.Add("KETQUA", typeof(int));
-
-                    return rtnTable;
+                    rtnTable.Rows.Add(maHv, hoten, i.MALOP, i.DIEMGK, i.DIEMCK, (i.DIEMGK + i.DIEMCK) / 2, (i.DIEMGK + i.DIEMCK) > 100 ? 1 : 0);
                 }
-
+                return rtnTable;
             }
-            return null;
+            
         }
         public DataTable findDiemThiByMaLop(string maLop)
         {
@@ -250,5 +235,57 @@ namespace DataAccessLayer.Service
                 return 0;
             }
         }
+
+        
+    }
+}
+internal static class MyExtensions
+{
+    internal static IList<TR> FullOuterGroupJoin<TA, TB, TK, TR>(
+        this IEnumerable<TA> a,
+        IEnumerable<TB> b,
+        Func<TA, TK> selectKeyA,
+        Func<TB, TK> selectKeyB,
+        Func<IEnumerable<TA>, IEnumerable<TB>, TK, TR> projection,
+        IEqualityComparer<TK> cmp = null)
+    {
+        cmp = cmp ?? EqualityComparer<TK>.Default;
+        var alookup = a.ToLookup(selectKeyA, cmp);
+        var blookup = b.ToLookup(selectKeyB, cmp);
+
+        var keys = new HashSet<TK>(alookup.Select(p => p.Key), cmp);
+        keys.UnionWith(blookup.Select(p => p.Key));
+
+        var join = from key in keys
+                   let xa = alookup[key]
+                   let xb = blookup[key]
+                   select projection(xa, xb, key);
+
+        return join.ToList();
+    }
+
+    internal static IList<TR> FullOuterJoin<TA, TB, TK, TR>(
+        this IEnumerable<TA> a,
+        IEnumerable<TB> b,
+        Func<TA, TK> selectKeyA,
+        Func<TB, TK> selectKeyB,
+        Func<TA, TB, TK, TR> projection,
+        TA defaultA = default(TA),
+        TB defaultB = default(TB),
+        IEqualityComparer<TK> cmp = null)
+    {
+        cmp = cmp ?? EqualityComparer<TK>.Default;
+        var alookup = a.ToLookup(selectKeyA, cmp);
+        var blookup = b.ToLookup(selectKeyB, cmp);
+
+        var keys = new HashSet<TK>(alookup.Select(p => p.Key), cmp);
+        keys.UnionWith(blookup.Select(p => p.Key));
+
+        var join = from key in keys
+                   from xa in alookup[key].DefaultIfEmpty(defaultA)
+                   from xb in blookup[key].DefaultIfEmpty(defaultB)
+                   select projection(xa, xb, key);
+
+        return join.ToList();
     }
 }
