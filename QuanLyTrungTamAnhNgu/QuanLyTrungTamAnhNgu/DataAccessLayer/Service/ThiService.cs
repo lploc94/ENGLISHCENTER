@@ -72,7 +72,7 @@ namespace DataAccessLayer.Service
                 rtnTable.Columns.Add("KETQUA", typeof(int));
                 foreach (var i in info)
                 {
-                    rtnTable.Rows.Add(maHv, hoten, i.MALOP, i.DIEMGK, i.DIEMCK, (i.DIEMGK + i.DIEMCK) / 2, (i.DIEMGK + i.DIEMCK) > 100 ? 1 : 0);
+                    rtnTable.Rows.Add(maHv, i.MALOP, hoten, i.DIEMGK, i.DIEMCK, (i.DIEMGK + i.DIEMCK), (i.DIEMGK + i.DIEMCK) > 10 ? 1 : 0);
                 }
                 return rtnTable;
             }
@@ -82,41 +82,25 @@ namespace DataAccessLayer.Service
         {
             using (QLTTEntities qltt = new QLTTEntities())
             {
-                var rows = from r in qltt.THIs
-                           join hv in qltt.HOCVIENs
-                           on r.MAHV equals hv.MAHV
-                           where  r.MALOP == maLop
-                           orderby r.MAHV
-                           select new
-                           {
-                               MaHV = r.MAHV,
-                               HOCTEN = hv.HOTEN,
-                               DIEMGK = r.MAKT == "KTGK" ? r.DIEMTHI : null,
-                               DIEMCK = r.MAKT == "KTCK" ? r.DIEMTHI : null,
-                               TONGDIEM = "",
-                               KETQUA = ""
-                           };
+                var gk = from x in qltt.THIs where x.MALOP == maLop && x.MAKT == "KTGK" select x;
+                var ck = from x in qltt.THIs where x.MALOP == maLop && x.MAKT == "KTCK" select x;
+                var info = gk.FullOuterJoin(ck, g => g.MALOP, c => c.MALOP, (g, c, MALOP) => new {MAHV=g.MAHV, DIEMGK = g.DIEMTHI, DIEMCK = c.DIEMTHI });
 
-
-                if (rows != null)
+                
+                DataTable rtnTable = new DataTable();
+                rtnTable.Columns.Add("MAHV", typeof(string));
+                rtnTable.Columns.Add("MALOP", typeof(string));
+                rtnTable.Columns.Add("HOTEN", typeof(string));
+                rtnTable.Columns.Add("DIEMGK", typeof(int));
+                rtnTable.Columns.Add("DIEMCK", typeof(int));
+                rtnTable.Columns.Add("TONGDIEM", typeof(float));
+                rtnTable.Columns.Add("KETQUA", typeof(int));
+                foreach (var i in info)
                 {
-
-
-
-
-                    DataTable rtnTable = new DataTable();
-                    rtnTable.Columns.Add("MAHV", typeof(string));
-                    rtnTable.Columns.Add("HOTEN", typeof(string));
-                    rtnTable.Columns.Add("DIEMGK", typeof(int));
-                    rtnTable.Columns.Add("DIEMCK", typeof(int));
-                    rtnTable.Columns.Add("TONGDIEM", typeof(float));
-                    rtnTable.Columns.Add("KETQUA", typeof(int));
-
-                    return rtnTable;
+                    rtnTable.Rows.Add(i.MAHV,maLop,qltt.HOCVIENs.Where(p => p.MAHV == i.MAHV).FirstOrDefault().HOTEN, i.DIEMGK, i.DIEMCK, (i.DIEMGK + i.DIEMCK) / 2, (i.DIEMGK + i.DIEMCK) > 100 ? 1 : 0);
                 }
-
+                return rtnTable;
             }
-            return null;
         }
         public DataTable getAll()
         {

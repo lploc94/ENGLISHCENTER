@@ -12,7 +12,7 @@ using QuanLyTrungTamAnhNgu.QuanLyHocVien;
 using QuanLyTrungTamAnhNgu.QuanLyGiangDay;
 using QuanLyTrungTamAnhNgu.QuanLyTaiKhoan;
 using BusinessLogicLayer.service;
-using DataAccessLayer.Service;
+
 namespace QuanLyTrungTamAnhNgu
 {
     /// <summary>
@@ -25,6 +25,8 @@ namespace QuanLyTrungTamAnhNgu
             InitializeComponent();
 
             InitCustom();
+           
+           
         }
 
         #region variable Quan Ly Giang Day

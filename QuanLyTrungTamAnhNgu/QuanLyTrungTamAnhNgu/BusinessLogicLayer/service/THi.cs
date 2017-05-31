@@ -16,14 +16,14 @@ namespace BusinessLogicLayer.service
         //3 quyền nhân viên kế toán được thêm xóa sửa các bảng GIANGVIEN, HOCPHI, TT_LUONGGV, NHANVIEN, các bảng còn lại chỉ được xem
         public DataTable findDiemThiByMaHV(string id, string pass, string maHv)
         {
-            if (CheckService.checkID(id, pass) == 1)//kiểm tra id,pass này có đúng không.
+            //if (CheckService.checkID(id, pass) == 1)//kiểm tra id,pass này có đúng không.
             {
                 ThiService tsv = new ThiService();
 
                 return tsv.findDiemThiByMaHV(maHv);
 
             }
-            return null;
+            //return null;
         }
 
         public DataTable getAll(string id, string pass)
