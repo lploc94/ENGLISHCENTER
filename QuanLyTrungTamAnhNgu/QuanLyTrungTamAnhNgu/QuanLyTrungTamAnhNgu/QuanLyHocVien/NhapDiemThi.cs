@@ -203,5 +203,7 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
             ngayThiDateTimePicker.Value = (DateTime)row.Cells["NGAYTHI"].Value;
             diemThiTextBox.Text = row.Cells["DIEMTHI"].Value.ToString();
         }
+
+       
     }
 }

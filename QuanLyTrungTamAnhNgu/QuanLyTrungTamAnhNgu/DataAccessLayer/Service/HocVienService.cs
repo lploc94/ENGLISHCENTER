@@ -88,7 +88,7 @@ namespace DataAccessLayer.Service
 
         }
 
-        public int insert(string mahv, string hoten, int gioitinh, string diachi, string sdt, string email, DateTime ngaydk, int tinhtrang)
+        public int insert(string mahv, string hoten, int gioitinh, string diachi, string sdt, string email, DateTime ngaydk, int tinhtrang,DateTime ngaysinh)
         {
             try
             {
@@ -99,6 +99,7 @@ namespace DataAccessLayer.Service
                         MAHV = mahv,
                         HOTEN = hoten,
                         GIOITINH = gioitinh,
+                        NGSINH = ngaysinh,
                         DIACHI = diachi,
                         SDT = sdt,
                         EMAIL = email,
@@ -117,7 +118,7 @@ namespace DataAccessLayer.Service
 
             }
         }
-        public int update(string mahv, string hoten, int gioitinh, string diachi, string sdt, string email, DateTime ngaydk, int tinhtrang)
+        public int update(string mahv, string hoten, int gioitinh, string diachi, string sdt, string email, DateTime ngaydk, int tinhtrang,DateTime ngaysinh)
         {
             try
             {
@@ -129,6 +130,7 @@ namespace DataAccessLayer.Service
                         hv.HOTEN = hoten;
                         hv.GIOITINH = gioitinh;
                         hv.DIACHI = diachi;
+                        hv.NGSINH = ngaysinh;
                         hv.SDT = sdt;
                         hv.EMAIL = email;
                         hv.NGAYDK = ngaydk;
@@ -145,6 +147,90 @@ namespace DataAccessLayer.Service
                 return 0;
 
             }
+        }
+
+        public DataTable join()
+        {
+            DataTable tb = new DataTable();
+            tb.Columns.Add("MAHV", typeof(string));
+            tb.Columns.Add("HOTEN", typeof(string));
+            tb.Columns.Add("GIOITINH", typeof(int));
+            tb.Columns.Add("NGSINH", typeof(DateTime));
+            tb.Columns.Add("DIACHI", typeof(string));
+            tb.Columns.Add("SDT", typeof(string));
+            tb.Columns.Add("EMAIL", typeof(string));
+            tb.Columns.Add("NGAYDK", typeof(DateTime));
+            tb.Columns.Add("TINHTRANG", typeof(int));
+            tb.Columns.Add("MALOP", typeof(string));
+
+            QLTTEntities qltt = new QLTTEntities();
+            var k = from dk in qltt.DANGKies
+                    from hv in qltt.HOCVIENs
+                    from lh in qltt.LOPHOCs
+                    where dk.MAHV == hv.MAHV && dk.MALOP == lh.MALOP
+                    select new
+                    {
+                        MAHV = hv.MAHV,
+                        HOTEN = hv.HOTEN,
+                        GIOITINH = hv.GIOITINH,
+                        NGSINH = hv.NGSINH,
+                        DIACHI = hv.DIACHI,
+                        SDT = hv.SDT,
+                        EMAIL = hv.EMAIL,
+                        NGAYDK = hv.NGAYDK,
+                        TINHTRANG = hv.TINHTRANG,
+                        MALOP = lh.MALOP,
+
+                    };
+
+            foreach (var item in k)
+            {
+                tb.Rows.Add(item.MAHV, item.HOTEN, item.GIOITINH, item.NGSINH, item.DIACHI, item.SDT, item.EMAIL, item.NGAYDK, item.TINHTRANG, item.MALOP);
+            }
+            return tb;
+        }
+
+        public DataTable getjoin(string mahv)
+        {
+            DataTable tb = new DataTable();
+            tb.Columns.Add("MAHV", typeof(string));
+            tb.Columns.Add("HOTEN", typeof(string));
+            tb.Columns.Add("GIOITINH", typeof(int));
+            tb.Columns.Add("NGSINH", typeof(DateTime));
+            tb.Columns.Add("DIACHI", typeof(string));
+            tb.Columns.Add("SDT", typeof(string));
+            tb.Columns.Add("EMAIL", typeof(string));
+            tb.Columns.Add("NGAYDK", typeof(DateTime));
+            tb.Columns.Add("TINHTRANG", typeof(int));
+            tb.Columns.Add("MALOP", typeof(string));
+            tb.Columns.Add("TENKH", typeof(string));
+            QLTTEntities qltt = new QLTTEntities();
+            var k = from dk in qltt.DANGKies
+                    from hv in qltt.HOCVIENs
+                    from lh in qltt.LOPHOCs
+                    from kh in qltt.KHOAHOCs
+                    where dk.MAHV == hv.MAHV && dk.MALOP == lh.MALOP && lh.MAKH == kh.MAKH && hv.MAHV == mahv
+                    select new
+                    {
+                        MAHV = hv.MAHV,
+                        HOTEN = hv.HOTEN,
+                        GIOITINH = hv.GIOITINH,
+                        NGSINH = hv.NGSINH,
+                        DIACHI = hv.DIACHI,
+                        SDT = hv.SDT,
+                        EMAIL = hv.EMAIL,
+                        NGAYDK = hv.NGAYDK,
+                        TINHTRANG = hv.TINHTRANG,
+                        MALOP = lh.MALOP,
+                        TENKH = kh.TENKH
+
+                    };
+
+            foreach (var item in k)
+            {
+                tb.Rows.Add(item.MAHV, item.HOTEN, item.GIOITINH, item.NGSINH, item.DIACHI, item.SDT, item.EMAIL, item.NGAYDK, item.TINHTRANG, item.MALOP, item.TENKH);
+            }
+            return tb;
         }
     }
 }

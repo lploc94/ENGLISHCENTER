@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using BusinessLogicLayer.service;
 
 namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
 {
@@ -16,6 +17,21 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
         public TraCuuThongTinHocPhi()
         {
             InitializeComponent();
+        }
+
+        private void TraCuuThongTinHocPhi_Load(object sender, EventArgs e)
+        {
+            HocVien hv = new HocVien();
+            DataTable tb = new DataTable();
+            tb = hv.getAll("admin", "mKFTdTmAshTS");
+            cbxMaHV.ValueMember = tb.Columns[0].ToString();
+            cbxMaHV.DisplayMember = tb.Columns[0].ToString();
+        }
+
+        private void btnTraCuu_Click(object sender, EventArgs e)
+        {
+            HocPhi tthp = new HocPhi();
+            dgvTraCuu.DataSource = tthp.getjoin_hv("admin", "mKFTdTmAshTS", cbxMaHV.Text);
         }
     }
 }

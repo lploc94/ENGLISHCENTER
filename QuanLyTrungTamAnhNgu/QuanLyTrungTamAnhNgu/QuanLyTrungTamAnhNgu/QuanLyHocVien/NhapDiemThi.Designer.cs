@@ -34,6 +34,14 @@
             this.maPhongComboBox = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.bangDiemGridView = new System.Windows.Forms.DataGridView();
+            this.MAHV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HOTEN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MALOP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MAPHONG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MAKT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NGAYTHI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DIEMTHI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.KETQUA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.themButton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.maHocVienTextBox = new System.Windows.Forms.TextBox();
@@ -46,14 +54,6 @@
             this.xoaButton = new System.Windows.Forms.Button();
             this.suaButton = new System.Windows.Forms.Button();
             this.xoaTrangButton = new System.Windows.Forms.Button();
-            this.MAHV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HOTEN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MALOP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MAPHONG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MAKT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NGAYTHI = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DIEMTHI = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.KETQUA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bangDiemGridView)).BeginInit();
             this.SuspendLayout();
@@ -127,6 +127,62 @@
             this.bangDiemGridView.Size = new System.Drawing.Size(766, 280);
             this.bangDiemGridView.TabIndex = 0;
             this.bangDiemGridView.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.bangDiemGridView_RowHeaderMouseClick);
+            // 
+            // MAHV
+            // 
+            this.MAHV.DataPropertyName = "MAHV";
+            this.MAHV.HeaderText = "Mã học viên";
+            this.MAHV.Name = "MAHV";
+            this.MAHV.ReadOnly = true;
+            // 
+            // HOTEN
+            // 
+            this.HOTEN.DataPropertyName = "HOTEN";
+            this.HOTEN.HeaderText = "Tên học viên";
+            this.HOTEN.Name = "HOTEN";
+            this.HOTEN.ReadOnly = true;
+            // 
+            // MALOP
+            // 
+            this.MALOP.DataPropertyName = "MALOP";
+            this.MALOP.HeaderText = "Mã lớp";
+            this.MALOP.Name = "MALOP";
+            this.MALOP.ReadOnly = true;
+            // 
+            // MAPHONG
+            // 
+            this.MAPHONG.DataPropertyName = "MAPHONG";
+            this.MAPHONG.HeaderText = "Mã phòng";
+            this.MAPHONG.Name = "MAPHONG";
+            this.MAPHONG.ReadOnly = true;
+            // 
+            // MAKT
+            // 
+            this.MAKT.DataPropertyName = "MAKT";
+            this.MAKT.HeaderText = "Mã Kiểm Tra";
+            this.MAKT.Name = "MAKT";
+            this.MAKT.ReadOnly = true;
+            // 
+            // NGAYTHI
+            // 
+            this.NGAYTHI.DataPropertyName = "NGAYTHI";
+            this.NGAYTHI.HeaderText = "Ngày thi";
+            this.NGAYTHI.Name = "NGAYTHI";
+            this.NGAYTHI.ReadOnly = true;
+            // 
+            // DIEMTHI
+            // 
+            this.DIEMTHI.DataPropertyName = "DIEMTHI";
+            this.DIEMTHI.HeaderText = "Điểm thi";
+            this.DIEMTHI.Name = "DIEMTHI";
+            this.DIEMTHI.ReadOnly = true;
+            // 
+            // KETQUA
+            // 
+            this.KETQUA.DataPropertyName = "KETQUA";
+            this.KETQUA.HeaderText = "Kết quả";
+            this.KETQUA.Name = "KETQUA";
+            this.KETQUA.ReadOnly = true;
             // 
             // themButton
             // 
@@ -238,62 +294,6 @@
             this.xoaTrangButton.UseVisualStyleBackColor = true;
             this.xoaTrangButton.Click += new System.EventHandler(this.xoaTrangButton_Click);
             // 
-            // MAHV
-            // 
-            this.MAHV.DataPropertyName = "MAHV";
-            this.MAHV.HeaderText = "Mã học viên";
-            this.MAHV.Name = "MAHV";
-            this.MAHV.ReadOnly = true;
-            // 
-            // HOTEN
-            // 
-            this.HOTEN.DataPropertyName = "HOTEN";
-            this.HOTEN.HeaderText = "Tên học viên";
-            this.HOTEN.Name = "HOTEN";
-            this.HOTEN.ReadOnly = true;
-            // 
-            // MALOP
-            // 
-            this.MALOP.DataPropertyName = "MALOP";
-            this.MALOP.HeaderText = "Mã lớp";
-            this.MALOP.Name = "MALOP";
-            this.MALOP.ReadOnly = true;
-            // 
-            // MAPHONG
-            // 
-            this.MAPHONG.DataPropertyName = "MAPHONG";
-            this.MAPHONG.HeaderText = "Mã phòng";
-            this.MAPHONG.Name = "MAPHONG";
-            this.MAPHONG.ReadOnly = true;
-            // 
-            // MAKT
-            // 
-            this.MAKT.DataPropertyName = "MAKT";
-            this.MAKT.HeaderText = "Mã Kiểm Tra";
-            this.MAKT.Name = "MAKT";
-            this.MAKT.ReadOnly = true;
-            // 
-            // NGAYTHI
-            // 
-            this.NGAYTHI.DataPropertyName = "NGAYTHI";
-            this.NGAYTHI.HeaderText = "Ngày thi";
-            this.NGAYTHI.Name = "NGAYTHI";
-            this.NGAYTHI.ReadOnly = true;
-            // 
-            // DIEMTHI
-            // 
-            this.DIEMTHI.DataPropertyName = "DIEMTHI";
-            this.DIEMTHI.HeaderText = "Điểm thi";
-            this.DIEMTHI.Name = "DIEMTHI";
-            this.DIEMTHI.ReadOnly = true;
-            // 
-            // KETQUA
-            // 
-            this.KETQUA.DataPropertyName = "KETQUA";
-            this.KETQUA.HeaderText = "Kết quả";
-            this.KETQUA.Name = "KETQUA";
-            this.KETQUA.ReadOnly = true;
-            // 
             // NhapDiemThi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -319,6 +319,7 @@
             this.Name = "NhapDiemThi";
             this.Text = "Nhập Điểm Thi";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+        
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bangDiemGridView)).EndInit();
             this.ResumeLayout(false);

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicLayer.service
 {
-    class DangKy
+   public class DangKy
     {
         public int delete(string id, string pass, string mahv, string malop)
         {

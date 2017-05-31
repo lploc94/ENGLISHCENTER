@@ -121,5 +121,18 @@ namespace BusinessLogicLayer.service
             }
             return 0;
         }
+
+        public int deleteMaHV(string id, string pass, string mahv) //id và pass của nhân viên không phải id và pass của giảng viên
+        {
+            if (CheckService.checkID(id, pass) == 1)
+            {
+                if (CheckService.checkRole(id, 2) == 1 || CheckService.checkRole(id, 0) == 1)//kiểm tra id này có quyền delete giảng viên không... 
+                {
+                    ThiService tsv = new ThiService();
+                    return tsv.deleteMaHV(mahv);
+                }
+            }
+            return 0;
+        }
     }
 }

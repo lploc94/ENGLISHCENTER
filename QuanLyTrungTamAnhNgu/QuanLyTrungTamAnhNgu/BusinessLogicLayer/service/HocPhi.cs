@@ -78,6 +78,44 @@ namespace BusinessLogicLayer.service
             }
             return 0;
         }
+        public DataTable getjoin(string id, string pass)
+        {
+            if (CheckService.checkID(id, pass) == 1)
+            {
+                if (CheckService.checkRole(id, 3) == 1 || CheckService.checkRole(id, 0) == 1) //có thể Sinh và LA sẽ sửa các role ID này. trước mắt của get là 4.
+                {
+                    HocPhiService hpsv = new HocPhiService();
+                    return hpsv.joinhocphi();
+                }
 
+            }
+            return null;
+        }
+
+        public string joinsotien(string id, string pass, string malop)
+        {
+            if (CheckService.checkID(id, pass) == 1)
+            {
+                if (CheckService.checkRole(id, 3) == 1 || CheckService.checkRole(id, 0) == 1)
+                {
+                    HocPhiService hpsv = new HocPhiService();
+                    return hpsv.joinsotien(malop);
+                }
+            }
+            return "";
+        }
+        public DataTable getjoin_hv(string id, string pass, string mahv)
+        {
+            if (CheckService.checkID(id, pass) == 1)
+            {
+                if (CheckService.checkRole(id, 3) == 1 || CheckService.checkRole(id, 0) == 1) //có thể Sinh và LA sẽ sửa các role ID này. trước mắt của get là 4.
+                {
+                    HocPhiService hpsv = new HocPhiService();
+                    return hpsv.joinhocphi_mahv(mahv);
+                }
+
+            }
+            return null;
+        }
     }
 }

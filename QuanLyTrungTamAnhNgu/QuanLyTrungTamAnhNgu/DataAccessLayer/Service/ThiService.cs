@@ -219,10 +219,27 @@ namespace DataAccessLayer.Service
                 return 0;
             }
         }
+        public int deleteMaHV(string code)
+        {
+            using (QLTTEntities qltt = new QLTTEntities())
+            {
+                THI t = qltt.THIs.Where(p => p.MAHV == code).FirstOrDefault();
+                if (t != null)
+                {
+                    qltt.THIs.Remove(t);
+                    qltt.SaveChanges();
 
-        
+                    return 1;
+                }
+
+            }
+            return 0;
+        }
+
+
     }
 }
+
 internal static class MyExtensions
 {
     internal static IList<TR> FullOuterGroupJoin<TA, TB, TK, TR>(

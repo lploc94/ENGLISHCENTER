@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using DataAccessLayer.Service;
-
+using System.Text.RegularExpressions;
 namespace BusinessLogicLayer.service
 {
     public class HocVien
@@ -23,7 +23,7 @@ namespace BusinessLogicLayer.service
             }
             return null;
         }
-        public int insert(string id, string pass, string mahv, string hoten, int gioitinh, string diachi, string sdt, string email, DateTime ngaydk, int tinhtrang)
+        public int insert(string id, string pass, string mahv, string hoten, int gioitinh, string diachi, string sdt, string email, DateTime ngaydk, int tinhtrang,DateTime ngaysinh)
         {
             if (CheckService.checkID(id, pass) == 1)
             {
@@ -35,7 +35,7 @@ namespace BusinessLogicLayer.service
                         return 0;
 
                     HocVienService hvsv = new HocVienService();
-                    return hvsv.insert(mahv, hoten, gioitinh, diachi, sdt, email, ngaydk, tinhtrang);
+                    return hvsv.insert(mahv, hoten, gioitinh, diachi, sdt, email, ngaydk, tinhtrang,ngaysinh);
                 }
             }
             return 0;
@@ -67,18 +67,75 @@ namespace BusinessLogicLayer.service
             return null;
 
         }
-        public int update(string id, string pass, string mahv, string hoten, int gioitinh, string diachi, string sdt, string email, DateTime ngaydk, int tinhtrang)
+        public int update(string id, string pass, string mahv, string hoten, int gioitinh, string diachi, string sdt, string email, DateTime ngaydk, int tinhtrang,DateTime ngaysinh)
         {
             if (CheckService.checkID(id, pass) == 1)
             {
                 if (CheckService.checkRole(id, 1) == 1 || CheckService.checkRole(id, 0) == 1)
                 {
                     HocVienService hvsv = new HocVienService();
-                    return hvsv.update(mahv, hoten, gioitinh, diachi, sdt, email, ngaydk, tinhtrang);
+                    return hvsv.update(mahv, hoten, gioitinh, diachi, sdt, email, ngaydk, tinhtrang,ngaysinh);
 
                 }
             }
             return 0;
+        }
+
+
+        public DataTable join(string id, string pass)
+        {
+            if (CheckService.checkID(id, pass) == 1)//kiểm tra id,pass này có đúng không.
+            {
+                HocVienService hvsv = new HocVienService();
+                return hvsv.join();
+            }
+            return null;
+        }
+
+        public DataTable getjoin(string id, string pass, string mahv)
+        {
+            if (CheckService.checkID(id, pass) == 1)//kiểm tra id,pass này có đúng không.
+            {
+                HocVienService hvsv = new HocVienService();
+                return hvsv.getjoin(mahv);
+            }
+            return null;
+        }
+
+        public bool TruongRong(string hoten, int gioitinh, string diachi, string sdt, string email, DateTime ngaydk, int tinhtrang, DateTime ngaysinh)
+        {
+            if (hoten == "" || gioitinh.ToString() == "" || diachi == "" || sdt == "" || email == "" || ngaydk.ToString() == "" || tinhtrang.ToString() == "" || ngaysinh.ToString() == "" || isNum(sdt) == 0 || isEmail(email) == 0)
+                return false;
+            else
+                return true;
+        }
+
+        private int isNum(string sdt)
+        {
+            Regex regex = new Regex("[0-9]*");
+            Match match = regex.Match(sdt);
+            if (match.Success)
+            {
+                return 1;
+            }
+            else
+                return 0;
+        }
+
+        private int isEmail(string email)
+        {
+            Regex regex = new Regex(@"^[\w!#$%&'*+\-/=?\^_`{|}~]+(\.[\w!#$%&'*+\-/=?\^_`{|}~]+)*"
+                                    + "@"
+                                    + @"((([\-\w]+\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\.){3}[0-9]{1,3}))$");
+            Match match = regex.Match(email);
+            if (match.Success)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
         }
     }
 }
