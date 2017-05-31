@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace QuanLyTrungTamAnhNgu.Helper
 {
@@ -26,7 +27,7 @@ namespace QuanLyTrungTamAnhNgu.Helper
         }
         public static void ShowErrorDialog(string body)
         {
-
+            MessageBox.Show(body, "Found Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

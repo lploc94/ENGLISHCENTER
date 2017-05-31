@@ -73,6 +73,16 @@ namespace QuanLyTrungTamAnhNgu.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Aha_Soft_Security_Secrecy {
+            get {
+                object obj = ResourceManager.GetObject("Aha-Soft-Security-Secrecy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Apps_preferences_contact_list_icon {
             get {
                 object obj = ResourceManager.GetObject("Apps-preferences-contact-list-icon", resourceCulture);
@@ -166,6 +176,16 @@ namespace QuanLyTrungTamAnhNgu.Properties {
         internal static System.Drawing.Bitmap Import_to_group_icon {
             get {
                 object obj = ResourceManager.GetObject("Import-to-group-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap logout_512 {
+            get {
+                object obj = ResourceManager.GetObject("logout-512", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

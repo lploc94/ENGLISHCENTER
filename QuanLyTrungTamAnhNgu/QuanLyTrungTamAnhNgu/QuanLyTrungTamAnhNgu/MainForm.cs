@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using DevExpress.XtraBars;
 using QuanLyTrungTamAnhNgu.QuanLyHocVien;
 using QuanLyTrungTamAnhNgu.QuanLyGiangDay;
+using QuanLyTrungTamAnhNgu.QuanLyTaiKhoan;
 using BusinessLogicLayer.service;
 using DataAccessLayer.Service;
 namespace QuanLyTrungTamAnhNgu
@@ -257,6 +258,17 @@ namespace QuanLyTrungTamAnhNgu
             //form.Show();
         }
 
+        #endregion
+
+
+        #region --------------------- Quan Ly Tai Khoan click -----------------
+        private void barButtonItem23_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            String username = "admin";
+            ThayDoiPassword form = new ThayDoiPassword(username);
+            form.MdiParent = this;
+            form.Show();
+        }
         #endregion
     }
 }

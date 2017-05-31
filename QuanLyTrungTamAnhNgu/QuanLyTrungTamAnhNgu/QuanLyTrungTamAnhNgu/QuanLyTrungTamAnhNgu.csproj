@@ -172,6 +172,12 @@
     <Compile Include="QuanLyHocVien\TraCuuThongTinHocPhi.Designer.cs">
       <DependentUpon>TraCuuThongTinHocPhi.cs</DependentUpon>
     </Compile>
+    <Compile Include="QuanLyTaiKhoan\ThayDoiPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuanLyTaiKhoan\ThayDoiPassword.Designer.cs">
+      <DependentUpon>ThayDoiPassword.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="DangNhap.resx">
       <DependentUpon>DangNhap.cs</DependentUpon>
     </EmbeddedResource>
@@ -236,6 +242,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QuanLyHocVien\TraCuuThongTinHocPhi.resx">
       <DependentUpon>TraCuuThongTinHocPhi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuanLyTaiKhoan\ThayDoiPassword.resx">
+      <DependentUpon>ThayDoiPassword.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="packages.config" />
@@ -309,6 +318,12 @@
       <Project>{e86ab0b2-98ac-48b4-803a-8630f19d1122}</Project>
       <Name>DataAccessLayer</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Aha-Soft-Security-Secrecy.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logout-512.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
