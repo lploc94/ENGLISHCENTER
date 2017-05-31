@@ -25,6 +25,17 @@ namespace BusinessLogicLayer.service
             }
             return null;
         }
+        public DataTable getAllId(string id, string pass)
+        {
+            if (CheckService.checkID(id, pass) == 1)//kiểm tra id,pass này có đúng không.
+            {
+                KiemTraService ktsv = new KiemTraService();
+
+                return ktsv.getAllId();
+
+            }
+            return null;
+        }
         public int insert(string id, string pass, string makt, string tenkt)
         {
             if (CheckService.checkID(id, pass) == 1)

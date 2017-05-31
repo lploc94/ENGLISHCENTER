@@ -61,6 +61,25 @@ namespace DataAccessLayer.Service
                     return rtnTable;
             }
         }
+
+        public DataTable getAllId()
+        {
+            using (QLTTEntities qltt = new QLTTEntities())
+            {
+                var maKiemTraList = from r in qltt.KIEMTRAs select r.MAKT;
+
+                DataTable rtnTable = new DataTable();
+                rtnTable.Columns.Add("MAKT", typeof(string));
+                foreach (string maKt in maKiemTraList)
+                {
+                    rtnTable.Rows.Add(maKt);
+                }
+                if (rtnTable.Rows[0][0] == DBNull.Value)
+                    return null;
+                else
+                    return rtnTable;
+            }
+        }
         public int insert(string makt, string tenkt)
         {
             try

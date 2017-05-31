@@ -63,6 +63,25 @@ namespace DataAccessLayer.Service
             }
             
         }
+        public DataTable getAllId()
+        {
+            using (QLTTEntities qltt = new QLTTEntities())
+            {
+                var maPhongList = from r in qltt.PHONGHOCs select r.MAPHONG;
+                DataTable rtnTable = new DataTable();
+                rtnTable.Columns.Add("MAPHONG", typeof(string));
+
+                foreach (int maPhong in maPhongList)
+                {
+                    rtnTable.Rows.Add(maPhong);
+                }
+                if (rtnTable.Rows[0][0] == DBNull.Value)
+                    return null;
+                else
+                    return rtnTable;
+            }
+
+        }
         public int insert(int maphong,int tang,int sophong)
         {
             try

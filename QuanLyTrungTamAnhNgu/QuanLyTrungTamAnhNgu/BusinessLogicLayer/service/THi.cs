@@ -25,6 +25,17 @@ namespace BusinessLogicLayer.service
             }
             return null;
         }
+        public DataTable getAllWithTenHocVien(string id, string pass)
+        {
+            if (CheckService.checkID(id, pass) == 1)//kiểm tra id,pass này có đúng không.
+            {
+                ThiService tsv = new ThiService();
+
+                return tsv.getAllWithTenHocVien();
+
+            }
+            return null;
+        }
         public int insert(string id, string pass, string mahv, string makt, string malop, int maphong, DateTime ngaythi, int diemthi, int ketqua)
         {
             if (CheckService.checkID(id, pass) == 1)

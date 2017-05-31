@@ -74,6 +74,42 @@ namespace DataAccessLayer.Service
             }
            
         }
+        public DataTable getAllWithTenHocVien()
+        {
+            using (QLTTEntities qltt = new QLTTEntities())
+            {
+                var tList = from r in qltt.THIs
+                            join hv in qltt.HOCVIENs
+                            on r.MAHV equals hv.MAHV
+                            select new { THI = r, HOCTEN = hv.HOTEN };
+                DataTable rtnTable = new DataTable();
+                rtnTable.Columns.Add("MAHV", typeof(string));
+                rtnTable.Columns.Add("HOTEN", typeof(string));
+                rtnTable.Columns.Add("MAKT", typeof(string));
+                rtnTable.Columns.Add("MALOP", typeof(string));
+                rtnTable.Columns.Add("MAPHONG", typeof(int));
+                rtnTable.Columns.Add("NGAYTHI", typeof(DateTime));
+                rtnTable.Columns.Add("DIEMTHI", typeof(int));
+                rtnTable.Columns.Add("KETQUA", typeof(int));
+                foreach (var t in tList)
+                {
+                    rtnTable.Rows.Add(t.THI.MAHV,
+                        t.HOCTEN,
+                        t.THI.MAKT,
+                        t.THI.MALOP, 
+                        t.THI.MAPHONG, 
+                        t.THI.NGAYTHI, 
+                        t.THI.DIEMTHI, 
+                        t.THI.KETQUA);
+                }
+                if (rtnTable.Rows[0][0] == DBNull.Value)
+                    return null;
+                else
+                    return rtnTable;
+
+            }
+
+        }
         public int insert(string mahv,string makt,string malop,int maphong,DateTime ngaythi,int diemthi,int ketqua)
         {
             try

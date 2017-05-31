@@ -73,6 +73,27 @@ namespace DataAccessLayer.Service
 
             }
         }
+        public DataTable getAllId()
+        {
+            using (QLTTEntities qltt = new QLTTEntities())
+            {
+                var dataList = from r in qltt.LOPHOCs select r.MALOP;
+                DataTable rtnTable = new DataTable();
+                rtnTable.Columns.Add("MALOP", typeof(string));
+
+                foreach (string data in dataList)
+                {
+                    rtnTable.Rows.Add(data);
+                }
+
+                if (rtnTable.Rows[0][0] == DBNull.Value)
+                    return null;
+                else
+                    return rtnTable;
+
+
+            }
+        }
         public int insert(string malop,string makh,DateTime ngaybd,DateTime ngaykt,int siso,string mahp)
         {
             try
