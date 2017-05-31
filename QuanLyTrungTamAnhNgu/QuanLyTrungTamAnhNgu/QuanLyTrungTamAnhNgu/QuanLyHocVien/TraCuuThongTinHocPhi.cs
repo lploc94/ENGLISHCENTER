@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using BusinessLogicLayer.service;
+using QuanLyTrungTamAnhNgu.Helper;
 
 namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
 {
@@ -23,7 +24,7 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
         {
             HocVien hv = new HocVien();
             DataTable tb = new DataTable();
-            tb = hv.getAll("admin", "mKFTdTmAshTS");
+            tb = hv.getAll(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword());
             cbxMaHV.ValueMember = tb.Columns[0].ToString();
             cbxMaHV.DisplayMember = tb.Columns[0].ToString();
         }
@@ -31,7 +32,7 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
         private void btnTraCuu_Click(object sender, EventArgs e)
         {
             HocPhi tthp = new HocPhi();
-            dgvTraCuu.DataSource = tthp.getjoin_hv("admin", "mKFTdTmAshTS", cbxMaHV.Text);
+            dgvTraCuu.DataSource = tthp.getjoin_hv(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), cbxMaHV.Text);
         }
     }
 }

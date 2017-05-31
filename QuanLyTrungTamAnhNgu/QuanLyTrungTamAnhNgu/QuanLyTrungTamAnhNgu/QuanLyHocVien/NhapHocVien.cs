@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using BusinessLogicLayer.service;
+using QuanLyTrungTamAnhNgu.Helper;
+
 namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
 {
     public partial class NhapHocVien : DevExpress.XtraEditors.XtraForm
@@ -104,7 +106,7 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
             txtMaHV.Text = "HV" + (Convert.ToInt32(tb.Rows[tb.Rows.Count - 1][0].ToString().Remove(0, 2)) + 1).ToString();
 
             //đưa dữ liệu vào trong combox lớp học
-            DataTable lophoc = lh.getAll("admin", "mKFTdTmAshTS");
+            DataTable lophoc = lh.getAll(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword());
             cbxLopHoc.DataSource = lophoc;
             cbxLopHoc.DisplayMember = lophoc.Columns[0].ToString();
             cbxLopHoc.ValueMember = lophoc.Columns[0].ToString();
@@ -124,25 +126,25 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
             if (rdNam.Checked)
             {
                 if (cbxTinhTrang.Text == "Còn Học")
-                    flat_hv = hv.insert("admin", "mKFTdTmAshTS", txtMaHV.Text, txtHoTen.Text, 1, txtDiaChi.Text, txtSDT.Text, txtEmail.Text, dtNgayDK.Value, 1,dtNgaySinh.Value);
+                    flat_hv = hv.insert(AccountHelper.getAccountId(),AccountHelper.getAccoutPassword(), txtMaHV.Text, txtHoTen.Text, 1, txtDiaChi.Text, txtSDT.Text, txtEmail.Text, dtNgayDK.Value, 1,dtNgaySinh.Value);
 
                 else
-                    flat_hv = hv.insert("admin", "mKFTdTmAshTS", txtMaHV.Text, txtHoTen.Text, 1, txtDiaChi.Text, txtSDT.Text, txtEmail.Text, dtNgayDK.Value, 0,dtNgaySinh.Value);
+                    flat_hv = hv.insert(AccountHelper.getAccountId(),AccountHelper.getAccoutPassword(), txtMaHV.Text, txtHoTen.Text, 1, txtDiaChi.Text, txtSDT.Text, txtEmail.Text, dtNgayDK.Value, 0,dtNgaySinh.Value);
 
 
             }
             else
             {
                 if (cbxTinhTrang.Text == "Còn Học")
-                    flat_hv = hv.insert("admin", "mKFTdTmAshTS", txtMaHV.Text, txtHoTen.Text, 0, txtDiaChi.Text, txtSDT.Text, txtEmail.Text, dtNgayDK.Value, 1, dtNgaySinh.Value);
+                    flat_hv = hv.insert(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), txtMaHV.Text, txtHoTen.Text, 0, txtDiaChi.Text, txtSDT.Text, txtEmail.Text, dtNgayDK.Value, 1, dtNgaySinh.Value);
 
                 else
-                    flat_hv = hv.insert("admin", "mKFTdTmAshTS", txtMaHV.Text, txtHoTen.Text, 0, txtDiaChi.Text, txtSDT.Text, txtEmail.Text, dtNgayDK.Value, 0, dtNgaySinh.Value);
+                    flat_hv = hv.insert(AccountHelper.getAccountId(),AccountHelper.getAccoutPassword(), txtMaHV.Text, txtHoTen.Text, 0, txtDiaChi.Text, txtSDT.Text, txtEmail.Text, dtNgayDK.Value, 0, dtNgaySinh.Value);
             }
 
             //insert bảng đăng ký
 
-            flat_dk = dk.insert("admin", "mKFTdTmAshTS", cbxLopHoc.Text, txtMaHV.Text);
+            flat_dk = dk.insert(AccountHelper.getAccountId(),AccountHelper.getAccoutPassword(), cbxLopHoc.Text, txtMaHV.Text);
 
             if (flat_hv == 1 && flat_dk == 1)
             {
@@ -168,10 +170,10 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
             if (MessageBox.Show("Bạn có muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
 
-                int flat_dk = dk.delete("admin", "mKFTdTmAshTS", txtMaHV.Text, cbxLopHoc.Text);
-                int flat_tthp = tthp.delete("admin", "mKFTdTmAshTS", txtMaHV.Text);
-                int flat_thi = thi.deleteMaHV("admin", "mKFTdTmAshTS", txtMaHV.Text);
-                int flat_hv = hv.delete("admin", "mKFTdTmAshTS", txtMaHV.Text);
+                int flat_dk = dk.delete(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), txtMaHV.Text, cbxLopHoc.Text);
+                int flat_tthp = tthp.delete(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), txtMaHV.Text);
+                int flat_thi = thi.deleteMaHV(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), txtMaHV.Text);
+                int flat_hv = hv.delete(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), txtMaHV.Text);
 
 
                 if (flat_hv == 1 && flat_dk == 1)
@@ -200,27 +202,27 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
             if (rdNam.Checked)
             {
                 if (cbxTinhTrang.Text == "Còn Học")
-                    flat_hv = hv.update("admin", "mKFTdTmAshTS", txtMaHV.Text, txtHoTen.Text, 1, txtDiaChi.Text, txtSDT.Text, txtEmail.Text,dtNgayDK.Value, 1,dtNgaySinh.Value);
+                    flat_hv = hv.update(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), txtMaHV.Text, txtHoTen.Text, 1, txtDiaChi.Text, txtSDT.Text, txtEmail.Text,dtNgayDK.Value, 1,dtNgaySinh.Value);
 
                 else
-                    flat_hv = hv.update("admin", "mKFTdTmAshTS", txtMaHV.Text, txtHoTen.Text, 1, txtDiaChi.Text, txtSDT.Text, txtEmail.Text, dtNgayDK.Value, 0, dtNgaySinh.Value);
+                    flat_hv = hv.update(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), txtMaHV.Text, txtHoTen.Text, 1, txtDiaChi.Text, txtSDT.Text, txtEmail.Text, dtNgayDK.Value, 0, dtNgaySinh.Value);
 
 
             }
             else
             {
                 if (cbxTinhTrang.Text == "Còn Học")
-                    flat_hv = hv.update("admin", "mKFTdTmAshTS", txtMaHV.Text, txtHoTen.Text, 0, txtDiaChi.Text, txtSDT.Text, txtEmail.Text, dtNgayDK.Value, 1, dtNgaySinh.Value);
+                    flat_hv = hv.update(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), txtMaHV.Text, txtHoTen.Text, 0, txtDiaChi.Text, txtSDT.Text, txtEmail.Text, dtNgayDK.Value, 1, dtNgaySinh.Value);
 
                 else
-                    flat_hv = hv.update("admin", "mKFTdTmAshTS", txtMaHV.Text, txtHoTen.Text, 0, txtDiaChi.Text, txtSDT.Text, txtEmail.Text, dtNgayDK.Value, 0, dtNgaySinh.Value);
+                    flat_hv = hv.update(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), txtMaHV.Text, txtHoTen.Text, 0, txtDiaChi.Text, txtSDT.Text, txtEmail.Text, dtNgayDK.Value, 0, dtNgaySinh.Value);
             }
 
             //update bảng đăng ký
-            flat_dk = dk.delete("admin", "mKFTdTmAshTS", txtMaHV.Text, malop_phu);
+            flat_dk = dk.delete(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), txtMaHV.Text, malop_phu);
             if (flat_dk == 1)
             {
-                flat_dkcn = dk.insert("admin", "mKFTdTmAshTS", cbxLopHoc.Text, txtMaHV.Text);
+                flat_dkcn = dk.insert(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), cbxLopHoc.Text, txtMaHV.Text);
             }
             else
             {

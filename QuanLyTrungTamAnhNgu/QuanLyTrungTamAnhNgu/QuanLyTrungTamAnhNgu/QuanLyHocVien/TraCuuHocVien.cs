@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using BusinessLogicLayer.service;
+using QuanLyTrungTamAnhNgu.Helper;
 
 namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
 {
@@ -24,7 +25,7 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
 
             HocVien hv = new HocVien();
             DataTable tb = new DataTable();
-            tb = hv.getAll("admin", "mKFTdTmAshTS");
+            tb = hv.getAll(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword());
             cbxMaHV.DataSource = tb;
             cbxMaHV.ValueMember = tb.Columns[0].ToString();
             cbxMaHV.DisplayMember = tb.Columns[0].ToString();
@@ -46,7 +47,7 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
             table_temp.Columns.Add("Tên khóa học");
             HocVien hv = new HocVien();
             DataTable tb = new DataTable();
-            tb = hv.getjoin("admin", "mKFTdTmAshTS", cbxMaHV.Text);
+            tb = hv.getjoin(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), cbxMaHV.Text);
             int l = tb.Rows.Count;
             for (int i = 0; i < l; i++)
             {

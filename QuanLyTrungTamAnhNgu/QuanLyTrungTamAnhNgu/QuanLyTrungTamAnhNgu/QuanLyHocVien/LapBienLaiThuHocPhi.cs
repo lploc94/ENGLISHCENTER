@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using BusinessLogicLayer.service;
+using QuanLyTrungTamAnhNgu.Helper;
+
 namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
 {
     public partial class LapBienLaiThuHocPhi : DevExpress.XtraEditors.XtraForm
@@ -28,7 +30,7 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
             //load combobox mã học viên
             HocVien hv = new HocVien();
             DataTable tb_hv = new DataTable();
-            tb_hv = hv.getAll("admin", "mKFTdTmAshTS");
+            tb_hv = hv.getAll(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword());
             cbxMaHV.DataSource = tb_hv;
             cbxMaHV.ValueMember = tb_hv.Columns[0].ToString();
             cbxMaHV.DisplayMember = tb_hv.Columns[0].ToString();
@@ -37,7 +39,7 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
 
             //Load lên datagridview
             HocPhi hp = new HocPhi();
-            dataGridView1.DataSource = hp.getjoin("admin", "mKFTdTmAshTS");
+            dataGridView1.DataSource = hp.getjoin(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword());
 
         }
 
@@ -45,7 +47,7 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
         {
             DangKy dk = new DangKy();
             DataTable tb_dk = new DataTable();
-            tb_dk = dk.getByMaHV("admin", "mKFTdTmAshTS", cbxMaHV.Text);
+            tb_dk = dk.getByMaHV(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), cbxMaHV.Text);
             cbxMaLop.DataSource = tb_dk;
             cbxMaLop.DisplayMember = tb_dk.Columns[1].ToString();
             cbxMaLop.ValueMember = tb_dk.Columns[1].ToString();
@@ -54,7 +56,7 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
         private void cbxMaLop_TextChanged(object sender, EventArgs e)
         {
             HocPhi hp = new HocPhi();
-            txtSoTien.Text = hp.joinsotien("admin", "mKFTdTmAshTS", cbxMaLop.Text);
+            txtSoTien.Text = hp.joinsotien(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), cbxMaLop.Text);
         }
 
         private void txtTienThu_TextChanged(object sender, EventArgs e)
@@ -72,14 +74,14 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
         private void btnThem_Click(object sender, EventArgs e)
         {
             ThongTinHocPhi tthp = new ThongTinHocPhi();
-            tthp.insert("admin", "mKFTdTmAshTS", cbxMaHV.Text, cbxMaLop.Text, txtTienThu.Text, txtTienNo.Text, dtNgTT.Value);
+            tthp.insert(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), cbxMaHV.Text, cbxMaLop.Text, txtTienThu.Text, txtTienNo.Text, dtNgTT.Value);
             Load_DL();
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
             ThongTinHocPhi tthp = new ThongTinHocPhi();
-            tthp.delete("admin", "mKFTdTmAshTS", cbxMaHV.Text);
+            tthp.delete(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), cbxMaHV.Text);
             Load_DL();
         }
 
@@ -95,7 +97,7 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
         private void btnSua_Click(object sender, EventArgs e)
         {
             ThongTinHocPhi tthp = new ThongTinHocPhi();
-            tthp.update("admin", "mKFTdTmAshTS", cbxMaHV.Text, cbxMaLop.Text, txtTienThu.Text, txtTienNo.Text, dtNgTT.Value);
+            tthp.update(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), cbxMaHV.Text, cbxMaLop.Text, txtTienThu.Text, txtTienNo.Text, dtNgTT.Value);
             Load_DL();
         }
 
