@@ -111,13 +111,13 @@ namespace DataAccessLayer.Service
         public DataTable joinhocphi()
         {
             DataTable table = new DataTable();
-            table.Columns.Add("Mã học viên", typeof(string));
-            table.Columns.Add("Tên học viên", typeof(string));
-            table.Columns.Add("Mã lớp", typeof(string));
-            table.Columns.Add("Số tiền", typeof(string));
-            table.Columns.Add("Ngày thanh toán", typeof(DateTime));
-            table.Columns.Add("Tiền thu", typeof(string));
-            table.Columns.Add("Tiền nợ", typeof(string));
+            table.Columns.Add("MAHV", typeof(string));
+            table.Columns.Add("TENHV", typeof(string));
+            table.Columns.Add("MALOP", typeof(string));
+            table.Columns.Add("SOTIEN", typeof(string));
+            table.Columns.Add("NGTT", typeof(DateTime));
+            table.Columns.Add("TIENTHU", typeof(string));
+            table.Columns.Add("TIENNO", typeof(string));
             using (QLTTEntities qltt = new QLTTEntities())
             {
                 var k = from hv in qltt.HOCVIENs
@@ -167,13 +167,13 @@ namespace DataAccessLayer.Service
         public DataTable joinhocphi_mahv(string mahv)
         {
             DataTable table = new DataTable();
-            table.Columns.Add("Mã học viên", typeof(string));
-            table.Columns.Add("Tên học viên", typeof(string));
-            table.Columns.Add("Mã lớp", typeof(string));
-            table.Columns.Add("Số tiền", typeof(string));
-            table.Columns.Add("Ngày thanh toán", typeof(DateTime));
-            table.Columns.Add("Tiền thu", typeof(string));
-            table.Columns.Add("Tiền nợ", typeof(string));
+            table.Columns.Add("MAHV", typeof(string));
+            table.Columns.Add("TENHV", typeof(string));
+            table.Columns.Add("MALOP", typeof(string));
+            table.Columns.Add("SOTIEN", typeof(string));
+            table.Columns.Add("NGTT", typeof(DateTime));
+            table.Columns.Add("TIENTHU", typeof(string));
+            table.Columns.Add("TIENNO", typeof(string));
             using (QLTTEntities qltt = new QLTTEntities())
             {
                 var k = from hv in qltt.HOCVIENs
