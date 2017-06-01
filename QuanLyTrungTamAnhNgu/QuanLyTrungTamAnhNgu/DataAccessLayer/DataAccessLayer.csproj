@@ -112,6 +112,7 @@
     <Compile Include="Service\KiemTraService.cs" />
     <Compile Include="Service\LichHocService.cs" />
     <Compile Include="Service\LopHocService.cs" />
+    <Compile Include="Service\NhanVienService.cs" />
     <Compile Include="Service\PhongHocService.cs" />
     <Compile Include="Service\ThamSoService.cs" />
     <Compile Include="Service\ThiService.cs" />
