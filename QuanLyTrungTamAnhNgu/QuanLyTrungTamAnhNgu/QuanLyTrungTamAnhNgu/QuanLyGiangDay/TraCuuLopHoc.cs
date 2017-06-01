@@ -17,6 +17,8 @@ namespace QuanLyTrungTamAnhNgu.QuanLyGiangDay
     {
 		private BusinessLogicLayer.service.CT_LopHoc CT_LopHocService;
 		private BusinessLogicLayer.service.LopHoc lopHocService;
+		private BusinessLogicLayer.service.DangKy dangKyService;
+		private BusinessLogicLayer.service.HocVien hocVienService;
 
 		private DataTable resultDataTable;
 
@@ -48,6 +50,8 @@ namespace QuanLyTrungTamAnhNgu.QuanLyGiangDay
 		{
 			lopHocService = new BusinessLogicLayer.service.LopHoc();
 			CT_LopHocService = new BusinessLogicLayer.service.CT_LopHoc();
+			dangKyService = new BusinessLogicLayer.service.DangKy();
+			hocVienService = new BusinessLogicLayer.service.HocVien();
 		}
 
 		private void PopulateResulteDataTable()
@@ -60,6 +64,7 @@ namespace QuanLyTrungTamAnhNgu.QuanLyGiangDay
 			if (cbMaLopHoc.Items.Count > 0)
 			{
 				DataTable dt = CT_LopHocService.getAll(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword());
+				
 
 				foreach (DataRow row in resultDataTable.Rows)
 				{
@@ -78,7 +83,21 @@ namespace QuanLyTrungTamAnhNgu.QuanLyGiangDay
 								tbMaGV.Text = mRow["MAGV"].ToString();
 							}
 						}
+
+						DataTable dkDt = dangKyService.getByMaLop(AccountHelper.getAccountId(),
+							AccountHelper.getAccoutPassword(), row["MALOP"].ToString());
+
+						dkDt.PrimaryKey = new DataColumn[] { dkDt.Columns["MAHV"] };
+
+						DataTable hvDt = hocVienService.getAll(AccountHelper.getAccountId(),
+							AccountHelper.getAccoutPassword());
+
+						dkDt.Merge(hvDt);
+						dkDt.Columns.Remove(dkDt.Columns["MALOP"]);
+
+						dgvSinhVien.DataSource = dkDt;
 						break;
+						
 					}
 				}
 			}
