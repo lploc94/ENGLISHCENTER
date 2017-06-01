@@ -30,13 +30,13 @@
         {
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.dgvLuong = new System.Windows.Forms.DataGridView();
-			this.button1 = new System.Windows.Forms.Button();
 			this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.btnXuatReport = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvLuong)).BeginInit();
 			this.SuspendLayout();
@@ -68,16 +68,6 @@
 			this.dgvLuong.Name = "dgvLuong";
 			this.dgvLuong.Size = new System.Drawing.Size(774, 410);
 			this.dgvLuong.TabIndex = 0;
-			// 
-			// button1
-			// 
-			this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.button1.Location = new System.Drawing.Point(29, 456);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(75, 23);
-			this.button1.TabIndex = 1;
-			this.button1.Text = "Xuất report";
-			this.button1.UseVisualStyleBackColor = true;
 			// 
 			// Column1
 			// 
@@ -115,12 +105,23 @@
 			this.Column6.HeaderText = "Thời gian giao lương";
 			this.Column6.Name = "Column6";
 			// 
+			// btnXuatReport
+			// 
+			this.btnXuatReport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.btnXuatReport.Location = new System.Drawing.Point(29, 456);
+			this.btnXuatReport.Name = "btnXuatReport";
+			this.btnXuatReport.Size = new System.Drawing.Size(75, 23);
+			this.btnXuatReport.TabIndex = 1;
+			this.btnXuatReport.Text = "Xuất report";
+			this.btnXuatReport.UseVisualStyleBackColor = true;
+			this.btnXuatReport.Click += new System.EventHandler(this.btnXuatReport_Click);
+			// 
 			// DanhSachLuongGiangVien
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(785, 491);
-			this.Controls.Add(this.button1);
+			this.Controls.Add(this.btnXuatReport);
 			this.Controls.Add(this.groupBox1);
 			this.Name = "DanhSachLuongGiangVien";
 			this.Text = "Danh Sách Lương Giảng Viên";
@@ -135,7 +136,7 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgvLuong;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnXuatReport;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Column3;

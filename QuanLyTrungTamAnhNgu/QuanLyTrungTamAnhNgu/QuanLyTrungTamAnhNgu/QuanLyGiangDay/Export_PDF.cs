@@ -25,11 +25,10 @@ namespace QuanLyTrungTamAnhNgu.QuanLyGiangDay
 
         ThongTinHocPhi hocphi = null;
         Thi thi = null;
+		
 
-
-
-
-        void ShowTable(DataTable data)
+		// nhét d
+        public void ShowTable(DataTable data)
         {
             lbName.Text = name;
 
@@ -80,8 +79,21 @@ namespace QuanLyTrungTamAnhNgu.QuanLyGiangDay
             e.Cancel = true;
         }
 
+		// Xuất bảng export ra thông qua DataTable
+		public void PopExport(DataTable dt)
+		{
 
-        public void NoHocPhi()
+			DateTime today = DateTime.Today;
+			name = today.Month + "-" + today.Day + "-" + today.Year + "_NoHocPhi";
+
+			ShowTable(dt);
+
+			lbMain.Hide();
+			cbMain.Hide();
+		}
+
+
+		public void NoHocPhi()
         {
             hocphi = new ThongTinHocPhi();
             DataTable dt = hocphi.getDsNoHocPhi(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword());
