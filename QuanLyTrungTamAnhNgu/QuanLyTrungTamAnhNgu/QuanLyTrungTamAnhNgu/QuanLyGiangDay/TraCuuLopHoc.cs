@@ -90,51 +90,55 @@ namespace QuanLyTrungTamAnhNgu.QuanLyGiangDay
 						DataTable hvDt = hocVienService.getAll(AccountHelper.getAccountId(),
 							AccountHelper.getAccoutPassword());
 
-						DataTable clone1 = dkDt.Clone();
-						DataTable clone2 = hvDt.Clone();
-						clone1.Merge(clone2);
 
-						var result = from table1 in dkDt.AsEnumerable()
-									 join table2 in hvDt.AsEnumerable()
-									 on (string)table1["MAHV"] equals (string)table2["MAHV"]
-									 select new
-									 {
-										 MALOP = (string)table1["MALOP"],
-										 MAHV = (string)table2["MAHV"],
-										 HOTEN = (string)table2["HOTEN"],
-										 GIOITINH = (int)table2["GIOITINH"],
-										 NGSINH = (DateTime)table2["NGSINH"],
-										 DIACHI = (string)table2["DIACHI"],
-										 SDT = (string)table2["SDT"],
-										 EMAIL = (string)table2["EMAIL"],
-										 NGAYDK = (DateTime)table2["NGAYDK"],
-										 TINHTRANG = (int)table2["TINHTRANG"]
-									 };
+						/* --------------------------  DUNG LINQ */
 
-						foreach (var item in result)
-						{
-							clone1.Rows.Add(item.MALOP, item.MAHV, item.HOTEN, item.GIOITINH, item.NGSINH, item.DIACHI,
-								item.SDT, item.EMAIL, item.NGAYDK, item.TINHTRANG);
-						}
+						//DataTable clone1 = dkDt.Clone();
+						//DataTable clone2 = hvDt.Clone();
+						//clone1.Merge(clone2);
 
-						//hvDt.PrimaryKey = new DataColumn[] { hvDt.Columns["MAHV"] };
+						//var result = from table1 in dkDt.AsEnumerable()
+						//			 join table2 in hvDt.AsEnumerable()
+						//			 on (string)table1["MAHV"] equals (string)table2["MAHV"]
+						//			 select new
+						//			 {
+						//				 MALOP = (string)table1["MALOP"],
+						//				 MAHV = (string)table2["MAHV"],
+						//				 HOTEN = (string)table2["HOTEN"],
+						//				 GIOITINH = (int)table2["GIOITINH"],
+						//				 NGSINH = (DateTime)table2["NGSINH"],
+						//				 DIACHI = (string)table2["DIACHI"],
+						//				 SDT = (string)table2["SDT"],
+						//				 EMAIL = (string)table2["EMAIL"],
+						//				 NGAYDK = (DateTime)table2["NGAYDK"],
+						//				 TINHTRANG = (int)table2["TINHTRANG"]
+						//			 };
 
-						//dkDt.Merge(hvDt);
-
-						//DataTable cloneDkDt = dkDt.Clone();
-						////cloneDkDt.Clear();
-
-						//foreach (DataRow mRow in dkDt.Rows)
+						//foreach (var item in result)
 						//{
-						//	if (mRow["MALOP"].ToString().Equals(row["MALOP"].ToString()))
-						//	{
-						//		cloneDkDt.Merge(mRow.Table);
-						//	}
+						//	clone1.Rows.Add(item.MALOP, item.MAHV, item.HOTEN, item.GIOITINH, item.NGSINH, item.DIACHI,
+						//		item.SDT, item.EMAIL, item.NGAYDK, item.TINHTRANG);
 						//}
 
-						//dkDt.Columns.Remove(dkDt.Columns["MALOP"]);
+						/* -------------------------- KHONG DUNG LINQ */
 
-						dgvSinhVien.DataSource = clone1;
+						hvDt.PrimaryKey = new DataColumn[] { hvDt.Columns["MAHV"] };
+
+						dkDt.Merge(hvDt);
+
+						DataTable clone = dkDt.Clone();
+
+						foreach (DataRow dr in dkDt.Rows)
+						{
+							if (dr["MALOP"].ToString().Equals(row["MALOP"].ToString()))
+							{
+								clone.Rows.Add(dr.ItemArray);
+							}
+						}
+
+						clone.Columns.Remove(clone.Columns["MALOP"]);
+
+						dgvSinhVien.DataSource = clone;
 						break;
 					}
 				}
