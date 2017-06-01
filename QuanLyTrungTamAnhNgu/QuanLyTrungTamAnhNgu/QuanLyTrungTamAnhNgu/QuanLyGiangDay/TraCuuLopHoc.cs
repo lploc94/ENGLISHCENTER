@@ -8,14 +8,58 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using QuanLyTrungTamAnhNgu.Helper;
+using BusinessLogicLayer;
 
 namespace QuanLyTrungTamAnhNgu.QuanLyGiangDay
 {
     public partial class TraCuuLopHoc : DevExpress.XtraEditors.XtraForm
     {
+		private BusinessLogicLayer.service.CT_LopHoc CT_LopHocService;
+		private BusinessLogicLayer.service.LopHoc lopHocService;
+
+		private DataTable resultDataTable;
+
         public TraCuuLopHoc()
         {
             InitializeComponent();
+			InitializeService();
+			PopulateMaLopHocComboBox();
+			PopulateResulteDataTable();
         }
-    }
+
+		private void PopulateMaLopHocComboBox()
+		{
+			DataTable maLopHocDataTable = lopHocService.getAllId(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword());
+			UIHelper.PopulateComboBoxWithDataTable(maLopHocDataTable, cbMaLopHoc);
+		}
+
+		private void InitializeService()
+		{
+			lopHocService = new BusinessLogicLayer.service.LopHoc();
+			CT_LopHocService = new BusinessLogicLayer.service.CT_LopHoc();
+		}
+
+		private void PopulateResulteDataTable()
+		{
+			resultDataTable = lopHocService.getAll(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword());
+			DataTable dt = CT_LopHocService.getAll(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword());
+		}
+
+		private void btnTraCuu_Click(object sender, EventArgs e)
+		{
+			foreach (DataRow row in resultDataTable.Rows)
+			{
+				if (row["MALOP"].ToString().Equals(cbMaLopHoc.SelectedText))
+				{
+					tbMaHocPhi.Text = row["MAHP"].ToString();
+					tbMaKhoaHoc.Text = row["MAKH"].ToString();
+					tbNgayBD.Text = row["NGAYBD"].ToString();
+					tbNgayKT.Text = row["NGAYKT"].ToString();
+					tbSiSo.Text = row["SISO"].ToString();
+					break;
+				}
+			}
+		}
+	}
 }
