@@ -53,13 +53,14 @@ namespace QuanLyTrungTamAnhNgu.QuanLyGiangDay
 		private void PopulateResulteDataTable()
 		{
 			resultDataTable = lopHocService.getAll(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword());
-			DataTable dt = CT_LopHocService.getAll(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword());
 		}
 
 		private void btnTraCuu_Click(object sender, EventArgs e)
 		{
 			if (cbMaLopHoc.Items.Count > 0)
 			{
+				DataTable dt = CT_LopHocService.getAll(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword());
+
 				foreach (DataRow row in resultDataTable.Rows)
 				{
 					if (row["MALOP"].ToString().Equals(cbMaLopHoc.SelectedItem.ToString()))
@@ -69,6 +70,14 @@ namespace QuanLyTrungTamAnhNgu.QuanLyGiangDay
 						tbNgayBD.Text = row["NGAYBD"].ToString();
 						tbNgayKT.Text = row["NGAYKT"].ToString();
 						tbSiSo.Text = row["SISO"].ToString();
+
+						foreach (DataRow mRow in dt.Rows)
+						{
+							if (mRow["MALOP"].ToString().Equals(cbMaLopHoc.SelectedItem.ToString()))
+							{
+								tbMaGV.Text = mRow["MAGV"].ToString();
+							}
+						}
 						break;
 					}
 				}
