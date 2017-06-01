@@ -25,9 +25,10 @@ namespace QuanLyTrungTamAnhNgu.QuanLyGiangDay
 		// Lay thong tin ve luong co ban
 		private BusinessLogicLayer.service.ThamSo thamSoService;
 
+		private DataTable resultDataTable;
 
 		// Constructor
-        public DanhSachLuongGiangVien()
+		public DanhSachLuongGiangVien()
         {
 			// Khoi tao cac thanh phan trong design
             InitializeComponent();
@@ -53,7 +54,7 @@ namespace QuanLyTrungTamAnhNgu.QuanLyGiangDay
 		private void PopulateLuongDataGridView()
 		{
 			// Lay het cac thong tin trong giang vien
-			DataTable resultDataTable = giangVienService.getAll(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword());
+			resultDataTable = giangVienService.getAll(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword());
 
 			// Tao khoa chinh cho resultDataTable
 			resultDataTable.PrimaryKey = new DataColumn[] { resultDataTable.Columns["MAGV"] };
@@ -107,5 +108,14 @@ namespace QuanLyTrungTamAnhNgu.QuanLyGiangDay
 			// Truyen thong tin tu resultDataTable vao dgvLuong
 			dgvLuong.DataSource = resultDataTable;
 		}
-    }
+
+
+		// Bam vao se xuat ra bang file report
+		private void btnXuatReport_Click(object sender, EventArgs e)
+		{
+			Export_PDF export = new Export_PDF();
+			export.PopExport(resultDataTable);
+			export.Show();
+		}
+	}
 }
