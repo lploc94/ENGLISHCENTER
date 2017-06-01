@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dtNgaySinh = new System.Windows.Forms.DateTimePicker();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtSDT = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -55,7 +56,16 @@
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnXoaTrang = new System.Windows.Forms.Button();
-            this.dtNgaySinh = new System.Windows.Forms.DateTimePicker();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNhapHocVien)).BeginInit();
@@ -91,6 +101,15 @@
             this.groupBox1.Size = new System.Drawing.Size(973, 170);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // dtNgaySinh
+            // 
+            this.dtNgaySinh.CustomFormat = "";
+            this.dtNgaySinh.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtNgaySinh.Location = new System.Drawing.Point(93, 128);
+            this.dtNgaySinh.Name = "dtNgaySinh";
+            this.dtNgaySinh.Size = new System.Drawing.Size(156, 21);
+            this.dtNgaySinh.TabIndex = 21;
             // 
             // txtEmail
             // 
@@ -279,7 +298,19 @@
             // 
             // dgvNhapHocVien
             // 
+            this.dgvNhapHocVien.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvNhapHocVien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvNhapHocVien.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column10,
+            this.Column3,
+            this.Column4,
+            this.Column5,
+            this.Column6,
+            this.Column7,
+            this.Column8,
+            this.Column9});
             this.dgvNhapHocVien.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvNhapHocVien.Location = new System.Drawing.Point(3, 17);
             this.dgvNhapHocVien.Name = "dgvNhapHocVien";
@@ -331,14 +362,68 @@
             this.btnXoaTrang.UseVisualStyleBackColor = true;
             this.btnXoaTrang.Click += new System.EventHandler(this.btnXoaTrang_Click);
             // 
-            // dtNgaySinh
+            // Column1
             // 
-            this.dtNgaySinh.CustomFormat = "";
-            this.dtNgaySinh.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtNgaySinh.Location = new System.Drawing.Point(93, 128);
-            this.dtNgaySinh.Name = "dtNgaySinh";
-            this.dtNgaySinh.Size = new System.Drawing.Size(156, 21);
-            this.dtNgaySinh.TabIndex = 21;
+            this.Column1.DataPropertyName = "MAHV";
+            this.Column1.HeaderText = "Mã học viên";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "HOTEN";
+            this.Column2.HeaderText = "Tên học viên";
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 200;
+            // 
+            // Column10
+            // 
+            this.Column10.DataPropertyName = "MALOP";
+            this.Column10.HeaderText = "Mã lớp";
+            this.Column10.Name = "Column10";
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "GIOITINH";
+            this.Column3.HeaderText = "Giới tính";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "NGSINH";
+            this.Column4.HeaderText = "Ngày sinh";
+            this.Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "SDT";
+            this.Column5.HeaderText = "Số điện thoại";
+            this.Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            this.Column6.DataPropertyName = "DIACHI";
+            this.Column6.HeaderText = "Địa chỉ";
+            this.Column6.Name = "Column6";
+            this.Column6.Width = 200;
+            // 
+            // Column7
+            // 
+            this.Column7.DataPropertyName = "EMAIL";
+            this.Column7.HeaderText = "Email";
+            this.Column7.Name = "Column7";
+            this.Column7.Width = 200;
+            // 
+            // Column8
+            // 
+            this.Column8.DataPropertyName = "TINHTRANG";
+            this.Column8.HeaderText = "Tình trạng";
+            this.Column8.Name = "Column8";
+            // 
+            // Column9
+            // 
+            this.Column9.DataPropertyName = "NGDK";
+            this.Column9.HeaderText = "Ngày đăng ký";
+            this.Column9.Name = "Column9";
             // 
             // NhapHocVien
             // 
@@ -393,5 +478,15 @@
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnXoaTrang;
         private System.Windows.Forms.DateTimePicker dtNgaySinh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
     }
 }

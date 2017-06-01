@@ -49,16 +49,16 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
         {
            
             DataTable table_temp = new DataTable();
-            table_temp.Columns.Add("Mã học viên");
-            table_temp.Columns.Add("Tên học viên");
-            table_temp.Columns.Add("Giới Tính");
-            table_temp.Columns.Add("Ngày Sinh");
-            table_temp.Columns.Add("Địa chỉ");
-            table_temp.Columns.Add("Số điện thoại");
-            table_temp.Columns.Add("Email");
-            table_temp.Columns.Add("Ngày đăng ký");
-            table_temp.Columns.Add("Tình trạng");
-            table_temp.Columns.Add("Mã lớp");
+            table_temp.Columns.Add("MAHV");
+            table_temp.Columns.Add("HOTEN");
+            table_temp.Columns.Add("GIOITINH");
+            table_temp.Columns.Add("NGSINH");
+            table_temp.Columns.Add("DIACHI");
+            table_temp.Columns.Add("SDT");
+            table_temp.Columns.Add("EMAIL");
+            table_temp.Columns.Add("NGDK");
+            table_temp.Columns.Add("TINHTRANG");
+            table_temp.Columns.Add("MALOP");
             DataTable tb = hv.join(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword());
             int lenght = tb.Rows.Count;
             for (int i = 0; i < lenght; i++)
@@ -149,12 +149,12 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
             if (flat_hv == 1 && flat_dk == 1)
             {
                 Load_HV();
-                MessageBox.Show("Thêm thành công");
+                DialogHelper.ExtendedShowErrorDialog("Thêm thành công", "", 1, 2);
             }
             else
             {
                 Load_HV();
-                MessageBox.Show("Thêm không thành công");
+                DialogHelper.ExtendedShowErrorDialog("Thêm không thành công", "", 1, 1);
             }
 
 
@@ -178,11 +178,11 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
 
                 if (flat_hv == 1 && flat_dk == 1)
                 {
-                    MessageBox.Show("Xóa thành công");
+                    DialogHelper.ExtendedShowErrorDialog("Xóa thành công", "", 1, 2);
                 }
                 else
                 {
-                    MessageBox.Show("Xóa không thành công");
+                    DialogHelper.ExtendedShowErrorDialog("Xóa không thành công", "", 1, 1);
                 }
             }
             Load_HV();
@@ -226,7 +226,7 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
             }
             else
             {
-                MessageBox.Show("khong thanh cong");
+                DialogHelper.ExtendedShowErrorDialog("Cập nhât không thành công", "", 1, 1);
             }
 
 
@@ -234,12 +234,12 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
             if (flat_hv == 1 && flat_dkcn == 1)
             {
                 Load_HV();
-                MessageBox.Show("Cập nhật thành công");
+                DialogHelper.ExtendedShowErrorDialog("Cập nhật thành công", "", 1, 2);
             }
             else
             {
                 Load_HV();
-                MessageBox.Show("Cập nhật không thành công");
+                DialogHelper.ExtendedShowErrorDialog("Cập nhật không thành công", "", 1, 1);
             }
 
 

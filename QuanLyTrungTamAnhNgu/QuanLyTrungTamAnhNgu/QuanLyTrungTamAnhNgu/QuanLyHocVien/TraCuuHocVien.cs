@@ -34,17 +34,17 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
         private void btnTim_Click(object sender, EventArgs e)
         {
             DataTable table_temp = new DataTable();
-            table_temp.Columns.Add("Mã học viên");
-            table_temp.Columns.Add("Tên học viên");
-            table_temp.Columns.Add("Giới Tính");
-            table_temp.Columns.Add("Ngày Sinh");
-            table_temp.Columns.Add("Địa chỉ");
-            table_temp.Columns.Add("Số điện thoại");
-            table_temp.Columns.Add("Email");
-            table_temp.Columns.Add("Ngày đăng ký");
-            table_temp.Columns.Add("Tình trạng");
-            table_temp.Columns.Add("Mã lớp");
-            table_temp.Columns.Add("Tên khóa học");
+            table_temp.Columns.Add("MAHV");
+            table_temp.Columns.Add("TENHV");
+            table_temp.Columns.Add("GIOITINH");
+            table_temp.Columns.Add("NGSINH");
+            table_temp.Columns.Add("DIACHI");
+            table_temp.Columns.Add("SDT");
+            table_temp.Columns.Add("EMAIL");
+            table_temp.Columns.Add("NGDK");
+            table_temp.Columns.Add("TINHTRANG");
+            table_temp.Columns.Add("MALOP");
+            table_temp.Columns.Add("TENKH");
             HocVien hv = new HocVien();
             DataTable tb = new DataTable();
             tb = hv.getjoin(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), cbxMaHV.Text);

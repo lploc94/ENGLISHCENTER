@@ -25,6 +25,7 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
             HocVien hv = new HocVien();
             DataTable tb = new DataTable();
             tb = hv.getAll(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword());
+            cbxMaHV.DataSource = tb;
             cbxMaHV.ValueMember = tb.Columns[0].ToString();
             cbxMaHV.DisplayMember = tb.Columns[0].ToString();
         }

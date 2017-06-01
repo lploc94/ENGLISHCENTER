@@ -33,6 +33,17 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnTim = new System.Windows.Forms.Button();
             this.cbxMaHV = new System.Windows.Forms.ComboBox();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTraCuuHocVien)).BeginInit();
             this.SuspendLayout();
@@ -51,7 +62,20 @@
             // 
             // dgvTraCuuHocVien
             // 
+            this.dgvTraCuuHocVien.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvTraCuuHocVien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTraCuuHocVien.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column10,
+            this.Column4,
+            this.Column5,
+            this.Column6,
+            this.Column7,
+            this.Column8,
+            this.Column11,
+            this.Column9});
             this.dgvTraCuuHocVien.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvTraCuuHocVien.Location = new System.Drawing.Point(3, 17);
             this.dgvTraCuuHocVien.Name = "dgvTraCuuHocVien";
@@ -86,6 +110,74 @@
             this.cbxMaHV.Size = new System.Drawing.Size(144, 21);
             this.cbxMaHV.TabIndex = 4;
             // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "MAHV";
+            this.Column1.HeaderText = "Mã học viên";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "TENHV";
+            this.Column2.HeaderText = "Tên học viên";
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 200;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "MALOP";
+            this.Column3.HeaderText = "Mã lớp";
+            this.Column3.Name = "Column3";
+            // 
+            // Column10
+            // 
+            this.Column10.DataPropertyName = "TENKH";
+            this.Column10.HeaderText = "Tên khóa học";
+            this.Column10.Name = "Column10";
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "GIOITINH";
+            this.Column4.HeaderText = "Giới tính";
+            this.Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "NGSINH";
+            this.Column5.HeaderText = "Ngày sinh";
+            this.Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            this.Column6.DataPropertyName = "SDT";
+            this.Column6.HeaderText = "Số điện thoại";
+            this.Column6.Name = "Column6";
+            // 
+            // Column7
+            // 
+            this.Column7.DataPropertyName = "DIACHI";
+            this.Column7.HeaderText = "Địa chỉ";
+            this.Column7.Name = "Column7";
+            this.Column7.Width = 200;
+            // 
+            // Column8
+            // 
+            this.Column8.DataPropertyName = "EMAIL";
+            this.Column8.HeaderText = "Email";
+            this.Column8.Name = "Column8";
+            // 
+            // Column11
+            // 
+            this.Column11.DataPropertyName = "NGDK";
+            this.Column11.HeaderText = "Ngày đăng ký";
+            this.Column11.Name = "Column11";
+            // 
+            // Column9
+            // 
+            this.Column9.DataPropertyName = "TINHTRANG";
+            this.Column9.HeaderText = "Tình trạng";
+            this.Column9.Name = "Column9";
+            // 
             // TraCuuHocVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -113,5 +205,16 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnTim;
         private System.Windows.Forms.ComboBox cbxMaHV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
     }
 }
