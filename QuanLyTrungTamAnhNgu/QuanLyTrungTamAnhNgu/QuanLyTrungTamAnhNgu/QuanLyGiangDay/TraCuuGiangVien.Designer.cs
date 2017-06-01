@@ -32,6 +32,7 @@
 			this.cbMaGiaoVien = new System.Windows.Forms.ComboBox();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.dgvTraCuu = new System.Windows.Forms.DataGridView();
+			this.btnTraCuu = new System.Windows.Forms.Button();
 			this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,7 +44,6 @@
 			this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.btnTraCuu = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvTraCuu)).BeginInit();
 			this.SuspendLayout();
@@ -100,6 +100,17 @@
 			this.dgvTraCuu.Size = new System.Drawing.Size(757, 306);
 			this.dgvTraCuu.TabIndex = 0;
 			// 
+			// btnTraCuu
+			// 
+			this.btnTraCuu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.btnTraCuu.Location = new System.Drawing.Point(27, 426);
+			this.btnTraCuu.Name = "btnTraCuu";
+			this.btnTraCuu.Size = new System.Drawing.Size(75, 23);
+			this.btnTraCuu.TabIndex = 3;
+			this.btnTraCuu.Text = "Tra cứu";
+			this.btnTraCuu.UseVisualStyleBackColor = true;
+			this.btnTraCuu.Click += new System.EventHandler(this.btnTraCuu_Click);
+			// 
 			// Column1
 			// 
 			this.Column1.DataPropertyName = "MAGV";
@@ -120,7 +131,7 @@
 			// 
 			// Column4
 			// 
-			this.Column4.DataPropertyName = "NGAYSINH";
+			this.Column4.DataPropertyName = "NGSINH";
 			this.Column4.HeaderText = "Ngày sinh";
 			this.Column4.Name = "Column4";
 			// 
@@ -165,17 +176,6 @@
 			this.Column11.DataPropertyName = "HESO";
 			this.Column11.HeaderText = "Hệ số lương";
 			this.Column11.Name = "Column11";
-			// 
-			// btnTraCuu
-			// 
-			this.btnTraCuu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.btnTraCuu.Location = new System.Drawing.Point(27, 426);
-			this.btnTraCuu.Name = "btnTraCuu";
-			this.btnTraCuu.Size = new System.Drawing.Size(75, 23);
-			this.btnTraCuu.TabIndex = 3;
-			this.btnTraCuu.Text = "Tra cứu";
-			this.btnTraCuu.UseVisualStyleBackColor = true;
-			this.btnTraCuu.Click += new System.EventHandler(this.btnTraCuu_Click);
 			// 
 			// TraCuuGiangVien
 			// 
