@@ -14,7 +14,14 @@ namespace QuanLyTrungTamAnhNgu.Helper
             //DialogHelper.ShowErrorDialog("Bạn không được phép chỉnh sửa khóa chính");
             DialogHelper.ExtendedShowErrorDialog("Bạn không được phép chỉnh sửa thông tin này", "Modify Error", 2, 5);
         }
-        public static void ShowMissingField()
+
+		public static void ShowDuplicatePrimaryKey()
+		{
+			//DialogHelper.ShowErrorDialog("Bạn không được để trùng khoá chính");
+			DialogHelper.ExtendedShowErrorDialog("Bạn không được phép để trùng khóa chính", "Add Error", 2, 5);
+		}
+
+		public static void ShowMissingField()
         {
             //DialogHelper.ShowErrorDialog("Bạn không được để các giá trị bị trống");
             DialogHelper.ExtendedShowErrorDialog("Bạn không được để các giá trị bị trống", "Input Error", 1, 4);
@@ -29,7 +36,17 @@ namespace QuanLyTrungTamAnhNgu.Helper
             //DialogHelper.ShowErrorDialog("Có lỗi xảy ra khi cập nhật dữ liệu");
             DialogHelper.ExtendedShowErrorDialog("Có lỗi xảy ra khi cập nhật dữ liệu", "Update Error", 3, 1);
         }
-        public static void ShowErrorDialog(string body)
+		public static void ShowErrorOnInsert()
+		{
+			//DialogHelper.ShowErrorDialog("Có lỗi xảy ra khi thêm dữ liệu");
+			DialogHelper.ExtendedShowErrorDialog("Có lỗi xảy ra khi thêm dữ liệu", "Insert Error", 3, 1);
+		}
+		public static void ShowErrorOnDelete()
+		{
+			//DialogHelper.ShowErrorDialog("Có lỗi xảy ra khi xóa dữ liệu");
+			DialogHelper.ExtendedShowErrorDialog("Có lỗi xảy ra khi xóa dữ liệu", "Insert Error", 3, 1);
+		}
+		public static void ShowErrorDialog(string body)
         {
             MessageBox.Show(body, "Found Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
