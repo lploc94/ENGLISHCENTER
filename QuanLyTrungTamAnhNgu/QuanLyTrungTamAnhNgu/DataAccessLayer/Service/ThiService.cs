@@ -72,7 +72,7 @@ namespace DataAccessLayer.Service
                 rtnTable.Columns.Add("KETQUA", typeof(int));
                 foreach (var i in info)
                 {
-                    rtnTable.Rows.Add(maHv, i.MALOP, hoten, i.DIEMGK, i.DIEMCK, (i.DIEMGK + i.DIEMCK), (i.DIEMGK + i.DIEMCK) > 10 ? 1 : 0);
+                    rtnTable.Rows.Add(maHv, i.MALOP, hoten, i.DIEMGK, i.DIEMCK, (i.DIEMGK + i.DIEMCK), (float)(i.DIEMGK + i.DIEMCK) / 2 >= 5 ? 1 : 0);
                 }
                 return rtnTable;
             }
@@ -97,7 +97,7 @@ namespace DataAccessLayer.Service
                 rtnTable.Columns.Add("KETQUA", typeof(int));
                 foreach (var i in info)
                 {
-                    rtnTable.Rows.Add(i.MAHV,maLop,qltt.HOCVIENs.Where(p => p.MAHV == i.MAHV).FirstOrDefault().HOTEN, i.DIEMGK, i.DIEMCK, (i.DIEMGK + i.DIEMCK) / 2, (i.DIEMGK + i.DIEMCK) > 100 ? 1 : 0);
+                    rtnTable.Rows.Add(i.MAHV,maLop,qltt.HOCVIENs.Where(p => p.MAHV == i.MAHV).FirstOrDefault().HOTEN, i.DIEMGK, i.DIEMCK, (i.DIEMGK + i.DIEMCK) / 2, (float)(i.DIEMGK + i.DIEMCK)/2 >= 5 ? 1 : 0);
                 }
                 return rtnTable;
             }
