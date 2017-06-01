@@ -31,7 +31,17 @@ namespace QuanLyTrungTamAnhNgu.QuanLyGiangDay
 		private void PopulateMaLopHocComboBox()
 		{
 			DataTable maLopHocDataTable = lopHocService.getAllId(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword());
-			UIHelper.PopulateComboBoxWithDataTable(maLopHocDataTable, cbMaLopHoc);
+			
+			foreach (DataRow row in maLopHocDataTable.Rows)
+			{
+				cbMaLopHoc.Items.Add(row["MALOP"].ToString());
+			}
+
+			if (cbMaLopHoc.Items.Count > 0)
+			{
+				cbMaLopHoc.SelectedIndex = 0;
+			}
+			
 		}
 
 		private void InitializeService()
@@ -48,16 +58,19 @@ namespace QuanLyTrungTamAnhNgu.QuanLyGiangDay
 
 		private void btnTraCuu_Click(object sender, EventArgs e)
 		{
-			foreach (DataRow row in resultDataTable.Rows)
+			if (cbMaLopHoc.Items.Count > 0)
 			{
-				if (row["MALOP"].ToString().Equals(cbMaLopHoc.SelectedText))
+				foreach (DataRow row in resultDataTable.Rows)
 				{
-					tbMaHocPhi.Text = row["MAHP"].ToString();
-					tbMaKhoaHoc.Text = row["MAKH"].ToString();
-					tbNgayBD.Text = row["NGAYBD"].ToString();
-					tbNgayKT.Text = row["NGAYKT"].ToString();
-					tbSiSo.Text = row["SISO"].ToString();
-					break;
+					if (row["MALOP"].ToString().Equals(cbMaLopHoc.SelectedItem.ToString()))
+					{
+						tbMaHocPhi.Text = row["MAHP"].ToString();
+						tbMaKhoaHoc.Text = row["MAKH"].ToString();
+						tbNgayBD.Text = row["NGAYBD"].ToString();
+						tbNgayKT.Text = row["NGAYKT"].ToString();
+						tbSiSo.Text = row["SISO"].ToString();
+						break;
+					}
 				}
 			}
 		}
