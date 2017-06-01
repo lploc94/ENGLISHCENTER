@@ -16,15 +16,24 @@ namespace QuanLyTrungTamAnhNgu.QuanLyGiangDay
     public partial class NhapLopHocMoi : DevExpress.XtraEditors.XtraForm
     {
 		private BusinessLogicLayer.service.LopHoc lopHocService;
-		private BusinessLogicLayer.service.Thi thiService;
-		private BusinessLogicLayer.service.PhongHoc phongHocService;
-		private BusinessLogicLayer.service.KiemTra kiemTraService;
+		private BusinessLogicLayer.service.CT_LopHoc CT_LopHocService;
 
 		public NhapLopHocMoi()
         {
-            InitializeComponent();
+			InitializeComponent();
 		}
 
 		
+		private void PopulateLopHocDataGidView()
+		{
+
+		}
+
+
+		private void InitializeService()
+		{
+			lopHocService = new BusinessLogicLayer.service.LopHoc();
+			CT_LopHocService = new BusinessLogicLayer.service.CT_LopHoc();
+		}
 	}
 }
