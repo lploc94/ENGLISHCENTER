@@ -242,6 +242,7 @@ namespace DataAccessLayer.Service
 
 internal static class MyExtensions
 {
+
     internal static IList<TR> FullOuterGroupJoin<TA, TB, TK, TR>(
         this IEnumerable<TA> a,
         IEnumerable<TB> b,

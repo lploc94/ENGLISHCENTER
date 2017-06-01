@@ -98,5 +98,12 @@ namespace BusinessLogicLayer.service
             }
             return 0;
         }
+
+        public DataTable getAllMaLop(string id,string pass)
+        {
+            if (CheckService.checkID(id, pass) == 1)
+                return new LopHocService().getAllMaLop();
+            return null;
+        }
     }
 }
