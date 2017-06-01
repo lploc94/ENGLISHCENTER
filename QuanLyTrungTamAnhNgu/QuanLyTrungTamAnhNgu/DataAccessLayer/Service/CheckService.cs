@@ -38,5 +38,17 @@ namespace DataAccessLayer.Service
             }
 
         }
+        public static String getPasswordByUserName(string username)
+        {
+            using (QLTTEntities qltt = new QLTTEntities())
+            {
+                NHANVIEN data = qltt.NHANVIENs.Where(p => p.USERNAME == username).FirstOrDefault();
+                if (data == null) return null;
+                else
+                {
+                    return data.PASS;
+                }
+            }
+        }
     }
 }

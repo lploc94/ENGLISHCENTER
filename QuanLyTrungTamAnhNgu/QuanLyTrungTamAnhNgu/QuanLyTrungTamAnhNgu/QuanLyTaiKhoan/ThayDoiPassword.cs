@@ -17,9 +17,9 @@ namespace QuanLyTrungTamAnhNgu.QuanLyTaiKhoan
         public ThayDoiPassword()
         {
             InitializeComponent();
-
             this.InitializeCustomInterface();
         }
+        
 
         public ThayDoiPassword(string username)
         {
@@ -49,7 +49,7 @@ namespace QuanLyTrungTamAnhNgu.QuanLyTaiKhoan
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (this.txtOldPassword.Text != AccountHelper.getPasswordByUserName(username))
+            if (this.txtOldPassword.Text != DataAccessLayer.Service.CheckService.getPasswordByUserName(username))
             {
                 //DialogHelper.ShowErrorDialog("Xin hãy nhập đúng password của bạn");
                 DialogHelper.ExtendedShowErrorDialog("Xin hãy nhập đúng password của bạn", "Password Incorrect", 3, 1);
