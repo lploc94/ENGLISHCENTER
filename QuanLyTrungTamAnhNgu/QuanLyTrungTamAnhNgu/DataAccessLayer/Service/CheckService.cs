@@ -50,5 +50,23 @@ namespace DataAccessLayer.Service
                 }
             }
         }
+        public static int changePassword(string username, string oldPass, string newPass)
+        {
+            using (QLTTEntities qltt = new QLTTEntities())
+            {
+                NHANVIEN data = qltt.NHANVIENs.Where(p => p.USERNAME == username).FirstOrDefault();
+                if (data == null) return 0;
+                else
+                {
+                    if (oldPass != data.PASS)
+                    {
+                        return 0;
+                    }
+                    data.PASS = newPass;
+                    qltt.SaveChanges();
+                    return 1;
+                }
+            }
+        }
     }
 }
