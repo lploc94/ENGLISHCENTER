@@ -21,14 +21,44 @@ namespace QuanLyTrungTamAnhNgu
     /// </summary>
     public partial class MainForm : DevExpress.XtraBars.Ribbon.RibbonForm
     {
-        public MainForm()
+        public MainForm(string quyen)
         {
             InitializeComponent();
-
+            Show_Menu(quyen);
             InitCustom();
             HocVien hv = new HocVien();
             int x = hv.insert(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), "HV28", "Nguyen Phuong Nguyen", 1, "Nha cua Nguyen", "0123456789", "pnpuddingkiller@n.com", new DateTime(2017, 6, 10), 1, new DateTime(1995, 6, 10));
            
+        }
+
+        private void Show_Menu(string quyen)
+        {
+            if (quyen == "1")
+            {
+                ribbonPageGroup3.Enabled = false;
+                ribbonPageGroup4.Enabled = false;
+                ribbonPageGroup5.Enabled = false;
+                ribbonPageGroup6.Enabled = false;
+                ribbonPageGroup7.Enabled = false;
+                ribbonPageGroup8.Enabled = false;
+            }
+            if (quyen == "2")
+            {
+                //KHOAHOC, PHONGHOC, LICHHOC, LOPHOC, CTLOPHOC, TKB, KIEMTRA, THI
+                ribbonPageGroup1.Enabled = false;
+                ribbonPageGroup2.Enabled = false;
+                ribbonPageGroup5.Enabled = false;
+            }
+            if (quyen == "3")
+            {
+                //GIANGVIEN, HOCPHI, TT_LUONGGV, NHANVIEN
+                ribbonPageGroup1.Enabled = false;
+                ribbonPageGroup3.Enabled = false;
+                ribbonPageGroup4.Enabled = false;
+                ribbonPageGroup6.Enabled = false;
+                ribbonPageGroup7.Enabled = false;
+
+            }
         }
 
         #region variable Quan Ly Giang Day

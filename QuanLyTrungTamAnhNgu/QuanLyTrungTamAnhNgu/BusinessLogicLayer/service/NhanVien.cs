@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using DataAccessLayer.Service;
 namespace BusinessLogicLayer.service
 {
-    class NhanVien
+   public class NhanVien
     {
         public int delete(string id, string pass, string manv)
         {
