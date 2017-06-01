@@ -116,6 +116,7 @@ namespace DataAccessLayer.Service
                         MAGV=magv
                     };
                     qltt.CT_LOPHOC.Add(ctlh);
+                    qltt.SaveChanges();
                     return 1;
                 }
             }
