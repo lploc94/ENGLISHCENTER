@@ -162,11 +162,11 @@ namespace QuanLyTrungTamAnhNgu.QuanLyGiangDay
             bool isSuccess = true;
             if (!isUpdate)
             {
-                isSuccess = gv.insert(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), maGiangVien, tenGiangVien, gioiTinh, ngaySinh, diaChi, SDT, email, trinhDo, bangCap, ngayVL, heSo) == 1;
+                isSuccess = gv.insert(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), maGiangVien, tenGiangVien, gioiTinh, ngaySinh.Date, diaChi, SDT, email, trinhDo, bangCap, ngayVL.Date, heSo) == 1;
             }
             else
             {
-                isSuccess = gv.update(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), maGiangVien, tenGiangVien, gioiTinh, ngaySinh, diaChi, SDT, email, trinhDo, bangCap, ngayVL, heSo) == 1;
+                isSuccess = gv.update(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), maGiangVien, tenGiangVien, gioiTinh, ngaySinh.Date, diaChi, SDT, email, trinhDo, bangCap, ngayVL.Date, heSo) == 1;
             }
 
 

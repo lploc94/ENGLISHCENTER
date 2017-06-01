@@ -84,7 +84,7 @@ namespace QuanLyTrungTamAnhNgu.QuanLyGiangDay
 		{
 
 			DateTime today = DateTime.Today;
-			name = today.Month + "-" + today.Day + "-" + today.Year + "_NoHocPhi";
+			name = today.Month + "-" + today.Day + "-" + today.Year + "_Luong";
 
 			ShowTable(dt);
 
@@ -149,7 +149,7 @@ namespace QuanLyTrungTamAnhNgu.QuanLyGiangDay
             dt.Columns.RemoveAt(endColumn);
 
             DateTime today = DateTime.Today;
-            name = today.Month + "-" + today.Day + "-" + today.Year + "_KetQuaHocTap";
+            name = today.Month + "-" + today.Day + "-" + today.Year + "_KetQuaHocTap_" + maLop;
 
             ShowTable(dt);
 

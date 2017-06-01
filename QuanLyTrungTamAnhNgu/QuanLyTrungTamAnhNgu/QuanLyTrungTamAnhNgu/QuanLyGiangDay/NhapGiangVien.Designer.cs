@@ -53,10 +53,6 @@
             this.rbNu = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnThem = new System.Windows.Forms.Button();
-            this.btnXoa = new System.Windows.Forms.Button();
-            this.btnSua = new System.Windows.Forms.Button();
-            this.btnXoaTrang = new System.Windows.Forms.Button();
             this.MAGV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TENGV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GIOITINH = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -68,6 +64,10 @@
             this.BANGCAP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NGAYVL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HESO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnThem = new System.Windows.Forms.Button();
+            this.btnXoa = new System.Windows.Forms.Button();
+            this.btnSua = new System.Windows.Forms.Button();
+            this.btnXoaTrang = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -239,6 +239,7 @@
             // 
             // dateNgaySinh
             // 
+            this.dateNgaySinh.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateNgaySinh.Location = new System.Drawing.Point(377, 12);
             this.dateNgaySinh.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dateNgaySinh.Name = "dateNgaySinh";
@@ -247,6 +248,7 @@
             // 
             // dateNgayVaoLam
             // 
+            this.dateNgayVaoLam.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateNgayVaoLam.Location = new System.Drawing.Point(889, 68);
             this.dateNgayVaoLam.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dateNgayVaoLam.Name = "dateNgayVaoLam";
@@ -314,54 +316,6 @@
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gridView1_RowHeaderMouseClick);
             // 
-            // btnThem
-            // 
-            this.btnThem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnThem.Location = new System.Drawing.Point(19, 516);
-            this.btnThem.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(87, 28);
-            this.btnThem.TabIndex = 24;
-            this.btnThem.Text = "Thêm";
-            this.btnThem.UseVisualStyleBackColor = true;
-            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
-            // 
-            // btnXoa
-            // 
-            this.btnXoa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnXoa.Location = new System.Drawing.Point(134, 516);
-            this.btnXoa.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(87, 28);
-            this.btnXoa.TabIndex = 25;
-            this.btnXoa.Text = "Xóa";
-            this.btnXoa.UseVisualStyleBackColor = true;
-            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
-            // 
-            // btnSua
-            // 
-            this.btnSua.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnSua.Location = new System.Drawing.Point(250, 516);
-            this.btnSua.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(87, 28);
-            this.btnSua.TabIndex = 26;
-            this.btnSua.Text = "Sửa";
-            this.btnSua.UseVisualStyleBackColor = true;
-            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
-            // 
-            // btnXoaTrang
-            // 
-            this.btnXoaTrang.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnXoaTrang.Location = new System.Drawing.Point(365, 516);
-            this.btnXoaTrang.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnXoaTrang.Name = "btnXoaTrang";
-            this.btnXoaTrang.Size = new System.Drawing.Size(87, 28);
-            this.btnXoaTrang.TabIndex = 27;
-            this.btnXoaTrang.Text = "Xóa trắng";
-            this.btnXoaTrang.UseVisualStyleBackColor = true;
-            this.btnXoaTrang.Click += new System.EventHandler(this.btnXoaTrang_Click);
-            // 
             // MAGV
             // 
             this.MAGV.DataPropertyName = "MAGV";
@@ -427,6 +381,54 @@
             this.HESO.DataPropertyName = "HESO";
             this.HESO.HeaderText = "Hệ Lương ";
             this.HESO.Name = "HESO";
+            // 
+            // btnThem
+            // 
+            this.btnThem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnThem.Location = new System.Drawing.Point(19, 516);
+            this.btnThem.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(87, 28);
+            this.btnThem.TabIndex = 24;
+            this.btnThem.Text = "Thêm";
+            this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
+            // 
+            // btnXoa
+            // 
+            this.btnXoa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnXoa.Location = new System.Drawing.Point(134, 516);
+            this.btnXoa.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(87, 28);
+            this.btnXoa.TabIndex = 25;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            // 
+            // btnSua
+            // 
+            this.btnSua.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnSua.Location = new System.Drawing.Point(250, 516);
+            this.btnSua.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Size = new System.Drawing.Size(87, 28);
+            this.btnSua.TabIndex = 26;
+            this.btnSua.Text = "Sửa";
+            this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
+            // 
+            // btnXoaTrang
+            // 
+            this.btnXoaTrang.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnXoaTrang.Location = new System.Drawing.Point(365, 516);
+            this.btnXoaTrang.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnXoaTrang.Name = "btnXoaTrang";
+            this.btnXoaTrang.Size = new System.Drawing.Size(87, 28);
+            this.btnXoaTrang.TabIndex = 27;
+            this.btnXoaTrang.Text = "Xóa trắng";
+            this.btnXoaTrang.UseVisualStyleBackColor = true;
+            this.btnXoaTrang.Click += new System.EventHandler(this.btnXoaTrang_Click);
             // 
             // NhapGiangVien
             // 
