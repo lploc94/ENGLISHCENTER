@@ -90,6 +90,7 @@ namespace DataAccessLayer.Service
 
         public int insert(string mahv, string hoten, int gioitinh, string diachi, string sdt, string email, DateTime ngaydk, int tinhtrang,DateTime ngaysinh)
         {
+            //Console.Write(mahv+" "+ hoten+" "+gioitinh+" "+diachi+" "+sdt+" "+email+" "+ngaydk+" "+tinhtrang+" "+ngaysinh);
             try
             {
                 using (QLTTEntities qltt = new QLTTEntities())

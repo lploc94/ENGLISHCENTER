@@ -29,15 +29,19 @@ namespace BusinessLogicLayer.service
             {
                 if (CheckService.checkRole(id, 1) == 1 || CheckService.checkRole(id, 0) == 1 )//kiểm tra id này có quyền insert không... 
                 {
+                    
                     if(TruongRong(hoten, gioitinh, diachi, sdt, email, ngaydk, tinhtrang, ngaysinh) == true)
                     {
                         if (gioitinh != 1 && gioitinh != 0)
                             return 0;
                         if (sdt.Length > 13)
                             return 0;
-
+                   //   Console.WriteLine(TruongRong(hoten, gioitinh, diachi, sdt, email, ngaydk, tinhtrang, ngaysinh));
                         HocVienService hvsv = new HocVienService();
-                        return hvsv.insert(mahv, hoten, gioitinh, diachi, sdt, email, ngaydk, tinhtrang, ngaysinh);
+
+                        int k= hvsv.insert(mahv, hoten, gioitinh, diachi, sdt, email, ngaydk, tinhtrang, ngaysinh);
+                  //    Console.WriteLine(k);
+                        return k;
                     }
                     
                 }

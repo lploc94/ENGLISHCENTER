@@ -127,6 +127,7 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
             txtTienThu.Text = dataGridView1.Rows[row].Cells[5].Value.ToString();
             cbxMaLop.Text = dataGridView1.Rows[row].Cells[2].Value.ToString();
             dtNgTT.Text = dataGridView1.Rows[row].Cells[4].Value.ToString();
+            cbxMaLop.Enabled = false;
             EditButton(false, true, true, true);
         }
 
