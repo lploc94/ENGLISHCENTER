@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using BusinessLogicLayer.service;
 using QuanLyTrungTamAnhNgu.Helper;
+using System.Text.RegularExpressions;
 
 namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
 {
@@ -62,7 +63,7 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
 
         private void txtTienThu_TextChanged(object sender, EventArgs e)
         {
-            if (txtTienThu.Text == "")
+            if (txtTienThu.Text == "" || isNum(txtTienThu.Text)==0)
             {
                 txtTienNo.Text = (Convert.ToInt64(txtSoTien.Text) - 0).ToString();
             }
@@ -71,19 +72,50 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
                 txtTienNo.Text = (Convert.ToInt64(txtSoTien.Text) - Convert.ToInt64(txtTienThu.Text)).ToString();
             }
         }
-
+        private int isNum(string sdt)
+        {
+            Regex regex = new Regex("[0-9]*");
+            Match match = regex.Match(sdt);
+            if (match.Success)
+            {
+                return 1;
+            }
+            else
+                return 0;
+        }
         private void btnThem_Click(object sender, EventArgs e)
         {
             ThongTinHocPhi tthp = new ThongTinHocPhi();
-            tthp.insert(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), cbxMaHV.Text, cbxMaLop.Text, txtTienThu.Text, txtTienNo.Text, dtNgTT.Value);
+            int flat;
+            flat = tthp.insert(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), cbxMaHV.Text, cbxMaLop.Text, txtTienThu.Text, txtTienNo.Text, dtNgTT.Value);
+            if(flat==1)
+            {
+                DialogHelper.ExtendedShowErrorDialog("Thêm thành công", "", 1, 2);
+            }
+            else
+            {
+                DialogHelper.ExtendedShowErrorDialog("Thêm không thành công", "", 1, 1);
+            }
             Load_DL();
             EditButton(false, false, false, true);
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            ThongTinHocPhi tthp = new ThongTinHocPhi();
-            tthp.delete(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), cbxMaHV.Text);
+            if(MessageBox.Show("Bạn có muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                ThongTinHocPhi tthp = new ThongTinHocPhi();
+               int flat = tthp.delete(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), cbxMaHV.Text);
+               if(flat==1)
+                {
+                    DialogHelper.ExtendedShowErrorDialog("Xóa thành công", "", 1, 2);
+                }
+               else
+                {
+                    DialogHelper.ExtendedShowErrorDialog("Xóa không thành công", "", 1, 1);
+                }
+            }
+           
             Load_DL();
             EditButton(true, false, false, false);
         }
@@ -101,7 +133,15 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
         private void btnSua_Click(object sender, EventArgs e)
         {
             ThongTinHocPhi tthp = new ThongTinHocPhi();
-            tthp.update(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), cbxMaHV.Text, cbxMaLop.Text, txtTienThu.Text, txtTienNo.Text, dtNgTT.Value);
+            int flat =  tthp.update(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), cbxMaHV.Text, cbxMaLop.Text, txtTienThu.Text, txtTienNo.Text, dtNgTT.Value);
+            if(flat==1)
+            {
+                DialogHelper.ExtendedShowErrorDialog("Sửa thành công", "", 1, 2);
+            }
+            else
+            {
+                DialogHelper.ExtendedShowErrorDialog("Sửa không thành công", "", 1, 1);
+            }
             Load_DL();
             EditButton(true, false, false, false);
         }

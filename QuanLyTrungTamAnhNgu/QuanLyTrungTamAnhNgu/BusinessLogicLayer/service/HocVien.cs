@@ -27,15 +27,19 @@ namespace BusinessLogicLayer.service
         {
             if (CheckService.checkID(id, pass) == 1)
             {
-                if (CheckService.checkRole(id, 1) == 1 || CheckService.checkRole(id, 0) == 1)//kiểm tra id này có quyền insert không... 
+                if (CheckService.checkRole(id, 1) == 1 || CheckService.checkRole(id, 0) == 1 )//kiểm tra id này có quyền insert không... 
                 {
-                    if (gioitinh != 1 && gioitinh != 0)
-                        return 0;
-                    if (sdt.Length > 13)
-                        return 0;
+                    if(TruongRong(hoten, gioitinh, diachi, sdt, email, ngaydk, tinhtrang, ngaysinh) == true)
+                    {
+                        if (gioitinh != 1 && gioitinh != 0)
+                            return 0;
+                        if (sdt.Length > 13)
+                            return 0;
 
-                    HocVienService hvsv = new HocVienService();
-                    return hvsv.insert(mahv, hoten, gioitinh, diachi, sdt, email, ngaydk, tinhtrang,ngaysinh);
+                        HocVienService hvsv = new HocVienService();
+                        return hvsv.insert(mahv, hoten, gioitinh, diachi, sdt, email, ngaydk, tinhtrang, ngaysinh);
+                    }
+                    
                 }
             }
             return 0;
@@ -71,10 +75,14 @@ namespace BusinessLogicLayer.service
         {
             if (CheckService.checkID(id, pass) == 1)
             {
-                if (CheckService.checkRole(id, 1) == 1 || CheckService.checkRole(id, 0) == 1)
+                if (CheckService.checkRole(id, 1) == 1 || CheckService.checkRole(id, 0) == 1  )
                 {
-                    HocVienService hvsv = new HocVienService();
-                    return hvsv.update(mahv, hoten, gioitinh, diachi, sdt, email, ngaydk, tinhtrang,ngaysinh);
+                    if(TruongRong(hoten, gioitinh, diachi, sdt, email, ngaydk, tinhtrang, ngaysinh) == true)
+                    {
+                        HocVienService hvsv = new HocVienService();
+                        return hvsv.update(mahv, hoten, gioitinh, diachi, sdt, email, ngaydk, tinhtrang, ngaysinh);
+                    }
+                    
 
                 }
             }
