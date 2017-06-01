@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicLayer.service
 {
-    class CT_LopHoc
+    public class CT_LopHoc
     {
-        public static int delete(string id, string pass, string malop, string magv)
+        public int delete(string id, string pass, string malop, string magv)
         {
             if (CheckService.checkID(id, pass) == 1)
             {
@@ -22,7 +22,7 @@ namespace BusinessLogicLayer.service
             }
             return 0;
         }
-        public static DataTable getAll(string id, string pass)
+        public DataTable getAll(string id, string pass)
         {
             if (CheckService.checkID(id, pass) == 1)
             {
@@ -33,7 +33,7 @@ namespace BusinessLogicLayer.service
             }
             return null;
         }
-        public static DataTable getByMaLop(string id, string pass,string malop)
+        public DataTable getByMaLop(string id, string pass,string malop)
         {
             if (CheckService.checkID(id, pass) == 1)
             {
@@ -45,7 +45,7 @@ namespace BusinessLogicLayer.service
             }
             return null;
         }
-        public static DataTable getByMaGV(string id, string pass, string magv)
+        public DataTable getByMaGV(string id, string pass, string magv)
         {
             if (CheckService.checkID(id, pass) == 1)
             {
@@ -57,7 +57,7 @@ namespace BusinessLogicLayer.service
             }
             return null;
         }
-        public static int insert(string id, string pass, string malop, string magv)
+        public int insert(string id, string pass, string malop, string magv)
         {
             if (CheckService.checkID(id, pass) == 1)
             {
