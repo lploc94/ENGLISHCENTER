@@ -63,8 +63,6 @@ namespace QuanLyTrungTamAnhNgu.QuanLyGiangDay
         {
             CT_LopHoc chitiet = new CT_LopHoc();
             dtChiTiet = chitiet.getAll(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword());
-
-            MessageBox.Show(dtChiTiet.Rows.Count.ToString());
         }
 
         void InitMaKhoaHoc()
