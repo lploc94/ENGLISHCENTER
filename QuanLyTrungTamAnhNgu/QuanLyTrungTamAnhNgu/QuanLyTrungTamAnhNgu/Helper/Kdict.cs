@@ -24,7 +24,17 @@ namespace QuanLyTrungTamAnhNgu.Helper
 
         void InitDict()
         {
+            // nợ học phí
+            nameHolder["MAHV"] = "Mã học viên";
+            nameHolder["MALOP"] = "Mã lớp";
+            nameHolder["SOTIENDADONG"] = "Đã đóng";
+            nameHolder["SOTIENCONNO"] = "Còn nợ";
+            nameHolder["NGAYDONG"] = "Ngày đóng";
 
+            nameHolder["HOTEN"] = "Họ và tên";
+            nameHolder["DIEMGK"] = "Điểm giữa kỳ";
+            nameHolder["DIEMCK"] = "Điểm cuối kỳ";
+            nameHolder["TONGDIEM"] = "Tổng điểm";
         }
 
         public static string Get(string a)
