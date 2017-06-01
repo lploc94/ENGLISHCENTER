@@ -87,17 +87,55 @@ namespace QuanLyTrungTamAnhNgu.QuanLyGiangDay
 						DataTable dkDt = dangKyService.getByMaLop(AccountHelper.getAccountId(),
 							AccountHelper.getAccoutPassword(), row["MALOP"].ToString());
 
-						dkDt.PrimaryKey = new DataColumn[] { dkDt.Columns["MAHV"] };
-
 						DataTable hvDt = hocVienService.getAll(AccountHelper.getAccountId(),
 							AccountHelper.getAccoutPassword());
 
-						dkDt.Merge(hvDt);
-						dkDt.Columns.Remove(dkDt.Columns["MALOP"]);
+						DataTable clone1 = dkDt.Clone();
+						DataTable clone2 = hvDt.Clone();
+						clone1.Merge(clone2);
 
-						dgvSinhVien.DataSource = dkDt;
+						var result = from table1 in dkDt.AsEnumerable()
+									 join table2 in hvDt.AsEnumerable()
+									 on (string)table1["MAHV"] equals (string)table2["MAHV"]
+									 select new
+									 {
+										 MALOP = (string)table1["MALOP"],
+										 MAHV = (string)table2["MAHV"],
+										 HOTEN = (string)table2["HOTEN"],
+										 GIOITINH = (int)table2["GIOITINH"],
+										 NGSINH = (DateTime)table2["NGSINH"],
+										 DIACHI = (string)table2["DIACHI"],
+										 SDT = (string)table2["SDT"],
+										 EMAIL = (string)table2["EMAIL"],
+										 NGAYDK = (DateTime)table2["NGAYDK"],
+										 TINHTRANG = (int)table2["TINHTRANG"]
+									 };
+
+						foreach (var item in result)
+						{
+							clone1.Rows.Add(item.MALOP, item.MAHV, item.HOTEN, item.GIOITINH, item.NGSINH, item.DIACHI,
+								item.SDT, item.EMAIL, item.NGAYDK, item.TINHTRANG);
+						}
+
+						//hvDt.PrimaryKey = new DataColumn[] { hvDt.Columns["MAHV"] };
+
+						//dkDt.Merge(hvDt);
+
+						//DataTable cloneDkDt = dkDt.Clone();
+						////cloneDkDt.Clear();
+
+						//foreach (DataRow mRow in dkDt.Rows)
+						//{
+						//	if (mRow["MALOP"].ToString().Equals(row["MALOP"].ToString()))
+						//	{
+						//		cloneDkDt.Merge(mRow.Table);
+						//	}
+						//}
+
+						//dkDt.Columns.Remove(dkDt.Columns["MALOP"]);
+
+						dgvSinhVien.DataSource = clone1;
 						break;
-						
 					}
 				}
 			}
