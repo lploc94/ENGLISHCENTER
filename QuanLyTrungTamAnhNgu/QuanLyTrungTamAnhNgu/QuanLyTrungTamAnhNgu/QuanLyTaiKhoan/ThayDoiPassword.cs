@@ -49,7 +49,7 @@ namespace QuanLyTrungTamAnhNgu.QuanLyTaiKhoan
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (this.txtOldPassword.Text != DataAccessLayer.Service.CheckService.getPasswordByUserName(username))
+            if (!BusinessLogicLayer.service.Login.CheckPassword(username, this.txtOldPassword.Text))
             {
                 //DialogHelper.ShowErrorDialog("Xin hãy nhập đúng password của bạn");
                 DialogHelper.ExtendedShowErrorDialog("Xin hãy nhập đúng password của bạn", "Password Incorrect", 3, 1);

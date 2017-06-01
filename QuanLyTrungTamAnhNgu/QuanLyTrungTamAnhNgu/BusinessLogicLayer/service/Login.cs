@@ -6,11 +6,15 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicLayer.service
 {
-    class Login
+    public class Login
     {
         public static int CheckAccount(string id, string pass)
         {
             return DataAccessLayer.Service.CheckService.checkID(id, pass);
+        }
+        public static bool CheckPassword(string id, string pass)
+        {
+            return DataAccessLayer.Service.CheckService.getPasswordByUserName(id) == pass;
         }
         public static string getRoleInfo(string id)
         {
