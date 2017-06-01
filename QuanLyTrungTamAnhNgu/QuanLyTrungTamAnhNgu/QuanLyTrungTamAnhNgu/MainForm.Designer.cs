@@ -300,6 +300,7 @@
             this.barButtonItem20.Id = 23;
             this.barButtonItem20.LargeGlyph = global::QuanLyTrungTamAnhNgu.Properties.Resources.pdf_icon1;
             this.barButtonItem20.Name = "barButtonItem20";
+            this.barButtonItem20.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem20_ItemClick);
             // 
             // barButtonItem21
             // 

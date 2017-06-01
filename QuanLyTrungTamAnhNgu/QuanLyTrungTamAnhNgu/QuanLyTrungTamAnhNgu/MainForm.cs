@@ -193,28 +193,21 @@ namespace QuanLyTrungTamAnhNgu
         // nợ học phí
         private void barButtonItem19_ItemClick(object sender, ItemClickEventArgs e)
         {
-            GiangVien gv = new GiangVien();
-            DataTable dt = gv.getAll(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword());
+            Export_PDF exporter = new Export_PDF();
+            exporter.NoHocPhi();
 
-            //Exporter.TableToPDF(dt, "lol");
-
-            DateTime today = DateTime.Today;
-
-            Export_PDF exporting = new Export_PDF(dt, today.Month + "-" + today.Day + "-" + today.Year + "_NoHocPhi");
-            exporting.MdiParent = this;
-            exporting.Show();
+            exporter.MdiParent = this;
+            exporter.Show();
         }
 
         // kết quả học tập
         private void barButtonItem20_ItemClick(object sender, ItemClickEventArgs e)
         {
+            Export_PDF exporter = new Export_PDF();
+            exporter.KetQuaHocTap();
 
-            //DataTable dt = gv.getAll(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword());
-
-
-            //Export_PDF exporting = new Export_PDF(dt, "LoL_LoL");
-            //exporting.MdiParent = this;
-            //exporting.Show();
+            exporter.MdiParent = this;
+            exporter.Show();
         }
 
         #endregion
