@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using DataAccessLayer.Service;
+using System.Reflection;
 
 namespace BusinessLogicLayer.service
 {
@@ -79,5 +80,19 @@ namespace BusinessLogicLayer.service
             }
             return 0;
         }
+        public DataTable getDsNoHocPhi(string id,string pass)
+        {
+            if (CheckService.checkID(id, pass) == 1)
+            {
+                ThongTinHocPhiService tthpsv = new ThongTinHocPhiService();
+                var x = from r in tthpsv.getAll().AsEnumerable() where Convert.ToInt32(r[3]) > 0 select r;
+
+                return x.CopyToDataTable();
+
+            }
+
+            return null;
+        }
+        
     }
 }

@@ -147,5 +147,20 @@ namespace DataAccessLayer.Service
                 return 0;
             }
         }
+
+        public DataTable getAllMaLop()
+        {
+            using (QLTTEntities qltt = new QLTTEntities())
+            {
+                var malop = from ml in qltt.LOPHOCs select new { MALOP = ml.MALOP };
+                DataTable rtnTable = new DataTable();
+                rtnTable.Columns.Add("MALOP", typeof(String));
+                foreach (var ml in malop)
+                {
+                    rtnTable.Rows.Add(ml.MALOP);
+                }
+                return rtnTable;
+            }
+        }
     }
 }
