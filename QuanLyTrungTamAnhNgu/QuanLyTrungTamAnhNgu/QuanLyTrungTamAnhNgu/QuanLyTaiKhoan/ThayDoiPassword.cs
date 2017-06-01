@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BusinessLogicLayer.service;
 using QuanLyTrungTamAnhNgu.Helper;
 
 namespace QuanLyTrungTamAnhNgu.QuanLyTaiKhoan
@@ -19,7 +20,7 @@ namespace QuanLyTrungTamAnhNgu.QuanLyTaiKhoan
             InitializeComponent();
             this.InitializeCustomInterface();
         }
-        
+
 
         public ThayDoiPassword(string username)
         {
@@ -49,27 +50,32 @@ namespace QuanLyTrungTamAnhNgu.QuanLyTaiKhoan
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (!BusinessLogicLayer.service.Login.CheckPassword(username, this.txtOldPassword.Text))
+            switch (Login.ChangePassword(username, this.txtOldPassword.Text, this.txtNewPassword.Text, this.txtVerifyPassword.Text))
             {
-                //DialogHelper.ShowErrorDialog("Xin hãy nhập đúng password của bạn");
-                DialogHelper.ExtendedShowErrorDialog("Xin hãy nhập đúng password của bạn", "Password Incorrect", 3, 1);
-                return;
+                case 0:
+                    DialogHelper.ExtendedShowErrorDialog("Bạn đã thay đổi Password thành công", "Change Password Success", 1, 2);
+                    resetTextField();
+                    break;
+                case 1:
+                    DialogHelper.ExtendedShowErrorDialog("Xin hãy nhập đúng password của bạn", "Password Incorrect", 3, 1);
+                    resetTextField();
+                    break;
+                case 2:
+                    DialogHelper.ExtendedShowErrorDialog("Mời bạn nhập password mới", "New Password Error", 3, 4);
+                    resetTextField();
+                    break;
+                case 3:
+                    DialogHelper.ExtendedShowErrorDialog("Xin hãy xác nhận đúng password bạn thay đổi", "Verify Password Incorrect", 3, 1);
+                    resetTextField();
+                    break;
             }
+        }
 
-            if (this.txtNewPassword.Text == "")
-            {
-                DialogHelper.ExtendedShowErrorDialog("Mời bạn nhập password mới", "New Password Error", 3, 4);
-                return;
-            }
-
-            if (this.txtNewPassword.Text != this.txtVerifyPassword.Text)
-            {
-                //DialogHelper.ShowErrorDialog("Xin hãy xác nhận đúng password bạn thay đổi");
-                DialogHelper.ExtendedShowErrorDialog("Xin hãy xác nhận đúng password bạn thay đổi", "Verify Password Incorrect", 3, 1);
-                return;
-            }
-
-            //Todo Change password using username
+        private void resetTextField()
+        {
+            this.txtNewPassword.Text = "";
+            this.txtOldPassword.Text = "";
+            this.txtVerifyPassword.Text = "";
         }
     }
 }
