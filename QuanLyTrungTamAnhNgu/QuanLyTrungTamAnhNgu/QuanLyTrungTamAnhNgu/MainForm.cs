@@ -12,6 +12,7 @@ using QuanLyTrungTamAnhNgu.QuanLyHocVien;
 using QuanLyTrungTamAnhNgu.QuanLyGiangDay;
 using QuanLyTrungTamAnhNgu.QuanLyTaiKhoan;
 using BusinessLogicLayer.service;
+using QuanLyTrungTamAnhNgu.Helper;
 
 namespace QuanLyTrungTamAnhNgu
 {
@@ -32,44 +33,15 @@ namespace QuanLyTrungTamAnhNgu
         #region variable Quan Ly Giang Day
         DevExpress.XtraEditors.XtraForm subFrmQuanLyGiangDay;
 
-        NhapGiangVien frmNhapGiangVien;
-        TraCuuGiangVien frmTraCuuGiangVien;
-        DanhSachLuongGiangVien frmDanhSachLuongGiangVien;
-        NhapLopHocMoi frmNhapLopHocMoi;
-        TraCuuLopHoc frmTraCuuLopHoc;
-        NhapKhoaHoc frmNhapKhoaHoc;
-        TraCuuKhoaHoc frmTraCuuKhoaHoc;
-
         #endregion
 
         void InitCustom()
         {
 
+            
+            Kdict DICT_INSTANCE = new Kdict();
 
-
-            // Init Quan Ly Giang Day;
             subFrmQuanLyGiangDay = null;
-
-            frmNhapGiangVien = new NhapGiangVien();
-            frmNhapGiangVien.MdiParent = this;
-
-            frmTraCuuGiangVien = new TraCuuGiangVien();
-            frmTraCuuGiangVien.MdiParent = this;
-
-            frmDanhSachLuongGiangVien = new DanhSachLuongGiangVien();
-            frmDanhSachLuongGiangVien.MdiParent = this;
-
-            frmNhapLopHocMoi = new NhapLopHocMoi();
-            frmNhapLopHocMoi.MdiParent = this;
-
-            frmTraCuuLopHoc = new TraCuuLopHoc();
-            frmTraCuuLopHoc.MdiParent = this;
-
-            frmNhapKhoaHoc = new NhapKhoaHoc();
-            frmNhapKhoaHoc.MdiParent = this;
-
-            frmTraCuuKhoaHoc = new TraCuuKhoaHoc();
-            frmTraCuuKhoaHoc.MdiParent = this;
         }
 
 
@@ -142,122 +114,106 @@ namespace QuanLyTrungTamAnhNgu
         // Nhap giang vien
         private void barButtonItem12_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (subFrmQuanLyGiangDay == frmNhapGiangVien)
-                return;
-
             if (subFrmQuanLyGiangDay != null)
-                subFrmQuanLyGiangDay.Hide();
+                subFrmQuanLyGiangDay.Close();
 
-
-            subFrmQuanLyGiangDay = frmNhapGiangVien;
+            subFrmQuanLyGiangDay = new NhapGiangVien();
+            subFrmQuanLyGiangDay.MdiParent = this;
             subFrmQuanLyGiangDay.Show();
-
-            //NhapGiangVien form = new NhapGiangVien();
-            //form.MdiParent = this;
-            //form.Show();
         }
 
         // Tra cuu giang vien
         private void barButtonItem13_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (subFrmQuanLyGiangDay == frmTraCuuGiangVien)
-                return;
-
             if (subFrmQuanLyGiangDay != null)
                 subFrmQuanLyGiangDay.Hide();
 
-            subFrmQuanLyGiangDay = frmTraCuuGiangVien;
+            subFrmQuanLyGiangDay = new TraCuuGiangVien();
+            subFrmQuanLyGiangDay.MdiParent = this;
             subFrmQuanLyGiangDay.Show();
-
-            //TraCuuGiangVien form = new TraCuuGiangVien();
-            //form.MdiParent = this;
-            //form.Show();
         }
 
         // Danh sach luong giang vien
         private void barButtonItem14_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (subFrmQuanLyGiangDay == frmDanhSachLuongGiangVien)
-                return;
-
             if (subFrmQuanLyGiangDay != null)
                 subFrmQuanLyGiangDay.Hide();
 
-            subFrmQuanLyGiangDay = frmDanhSachLuongGiangVien;
+            subFrmQuanLyGiangDay = new DanhSachLuongGiangVien();
+            subFrmQuanLyGiangDay.MdiParent = this;
             subFrmQuanLyGiangDay.Show();
-
-            //DanhSachLuongGiangVien form = new DanhSachLuongGiangVien();
-            //form.MdiParent = this;
-            //form.Show();
         }
 
 
         // nhap lop hoc moi
         private void barButtonItem15_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (subFrmQuanLyGiangDay == frmNhapLopHocMoi)
-                return;
-
             if (subFrmQuanLyGiangDay != null)
                 subFrmQuanLyGiangDay.Hide();
 
-            subFrmQuanLyGiangDay = frmNhapLopHocMoi;
+            subFrmQuanLyGiangDay = new NhapLopHocMoi();
+            subFrmQuanLyGiangDay.MdiParent = this;
             subFrmQuanLyGiangDay.Show();
-
-            //NhapLopHocMoi form = new NhapLopHocMoi();
-            //form.MdiParent = this;
-            //form.Show();
         }
 
         // Tra cuu lop hoc
         private void barButtonItem16_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (subFrmQuanLyGiangDay == frmTraCuuLopHoc)
-                return;
-
             if (subFrmQuanLyGiangDay != null)
                 subFrmQuanLyGiangDay.Hide();
 
-            subFrmQuanLyGiangDay = frmTraCuuLopHoc;
+            subFrmQuanLyGiangDay = new TraCuuLopHoc();
+            subFrmQuanLyGiangDay.MdiParent = this;
             subFrmQuanLyGiangDay.Show();
-
-            //TraCuuLopHoc form = new TraCuuLopHoc();
-            //form.MdiParent = this;
-            //form.Show();
         }
 
         // Nhap khoa hoc
         private void barButtonItem17_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (subFrmQuanLyGiangDay == frmNhapKhoaHoc)
-                return;
-
             if (subFrmQuanLyGiangDay != null)
                 subFrmQuanLyGiangDay.Hide();
 
-            subFrmQuanLyGiangDay = frmNhapKhoaHoc;
+            subFrmQuanLyGiangDay = new NhapKhoaHoc();
+            subFrmQuanLyGiangDay.MdiParent = this;
             subFrmQuanLyGiangDay.Show();
-
-            //NhapKhoaHoc form = new NhapKhoaHoc();
-            //form.MdiParent = this;
-            //form.Show();
         }
 
         // Tra cuu khoa hoc
         private void barButtonItem18_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (subFrmQuanLyGiangDay == frmTraCuuKhoaHoc)
-                return;
-
             if (subFrmQuanLyGiangDay != null)
                 subFrmQuanLyGiangDay.Hide();
 
-            subFrmQuanLyGiangDay = frmTraCuuKhoaHoc;
+            subFrmQuanLyGiangDay = new TraCuuKhoaHoc();
+            subFrmQuanLyGiangDay.MdiParent = this;
             subFrmQuanLyGiangDay.Show();
+        }
 
-            //TraCuuKhoaHoc form = new TraCuuKhoaHoc();
-            //form.MdiParent = this;
-            //form.Show();
+        // nợ học phí
+        private void barButtonItem19_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            GiangVien gv = new GiangVien();
+            DataTable dt = gv.getAll(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword());
+
+            //Exporter.TableToPDF(dt, "lol");
+
+            DateTime today = DateTime.Today;
+
+            Export_PDF exporting = new Export_PDF(dt, today.Month + "-" + today.Day + "-" + today.Year + "_NoHocPhi");
+            exporting.MdiParent = this;
+            exporting.Show();
+        }
+
+        // kết quả học tập
+        private void barButtonItem20_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+            //DataTable dt = gv.getAll(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword());
+
+
+            //Export_PDF exporting = new Export_PDF(dt, "LoL_LoL");
+            //exporting.MdiParent = this;
+            //exporting.Show();
         }
 
         #endregion
