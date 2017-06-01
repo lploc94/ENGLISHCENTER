@@ -31,12 +31,14 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
 
         private void traCuuDiemThiButton_Click(object sender, EventArgs e)
         {
-
+            string _maLop = maLopComboBox.Text;
+            var _dataTable = thiService.findDiemThiByMaLop(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), _maLop);
+            UIHelper.PopulateGridViewWithDataTable(bangDiemGridView, _dataTable);
         }
         private int PopulateMaLop()
         {
-            DataTable dataTable = lopHocService.getAllId(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword());
-            UIHelper.PopulateComboBoxWithDataTable(dataTable, maLopComboBox);
+            DataTable _dataTable = lopHocService.getAllId(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword());
+            UIHelper.PopulateComboBoxWithDataTable(_dataTable, maLopComboBox);
             return 0;
         }
     }

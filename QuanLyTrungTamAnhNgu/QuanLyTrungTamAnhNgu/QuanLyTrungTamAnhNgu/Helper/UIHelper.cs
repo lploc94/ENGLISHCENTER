@@ -26,6 +26,10 @@ namespace QuanLyTrungTamAnhNgu.Helper
             comboBox.DataSource = dataTable;
             comboBox.SelectedIndex = 0;
         }
+        public static void PopulateGridViewWithDataTable(DataGridView gridView, DataTable dataTable)
+        {
+            gridView.DataSource = dataTable;
+        }
         public static void SetComboBoxSelectedValueByString(ComboBox comboBox, String value)
         {
             int newIndex = 0;

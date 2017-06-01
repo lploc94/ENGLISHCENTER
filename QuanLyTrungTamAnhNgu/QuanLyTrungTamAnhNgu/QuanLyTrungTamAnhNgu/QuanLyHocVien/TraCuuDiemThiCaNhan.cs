@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using QuanLyTrungTamAnhNgu.Helper;
 
 namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
 {
@@ -26,6 +27,14 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
 
         private void traCuuDiemThiButton_Click(object sender, EventArgs e)
         {
+            string _maHV = maHocVienTextBox.Text;
+            if(_maHV == "")
+            {
+                DialogHelper.ShowMissingField();
+                return;
+            }
+            var dataTable = thiService.findDiemThiByMaHV(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), _maHV);
+            UIHelper.PopulateGridViewWithDataTable(bangDiemGridView, dataTable);
 
         }
     }
