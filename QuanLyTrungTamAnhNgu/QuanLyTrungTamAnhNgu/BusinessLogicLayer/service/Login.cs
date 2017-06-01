@@ -16,9 +16,9 @@ namespace BusinessLogicLayer.service
         {
             return DataAccessLayer.Service.CheckService.getPasswordByUserName(id) == pass;
         }
-        public static bool ChangePassword(string id, string oldPass, string newPass)
+        public static int ChangePassword(string id, string oldPass, string newPass, string verifyPass)
         {
-            return DataAccessLayer.Service.CheckService.changePassword(id,oldPass,newPass) == 1;
+            return DataAccessLayer.Service.CheckService.changePassword(id,oldPass,newPass, verifyPass);
         }
         public static string getRoleInfo(string id)
         {

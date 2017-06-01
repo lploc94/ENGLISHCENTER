@@ -50,21 +50,23 @@ namespace DataAccessLayer.Service
                 }
             }
         }
-        public static int changePassword(string username, string oldPass, string newPass)
+        public static int changePassword(string username, string oldPass, string newPass, string verifyPass)
         {
             using (QLTTEntities qltt = new QLTTEntities())
             {
                 NHANVIEN data = qltt.NHANVIENs.Where(p => p.USERNAME == username).FirstOrDefault();
-                if (data == null) return 0;
+                if (data == null) return -1;
                 else
                 {
                     if (oldPass != data.PASS)
                     {
-                        return 0;
+                        return 1;
                     }
+                    if (newPass == "") return 2;
+                    if (newPass != verifyPass) return 3;
                     data.PASS = newPass;
                     qltt.SaveChanges();
-                    return 1;
+                    return 0;
                 }
             }
         }
