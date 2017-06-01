@@ -23,6 +23,7 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
         private void LapBienLaiThuHocPhi_Load(object sender, EventArgs e)
         {
             Load_DL();
+            EditButton(true, false, false, false);
         }
 
         private void Load_DL()
@@ -76,6 +77,7 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
             ThongTinHocPhi tthp = new ThongTinHocPhi();
             tthp.insert(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), cbxMaHV.Text, cbxMaLop.Text, txtTienThu.Text, txtTienNo.Text, dtNgTT.Value);
             Load_DL();
+            EditButton(false, false, false, true);
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -83,6 +85,7 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
             ThongTinHocPhi tthp = new ThongTinHocPhi();
             tthp.delete(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), cbxMaHV.Text);
             Load_DL();
+            EditButton(true, false, false, false);
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -92,6 +95,7 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
             txtTienThu.Text = dataGridView1.Rows[row].Cells[5].Value.ToString();
             cbxMaLop.Text = dataGridView1.Rows[row].Cells[2].Value.ToString();
             dtNgTT.Text = dataGridView1.Rows[row].Cells[4].Value.ToString();
+            EditButton(false, true, true, true);
         }
 
         private void btnSua_Click(object sender, EventArgs e)
@@ -99,6 +103,7 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
             ThongTinHocPhi tthp = new ThongTinHocPhi();
             tthp.update(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), cbxMaHV.Text, cbxMaLop.Text, txtTienThu.Text, txtTienNo.Text, dtNgTT.Value);
             Load_DL();
+            EditButton(true, false, false, false);
         }
 
         private void btnXoaTrang_Click(object sender, EventArgs e)
@@ -106,6 +111,14 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
             txtTienThu.Text = "";
             cbxMaHV.Text = "";
             cbxMaLop.Text = "";
+            EditButton(true, false, false, false);
+        }
+        private void EditButton(bool them, bool xoa, bool sua, bool xoatrang)
+        {
+            btnThem.Enabled = them;
+            btnXoa.Enabled = xoa;
+            btnSua.Enabled = sua;
+            btnXoaTrang.Enabled = xoatrang;
         }
     }
 }

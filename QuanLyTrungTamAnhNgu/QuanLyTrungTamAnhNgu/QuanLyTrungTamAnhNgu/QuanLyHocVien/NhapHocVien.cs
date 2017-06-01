@@ -31,10 +31,7 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
         private void NhapHocVien_Load(object sender, EventArgs e)
         {
             Load_HV();
-            btnThem.Enabled = true;
-            btnXoa.Enabled = false;
-            btnSua.Enabled = false;
-            btnXoaTrang.Enabled = false;
+            EditButton(true, false, false, false);
         }
         private void XoaText()
         {
@@ -159,10 +156,7 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
 
 
             XoaText();
-            btnThem.Enabled = false;
-            btnXoa.Enabled = false;
-            btnSua.Enabled = false;
-            btnXoaTrang.Enabled = true;
+            EditButton(false, false, false, true);
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -187,10 +181,7 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
             }
             Load_HV();
             XoaText();
-            btnThem.Enabled = true;
-            btnXoa.Enabled = false;
-            btnSua.Enabled = false;
-            btnXoaTrang.Enabled = false;
+            EditButton(true, false, false, false);
         }
 
         private void btnSua_Click(object sender, EventArgs e)
@@ -244,18 +235,12 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
 
 
             XoaText();
-            btnThem.Enabled = true;
-            btnXoa.Enabled = false;
-            btnSua.Enabled = false;
-            btnXoaTrang.Enabled = false;
+            EditButton(true, false, false, false);
         }
 
         private void btnXoaTrang_Click(object sender, EventArgs e)
         {
-            btnThem.Enabled = true;
-            btnXoa.Enabled = false;
-            btnSua.Enabled = false;
-            btnXoaTrang.Enabled = false;
+            EditButton(true, false, false, false);
             XoaText();
             Load_HV();
         }
@@ -292,10 +277,14 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
             //  cbxLopHoc.DisplayMember = dataGridView1.Rows[row].Cells[9].Value.ToString();
             cbxLopHoc.SelectedValue = dgvNhapHocVien.Rows[row].Cells[9].Value.ToString();
             malop_phu = dgvNhapHocVien.Rows[row].Cells[9].Value.ToString();
-            btnThem.Enabled = false;
-            btnXoa.Enabled = true;
-            btnSua.Enabled = true;
-            btnXoaTrang.Enabled = true;
+            EditButton(false, true, true, true);
+        }
+        private void EditButton(bool them, bool xoa,bool sua,bool xoatrang)
+        {
+            btnThem.Enabled = them;
+            btnXoa.Enabled = xoa;
+            btnSua.Enabled = sua;
+            btnXoaTrang.Enabled = xoatrang;
         }
     }
 }
