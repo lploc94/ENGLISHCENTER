@@ -223,19 +223,26 @@ namespace QuanLyTrungTamAnhNgu.QuanLyGiangDay
 		// Xoa toan bo row ra khoi bang
 		private void btnXoaTrang_Click(object sender, EventArgs e)
 		{
-			// Voi moi row trong bang, ta se delete tung cai mot
-			foreach (DataGridViewRow row in dgvKhoaHoc.Rows)
-			{
-				// Neu delete row that bai
-				if (DeleteKhoaHocRow(row) == 0)
-				{
-					// Ket thuc viec delete
-					break;
-				}
-			}
+			//// Voi moi row trong bang, ta se delete tung cai mot
+			//foreach (DataGridViewRow row in dgvKhoaHoc.Rows)
+			//{
+			//	// Neu delete row that bai
+			//	if (DeleteKhoaHocRow(row) == 0)
+			//	{
+			//		// Ket thuc viec delete
+			//		break;
+			//	}
+			//}
 
-			// Cap nhat gridview
-			PopulateKhoaHocGridView();
+			//// Cap nhat gridview
+			//PopulateKhoaHocGridView();
+
+			// Dua tat ca cac thong tin ve mac dinh
+			tbMaKhoaHoc.Clear();
+			tbTenKhoaHoc.Clear();
+			tbTaiLieuGiangDay.Clear();
+			tbMoTa.Clear();
+			cbTongThoiGian.SelectedIndex = 0;
 		}
 
 
