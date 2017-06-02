@@ -66,6 +66,10 @@ namespace QuanLyTrungTamAnhNgu
 
         #endregion
 
+        #region variable Quan Ly Hoc Vien
+        DevExpress.XtraEditors.XtraForm subFrmQuanLyHocVien;
+        #endregion
+
         void InitCustom()
         {
 
@@ -79,65 +83,101 @@ namespace QuanLyTrungTamAnhNgu
 
         private void barButtonItem3_ItemClick(object sender, ItemClickEventArgs e)
         {
-            NhapHocVien form = new NhapHocVien();
-            form.MdiParent = this;
-            form.Show();
+            if (subFrmQuanLyHocVien != null)
+            {
+                subFrmQuanLyHocVien.Close();
+            }
+            subFrmQuanLyHocVien = new NhapHocVien();
+            subFrmQuanLyHocVien.MdiParent = this;
+            subFrmQuanLyHocVien.Show();
         }
 
         private void barButtonItem4_ItemClick(object sender, ItemClickEventArgs e)
         {
-            TraCuuHocVien form = new TraCuuHocVien();
-            form.MdiParent = this;
-            form.Show();
+            if (subFrmQuanLyHocVien != null)
+            {
+                subFrmQuanLyHocVien.Close();
+            }
+            subFrmQuanLyHocVien = new TraCuuHocVien();
+            subFrmQuanLyHocVien.MdiParent = this;
+            subFrmQuanLyHocVien.Show();
         }
 
         private void barButtonItem5_ItemClick(object sender, ItemClickEventArgs e)
         {
-            LapBienLaiThuHocPhi form = new LapBienLaiThuHocPhi();
-            form.MdiParent = this;
-            form.Show();
+            if (subFrmQuanLyHocVien != null)
+            {
+                subFrmQuanLyHocVien.Close();
+            }
+            subFrmQuanLyHocVien = new LapBienLaiThuHocPhi();
+            subFrmQuanLyHocVien.MdiParent = this;
+            subFrmQuanLyHocVien.Show();
         }
 
         private void barButtonItem6_ItemClick(object sender, ItemClickEventArgs e)
         {
-            TraCuuThongTinHocPhi form = new TraCuuThongTinHocPhi();
-            form.MdiParent = this;
-            form.Show();
+            if (subFrmQuanLyHocVien != null)
+            {
+                subFrmQuanLyHocVien.Close();
+            }
+            subFrmQuanLyHocVien = new TraCuuThongTinHocPhi();
+            subFrmQuanLyHocVien.MdiParent = this;
+            subFrmQuanLyHocVien.Show();
         }
 
         private void barButtonItem7_ItemClick(object sender, ItemClickEventArgs e)
         {
-            NhapDiemThi form = new NhapDiemThi();
-            form.MdiParent = this;
-            form.Show();
+            if (subFrmQuanLyHocVien != null)
+            {
+                subFrmQuanLyHocVien.Close();
+            }
+            subFrmQuanLyHocVien = new NhapDiemThi();
+            subFrmQuanLyHocVien.MdiParent = this;
+            subFrmQuanLyHocVien.Show();
         }
 
         private void barButtonItem8_ItemClick(object sender, ItemClickEventArgs e)
         {
-            TraCuuDiemThiCaNhan form = new TraCuuDiemThiCaNhan();
-            form.MdiParent = this;
-            form.Show();
+            if (subFrmQuanLyHocVien != null)
+            {
+                subFrmQuanLyHocVien.Close();
+            }
+            subFrmQuanLyHocVien = new TraCuuDiemThiCaNhan();
+            subFrmQuanLyHocVien.MdiParent = this;
+            subFrmQuanLyHocVien.Show();
         }
 
         private void barButtonItem9_ItemClick(object sender, ItemClickEventArgs e)
         {
-            TraCuuDiemThiMotLop form = new TraCuuDiemThiMotLop();
-            form.MdiParent = this;
-            form.Show();
+            if (subFrmQuanLyHocVien != null)
+            {
+                subFrmQuanLyHocVien.Close();
+            }
+            subFrmQuanLyHocVien = new TraCuuDiemThiMotLop();
+            subFrmQuanLyHocVien.MdiParent = this;
+            subFrmQuanLyHocVien.Show();
         }
 
         private void barButtonItem10_ItemClick(object sender, ItemClickEventArgs e)
         {
-            CapNhatLichThi form = new CapNhatLichThi();
-            form.MdiParent = this;
-            form.Show();
+            if (subFrmQuanLyHocVien != null)
+            {
+                subFrmQuanLyHocVien.Close();
+            }
+            subFrmQuanLyHocVien = new CapNhatLichThi();
+            subFrmQuanLyHocVien.MdiParent = this;
+            subFrmQuanLyHocVien.Show();
         }
 
         private void barButtonItem11_ItemClick(object sender, ItemClickEventArgs e)
         {
-            TraCuuLichThi form = new TraCuuLichThi();
-            form.MdiParent = this;
-            form.Show();
+            if (subFrmQuanLyHocVien != null)
+            {
+                subFrmQuanLyHocVien.Close();
+            }
+            subFrmQuanLyHocVien = new TraCuuLichThi();
+            subFrmQuanLyHocVien.MdiParent = this;
+            subFrmQuanLyHocVien.Show();
         }
 
         #region --------------------- Quan Ly Giang Day click -----------------
