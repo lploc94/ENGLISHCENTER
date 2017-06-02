@@ -38,41 +38,45 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 30);
+            this.label1.Location = new System.Drawing.Point(14, 37);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 13);
+            this.label1.Size = new System.Drawing.Size(72, 17);
             this.label1.TabIndex = 0;
-            this.label1.Text = "User";
+            this.label1.Text = "Tài khoản:";
             // 
             // txtUser
             // 
-            this.txtUser.Location = new System.Drawing.Point(86, 27);
+            this.txtUser.Location = new System.Drawing.Point(100, 34);
+            this.txtUser.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtUser.Name = "txtUser";
-            this.txtUser.Size = new System.Drawing.Size(157, 21);
+            this.txtUser.Size = new System.Drawing.Size(182, 23);
             this.txtUser.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 87);
+            this.label2.Location = new System.Drawing.Point(14, 107);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 13);
+            this.label2.Size = new System.Drawing.Size(69, 17);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Pass";
+            this.label2.Text = "Mật khẩu:";
             // 
             // txtPass
             // 
-            this.txtPass.Location = new System.Drawing.Point(86, 79);
+            this.txtPass.Location = new System.Drawing.Point(100, 104);
+            this.txtPass.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtPass.Name = "txtPass";
-            this.txtPass.Size = new System.Drawing.Size(157, 21);
+            this.txtPass.Size = new System.Drawing.Size(182, 23);
             this.txtPass.TabIndex = 3;
             this.txtPass.UseSystemPasswordChar = true;
+            this.txtPass.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPass_KeyDown);
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(104, 165);
+            this.btnLogin.Location = new System.Drawing.Point(121, 203);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(75, 23);
+            this.btnLogin.Size = new System.Drawing.Size(87, 28);
             this.btnLogin.TabIndex = 4;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
@@ -80,14 +84,15 @@
             // 
             // DangNhap
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 232);
+            this.ClientSize = new System.Drawing.Size(331, 286);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.txtPass);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtUser);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "DangNhap";
             this.Text = "Đăng Nhập";
             this.ResumeLayout(false);

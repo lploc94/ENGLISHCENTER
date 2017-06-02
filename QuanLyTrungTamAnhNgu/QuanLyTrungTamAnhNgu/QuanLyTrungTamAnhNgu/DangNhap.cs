@@ -42,6 +42,11 @@ namespace QuanLyTrungTamAnhNgu
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            Login();
+        }
+
+        void Login()
+        {
             if (CheckLogin() == "-1")
             {
                 DialogHelper.ExtendedShowErrorDialog("Nhập User hoặc Password bị sai", "", 1, 2);
@@ -52,6 +57,14 @@ namespace QuanLyTrungTamAnhNgu
                 MainForm form = new MainForm(CheckLogin());
                 form.Show();
                 this.Hide();
+            }
+        }
+
+        private void txtPass_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Login();
             }
         }
     }

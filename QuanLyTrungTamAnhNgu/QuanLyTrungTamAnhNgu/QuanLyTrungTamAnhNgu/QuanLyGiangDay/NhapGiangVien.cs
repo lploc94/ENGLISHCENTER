@@ -103,7 +103,7 @@ namespace QuanLyTrungTamAnhNgu.QuanLyGiangDay
             try
             {
                 int soDienThoai = int.Parse(txtSDT.Text);
-                SDT = soDienThoai.ToString();
+                SDT = txtSDT.Text;
             }
             catch (Exception e)
             {

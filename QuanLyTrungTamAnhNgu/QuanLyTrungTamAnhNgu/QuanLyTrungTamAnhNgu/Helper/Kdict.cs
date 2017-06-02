@@ -35,6 +35,13 @@ namespace QuanLyTrungTamAnhNgu.Helper
             nameHolder["DIEMGK"] = "Điểm giữa kỳ";
             nameHolder["DIEMCK"] = "Điểm cuối kỳ";
             nameHolder["TONGDIEM"] = "Tổng điểm";
+
+            nameHolder["MAGV"] = "Mã GV";
+            nameHolder["TENGV"] = "Họ và tên";
+            nameHolder["HESO"] = "Hệ số";
+            nameHolder["NGAYNHAN"] = "Ngày nhận";
+            nameHolder["LUONGCB"] = "Lương cơ bản";
+            nameHolder["LUONG"] = "Lương thực lãnh";
         }
 
         public static string Get(string a)
