@@ -30,6 +30,10 @@ namespace BusinessLogicLayer.service
             return null;
             
         }
+        public DataTable findUserByUsernameAndPass(string findUserId, string findUserPass)
+        {
+            return new NhanVienService().findUserByUsernameAndPass(findUserId, findUserPass);
+        }
         public DataTable getAll(string id, string pass)
         {
             if (CheckService.checkID(id, pass) == 1)

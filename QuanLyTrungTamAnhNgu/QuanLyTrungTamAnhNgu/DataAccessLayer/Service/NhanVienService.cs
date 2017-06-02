@@ -23,7 +23,37 @@ namespace DataAccessLayer.Service
             }
             return 0;
         }
+        public DataTable findUserByUsernameAndPass(string username, string userpass)
+        {
+            using (QLTTEntities qltt = new QLTTEntities())
+            {
+                DataTable rtnTable = new DataTable();
+                NHANVIEN nv = qltt.NHANVIENs
+                    .Where(p => p.USERNAME == username)
+                    .Where(p => p.PASS == userpass)
+                    .FirstOrDefault();
+                if (nv != null)
+                {
+                    rtnTable.Columns.Add("MANV", typeof(string));
+                    rtnTable.Columns.Add("HOTEN", typeof(string));
+                    rtnTable.Columns.Add("GIOITINH", typeof(int));
+                    rtnTable.Columns.Add("NGSINH", typeof(DateTime));
+                    rtnTable.Columns.Add("DIACHI", typeof(string));
+                    rtnTable.Columns.Add("SDT", typeof(string));
+                    rtnTable.Columns.Add("EMAIL", typeof(string));
+                    rtnTable.Columns.Add("HESOLUONG", typeof(double));
+                    rtnTable.Columns.Add("USERNAME", typeof(string));
+                    rtnTable.Columns.Add("PASS", typeof(string));
+                    rtnTable.Columns.Add("PHANQUYEN", typeof(short));
+                    rtnTable.Columns.Add("ACTIVE", typeof(bool));
 
+                    rtnTable.Rows.Add(nv.MANV, nv.HOTEN, nv.GIOITINH, nv.NGSINH, nv.DIACHI, nv.SDT, nv.EMAIL, nv.HESOLUONG, nv.USERNAME, nv.PASS, nv.PHANQUYEN, nv.ACTIVE);
+
+
+                }
+                return rtnTable;
+            }
+        }
         public DataTable get(string manv)
         {
             using (QLTTEntities qltt = new QLTTEntities())
