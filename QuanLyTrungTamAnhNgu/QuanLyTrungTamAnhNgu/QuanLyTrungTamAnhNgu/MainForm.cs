@@ -252,5 +252,10 @@ namespace QuanLyTrungTamAnhNgu
             form.Show();
         }
         #endregion
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
