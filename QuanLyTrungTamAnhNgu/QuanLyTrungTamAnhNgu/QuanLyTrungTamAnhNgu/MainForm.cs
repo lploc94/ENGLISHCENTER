@@ -36,7 +36,7 @@ namespace QuanLyTrungTamAnhNgu
             if (quyen == "1")
             {
                 ribbonPageGroup3.Enabled = false;
-                ribbonPageGroup4.Enabled = false;
+               
                 ribbonPageGroup5.Enabled = false;
                 ribbonPageGroup6.Enabled = false;
                 ribbonPageGroup7.Enabled = false;
@@ -54,7 +54,7 @@ namespace QuanLyTrungTamAnhNgu
                 //GIANGVIEN, HOCPHI, TT_LUONGGV, NHANVIEN
                 ribbonPageGroup1.Enabled = false;
                 ribbonPageGroup3.Enabled = false;
-                ribbonPageGroup4.Enabled = false;
+              
                 ribbonPageGroup6.Enabled = false;
                 ribbonPageGroup7.Enabled = false;
 
@@ -128,16 +128,10 @@ namespace QuanLyTrungTamAnhNgu
 
         private void barButtonItem10_ItemClick(object sender, ItemClickEventArgs e)
         {
-            //CapNhatLichThi form = new CapNhatLichThi();
-            //form.MdiParent = this;
-            //form.Show();
         }
 
         private void barButtonItem11_ItemClick(object sender, ItemClickEventArgs e)
         {
-            //TraCuuLichThi form = new TraCuuLichThi();
-            //form.MdiParent = this;
-            //form.Show();
         }
 
         #region --------------------- Quan Ly Giang Day click -----------------
