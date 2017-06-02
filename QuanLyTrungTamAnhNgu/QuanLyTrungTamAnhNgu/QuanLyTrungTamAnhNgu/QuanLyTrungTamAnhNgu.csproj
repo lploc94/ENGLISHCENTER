@@ -128,9 +128,7 @@
     <Compile Include="QuanLyGiangDay\TraCuuLopHoc.Designer.cs">
       <DependentUpon>TraCuuLopHoc.cs</DependentUpon>
     </Compile>
-    <Compile Include="QuanLyHocVien\CapNhatLichThi.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="QuanLyHocVien\CapNhatLichThi.cs" />
     <Compile Include="QuanLyHocVien\CapNhatLichThi.Designer.cs">
       <DependentUpon>CapNhatLichThi.cs</DependentUpon>
     </Compile>
@@ -170,9 +168,7 @@
     <Compile Include="QuanLyHocVien\TraCuuHocVien.Designer.cs">
       <DependentUpon>TraCuuHocVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="QuanLyHocVien\TraCuuLichThi.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="QuanLyHocVien\TraCuuLichThi.cs" />
     <Compile Include="QuanLyHocVien\TraCuuLichThi.Designer.cs">
       <DependentUpon>TraCuuLichThi.cs</DependentUpon>
     </Compile>

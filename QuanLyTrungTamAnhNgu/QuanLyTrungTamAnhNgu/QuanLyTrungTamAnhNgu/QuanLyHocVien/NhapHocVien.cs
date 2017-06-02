@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using BusinessLogicLayer.service;
 using QuanLyTrungTamAnhNgu.Helper;
+using System.Windows;
 
 namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
 {
@@ -120,6 +121,9 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
 
         private void btnThem_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
+            if (!backgroundWorker1.IsBusy)
+                backgroundWorker1.RunWorkerAsync();
             int flat_hv;
             int flat_dk;
             //insert dữ liệu trong bản học viên
@@ -288,6 +292,30 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
             btnXoa.Enabled = xoa;
             btnSua.Enabled = sua;
             btnXoaTrang.Enabled = xoatrang;
+        }
+
+        private void NhapHocVien_Shown(object sender, EventArgs e)
+        {
+            backgroundWorker1.WorkerReportsProgress = true;
+            backgroundWorker1.ProgressChanged += backgroundWorker1_ProgressChanged;
+            backgroundWorker1.DoWork += backgroundWorker1_DoWork;
+            backgroundWorker1.RunWorkerCompleted += backgroundWorker1_RunWorkerCompleted;
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            backgroundWorker1.ReportProgress(0);
+        }
+
+        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            progressBar1.Value = e.ProgressPercentage;
+
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            this.Cursor = Cursors.Arrow;
         }
     }
 }

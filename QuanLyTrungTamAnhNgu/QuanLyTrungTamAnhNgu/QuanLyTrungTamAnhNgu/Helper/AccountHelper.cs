@@ -9,14 +9,27 @@ namespace QuanLyTrungTamAnhNgu.Helper
 {
     public static class AccountHelper
     {
+        private static String loginUsername = null;
+        private static String loginPssword = null;
         public static String getAccountId()
         {
-            return "admin";
+            return loginUsername;
         }
         public static String getAccoutPassword()
         {
-            return "mKFTdTmAshTS";
+            return loginPssword;
         }
- 
+
+        public static void SetLoginUserNameAndPassword(string username, string password)
+        {
+            loginUsername = username;
+            loginPssword = password;
+        }
+        
+        public static void ResetLoginUsernameAndPassword()
+        {
+            loginUsername = null;
+            loginPssword = null;
+        }
     }
 }
