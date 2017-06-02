@@ -31,9 +31,11 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
 
         private void traCuuDiemThiButton_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
             string _maLop = maLopComboBox.Text;
             var _dataTable = thiService.findDiemThiByMaLop(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), _maLop);
             UIHelper.PopulateGridViewWithDataTable(bangDiemGridView, _dataTable);
+            this.Cursor = Cursors.Arrow;
         }
         private int PopulateMaLop()
         {

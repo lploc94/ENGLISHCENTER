@@ -32,8 +32,10 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
 
         private void btnTraCuu_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
             HocPhi tthp = new HocPhi();
             dgvTraCuu.DataSource = tthp.getjoin_hv(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), cbxMaHV.Text);
+            this.Cursor = Cursors.Arrow;
         }
     }
 }

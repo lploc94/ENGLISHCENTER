@@ -122,19 +122,19 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
         private void btnThem_Click(object sender, EventArgs e)
         {
             this.Cursor = Cursors.WaitCursor;
-            if (!backgroundWorker1.IsBusy)
-                backgroundWorker1.RunWorkerAsync();
             int flat_hv;
             int flat_dk;
             //insert dữ liệu trong bản học viên
             if (rdNam.Checked)
             {
+
                 if (cbxTinhTrang.Text == "Còn Học")
-                    flat_hv = hv.insert(AccountHelper.getAccountId(),AccountHelper.getAccoutPassword(), txtMaHV.Text, txtHoTen.Text, 1, txtDiaChi.Text, txtSDT.Text, txtEmail.Text, dtNgayDK.Value, 1,dtNgaySinh.Value);
-
+                {
+                    flat_hv = hv.insert(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), txtMaHV.Text, txtHoTen.Text, 1, txtDiaChi.Text, txtSDT.Text, txtEmail.Text, dtNgayDK.Value, 1, dtNgaySinh.Value);
+                    
+                }
                 else
-                    flat_hv = hv.insert(AccountHelper.getAccountId(),AccountHelper.getAccoutPassword(), txtMaHV.Text, txtHoTen.Text, 1, txtDiaChi.Text, txtSDT.Text, txtEmail.Text, dtNgayDK.Value, 0,dtNgaySinh.Value);
-
+                    flat_hv = hv.insert(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), txtMaHV.Text, txtHoTen.Text, 1, txtDiaChi.Text, txtSDT.Text, txtEmail.Text, dtNgayDK.Value, 0, dtNgaySinh.Value);
 
             }
             else
@@ -164,10 +164,12 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
 
             XoaText();
             EditButton(false, false, false, true);
+            this.Cursor = Cursors.Arrow;
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
             if (MessageBox.Show("Bạn có muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
 
@@ -189,10 +191,12 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
             Load_HV();
             XoaText();
             EditButton(true, false, false, false);
+            this.Cursor = Cursors.Arrow;
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
             int flat_hv;
             int flat_dk;
             int flat_dkcn = 0;
@@ -243,13 +247,16 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
 
             XoaText();
             EditButton(true, false, false, false);
+            this.Cursor = Cursors.Arrow;
         }
 
         private void btnXoaTrang_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
             EditButton(true, false, false, false);
             XoaText();
             Load_HV();
+            this.Cursor = Cursors.Arrow;
         }
 
         private void dgvNhapHocVien_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -294,28 +301,5 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
             btnXoaTrang.Enabled = xoatrang;
         }
 
-        private void NhapHocVien_Shown(object sender, EventArgs e)
-        {
-            backgroundWorker1.WorkerReportsProgress = true;
-            backgroundWorker1.ProgressChanged += backgroundWorker1_ProgressChanged;
-            backgroundWorker1.DoWork += backgroundWorker1_DoWork;
-            backgroundWorker1.RunWorkerCompleted += backgroundWorker1_RunWorkerCompleted;
-        }
-
-        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
-        {
-            backgroundWorker1.ReportProgress(0);
-        }
-
-        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-            progressBar1.Value = e.ProgressPercentage;
-
-        }
-
-        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            this.Cursor = Cursors.Arrow;
-        }
     }
 }

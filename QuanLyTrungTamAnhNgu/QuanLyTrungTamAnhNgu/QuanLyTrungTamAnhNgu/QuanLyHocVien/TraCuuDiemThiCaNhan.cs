@@ -27,6 +27,7 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
 
         private void traCuuDiemThiButton_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
             string _maHV = maHocVienTextBox.Text;
             if(_maHV == "")
             {
@@ -35,7 +36,7 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
             }
             var dataTable = thiService.findDiemThiByMaHV(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), _maHV);
             UIHelper.PopulateGridViewWithDataTable(bangDiemGridView, dataTable);
-
+            this.Cursor = Cursors.Arrow;
         }
     }
 }

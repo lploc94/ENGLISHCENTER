@@ -324,16 +324,21 @@ namespace QuanLyTrungTamAnhNgu.QuanLyGiangDay
 
         private void btnThem_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
             InsertOrUpdateCurrentValueToDatabase();
+            this.Cursor = Cursors.Arrow;
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
             InsertOrUpdateCurrentValueToDatabase(true);
+            this.Cursor = Cursors.Arrow;
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
             var row = GetCurrentRow();
             if (row == null)
             {
@@ -351,6 +356,7 @@ namespace QuanLyTrungTamAnhNgu.QuanLyGiangDay
             lophoc.delete(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), maLop);
 
             ShowTable();
+            this.Cursor = Cursors.Arrow;
         }
 
         private void btnXoaTrang_Click(object sender, EventArgs e)

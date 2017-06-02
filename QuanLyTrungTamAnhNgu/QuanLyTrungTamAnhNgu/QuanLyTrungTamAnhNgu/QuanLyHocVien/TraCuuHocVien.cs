@@ -33,6 +33,7 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
 
         private void btnTim_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
             DataTable table_temp = new DataTable();
             table_temp.Columns.Add("MAHV");
             table_temp.Columns.Add("TENHV");
@@ -94,6 +95,7 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
             }
 
              dgvTraCuuHocVien.DataSource = table_temp;
+            this.Cursor = Cursors.Arrow;
         }
     }
 }

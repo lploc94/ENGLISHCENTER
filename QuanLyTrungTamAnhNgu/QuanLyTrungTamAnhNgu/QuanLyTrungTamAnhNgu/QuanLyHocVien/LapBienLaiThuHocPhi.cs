@@ -85,6 +85,7 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
         }
         private void btnThem_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
             ThongTinHocPhi tthp = new ThongTinHocPhi();
             int flat;
             flat = tthp.insert(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), cbxMaHV.Text, cbxMaLop.Text, txtTienThu.Text, txtTienNo.Text, dtNgTT.Value);
@@ -98,11 +99,13 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
             }
             Load_DL();
             EditButton(false, false, false, true);
+            this.Cursor = Cursors.Arrow;
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if(MessageBox.Show("Bạn có muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            this.Cursor = Cursors.WaitCursor;
+            if (MessageBox.Show("Bạn có muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 ThongTinHocPhi tthp = new ThongTinHocPhi();
                int flat = tthp.delete(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), cbxMaHV.Text);
@@ -118,6 +121,7 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
            
             Load_DL();
             EditButton(true, false, false, false);
+            this.Cursor = Cursors.Arrow;
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -133,6 +137,7 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
 
         private void btnSua_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
             ThongTinHocPhi tthp = new ThongTinHocPhi();
             int flat =  tthp.update(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), cbxMaHV.Text, cbxMaLop.Text, txtTienThu.Text, txtTienNo.Text, dtNgTT.Value);
             if(flat==1)
@@ -145,14 +150,17 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
             }
             Load_DL();
             EditButton(true, false, false, false);
+            this.Cursor = Cursors.Arrow;
         }
 
         private void btnXoaTrang_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
             txtTienThu.Text = "";
             cbxMaHV.Text = "";
             cbxMaLop.Text = "";
             EditButton(true, false, false, false);
+            this.Cursor = Cursors.Arrow;
         }
         private void EditButton(bool them, bool xoa, bool sua, bool xoatrang)
         {

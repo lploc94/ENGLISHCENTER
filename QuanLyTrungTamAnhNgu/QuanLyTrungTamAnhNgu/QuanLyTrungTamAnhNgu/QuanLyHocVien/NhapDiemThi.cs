@@ -32,11 +32,14 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
 
         private void themButton_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
             InsertOrUpdateCurrentValueToDatabase();
+            this.Cursor = Cursors.Arrow;
         }
 
         private void xoaButton_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
             var row = GetCurrentRow();
             if(row == null)
             {
@@ -54,12 +57,14 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
             }
             thiService.delete(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), _maHVRowValue, _maKTRowValue, _maLopRowValue, _maPhongRowValue);
             PopulateBangDiemGridView();
+            this.Cursor = Cursors.Arrow;
         }
 
         private void suaButton_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
             InsertOrUpdateCurrentValueToDatabase(true);
-
+            this.Cursor = Cursors.Arrow;
         }
         private int InsertOrUpdateCurrentValueToDatabase(bool isUpdate = false)
         {

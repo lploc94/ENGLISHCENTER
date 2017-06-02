@@ -189,24 +189,29 @@ namespace QuanLyTrungTamAnhNgu.QuanLyGiangDay
 		// Khi bam vao nut them, them mot khoa hoc chua cac thong tin trong bang
 		private void btnThem_Click(object sender, EventArgs e)
 		{
-			// Chon viec insert
-			InsertOrUpdateCurrentValueToDatabase(false);
-		}
+            this.Cursor = Cursors.WaitCursor;
+            // Chon viec insert
+            InsertOrUpdateCurrentValueToDatabase(false);
+            this.Cursor = Cursors.Arrow;
+        }
 
 
 		// Khi bam vao nut sua, sua mot khoa hoc da ton tai trong dataGridView
 		private void btnSua_Click(object sender, EventArgs e)
 		{
-			// Chon viec sua
-			InsertOrUpdateCurrentValueToDatabase(true);
-		}
+            this.Cursor = Cursors.WaitCursor;
+            // Chon viec sua
+            InsertOrUpdateCurrentValueToDatabase(true);
+            this.Cursor = Cursors.Arrow;
+        }
 
 		
 		// Khi bam vao nut xoa
 		private void btnXoa_Click(object sender, EventArgs e)
 		{
-			// Xoa cac row duoc chon ra khoi bang
-			foreach (DataGridViewRow row in dgvKhoaHoc.SelectedRows)
+            this.Cursor = Cursors.WaitCursor;
+            // Xoa cac row duoc chon ra khoi bang
+            foreach (DataGridViewRow row in dgvKhoaHoc.SelectedRows)
 			{
 				// Neu hang nao xoa khong duoc thi dung ngay tai hang do
 				if (DeleteKhoaHocRow(row) == 0)
@@ -217,7 +222,8 @@ namespace QuanLyTrungTamAnhNgu.QuanLyGiangDay
 
 			// Cap nhat gridview
 			PopulateKhoaHocGridView();
-		}
+            this.Cursor = Cursors.Arrow;
+        }
 
 
 		// Xoa toan bo row ra khoi bang
