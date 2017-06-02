@@ -13,11 +13,11 @@ namespace QuanLyTrungTamAnhNgu.Helper
         private static String loginPssword = null;
         public static String getAccountId()
         {
-            return "admin";
+            return loginUsername;
         }
         public static String getAccoutPassword()
         {
-            return "mKFTdTmAshTS";
+            return loginPssword;
         }
 
         public static void SetLoginUserNameAndPassword(string username, string password)
@@ -25,15 +25,7 @@ namespace QuanLyTrungTamAnhNgu.Helper
             loginUsername = username;
             loginPssword = password;
         }
-
-        public static String GetLoginAccountId()
-        {
-            return loginUsername;
-        }
-        public static String GetLoginAccoutPassword()
-        {
-            return loginPssword;
-        }
+        
         public static void ResetLoginUsernameAndPassword()
         {
             loginUsername = null;
