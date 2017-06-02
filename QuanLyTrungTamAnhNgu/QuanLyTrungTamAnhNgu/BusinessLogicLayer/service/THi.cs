@@ -94,12 +94,8 @@ namespace BusinessLogicLayer.service
         {
             if (CheckService.checkID(id, pass) == 1)
             {
-                if (CheckService.checkRole(id, 2) == 1 || CheckService.checkRole(id, 0) == 1)
-                {
-                    ThiService tsv = new ThiService();
-                    return tsv.get(mathi);
-
-                }
+                ThiService tsv = new ThiService();
+                return tsv.get(mathi);
             }
             return null;
 

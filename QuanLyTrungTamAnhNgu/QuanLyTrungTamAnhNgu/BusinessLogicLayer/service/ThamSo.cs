@@ -18,11 +18,8 @@ namespace BusinessLogicLayer.service
         {
             if (CheckService.checkID(id, pass) == 1)
             {
-                if (CheckService.checkRole(id, 3) == 1 || CheckService.checkRole(id, 0) == 1)//kiểm tra id này có quyền insert không... 
-                {
-                    ThamsoService tssv = new ThamsoService();
-                    return tssv.getLuongCB();
-                }
+                ThamsoService tssv = new ThamsoService();
+                return tssv.getLuongCB();
             }
             return null;
         }
@@ -31,11 +28,8 @@ namespace BusinessLogicLayer.service
         {
             if (CheckService.checkID(id, pass) == 1)
             {
-                if (CheckService.checkRole(id, 2) == 1 || CheckService.checkRole(id, 0) == 1)//kiểm tra id này có quyền insert không... 
-                {
-                    ThamsoService tssv = new ThamsoService();
-                    return tssv.getSiSoToiDa();
-                }
+                ThamsoService tssv = new ThamsoService();
+                return tssv.getSiSoToiDa();
             }
             return 0;
         }
@@ -43,11 +37,8 @@ namespace BusinessLogicLayer.service
         {
             if (CheckService.checkID(id, pass) == 1)
             {
-                if (CheckService.checkRole(id, 2) == 1 || CheckService.checkRole(id, 0) == 1)//kiểm tra id này có quyền insert không... 
-                {
-                    ThamsoService tssv = new ThamsoService();
-                    return tssv.getSiSoToiThieu();
-                }
+                ThamsoService tssv = new ThamsoService();
+                return tssv.getSiSoToiThieu();
             }
             return 0;
         }

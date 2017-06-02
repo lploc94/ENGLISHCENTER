@@ -57,12 +57,8 @@ namespace BusinessLogicLayer.service
         {
             if (CheckService.checkID(id, pass) == 1)
             {
-                if (CheckService.checkRole(id, 2) == 1 || CheckService.checkRole(id, 0) == 1) //có thể Sinh và LA sẽ sửa các role ID này. trước mắt của get là 4.
-                {
-                    KhoaHocService khsv = new KhoaHocService();
-                    return khsv.get(makh);
-
-                }
+                KhoaHocService khsv = new KhoaHocService();
+                return khsv.get(makh);
 
             }
             return null;

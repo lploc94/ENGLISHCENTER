@@ -57,12 +57,8 @@ namespace BusinessLogicLayer.service
         {
             if (CheckService.checkID(id, pass) == 1)
             {
-                if (CheckService.checkRole(id, 2) == 1 || CheckService.checkRole(id, 0) == 1)
-                {
-                    ThoiKhoaBieuService tkbsv = new ThoiKhoaBieuService();
-                    return tkbsv.get(matkb);
-
-                }
+                ThoiKhoaBieuService tkbsv = new ThoiKhoaBieuService();
+                return tkbsv.get(matkb);
             }
             return null;
 

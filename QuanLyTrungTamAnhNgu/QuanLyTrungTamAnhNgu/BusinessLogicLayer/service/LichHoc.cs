@@ -56,12 +56,8 @@ namespace BusinessLogicLayer.service
         {
             if (CheckService.checkID(id, pass) == 1)
             {
-                if (CheckService.checkRole(id, 2) == 1 || CheckService.checkRole(id, 0) == 1)
-                {
-                    LichHocService lhsv = new LichHocService();
-                    return lhsv.get(malh);
-
-                }
+                LichHocService lhsv = new LichHocService();
+                return lhsv.get(malh);
             }
             return null;
 

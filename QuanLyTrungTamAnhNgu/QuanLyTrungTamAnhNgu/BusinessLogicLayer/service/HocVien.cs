@@ -61,15 +61,12 @@ namespace BusinessLogicLayer.service
             }
             return 0;
         }
-        public DataTable get(string id, string pass, string mahv) // Ý nghĩa của hàm này ???
+        public DataTable get(string id, string pass, string mahv) 
         {
             if (CheckService.checkID(id, pass) == 1)
             {
-                if (CheckService.checkRole(id, 1) == 1 || CheckService.checkRole(id, 0) == 1) 
-                {
-                    HocVienService hvsv = new HocVienService();
-                    return hvsv.get(mahv);
-                }
+                HocVienService hvsv = new HocVienService();
+                return hvsv.get(mahv);
 
             }
             return null;

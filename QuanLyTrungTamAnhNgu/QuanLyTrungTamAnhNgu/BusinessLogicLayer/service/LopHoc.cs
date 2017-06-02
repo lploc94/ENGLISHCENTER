@@ -71,12 +71,8 @@ namespace BusinessLogicLayer.service
         {
             if (CheckService.checkID(id, pass) == 1)
             {
-                if (CheckService.checkRole(id, 2) == 1 || CheckService.checkRole(id, 0) == 1)
-                {
-                    LopHocService lhsv = new LopHocService();
-                    return lhsv.get(malh);
-
-                }
+                LopHocService lhsv = new LopHocService();
+                return lhsv.get(malh);
             }
             return null;
 

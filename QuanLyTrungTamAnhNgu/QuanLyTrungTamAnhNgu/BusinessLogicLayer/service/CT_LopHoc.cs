@@ -37,11 +37,8 @@ namespace BusinessLogicLayer.service
         {
             if (CheckService.checkID(id, pass) == 1)
             {
-                if (CheckService.checkRole(id, 2) == 1 || CheckService.checkRole(id, 0) == 1)
-                {
-                    CT_LopHocService ctlhsv = new CT_LopHocService();
-                    return ctlhsv.getByMaLop(malop);
-                }
+                CT_LopHocService ctlhsv = new CT_LopHocService();
+                return ctlhsv.getByMaLop(malop);
             }
             return null;
         }
@@ -49,11 +46,8 @@ namespace BusinessLogicLayer.service
         {
             if (CheckService.checkID(id, pass) == 1)
             {
-                if (CheckService.checkRole(id, 2) == 1 || CheckService.checkRole(id, 0) == 1)
-                {
-                    CT_LopHocService ctlhsv = new CT_LopHocService();
-                    return ctlhsv.getByMaGV(magv);
-                }
+                CT_LopHocService ctlhsv = new CT_LopHocService();
+                return ctlhsv.getByMaGV(magv);
             }
             return null;
         }

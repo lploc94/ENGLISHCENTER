@@ -56,11 +56,8 @@ namespace BusinessLogicLayer.service
         {
             if (CheckService.checkID(id, pass) == 1)
             {
-                if (CheckService.checkRole(id, 3) == 1 || CheckService.checkRole(id, 0) == 1) //có thể Sinh và LA sẽ sửa các role ID này. trước mắt của get là 4.
-                {
-                    HocPhiService hpsv = new HocPhiService();
-                    return hpsv.get(mahp);
-                }
+                HocPhiService hpsv = new HocPhiService();
+                return hpsv.get(mahp);
 
             }
             return null;
@@ -82,11 +79,8 @@ namespace BusinessLogicLayer.service
         {
             if (CheckService.checkID(id, pass) == 1)
             {
-                if (CheckService.checkRole(id, 3) == 1 || CheckService.checkRole(id, 0) == 1) //có thể Sinh và LA sẽ sửa các role ID này. trước mắt của get là 4.
-                {
-                    HocPhiService hpsv = new HocPhiService();
-                    return hpsv.joinhocphi();
-                }
+                HocPhiService hpsv = new HocPhiService();
+                return hpsv.joinhocphi();
 
             }
             return null;
@@ -96,11 +90,8 @@ namespace BusinessLogicLayer.service
         {
             if (CheckService.checkID(id, pass) == 1)
             {
-                if (CheckService.checkRole(id, 3) == 1 || CheckService.checkRole(id, 0) == 1)
-                {
-                    HocPhiService hpsv = new HocPhiService();
-                    return hpsv.joinsotien(malop);
-                }
+                HocPhiService hpsv = new HocPhiService();
+                return hpsv.joinsotien(malop);
             }
             return "";
         }
@@ -108,11 +99,8 @@ namespace BusinessLogicLayer.service
         {
             if (CheckService.checkID(id, pass) == 1)
             {
-                if (CheckService.checkRole(id, 3) == 1 || CheckService.checkRole(id, 0) == 1) //có thể Sinh và LA sẽ sửa các role ID này. trước mắt của get là 4.
-                {
-                    HocPhiService hpsv = new HocPhiService();
-                    return hpsv.joinhocphi_mahv(mahv);
-                }
+                HocPhiService hpsv = new HocPhiService();
+                return hpsv.joinhocphi_mahv(mahv);
 
             }
             return null;

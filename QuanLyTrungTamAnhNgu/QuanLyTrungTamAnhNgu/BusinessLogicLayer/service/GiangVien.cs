@@ -64,12 +64,8 @@ namespace BusinessLogicLayer.service
         {
             if (CheckService.checkID(id, pass) == 1)
             {
-                if (CheckService.checkRole(id, 3) == 1 || CheckService.checkRole(id, 0) == 1) 
-                {
-                    GiangVienService gvsv = new GiangVienService();
-                    return gvsv.get(magv);
-              
-                }
+                GiangVienService gvsv = new GiangVienService();
+                return gvsv.get(magv);
 
             }
             return null;

@@ -67,12 +67,8 @@ namespace BusinessLogicLayer.service
         {
             if (CheckService.checkID(id, pass) == 1)
             {
-                if (CheckService.checkRole(id, 2) == 1 || CheckService.checkRole(id, 0) == 1)
-                {
-                    PhongHocService phsv = new PhongHocService();
-                    return phsv.get(maph);
-
-                }
+                PhongHocService phsv = new PhongHocService();
+                return phsv.get(maph);
             }
             return null;
 

@@ -57,12 +57,8 @@ namespace BusinessLogicLayer.service
         {
             if (CheckService.checkID(id, pass) == 1)
             {
-                if (CheckService.checkRole(id, 3) == 1 || CheckService.checkRole(id, 0) == 1)
-                {
-                    ThongTinHocPhiService tthpsv = new ThongTinHocPhiService();
-                    return tthpsv.get(matt);
-
-                }
+                ThongTinHocPhiService tthpsv = new ThongTinHocPhiService();
+                return tthpsv.get(matt);
             }
             return null;
 
