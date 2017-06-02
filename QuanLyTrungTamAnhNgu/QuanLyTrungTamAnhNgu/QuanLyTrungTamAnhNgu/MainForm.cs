@@ -27,7 +27,7 @@ namespace QuanLyTrungTamAnhNgu
             Show_Menu(quyen);
             InitCustom();
             HocVien hv = new HocVien();
-            int x = hv.insert(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), "HV28", "Nguyen Phuong Nguyen", 1, "Nha cua Nguyen", "0123456789", "pnpuddingkiller@n.com", new DateTime(2017, 6, 10), 1, new DateTime(1995, 6, 10));
+            
            
         }
 
