@@ -19,17 +19,25 @@ namespace QuanLyTrungTamAnhNgu
         {
             InitializeComponent();
         }
-
-        private DataRow CheckLogin()
+        private DataTable getNhanVien()
         {
-            string username = txtUser.Text;
-            string userpass = txtPass.Text;
-            DataTable userDataTable = (new NhanVien()).findUserByUsernameAndPass(username, userpass);
-            if(userDataTable.Rows.Count == 1) {
-                return userDataTable.Rows[0];
+            NhanVien nv = new NhanVien();
+            return nv.getAll(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword());
+
+        }
+
+        private string CheckLogin()
+        {
+            DataTable tb = getNhanVien();
+            for (int i = 0; i < tb.Rows.Count; i++)
+            {
+                if (txtUser.Text == tb.Rows[i][8].ToString() && txtPass.Text == tb.Rows[i][9].ToString())
+                {
+                    return tb.Rows[i][10].ToString();
+                }
             }
 
-            return null;
+            return "-1";
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -39,15 +47,14 @@ namespace QuanLyTrungTamAnhNgu
 
         void Login()
         {
-            var userData = CheckLogin();
-            if (userData == null)
+            if (CheckLogin() == "-1")
             {
                 DialogHelper.ExtendedShowErrorDialog("Nhập User hoặc Password bị sai", "", 1, 2);
             }
             else
             {
-                string quyen = userData["PHANQUYEN"].ToString();
-                MainForm form = new MainForm(quyen);
+
+                MainForm form = new MainForm(CheckLogin());
                 form.Show();
                 this.Hide();
             }
