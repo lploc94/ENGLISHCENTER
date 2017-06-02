@@ -26,7 +26,7 @@ namespace QuanLyTrungTamAnhNgu
             InitializeComponent();
             Show_Menu(quyen);
             InitCustom();
-            HocVien hv = new HocVien();
+            
             
            
         }
