@@ -128,16 +128,16 @@ namespace QuanLyTrungTamAnhNgu
 
         private void barButtonItem10_ItemClick(object sender, ItemClickEventArgs e)
         {
-            CapNhatLichThi form = new CapNhatLichThi();
-            form.MdiParent = this;
-            form.Show();
+            //CapNhatLichThi form = new CapNhatLichThi();
+            //form.MdiParent = this;
+            //form.Show();
         }
 
         private void barButtonItem11_ItemClick(object sender, ItemClickEventArgs e)
         {
-            TraCuuLichThi form = new TraCuuLichThi();
-            form.MdiParent = this;
-            form.Show();
+            //TraCuuLichThi form = new TraCuuLichThi();
+            //form.MdiParent = this;
+            //form.Show();
         }
 
         #region --------------------- Quan Ly Giang Day click -----------------

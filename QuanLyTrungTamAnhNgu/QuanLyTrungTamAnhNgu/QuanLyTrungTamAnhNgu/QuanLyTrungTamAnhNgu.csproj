@@ -128,12 +128,6 @@
     <Compile Include="QuanLyGiangDay\TraCuuLopHoc.Designer.cs">
       <DependentUpon>TraCuuLopHoc.cs</DependentUpon>
     </Compile>
-    <Compile Include="QuanLyHocVien\CapNhatLichThi.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="QuanLyHocVien\CapNhatLichThi.Designer.cs">
-      <DependentUpon>CapNhatLichThi.cs</DependentUpon>
-    </Compile>
     <Compile Include="QuanLyHocVien\LapBienLaiThuHocPhi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,12 +163,6 @@
     </Compile>
     <Compile Include="QuanLyHocVien\TraCuuHocVien.Designer.cs">
       <DependentUpon>TraCuuHocVien.cs</DependentUpon>
-    </Compile>
-    <Compile Include="QuanLyHocVien\TraCuuLichThi.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="QuanLyHocVien\TraCuuLichThi.Designer.cs">
-      <DependentUpon>TraCuuLichThi.cs</DependentUpon>
     </Compile>
     <Compile Include="QuanLyHocVien\TraCuuThongTinHocPhi.cs">
       <SubType>Form</SubType>
@@ -229,9 +217,6 @@
     <EmbeddedResource Include="QuanLyGiangDay\TraCuuLopHoc.resx">
       <DependentUpon>TraCuuLopHoc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="QuanLyHocVien\CapNhatLichThi.resx">
-      <DependentUpon>CapNhatLichThi.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="QuanLyHocVien\LapBienLaiThuHocPhi.resx">
       <DependentUpon>LapBienLaiThuHocPhi.cs</DependentUpon>
     </EmbeddedResource>
@@ -249,9 +234,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QuanLyHocVien\TraCuuHocVien.resx">
       <DependentUpon>TraCuuHocVien.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="QuanLyHocVien\TraCuuLichThi.resx">
-      <DependentUpon>TraCuuLichThi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QuanLyHocVien\TraCuuThongTinHocPhi.resx">
       <DependentUpon>TraCuuThongTinHocPhi.cs</DependentUpon>
