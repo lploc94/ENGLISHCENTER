@@ -47,7 +47,6 @@ namespace QuanLyTrungTamAnhNgu
             else
             {
                 string quyen = userData["PHANQUYEN"].ToString();
-                AccountHelper.SetLoginUserNameAndPassword(userData["USERNAME"].ToString(), userData["PASS"].ToString());
                 MainForm form = new MainForm(quyen);
                 form.Show();
                 this.Hide();
