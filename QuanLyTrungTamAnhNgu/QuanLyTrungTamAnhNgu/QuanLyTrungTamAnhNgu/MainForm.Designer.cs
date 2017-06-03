@@ -321,6 +321,7 @@
             this.barButtonItem24.Id = 26;
             this.barButtonItem24.LargeGlyph = global::QuanLyTrungTamAnhNgu.Properties.Resources.logout_512;
             this.barButtonItem24.Name = "barButtonItem24";
+            this.barButtonItem24.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem24_ItemClick);
             // 
             // ribbonPage1
             // 

@@ -13,6 +13,7 @@ using QuanLyTrungTamAnhNgu.QuanLyGiangDay;
 using QuanLyTrungTamAnhNgu.QuanLyTaiKhoan;
 using BusinessLogicLayer.service;
 using QuanLyTrungTamAnhNgu.Helper;
+using QuanLyTrungTamAnhNgu;
 
 namespace QuanLyTrungTamAnhNgu
 {
@@ -290,6 +291,13 @@ namespace QuanLyTrungTamAnhNgu
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void barButtonItem24_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            DangNhap form = new DangNhap();
+            form.Show();
+            this.Hide();
         }
     }
 }
