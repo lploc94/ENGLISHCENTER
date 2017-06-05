@@ -34,17 +34,22 @@ namespace QuanLyTrungTamAnhNgu.Helper
         public static void ShowErrorOnUpdate()
         {
             //DialogHelper.ShowErrorDialog("Có lỗi xảy ra khi cập nhật dữ liệu");
-            DialogHelper.ExtendedShowErrorDialog("Có lỗi xảy ra khi cập nhật dữ liệu", "Update Error", 3, 1);
+            DialogHelper.ExtendedShowErrorDialog("Có lỗi xảy ra khi cập nhật dữ liệu", "Update Error", 1, 1);
         }
 		public static void ShowErrorOnInsert()
 		{
 			//DialogHelper.ShowErrorDialog("Có lỗi xảy ra khi thêm dữ liệu");
-			DialogHelper.ExtendedShowErrorDialog("Có lỗi xảy ra khi thêm dữ liệu", "Insert Error", 3, 1);
+			DialogHelper.ExtendedShowErrorDialog("Có lỗi xảy ra khi thêm dữ liệu", "Insert Error", 1, 1);
 		}
 		public static void ShowErrorOnDelete()
 		{
 			//DialogHelper.ShowErrorDialog("Có lỗi xảy ra khi xóa dữ liệu");
-			DialogHelper.ExtendedShowErrorDialog("Có lỗi xảy ra khi xóa dữ liệu", "Insert Error", 3, 1);
+			DialogHelper.ExtendedShowErrorDialog("Có lỗi xảy ra khi xóa dữ liệu", "Delete Error", 1, 1);
+		}
+		public static void ShowErrorOnDelete(string message)
+		{
+			//DialogHelper.ShowErrorDialog("Có lỗi xảy ra khi xóa dữ liệu");
+			DialogHelper.ExtendedShowErrorDialog(message, "Delete Error", 1, 1);
 		}
 		public static void ShowErrorDialog(string body)
         {

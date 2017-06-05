@@ -19,6 +19,8 @@ namespace QuanLyTrungTamAnhNgu.QuanLyGiangDay
 		// Lay thong tin tu KhoaHoc trong BusinessLogicLayer
 		private BusinessLogicLayer.service.KhoaHoc khoaHocService;
 
+		// Kiem tra xem co lop hoc nao chua khoa hoc khong, neu co bao loi, neu khong duoc quyen xoa
+		private BusinessLogicLayer.service.LopHoc lopHocService;
 
 		// Khoi tao bang nhap khoa hoc
 		public NhapKhoaHoc()
@@ -38,6 +40,8 @@ namespace QuanLyTrungTamAnhNgu.QuanLyGiangDay
 		public void InitializeService()
 		{
 			khoaHocService = new BusinessLogicLayer.service.KhoaHoc();
+			lopHocService = new BusinessLogicLayer.service.LopHoc();
+			
 		}
 
 
@@ -209,17 +213,45 @@ namespace QuanLyTrungTamAnhNgu.QuanLyGiangDay
 		// Khi bam vao nut xoa
 		private void btnXoa_Click(object sender, EventArgs e)
 		{
+			// Con tro cho
             this.Cursor = Cursors.WaitCursor;
-            // Xoa cac row duoc chon ra khoi bang
-            foreach (DataGridViewRow row in dgvKhoaHoc.SelectedRows)
+
+			// Lay thong tin tu lop hoc service
+			DataTable lopHocDataTable = lopHocService.getAll(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword());
+			
+			// Truong hop xoa cung luc nhieu hang
+			foreach (DataGridViewRow row in dgvKhoaHoc.SelectedRows)
 			{
-				// Neu hang nao xoa khong duoc thi dung ngay tai hang do
-				if (DeleteKhoaHocRow(row) == 0)
+				// Voi moi hang trong list hang da chon
+				foreach (DataRow mRow in lopHocDataTable.Rows)
 				{
-					break;
+					// Neu phat hien ra Ma khoa hoc trong hang trung voi ma khoa hoc trong bang lop hoc
+					if (mRow["MAKH"].ToString().Equals(row.Cells["MAKH"].Value.ToString()))
+					{
+						// Bao loi khong xoa duoc
+						DialogHelper.ShowErrorOnDelete("Không xóa được " + mRow["MAKH"].ToString() + " vì có ràng buộc");
+
+						// Tra con tri ve Arrow
+						this.Cursor = Cursors.Arrow;
+
+						// Khong xoa bat cu hang nao
+						return;
+					}
 				}
 			}
 
+			// Neu hang nao xoa khong duoc thi dung ngay tai hang do
+			foreach (DataGridViewRow row in dgvKhoaHoc.SelectedRows)
+			{
+				// Kiem tra xoa duoc khong (co the loi phat sinh do server)
+				// Neu khong xoa duoc thi bao loi
+				if (DeleteKhoaHocRow(row) == 0)
+				{
+					DialogHelper.ShowErrorOnDelete();
+					break;
+				}
+			}
+			
 			// Cap nhat gridview
 			PopulateKhoaHocGridView();
             this.Cursor = Cursors.Arrow;
