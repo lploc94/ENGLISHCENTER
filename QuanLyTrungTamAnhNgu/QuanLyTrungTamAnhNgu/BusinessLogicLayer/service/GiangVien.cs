@@ -54,12 +54,30 @@ namespace BusinessLogicLayer.service
             {
                 if (CheckService.checkRole(id, 3) == 1 || CheckService.checkRole(id, 0) == 1)//kiểm tra id này có quyền delete giảng viên không... 
                 {
+                    int returner = 0;
+
                     GiangVienService gvsv = new GiangVienService();
+                    returner = deleteAllGVRef(gvsv, magv);
+
+                    if (returner == 0)
+                        return 0;
+
                     return gvsv.delete(magv);
                 }
             }
             return 0;
         }
+
+        private int deleteAllGVRef(GiangVienService gvsv, string maGV)
+        {
+            ThongTinLuongGVService ttlgv_service = new ThongTinLuongGVService();
+            ttlgv_service.deleteByMaGV(maGV);
+
+            CT_LopHocService ctlh_service = new CT_LopHocService();
+            return ctlh_service.updateByMaGV(maGV, "null");            
+        }
+                        
+
         public DataTable get(string id, string pass, string magv) // Ý nghĩa của hàm này ???
         {
             if (CheckService.checkID(id, pass) == 1)

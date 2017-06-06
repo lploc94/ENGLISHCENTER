@@ -24,6 +24,21 @@ namespace DataAccessLayer.Service
             return 0;
         }
 
+        public int deleteByMaGV(string code)
+        {
+            using (QLTTEntities qltt = new QLTTEntities())
+            {
+                TT_LUONGGV data = qltt.TT_LUONGGV.Where(p => p.MAGV == code).FirstOrDefault();
+                if (data != null)
+                {
+                    qltt.TT_LUONGGV.Remove(data);
+                    qltt.SaveChanges();
+                    return 1;
+                }
+            }
+            return 0;
+        }
+
         public DataTable get(string code)
         {
             using (QLTTEntities qltt = new QLTTEntities())

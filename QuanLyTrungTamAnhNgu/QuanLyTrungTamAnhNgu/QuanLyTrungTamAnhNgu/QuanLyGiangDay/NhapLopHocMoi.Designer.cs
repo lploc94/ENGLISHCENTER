@@ -34,10 +34,8 @@
             this.cbGiangVien = new System.Windows.Forms.ComboBox();
             this.dateNgayKetThuc = new System.Windows.Forms.DateTimePicker();
             this.dateNgayBatDau = new System.Windows.Forms.DateTimePicker();
-            this.txtSiSo = new System.Windows.Forms.TextBox();
             this.txtMaLopHoc = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -70,10 +68,8 @@
             this.groupBox1.Controls.Add(this.cbGiangVien);
             this.groupBox1.Controls.Add(this.dateNgayKetThuc);
             this.groupBox1.Controls.Add(this.dateNgayBatDau);
-            this.groupBox1.Controls.Add(this.txtSiSo);
             this.groupBox1.Controls.Add(this.txtMaLopHoc);
             this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
@@ -83,7 +79,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Size = new System.Drawing.Size(976, 172);
+            this.groupBox1.Size = new System.Drawing.Size(976, 125);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
@@ -135,15 +131,6 @@
             this.dateNgayBatDau.Size = new System.Drawing.Size(144, 23);
             this.dateNgayBatDau.TabIndex = 17;
             // 
-            // txtSiSo
-            // 
-            this.txtSiSo.Location = new System.Drawing.Point(108, 128);
-            this.txtSiSo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtSiSo.Name = "txtSiSo";
-            this.txtSiSo.Size = new System.Drawing.Size(47, 23);
-            this.txtSiSo.TabIndex = 15;
-            this.txtSiSo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.keyPress_onlyNumber);
-            // 
             // txtMaLopHoc
             // 
             this.txtMaLopHoc.Location = new System.Drawing.Point(108, 22);
@@ -160,15 +147,6 @@
             this.label8.Size = new System.Drawing.Size(54, 17);
             this.label8.TabIndex = 7;
             this.label8.Text = "Học phí";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(21, 131);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(36, 17);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "Sỉ số";
             // 
             // label6
             // 
@@ -221,11 +199,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.dataGridView1);
-            this.groupBox2.Location = new System.Drawing.Point(3, 186);
+            this.groupBox2.Location = new System.Drawing.Point(3, 139);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Size = new System.Drawing.Size(976, 304);
+            this.groupBox2.Size = new System.Drawing.Size(976, 351);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             // 
@@ -246,7 +224,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(3, 20);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(970, 280);
+            this.dataGridView1.Size = new System.Drawing.Size(970, 327);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gridView_RowHeaderMouseClick);
             // 
@@ -369,10 +347,8 @@
         private System.Windows.Forms.ComboBox cbGiangVien;
         private System.Windows.Forms.DateTimePicker dateNgayKetThuc;
         private System.Windows.Forms.DateTimePicker dateNgayBatDau;
-        private System.Windows.Forms.TextBox txtSiSo;
         private System.Windows.Forms.TextBox txtMaLopHoc;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;

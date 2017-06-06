@@ -55,6 +55,49 @@ namespace DataAccessLayer.Service
             }
         }
 
+        public int updateByMaGV(string old_magv, string new_magv)
+        {
+            try
+            {
+                using (QLTTEntities qltt = new QLTTEntities())
+                {
+                    string old_malop;
+
+                    CT_LOPHOC ctlh;
+                    while(true)
+                    {
+                        ctlh = qltt.CT_LOPHOC.Where(p => p.MAGV == old_magv).FirstOrDefault();
+
+                        if (ctlh == null)
+                            break;
+
+                        old_malop = ctlh.MALOP;
+
+                        qltt.CT_LOPHOC.Remove(ctlh);
+
+                        // tạo cái mới
+                        CT_LOPHOC new_chitiet = new CT_LOPHOC()
+                        {
+                            MALOP = old_malop,
+                            MAGV = new_magv
+                        };
+                        qltt.CT_LOPHOC.Add(new_chitiet);
+
+                        qltt.SaveChanges();
+                    }
+
+                    return 1;
+                }
+
+            }
+            catch
+            {
+                return 0;
+
+            }
+
+        }
+
         public DataTable getByMaLop(string malop)
         {
             try

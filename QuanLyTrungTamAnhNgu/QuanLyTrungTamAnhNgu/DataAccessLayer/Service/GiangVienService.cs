@@ -73,6 +73,9 @@ namespace DataAccessLayer.Service
                 rtnTable.Columns.Add("HESO", typeof(double));
                 foreach (GIANGVIEN gv in GvList)
                 {
+                    if (gv.MAGV == "null")
+                        continue;
+
                     rtnTable.Rows.Add(gv.MAGV, gv.TENGV, gv.GIOITINH, gv.NGSINH, gv.DIACHI, gv.SDT, gv.EMAIL, gv.TRINHDO, gv.BANGCAP, gv.NGAYVL, gv.HESO);
                 }
                 if (rtnTable.Rows[0][0] == DBNull.Value)

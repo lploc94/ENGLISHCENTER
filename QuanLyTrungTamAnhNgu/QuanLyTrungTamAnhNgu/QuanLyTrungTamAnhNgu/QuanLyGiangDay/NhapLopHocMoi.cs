@@ -174,16 +174,16 @@ namespace QuanLyTrungTamAnhNgu.QuanLyGiangDay
 
             string maHP = GetEqualName(cbHocPhi.Text, dtHocPhi, 0, 1);
 
-            int siSo;
-            try
-            {
-                siSo = int.Parse(txtSiSo.Text);
-            }
-            catch (Exception e)
-            {
-                DialogHelper.ShowErrorDialog("Sĩ số nhập vào không hợp lệ!");
-                return;
-            }
+            int siSo = 0;
+            //try
+            //{
+            //    siSo = int.Parse(txtSiSo.Text);
+            //}
+            //catch (Exception e)
+            //{
+            //    DialogHelper.ShowErrorDialog("Sĩ số nhập vào không hợp lệ!");
+            //    return;
+            //}
 
             // điền thiếu thì báo lỗi
             if (maLop == "" ||
@@ -268,7 +268,6 @@ namespace QuanLyTrungTamAnhNgu.QuanLyGiangDay
             dateNgayBatDau.Value = (DateTime)row.Cells["NGAYBD"].Value;
             dateNgayKetThuc.Value = (DateTime)row.Cells["NGAYKT"].Value;
             cbHocPhi.Text = row.Cells["MAHP"].Value.ToString();
-            txtSiSo.Text = row.Cells["SISO"].Value.ToString();
         }
 
         private void keyPress_onlyNumber(object sender, KeyPressEventArgs e)
@@ -297,7 +296,6 @@ namespace QuanLyTrungTamAnhNgu.QuanLyGiangDay
             dateNgayBatDau.Value = DateTime.Today;
             dateNgayKetThuc.Value = DateTime.Today;
             cbHocPhi.Text = "";
-            txtSiSo.Text = "";
         }
 
 

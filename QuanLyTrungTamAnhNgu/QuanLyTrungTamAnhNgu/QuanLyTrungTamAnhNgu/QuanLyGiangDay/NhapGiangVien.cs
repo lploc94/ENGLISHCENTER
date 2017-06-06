@@ -186,9 +186,16 @@ namespace QuanLyTrungTamAnhNgu.QuanLyGiangDay
 
         private void gridView1_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            DataGridViewRow row = dataGridView1.SelectedRows[0];
+            DataGridViewRow row = dataGridView1.SelectedRows[0];            
 
-            txtMaGiangVien.Text = row.Cells["MAGV"].Value.ToString();            
+            txtMaGiangVien.Text = row.Cells["MAGV"].Value.ToString();
+            if (txtMaGiangVien.Text == "")
+            {
+                ClearField();
+                return;
+            }
+
+
             dateNgaySinh.Value = (DateTime)row.Cells["NGSINH"].Value;
             txtEmail.Text = row.Cells["EMAIL"].Value.ToString();
             txtTenGiangVien.Text = row.Cells["TENGV"].Value.ToString();
@@ -260,7 +267,7 @@ namespace QuanLyTrungTamAnhNgu.QuanLyGiangDay
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            this.Cursor = Cursors.WaitCursor;
+            
             var row = GetCurrentRow();
             if (row == null)
             {
@@ -268,11 +275,19 @@ namespace QuanLyTrungTamAnhNgu.QuanLyGiangDay
                 return;
             }
 
-            var maGV = row.Cells["MAGV"].Value.ToString();
+            DialogResult = MessageBox.Show("Bạn có chắc chắn muốn xoá \"" + txtMaGiangVien.Text
+               + "\"?\nSẽ ảnh hưởng đến các dữ liệu khác", "Warning!!!"
+                   , MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 
-            gv.delete(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), maGV);
-            ShowTable();
-            this.Cursor = Cursors.Arrow;
+            if (DialogResult == DialogResult.OK)
+            {
+                this.Cursor = Cursors.WaitCursor;
+                var maGV = row.Cells["MAGV"].Value.ToString();
+
+                gv.delete(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), maGV);
+                ShowTable();
+                this.Cursor = Cursors.Arrow;
+            }
         }
 
         private void btnXoaTrang_Click(object sender, EventArgs e)
