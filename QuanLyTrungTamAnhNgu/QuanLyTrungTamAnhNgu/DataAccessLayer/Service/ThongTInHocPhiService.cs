@@ -24,6 +24,21 @@ namespace DataAccessLayer.Service
             return 0;
         }
 
+        public int delete_malop(string malop)
+        {
+            using (QLTTEntities qltt = new QLTTEntities())
+            {
+                THONGTINHOCPHI data = qltt.THONGTINHOCPHIs.Where(p => p.MALOP == malop).FirstOrDefault();
+                if (data != null)
+                {
+                    qltt.THONGTINHOCPHIs.Remove(data);
+                    qltt.SaveChanges();
+                    return 1;
+                }
+            }
+            return 0;
+        }
+
         public DataTable get(string code)
         {
             using (QLTTEntities qltt = new QLTTEntities())

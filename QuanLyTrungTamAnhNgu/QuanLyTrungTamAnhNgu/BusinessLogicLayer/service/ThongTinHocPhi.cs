@@ -53,6 +53,20 @@ namespace BusinessLogicLayer.service
             }
             return 0;
         }
+
+        public int delete_malop(string id, string pass, string malop) //id và pass của nhân viên không phải id và pass của giảng viên
+        {
+            if (CheckService.checkID(id, pass) == 1)
+            {
+                if (CheckService.checkRole(id, 3) == 1 || CheckService.checkRole(id, 0) == 1)//kiểm tra id này có quyền delete giảng viên không... 
+                {
+                    ThongTinHocPhiService tthpsv = new ThongTinHocPhiService();
+                    return tthpsv.delete_malop(malop);
+                }
+            }
+            return 0;
+        }
+
         public DataTable get(string id, string pass, string matt)
         {
             if (CheckService.checkID(id, pass) == 1)

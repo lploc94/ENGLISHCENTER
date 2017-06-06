@@ -36,28 +36,7 @@ namespace QuanLyTrungTamAnhNgu.QuanLyGiangDay
             InitChiTiet();
 
             ShowTable();
-
-            label3.Hide();
-            cbMaPhong.Hide();
-
-            btnSua.Hide();
-            btnXoa.Hide();
-
         }
-
-        //void InitPhongHoc()
-        //{
-        //    PhongHoc ph = new PhongHoc();
-        //    dtPhongHoc = ph.getAllId(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword());
-
-
-        //    PopulatePhongHoc();
-        //}
-        //private int PopulatePhongHoc()
-        //{
-        //    UIHelper.PopulateComboBoxWithDataTable(dtPhongHoc, cbMaPhong);
-        //    return 0;
-        //}
         #region init ---------
         void InitChiTiet()
         {
@@ -338,25 +317,46 @@ namespace QuanLyTrungTamAnhNgu.QuanLyGiangDay
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            this.Cursor = Cursors.WaitCursor;
-            var row = GetCurrentRow();
-            if (row == null)
+            if (GetCurrentRow() == null)
             {
                 DialogHelper.ShowMissingSelectedRow();
                 return;
             }
 
-            string maLop = row.Cells["MALOP"].Value.ToString();
-            string maGV = GetEqualName(row.Cells["MAGV"].Value.ToString(), dtGiangVien, 1, 0);
+            DialogResult = MessageBox.Show("Bạn có chắc chắn muốn xoá \"" + txtMaLopHoc.Text
+                + "\" và tất cả các thông tin liên quan đến lớp học này?", "Warning!!!"
+                    , MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 
-            LopHoc lophoc = new LopHoc();
-            CT_LopHoc chitiet = new CT_LopHoc();
+            if (DialogResult == DialogResult.OK)
+            {
+                this.Cursor = Cursors.WaitCursor;
+                Delete(txtMaLopHoc.Text);
+                ShowTable();
+                this.Cursor = Cursors.Arrow;
+            }
+        }
 
-            chitiet.delete(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), maLop, maGV);
-            lophoc.delete(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), maLop);
+        private void Delete(string malop)
+        {
+            CT_LopHoc ctlh = new CT_LopHoc();
+            ctlh.delete_malop(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), malop);
+            DangKy dk = new DangKy();
+            dk.delete_malop(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), malop);
+            Thi thi = new Thi();
+            thi.delete_malop(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), malop);
+            ThongTinHocPhi tthp = new ThongTinHocPhi();
+            tthp.delete_malop(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), malop);
+            ThoiKhoaBieu tkb = new ThoiKhoaBieu();
+            tkb.delete_malop(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), malop);
+            LopHoc lh = new LopHoc();
 
-            ShowTable();
-            this.Cursor = Cursors.Arrow;
+            if (lh.delete(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), malop) == 1)
+            { }
+            else
+            {
+                DialogHelper.ShowErrorOnDelete();
+            }
+
         }
 
         private void btnXoaTrang_Click(object sender, EventArgs e)

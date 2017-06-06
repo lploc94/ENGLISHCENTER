@@ -22,6 +22,20 @@ namespace BusinessLogicLayer.service
             }
             return 0;
         }
+
+        public int delete_malop(string id, string pass, string malop)
+        {
+            if (CheckService.checkID(id, pass) == 1)
+            {
+                if (CheckService.checkRole(id, 2) == 1 || CheckService.checkRole(id, 0) == 1)
+                {
+                    CT_LopHocService ctlhsv = new CT_LopHocService();
+                    return ctlhsv.delete_malop(malop);
+                }
+            }
+            return 0;
+        }
+
         public DataTable getAll(string id, string pass)
         {
             if (CheckService.checkID(id, pass) == 1)

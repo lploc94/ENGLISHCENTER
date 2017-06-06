@@ -31,8 +31,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbMaKhoaHoc = new System.Windows.Forms.ComboBox();
             this.cbHocPhi = new System.Windows.Forms.ComboBox();
-            this.cbMaPhong = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.cbGiangVien = new System.Windows.Forms.ComboBox();
             this.dateNgayKetThuc = new System.Windows.Forms.DateTimePicker();
             this.dateNgayBatDau = new System.Windows.Forms.DateTimePicker();
@@ -47,10 +45,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnThem = new System.Windows.Forms.Button();
-            this.btnXoa = new System.Windows.Forms.Button();
-            this.btnSua = new System.Windows.Forms.Button();
-            this.btnXoaTrang = new System.Windows.Forms.Button();
             this.MALOP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MAKH = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MAGV = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,6 +52,10 @@
             this.NGAYKT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MAHP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SISO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnThem = new System.Windows.Forms.Button();
+            this.btnXoa = new System.Windows.Forms.Button();
+            this.btnSua = new System.Windows.Forms.Button();
+            this.btnXoaTrang = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -65,12 +63,10 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.cbMaKhoaHoc);
             this.groupBox1.Controls.Add(this.cbHocPhi);
-            this.groupBox1.Controls.Add(this.cbMaPhong);
-            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.cbGiangVien);
             this.groupBox1.Controls.Add(this.dateNgayKetThuc);
             this.groupBox1.Controls.Add(this.dateNgayBatDau);
@@ -87,7 +83,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Size = new System.Drawing.Size(976, 230);
+            this.groupBox1.Size = new System.Drawing.Size(976, 172);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
@@ -110,25 +106,6 @@
             this.cbHocPhi.Name = "cbHocPhi";
             this.cbHocPhi.Size = new System.Drawing.Size(144, 24);
             this.cbHocPhi.TabIndex = 28;
-            // 
-            // cbMaPhong
-            // 
-            this.cbMaPhong.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbMaPhong.FormattingEnabled = true;
-            this.cbMaPhong.Location = new System.Drawing.Point(108, 130);
-            this.cbMaPhong.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.cbMaPhong.Name = "cbMaPhong";
-            this.cbMaPhong.Size = new System.Drawing.Size(140, 24);
-            this.cbMaPhong.TabIndex = 23;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(21, 134);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(69, 17);
-            this.label3.TabIndex = 22;
-            this.label3.Text = "Mã phòng";
             // 
             // cbGiangVien
             // 
@@ -160,7 +137,7 @@
             // 
             // txtSiSo
             // 
-            this.txtSiSo.Location = new System.Drawing.Point(381, 134);
+            this.txtSiSo.Location = new System.Drawing.Point(108, 128);
             this.txtSiSo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtSiSo.Name = "txtSiSo";
             this.txtSiSo.Size = new System.Drawing.Size(47, 23);
@@ -187,7 +164,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(275, 137);
+            this.label7.Location = new System.Drawing.Point(21, 131);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(36, 17);
             this.label7.TabIndex = 6;
@@ -240,15 +217,15 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.dataGridView1);
-            this.groupBox2.Location = new System.Drawing.Point(3, 244);
+            this.groupBox2.Location = new System.Drawing.Point(3, 186);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Size = new System.Drawing.Size(976, 246);
+            this.groupBox2.Size = new System.Drawing.Size(976, 304);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             // 
@@ -269,9 +246,51 @@
             this.dataGridView1.Location = new System.Drawing.Point(3, 20);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(970, 222);
+            this.dataGridView1.Size = new System.Drawing.Size(970, 280);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gridView_RowHeaderMouseClick);
+            // 
+            // MALOP
+            // 
+            this.MALOP.DataPropertyName = "MALOP";
+            this.MALOP.HeaderText = "Mã lớp học";
+            this.MALOP.Name = "MALOP";
+            // 
+            // MAKH
+            // 
+            this.MAKH.DataPropertyName = "MAKH";
+            this.MAKH.HeaderText = "Mã khóa học";
+            this.MAKH.Name = "MAKH";
+            // 
+            // MAGV
+            // 
+            this.MAGV.DataPropertyName = "MAGV";
+            this.MAGV.HeaderText = "Giảng viên";
+            this.MAGV.Name = "MAGV";
+            // 
+            // NGAYBD
+            // 
+            this.NGAYBD.DataPropertyName = "NGAYBD";
+            this.NGAYBD.HeaderText = "Ngày bắt đầu";
+            this.NGAYBD.Name = "NGAYBD";
+            // 
+            // NGAYKT
+            // 
+            this.NGAYKT.DataPropertyName = "NGAYKT";
+            this.NGAYKT.HeaderText = "Ngày kết thúc";
+            this.NGAYKT.Name = "NGAYKT";
+            // 
+            // MAHP
+            // 
+            this.MAHP.DataPropertyName = "MAHP";
+            this.MAHP.HeaderText = "Học phí";
+            this.MAHP.Name = "MAHP";
+            // 
+            // SISO
+            // 
+            this.SISO.DataPropertyName = "SISO";
+            this.SISO.HeaderText = "Sĩ số";
+            this.SISO.Name = "SISO";
             // 
             // btnThem
             // 
@@ -321,48 +340,6 @@
             this.btnXoaTrang.UseVisualStyleBackColor = true;
             this.btnXoaTrang.Click += new System.EventHandler(this.btnXoaTrang_Click);
             // 
-            // MALOP
-            // 
-            this.MALOP.DataPropertyName = "MALOP";
-            this.MALOP.HeaderText = "Mã lớp học";
-            this.MALOP.Name = "MALOP";
-            // 
-            // MAKH
-            // 
-            this.MAKH.DataPropertyName = "MAKH";
-            this.MAKH.HeaderText = "Mã khóa học";
-            this.MAKH.Name = "MAKH";
-            // 
-            // MAGV
-            // 
-            this.MAGV.DataPropertyName = "MAGV";
-            this.MAGV.HeaderText = "Giảng viên";
-            this.MAGV.Name = "MAGV";
-            // 
-            // NGAYBD
-            // 
-            this.NGAYBD.DataPropertyName = "NGAYBD";
-            this.NGAYBD.HeaderText = "Ngày bắt đầu";
-            this.NGAYBD.Name = "NGAYBD";
-            // 
-            // NGAYKT
-            // 
-            this.NGAYKT.DataPropertyName = "NGAYKT";
-            this.NGAYKT.HeaderText = "Ngày kết thúc";
-            this.NGAYKT.Name = "NGAYKT";
-            // 
-            // MAHP
-            // 
-            this.MAHP.DataPropertyName = "MAHP";
-            this.MAHP.HeaderText = "Học phí";
-            this.MAHP.Name = "MAHP";
-            // 
-            // SISO
-            // 
-            this.SISO.DataPropertyName = "SISO";
-            this.SISO.HeaderText = "Sĩ số";
-            this.SISO.Name = "SISO";
-            // 
             // NhapLopHocMoi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -407,8 +384,6 @@
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnXoaTrang;
-        private System.Windows.Forms.ComboBox cbMaPhong;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cbHocPhi;
         private System.Windows.Forms.ComboBox cbMaKhoaHoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn MALOP;

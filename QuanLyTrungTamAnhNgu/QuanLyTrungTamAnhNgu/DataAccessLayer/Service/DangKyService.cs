@@ -32,6 +32,29 @@ namespace DataAccessLayer.Service
             }
         }
 
+        public int delete_malop(string malop)
+        {
+            try
+            {
+                using (QLTTEntities qltt = new QLTTEntities())
+                {
+
+                    DANGKY dk = qltt.DANGKies.Where(p => p.MALOP == malop).FirstOrDefault();
+                    if (dk != null)
+                    {
+                        qltt.DANGKies.Remove(dk);
+                        qltt.SaveChanges();
+                        return 1;
+                    }
+                    return 0;
+                }
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
         public DataTable getByMaLop(string malop)
         {
             try
