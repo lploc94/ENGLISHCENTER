@@ -189,8 +189,7 @@ namespace QuanLyTrungTamAnhNgu.QuanLyGiangDay
             if (maLop == "" ||
                 maKH == "" ||
                 maGV == "" ||
-                maHP == "" ||
-                siSo == 0)
+                maHP == "")
             {
                 DialogHelper.ShowMissingField();
                 return;
@@ -213,6 +212,8 @@ namespace QuanLyTrungTamAnhNgu.QuanLyGiangDay
                     DialogHelper.ShowCannotModifiyPrimaryKey();
                     return;
                 }
+
+                siSo = (int)row.Cells["SISO"].Value;
             }
 
 

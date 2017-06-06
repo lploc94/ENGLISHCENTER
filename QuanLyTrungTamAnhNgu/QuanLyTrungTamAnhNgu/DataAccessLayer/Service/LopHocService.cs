@@ -148,6 +148,28 @@ namespace DataAccessLayer.Service
             }
         }
 
+        public int updateSiSo(string malop, int number)
+        {
+            try
+            {
+                using (QLTTEntities qltt = new QLTTEntities())
+                {
+                    LOPHOC lh = qltt.LOPHOCs.Where(p => p.MALOP == malop).FirstOrDefault();
+                    if (lh != null)
+                    {
+                        lh.SISO = lh.SISO + number;
+                        qltt.SaveChanges();
+                        return 1;
+                    }
+                    return 0;
+                }
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
         public DataTable getAllMaLop()
         {
             using (QLTTEntities qltt = new QLTTEntities())

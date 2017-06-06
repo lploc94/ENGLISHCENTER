@@ -21,6 +21,11 @@ namespace DataAccessLayer.Service
                     {
                         qltt.DANGKies.Remove(dk);
                         qltt.SaveChanges();
+
+                        // Cập nhật sĩ số
+                        LopHocService lhsv = new LopHocService();
+                        lhsv.updateSiSo(malop, -1);
+
                         return 1;
                     }
                     return 0;
@@ -39,12 +44,18 @@ namespace DataAccessLayer.Service
                 using (QLTTEntities qltt = new QLTTEntities())
                 {
 
-                    DANGKY dk = qltt.DANGKies.Where(p => p.MALOP == malop).FirstOrDefault();
-                    if (dk != null)
+                    DANGKY dk;
+                    while (true)
                     {
-                        qltt.DANGKies.Remove(dk);
-                        qltt.SaveChanges();
-                        return 1;
+                        dk  = qltt.DANGKies.Where(p => p.MALOP == malop).FirstOrDefault();
+                        if (dk != null)
+                        {
+                            qltt.DANGKies.Remove(dk);
+                            qltt.SaveChanges();
+                            return 1;
+                        }
+
+                        else break;
                     }
                     return 0;
                 }
@@ -144,6 +155,11 @@ namespace DataAccessLayer.Service
                     };
                     qltt.DANGKies.Add(dk);
                     qltt.SaveChanges();
+                    
+                    // Cập nhật sĩ số
+                    LopHocService lhsv = new LopHocService();
+                    lhsv.updateSiSo(malop, 1);
+
                     return 1;
                 }
             }

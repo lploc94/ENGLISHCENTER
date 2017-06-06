@@ -106,6 +106,7 @@
             this.barButtonItem23,
             this.barButtonItem24});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
+            this.ribbon.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ribbon.MaxItemId = 27;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -114,7 +115,7 @@
             this.ribbonPage3});
             this.ribbon.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemPopupGalleryEdit1});
-            this.ribbon.Size = new System.Drawing.Size(780, 143);
+            this.ribbon.Size = new System.Drawing.Size(910, 168);
             this.ribbon.StatusBar = this.ribbonStatusBar;
             // 
             // barButtonItem1
@@ -231,7 +232,7 @@
             // 
             // barButtonItem12
             // 
-            this.barButtonItem12.Caption = "Nhập giảng viên";
+            this.barButtonItem12.Caption = "Giảng viên";
             this.barButtonItem12.Id = 15;
             this.barButtonItem12.LargeGlyph = global::QuanLyTrungTamAnhNgu.Properties.Resources.Edit_Users_icon;
             this.barButtonItem12.Name = "barButtonItem12";
@@ -255,7 +256,7 @@
             // 
             // barButtonItem15
             // 
-            this.barButtonItem15.Caption = "Nhập lớp học";
+            this.barButtonItem15.Caption = "Lớp học";
             this.barButtonItem15.Id = 18;
             this.barButtonItem15.LargeGlyph = global::QuanLyTrungTamAnhNgu.Properties.Resources.Folder_New_icon;
             this.barButtonItem15.Name = "barButtonItem15";
@@ -409,10 +410,11 @@
             // 
             // ribbonStatusBar
             // 
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 504);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 622);
+            this.ribbonStatusBar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbon;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(780, 31);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(910, 36);
             // 
             // barButtonItem22
             // 
@@ -423,13 +425,14 @@
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(780, 535);
+            this.ClientSize = new System.Drawing.Size(910, 658);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbon);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "MainForm";
             this.Ribbon = this.ribbon;
             this.StatusBar = this.ribbonStatusBar;
