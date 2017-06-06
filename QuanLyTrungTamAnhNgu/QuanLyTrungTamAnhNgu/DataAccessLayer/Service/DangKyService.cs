@@ -68,75 +68,79 @@ namespace DataAccessLayer.Service
 
         public DataTable getByMaLop(string malop)
         {
+            DataTable rtnTable = new DataTable();
+            rtnTable.Columns.Add("MAHV", typeof(string));
+            rtnTable.Columns.Add("MALOP", typeof(string));
             try
             {
                 using (QLTTEntities qltt = new QLTTEntities())
                 {
 
                     var dkList = from r in qltt.DANGKies where r.MALOP == malop select r;
-                    DataTable rtnTable = new DataTable();
-                    rtnTable.Columns.Add("MAHV", typeof(string));
-                    rtnTable.Columns.Add("MALOP", typeof(string));
+                    
                     
                     foreach (DANGKY dk in dkList)
                     {
                         rtnTable.Rows.Add(dk.MAHV,dk.MALOP);
                     }
-                    return rtnTable;
+                    
                 }
             }
             catch
             {
-                return null;
+                
             }
+            return rtnTable;
         }
         public DataTable getByMaHV(string mahv)
         {
+            DataTable rtnTable = new DataTable();
+            rtnTable.Columns.Add("MAHV", typeof(string));
+            rtnTable.Columns.Add("MALOP", typeof(string));
             try
             {
                 using (QLTTEntities qltt = new QLTTEntities())
                 {
 
                     var dkList = from r in qltt.DANGKies where r.MAHV == mahv select r;
-                    DataTable rtnTable = new DataTable();
-                    rtnTable.Columns.Add("MAHV", typeof(string));
-                    rtnTable.Columns.Add("MALOP", typeof(string));
+                    
 
                     foreach (DANGKY dk in dkList)
                     {
                         rtnTable.Rows.Add(dk.MAHV, dk.MALOP);
                     }
-                    return rtnTable;
+                    
                 }
             }
             catch
             {
-                return null;
             }
+            return rtnTable;
         }
         public DataTable getAll()
         {
+            DataTable rtnTable = new DataTable();
+            rtnTable.Columns.Add("MAHV", typeof(string));
+            rtnTable.Columns.Add("MALOP", typeof(string));
             try
             {
                 using (QLTTEntities qltt = new QLTTEntities())
                 {
 
                     var dkList = from r in qltt.DANGKies select r;
-                    DataTable rtnTable = new DataTable();
-                    rtnTable.Columns.Add("MAHV", typeof(string));
-                    rtnTable.Columns.Add("MALOP", typeof(string));
+                    
 
                     foreach (DANGKY dk in dkList)
                     {
                         rtnTable.Rows.Add(dk.MAHV, dk.MALOP);
                     }
-                    return rtnTable;
+                    
                 }
             }
             catch
             {
-                return null;
             }
+            return rtnTable;
         }
         public int insert(string mahv, string malop)
         {

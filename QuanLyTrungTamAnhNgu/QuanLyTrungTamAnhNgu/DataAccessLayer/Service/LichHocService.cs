@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Service
 {
-    public class LichHocService : IService
+    public class LichHocService
     {
         public int delete(string code)
         {
@@ -26,41 +26,38 @@ namespace DataAccessLayer.Service
 
         public DataTable get(string code)
         {
+            DataTable rtnTable = new DataTable();
+            rtnTable.Columns.Add("MALH", typeof(string));
+            rtnTable.Columns.Add("NGAYHOC", typeof(string));
+            rtnTable.Columns.Add("GIOHOC", typeof(string));
             using (QLTTEntities qltt = new QLTTEntities())
             {
                 LICHHOC lh = qltt.LICHHOCs.Where(p => p.MALH == code).FirstOrDefault();
                 if (lh != null)
                 {
-                    DataTable rtnTable = new DataTable();
-                    rtnTable.Columns.Add("MALH", typeof(string));
-                    rtnTable.Columns.Add("NGAYHOC", typeof(string));
-                    rtnTable.Columns.Add("GIOHOC", typeof(string));
+                   
                     rtnTable.Rows.Add(lh.MALH,lh.NGAYHOC,lh.GIOHOC);
-                    return rtnTable;
+                    
                 }
             }
-            return null;
+            return rtnTable;
         }
 
         public DataTable getAll()
         {
+            DataTable rtnTable = new DataTable();
+            rtnTable.Columns.Add("MALH", typeof(string));
+            rtnTable.Columns.Add("NGAYHOC", typeof(string));
+            rtnTable.Columns.Add("GIOHOC", typeof(string));
             using (QLTTEntities qltt = new QLTTEntities())
             {
                 var lhList = from r in qltt.LICHHOCs select r;
-                
-                DataTable rtnTable = new DataTable();
-                rtnTable.Columns.Add("MALH", typeof(string));
-                rtnTable.Columns.Add("NGAYHOC", typeof(string));
-                rtnTable.Columns.Add("GIOHOC", typeof(string));
                 foreach ( LICHHOC lh in lhList)
                 {
                     rtnTable.Rows.Add(lh.MALH, lh.NGAYHOC, lh.GIOHOC);
                 }
-                if (rtnTable.Rows[0][0] == DBNull.Value)
-                    return null;
-                else
-                    return rtnTable;
             }
+            return rtnTable;
         }
         public int insert(string malh,string ngayhoc,string giohoc)
         {

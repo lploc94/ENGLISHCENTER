@@ -18,7 +18,8 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
         public TraCuuDiemThiCaNhan()
         {
             InitializeComponent();
-            InitializeService();
+            InitializeService(); ;
+            label2.Text = "Chỉ tra cứu được khi học viên có đầy đủ 2 cột điểm giữa kì và cuối kì";
         }
         private void InitializeService()
         {

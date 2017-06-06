@@ -32,13 +32,14 @@
             this.maHocVienTextBox = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.bangDiemGridView = new System.Windows.Forms.DataGridView();
-            this.traCuuDiemThiButton = new System.Windows.Forms.Button();
             this.MaHV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiemGK = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiemCK = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongDiem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KetQua = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.traCuuDiemThiButton = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bangDiemGridView)).BeginInit();
             this.SuspendLayout();
@@ -91,17 +92,6 @@
             this.bangDiemGridView.Size = new System.Drawing.Size(755, 320);
             this.bangDiemGridView.TabIndex = 0;
             // 
-            // traCuuDiemThiButton
-            // 
-            this.traCuuDiemThiButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.traCuuDiemThiButton.Location = new System.Drawing.Point(26, 427);
-            this.traCuuDiemThiButton.Name = "traCuuDiemThiButton";
-            this.traCuuDiemThiButton.Size = new System.Drawing.Size(75, 23);
-            this.traCuuDiemThiButton.TabIndex = 3;
-            this.traCuuDiemThiButton.Text = "Tra cứu";
-            this.traCuuDiemThiButton.UseVisualStyleBackColor = true;
-            this.traCuuDiemThiButton.Click += new System.EventHandler(this.traCuuDiemThiButton_Click);
-            // 
             // MaHV
             // 
             this.MaHV.DataPropertyName = "MaHV";
@@ -144,11 +134,31 @@
             this.KetQua.Name = "KetQua";
             this.KetQua.ReadOnly = true;
             // 
+            // traCuuDiemThiButton
+            // 
+            this.traCuuDiemThiButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.traCuuDiemThiButton.Location = new System.Drawing.Point(26, 427);
+            this.traCuuDiemThiButton.Name = "traCuuDiemThiButton";
+            this.traCuuDiemThiButton.Size = new System.Drawing.Size(75, 23);
+            this.traCuuDiemThiButton.TabIndex = 3;
+            this.traCuuDiemThiButton.Text = "Tra cứu";
+            this.traCuuDiemThiButton.UseVisualStyleBackColor = true;
+            this.traCuuDiemThiButton.Click += new System.EventHandler(this.traCuuDiemThiButton_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(376, 36);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(0, 13);
+            this.label2.TabIndex = 4;
+            // 
             // TraCuuDiemThiCaNhan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(763, 462);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.traCuuDiemThiButton);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.maHocVienTextBox);
@@ -176,5 +186,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DiemCK;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongDiem;
         private System.Windows.Forms.DataGridViewTextBoxColumn KetQua;
+        private System.Windows.Forms.Label label2;
     }
 }

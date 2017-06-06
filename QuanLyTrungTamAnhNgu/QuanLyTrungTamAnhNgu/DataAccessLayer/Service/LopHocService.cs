@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Service
 {
-    public class LopHocService : IService
+    public class LopHocService
     {
         public int delete(string code)
         {
@@ -26,73 +26,64 @@ namespace DataAccessLayer.Service
 
         public DataTable get(string code)
         {
+            DataTable rtnTable = new DataTable();
+            rtnTable.Columns.Add("MALOP", typeof(string));
+            rtnTable.Columns.Add("MAKH", typeof(string));
+            rtnTable.Columns.Add("NGAYBD", typeof(DateTime));
+            rtnTable.Columns.Add("NGAYKT", typeof(DateTime));
+            rtnTable.Columns.Add("SISO", typeof(int));
+            rtnTable.Columns.Add("MAHP", typeof(string));
             using (QLTTEntities qltt = new QLTTEntities())
             {
                 LOPHOC data = qltt.LOPHOCs.Where(p => p.MALOP == code).FirstOrDefault();
                 if (data != null)
                 {
-                    DataTable rtnTable = new DataTable();
-                    rtnTable.Columns.Add("MALOP", typeof(string));
-                    rtnTable.Columns.Add("MAKH", typeof(string));
-                    rtnTable.Columns.Add("NGAYBD", typeof(DateTime));
-                    rtnTable.Columns.Add("NGAYKT", typeof(DateTime));
-                    rtnTable.Columns.Add("SISO", typeof(int));
-                    rtnTable.Columns.Add("MAHP", typeof(string));
+                    
 
                     rtnTable.Rows.Add(data.MALOP, data.MAKH, data.NGAYBD, data.NGAYKT, data.SISO, data.MAHP);
-                    return rtnTable;
+                    
                 }
 
             }
-            return null;
+            return rtnTable;
         }
 
         public DataTable getAll()
         {
+            DataTable rtnTable = new DataTable();
+            rtnTable.Columns.Add("MALOP", typeof(string));
+            rtnTable.Columns.Add("MAKH", typeof(string));
+            rtnTable.Columns.Add("NGAYBD", typeof(DateTime));
+            rtnTable.Columns.Add("NGAYKT", typeof(DateTime));
+            rtnTable.Columns.Add("SISO", typeof(int));
+            rtnTable.Columns.Add("MAHP", typeof(string));
             using (QLTTEntities qltt = new QLTTEntities())
             {
                 var dataList = from r in qltt.LOPHOCs select r;
-                DataTable rtnTable = new DataTable();
-                rtnTable.Columns.Add("MALOP", typeof(string));
-                rtnTable.Columns.Add("MAKH", typeof(string));
-                rtnTable.Columns.Add("NGAYBD", typeof(DateTime));
-                rtnTable.Columns.Add("NGAYKT", typeof(DateTime));
-                rtnTable.Columns.Add("SISO", typeof(int));
-                rtnTable.Columns.Add("MAHP", typeof(string));
+               
 
                 foreach (LOPHOC data in dataList)
                 {
                     rtnTable.Rows.Add(data.MALOP, data.MAKH, data.NGAYBD, data.NGAYKT, data.SISO, data.MAHP);
                 }
-
-                if (rtnTable.Rows[0][0] == DBNull.Value)
-                    return null;
-                else
-                    return rtnTable;
-
-
             }
+            return rtnTable;
         }
         public DataTable getAllId()
         {
+            DataTable rtnTable = new DataTable();
+            rtnTable.Columns.Add("MALOP", typeof(string));
             using (QLTTEntities qltt = new QLTTEntities())
             {
                 var dataList = from r in qltt.LOPHOCs select r.MALOP;
-                DataTable rtnTable = new DataTable();
-                rtnTable.Columns.Add("MALOP", typeof(string));
+               
 
                 foreach (string data in dataList)
                 {
                     rtnTable.Rows.Add(data);
                 }
-
-                if (rtnTable.Rows[0][0] == DBNull.Value)
-                    return null;
-                else
-                    return rtnTable;
-
-
             }
+            return rtnTable;
         }
         public int insert(string malop,string makh,DateTime ngaybd,DateTime ngaykt,int siso,string mahp)
         {
@@ -172,17 +163,19 @@ namespace DataAccessLayer.Service
 
         public DataTable getAllMaLop()
         {
+            DataTable rtnTable = new DataTable();
+            rtnTable.Columns.Add("MALOP", typeof(String));
             using (QLTTEntities qltt = new QLTTEntities())
             {
                 var malop = from ml in qltt.LOPHOCs select new { MALOP = ml.MALOP };
-                DataTable rtnTable = new DataTable();
-                rtnTable.Columns.Add("MALOP", typeof(String));
+                
                 foreach (var ml in malop)
                 {
                     rtnTable.Rows.Add(ml.MALOP);
                 }
-                return rtnTable;
+                
             }
+            return rtnTable;
         }
     }
 }

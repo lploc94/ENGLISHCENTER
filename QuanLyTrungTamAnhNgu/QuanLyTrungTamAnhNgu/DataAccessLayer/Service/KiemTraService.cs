@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Service
 {
-    public class KiemTraService : IService
+    public class KiemTraService
     {
         public int delete(string code)
         {
@@ -26,59 +26,51 @@ namespace DataAccessLayer.Service
 
         public DataTable get(string code)
         {
+            DataTable rtnTable = new DataTable();
+            rtnTable.Columns.Add("MAKT", typeof(string));
+            rtnTable.Columns.Add("TENKT", typeof(string));
             using (QLTTEntities qltt = new QLTTEntities())
             {
                 KIEMTRA kt = qltt.KIEMTRAs.Where(p => p.MAKT == code).FirstOrDefault();
                 if (kt != null)
                 {
-                    DataTable rtnTable = new DataTable();
-                    rtnTable.Columns.Add("MAKT", typeof(string));
-                    rtnTable.Columns.Add("TENKT", typeof(string));
-
                     rtnTable.Rows.Add(kt.MAKT, kt.TENKT);
-                    return rtnTable;
                 }
             }
-            return null;
+            return rtnTable;
         }
 
         public DataTable getAll()
         {
+            DataTable rtnTable = new DataTable();
+            rtnTable.Columns.Add("MAKT", typeof(string));
+            rtnTable.Columns.Add("TENKT", typeof(string));
             using (QLTTEntities qltt = new QLTTEntities())
             {
                 var ktList = from r in qltt.KIEMTRAs select r;
 
-                DataTable rtnTable = new DataTable();
-                rtnTable.Columns.Add("MAKT", typeof(string));
-                rtnTable.Columns.Add("TENKT", typeof(string));
+                
                 foreach (KIEMTRA kt in ktList)
                 {
                     rtnTable.Rows.Add(kt.MAKT, kt.TENKT);
                 }
-                if (rtnTable.Rows[0][0] == DBNull.Value)
-                    return null;
-                else
-                    return rtnTable;
             }
+            return rtnTable;
         }
 
         public DataTable getAllId()
         {
+            DataTable rtnTable = new DataTable();
+            rtnTable.Columns.Add("MAKT", typeof(string));
             using (QLTTEntities qltt = new QLTTEntities())
             {
                 var maKiemTraList = from r in qltt.KIEMTRAs select r.MAKT;
-
-                DataTable rtnTable = new DataTable();
-                rtnTable.Columns.Add("MAKT", typeof(string));
                 foreach (string maKt in maKiemTraList)
                 {
                     rtnTable.Rows.Add(maKt);
                 }
-                if (rtnTable.Rows[0][0] == DBNull.Value)
-                    return null;
-                else
-                    return rtnTable;
             }
+            return rtnTable;
         }
         public int insert(string makt, string tenkt)
         {

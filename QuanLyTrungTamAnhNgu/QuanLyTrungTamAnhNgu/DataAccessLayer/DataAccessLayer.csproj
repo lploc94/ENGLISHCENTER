@@ -107,7 +107,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QLTTAN.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Service\IService.cs" />
     <Compile Include="Service\KhoaHocService.cs" />
     <Compile Include="Service\KiemTraService.cs" />
     <Compile Include="Service\LichHocService.cs" />

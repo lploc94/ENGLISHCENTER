@@ -21,6 +21,7 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
             InitializeComponent();
             InitializeService();
             PopulateMaLop();
+            label2.Text = "Lưu ý, nếu lớp có thành viên thiếu điểm thi 1 cột thì sẽ không hiện thông tin.\n\t vì thế cần nhập đầy đủ cột điểm trước khi tra cứu điểm thi của lớp đó";
         }
         private void InitializeService()
         {

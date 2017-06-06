@@ -100,73 +100,70 @@ namespace DataAccessLayer.Service
 
         public DataTable getByMaLop(string malop)
         {
+            DataTable rtnTable = new DataTable();
+            rtnTable.Columns.Add("MALOP", typeof(string));
+            rtnTable.Columns.Add("MAGV", typeof(string));
             try
             {
                 using (QLTTEntities qltt = new QLTTEntities())
                 {
-
                     var ctlhList = from r in qltt.CT_LOPHOC where r.MALOP == malop select r;
-                    DataTable rtnTable = new DataTable();
-                    rtnTable.Columns.Add("MALOP", typeof(string));
-                    rtnTable.Columns.Add("MAGV", typeof(string));
                     foreach (CT_LOPHOC ctlh in ctlhList)
                     {
                         rtnTable.Rows.Add(ctlh.MALOP, ctlh.MAGV);
-                    }
-                    return rtnTable;
-                }
+                    }   
+                }  
             }
-            catch
-            {
-                return null;
-            }
+            catch{}
+            return rtnTable;
         }
         public DataTable getByMaGV(string magv)
         {
+            DataTable rtnTable = new DataTable();
+            rtnTable.Columns.Add("MALOP", typeof(string));
+            rtnTable.Columns.Add("MAGV", typeof(string));
             try
             {
                 using (QLTTEntities qltt = new QLTTEntities())
                 {
-
                     var ctlhList = from r in qltt.CT_LOPHOC where r.MAGV == magv select r;
-                    DataTable rtnTable = new DataTable();
-                    rtnTable.Columns.Add("MALOP", typeof(string));
-                    rtnTable.Columns.Add("MAGV", typeof(string));
                     foreach (CT_LOPHOC ctlh in ctlhList)
                     {
                         rtnTable.Rows.Add(ctlh.MALOP, ctlh.MAGV);
                     }
-                    return rtnTable;
                 }
             }
             catch
             {
-                return null;
+
             }
+            return rtnTable;
         }
 
         public DataTable getAll()
         {
+            DataTable rtnTable = new DataTable();
+            rtnTable.Columns.Add("MALOP", typeof(string));
+            rtnTable.Columns.Add("MAGV", typeof(string));
             try
             {
                 using (QLTTEntities qltt = new QLTTEntities())
                 {
 
                     var ctlhList = from r in qltt.CT_LOPHOC select r;
-                    DataTable rtnTable = new DataTable();
-                    rtnTable.Columns.Add("MALOP", typeof(string));
-                    rtnTable.Columns.Add("MAGV", typeof(string));
+                    
                     foreach (CT_LOPHOC ctlh in ctlhList)
                     {
                         rtnTable.Rows.Add(ctlh.MALOP, ctlh.MAGV);
                     }
-                    return rtnTable;
+                    
                 }
             }
             catch
             {
-                return null;
+                
             }
+            return rtnTable;
         }
         public int insert(string malop, string magv)
         {

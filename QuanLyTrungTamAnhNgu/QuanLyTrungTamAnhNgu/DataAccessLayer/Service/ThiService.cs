@@ -51,118 +51,129 @@ namespace DataAccessLayer.Service
 
         public DataTable get(string code)
         {
+            DataTable rtnTable = new DataTable();
+            rtnTable.Columns.Add("MAHV", typeof(string));
+            rtnTable.Columns.Add("MAKT", typeof(string));
+            rtnTable.Columns.Add("MALOP", typeof(string));
+            rtnTable.Columns.Add("MAPHONG", typeof(int));
+            rtnTable.Columns.Add("NGAYTHI", typeof(DateTime));
+            rtnTable.Columns.Add("DIEMTHI", typeof(int));
+            rtnTable.Columns.Add("KETQUA", typeof(int));
             using (QLTTEntities qltt = new QLTTEntities())
             {
                 THI t = qltt.THIs.Where(p => p.MAKT == code).FirstOrDefault();
                 if (t != null)
                 {
-                    DataTable rtnTable = new DataTable();
-                    rtnTable.Columns.Add("MAHV", typeof(string));
-                    rtnTable.Columns.Add("MAKT", typeof(string));
-                    rtnTable.Columns.Add("MALOP", typeof(string));
-                    rtnTable.Columns.Add("MAPHONG", typeof(int));
-                    rtnTable.Columns.Add("NGAYTHI", typeof(DateTime));
-                    rtnTable.Columns.Add("DIEMTHI", typeof(int));
-                    rtnTable.Columns.Add("KETQUA", typeof(int));
+                    
                     rtnTable.Rows.Add(t.MAHV, t.MAKT, t.MALOP, t.MAPHONG, t.NGAYTHI, t.DIEMTHI, t.KETQUA);
-                    return rtnTable;
+                    
                 }
 
             }
-            return null;
+            return rtnTable;
         }
 
         public DataTable findDiemThiByMaHV(string maHv)
         {
-            using (QLTTEntities qltt = new QLTTEntities())
+            DataTable rtnTable = new DataTable();
+            rtnTable.Columns.Add("MAHV", typeof(string));
+            rtnTable.Columns.Add("MALOP", typeof(string));
+            rtnTable.Columns.Add("HOTEN", typeof(string));
+            rtnTable.Columns.Add("DIEMGK", typeof(int));
+            rtnTable.Columns.Add("DIEMCK", typeof(int));
+            rtnTable.Columns.Add("TONGDIEM", typeof(float));
+            rtnTable.Columns.Add("KETQUA", typeof(int));
+            try
             {
-                var gk = from x in qltt.THIs where x.MAHV == maHv&&x.MAKT=="KTGK" select x;
-                var ck = from x in qltt.THIs where x.MAHV == maHv&&x.MAKT=="KTCK" select x;
-                var info = gk.FullOuterJoin(ck, g => g.MALOP, c => c.MALOP, (g, c, MALOP) => new {MALOP = g.MALOP, DIEMGK=g.DIEMTHI,DIEMCK= c.DIEMTHI });
-
-                string hoten = qltt.HOCVIENs.Where(p => p.MAHV == maHv).FirstOrDefault().HOTEN;
-                DataTable rtnTable = new DataTable();
-                rtnTable.Columns.Add("MAHV", typeof(string));
-                rtnTable.Columns.Add("MALOP", typeof(string));
-                rtnTable.Columns.Add("HOTEN", typeof(string));
-                rtnTable.Columns.Add("DIEMGK", typeof(int));
-                rtnTable.Columns.Add("DIEMCK", typeof(int));
-                rtnTable.Columns.Add("TONGDIEM", typeof(float));
-                rtnTable.Columns.Add("KETQUA", typeof(int));
-                foreach (var i in info)
+                using (QLTTEntities qltt = new QLTTEntities())
                 {
-                    rtnTable.Rows.Add(maHv, i.MALOP, hoten, i.DIEMGK, i.DIEMCK, (i.DIEMGK + i.DIEMCK), (float)(i.DIEMGK + i.DIEMCK) / 2 >= 5 ? 1 : 0);
+                    var gk = from x in qltt.THIs where x.MAHV == maHv && x.MAKT == "KTGK" select x;
+                    var ck = from x in qltt.THIs where x.MAHV == maHv && x.MAKT == "KTCK" select x;
+                    var info = gk.FullOuterJoin(ck, g => g.MALOP, c => c.MALOP, (g, c, MALOP) => new { MALOP = g.MALOP, DIEMGK = g.DIEMTHI, DIEMCK = c.DIEMTHI });
+
+                    string hoten = qltt.HOCVIENs.Where(p => p.MAHV == maHv).FirstOrDefault().HOTEN;
+
+                    foreach (var i in info)
+                    {
+                        rtnTable.Rows.Add(maHv, i.MALOP, hoten, i.DIEMGK, i.DIEMCK, (i.DIEMGK + i.DIEMCK), (float)(i.DIEMGK + i.DIEMCK) / 2 >= 5 ? 1 : 0);
+                    }
                 }
-                return rtnTable;
             }
+
+            catch
+            { }
             
+            return rtnTable;
+
         }
         public DataTable findDiemThiByMaLop(string maLop)
         {
-            using (QLTTEntities qltt = new QLTTEntities())
+            DataTable rtnTable = new DataTable();
+            rtnTable.Columns.Add("MAHV", typeof(string));
+            rtnTable.Columns.Add("MALOP", typeof(string));
+            rtnTable.Columns.Add("HOTEN", typeof(string));
+            rtnTable.Columns.Add("DIEMGK", typeof(int));
+            rtnTable.Columns.Add("DIEMCK", typeof(int));
+            rtnTable.Columns.Add("TONGDIEM", typeof(float));
+            rtnTable.Columns.Add("KETQUA", typeof(int));
+            try
             {
-                var gk = from x in qltt.THIs where x.MALOP == maLop && x.MAKT == "KTGK" select x;
-                var ck = from x in qltt.THIs where x.MALOP == maLop && x.MAKT == "KTCK" select x;
-                var info = gk.FullOuterJoin(ck, g => g.MALOP, c => c.MALOP, (g, c, MALOP) => new {MAHV=g.MAHV, DIEMGK = g.DIEMTHI, DIEMCK = c.DIEMTHI });
-
-                
-                DataTable rtnTable = new DataTable();
-                rtnTable.Columns.Add("MAHV", typeof(string));
-                rtnTable.Columns.Add("MALOP", typeof(string));
-                rtnTable.Columns.Add("HOTEN", typeof(string));
-                rtnTable.Columns.Add("DIEMGK", typeof(int));
-                rtnTable.Columns.Add("DIEMCK", typeof(int));
-                rtnTable.Columns.Add("TONGDIEM", typeof(float));
-                rtnTable.Columns.Add("KETQUA", typeof(int));
-                foreach (var i in info)
+                using (QLTTEntities qltt = new QLTTEntities())
                 {
-                    rtnTable.Rows.Add(i.MAHV,maLop,qltt.HOCVIENs.Where(p => p.MAHV == i.MAHV).FirstOrDefault().HOTEN, i.DIEMGK, i.DIEMCK, (i.DIEMGK + i.DIEMCK) / 2, (float)(i.DIEMGK + i.DIEMCK)/2 >= 5 ? 1 : 0);
+                    var gk = from x in qltt.THIs where x.MALOP == maLop && x.MAKT == "KTGK" select x;
+                    var ck = from x in qltt.THIs where x.MALOP == maLop && x.MAKT == "KTCK" select x;
+                    var info = gk.FullOuterJoin(ck, g => g.MAHV, c => c.MAHV, (g, c, MAHV) => new { MAHV = g.MAHV, DIEMGK = g.DIEMTHI, DIEMCK = c.DIEMTHI });
+
+                    foreach (var i in info)
+                    {
+                        rtnTable.Rows.Add(i.MAHV, maLop, qltt.HOCVIENs.Where(p => p.MAHV == i.MAHV).FirstOrDefault().HOTEN, i.DIEMGK, i.DIEMCK, (i.DIEMGK + i.DIEMCK) / 2, (float)(i.DIEMGK + i.DIEMCK) / 2 >= 5 ? 1 : 0);
+                    }
+
                 }
-                return rtnTable;
             }
+            catch { }
+            
+            return rtnTable;
         }
         public DataTable getAll()
         {
+            DataTable rtnTable = new DataTable();
+            rtnTable.Columns.Add("MAHV", typeof(string));
+            rtnTable.Columns.Add("MAKT", typeof(string));
+            rtnTable.Columns.Add("MALOP", typeof(string));
+            rtnTable.Columns.Add("MAPHONG", typeof(int));
+            rtnTable.Columns.Add("NGAYTHI", typeof(DateTime));
+            rtnTable.Columns.Add("DIEMTHI", typeof(int));
+            rtnTable.Columns.Add("KETQUA", typeof(int));
             using (QLTTEntities qltt = new QLTTEntities())
             {
                 var tList = from r in qltt.THIs select r;
-                DataTable rtnTable = new DataTable();
-                rtnTable.Columns.Add("MAHV", typeof(string));
-                rtnTable.Columns.Add("MAKT", typeof(string));
-                rtnTable.Columns.Add("MALOP", typeof(string));
-                rtnTable.Columns.Add("MAPHONG", typeof(int));
-                rtnTable.Columns.Add("NGAYTHI", typeof(DateTime));
-                rtnTable.Columns.Add("DIEMTHI", typeof(int));
-                rtnTable.Columns.Add("KETQUA", typeof(int));
+                
                 foreach (THI t in tList)
                 {
                     rtnTable.Rows.Add(t.MAHV, t.MAKT, t.MALOP, t.MAPHONG, t.NGAYTHI, t.DIEMTHI, t.KETQUA);
                 }
-                if (rtnTable.Rows[0][0] == DBNull.Value)
-                    return null;
-                else
-                    return rtnTable;
-
             }
-           
+            return rtnTable;
         }
         public DataTable getAllWithTenHocVien()
         {
+            DataTable rtnTable = new DataTable();
+            rtnTable.Columns.Add("MAHV", typeof(string));
+            rtnTable.Columns.Add("HOTEN", typeof(string));
+            rtnTable.Columns.Add("MAKT", typeof(string));
+            rtnTable.Columns.Add("MALOP", typeof(string));
+            rtnTable.Columns.Add("MAPHONG", typeof(int));
+            rtnTable.Columns.Add("NGAYTHI", typeof(DateTime));
+            rtnTable.Columns.Add("DIEMTHI", typeof(int));
+            rtnTable.Columns.Add("KETQUA", typeof(int));
             using (QLTTEntities qltt = new QLTTEntities())
             {
                 var tList = from r in qltt.THIs
                             join hv in qltt.HOCVIENs
                             on r.MAHV equals hv.MAHV
                             select new { THI = r, HOTEN = hv.HOTEN };
-                DataTable rtnTable = new DataTable();
-                rtnTable.Columns.Add("MAHV", typeof(string));
-                rtnTable.Columns.Add("HOTEN", typeof(string));
-                rtnTable.Columns.Add("MAKT", typeof(string));
-                rtnTable.Columns.Add("MALOP", typeof(string));
-                rtnTable.Columns.Add("MAPHONG", typeof(int));
-                rtnTable.Columns.Add("NGAYTHI", typeof(DateTime));
-                rtnTable.Columns.Add("DIEMTHI", typeof(int));
-                rtnTable.Columns.Add("KETQUA", typeof(int));
+               
                 foreach (var t in tList)
                 {
                     rtnTable.Rows.Add(t.THI.MAHV,
@@ -174,13 +185,8 @@ namespace DataAccessLayer.Service
                         t.THI.DIEMTHI, 
                         t.THI.KETQUA);
                 }
-                if (rtnTable.Rows[0][0] == DBNull.Value)
-                    return null;
-                else
-                    return rtnTable;
-
             }
-
+            return rtnTable;
         }
         public int insert(string mahv,string makt,string malop,int maphong,DateTime ngaythi,int diemthi,int ketqua)
         {

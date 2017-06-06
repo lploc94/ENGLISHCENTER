@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Service
 {
-    public class ThongTinHocPhiService : IService
+    public class ThongTinHocPhiService
     {
         public int delete(string code)
         {
@@ -41,50 +41,42 @@ namespace DataAccessLayer.Service
 
         public DataTable get(string code)
         {
+            DataTable rtnTable = new DataTable();
+            rtnTable.Columns.Add("MAHV", typeof(string));
+            rtnTable.Columns.Add("MALOP", typeof(string));
+            rtnTable.Columns.Add("SOTIENDADONG", typeof(string));
+            rtnTable.Columns.Add("SOTIENCONNO", typeof(string));
+            rtnTable.Columns.Add("NGAYDONG", typeof(DateTime));
             using (QLTTEntities qltt = new QLTTEntities())
             {
                 THONGTINHOCPHI data = qltt.THONGTINHOCPHIs.Where(p => p.MAHV == code).FirstOrDefault();
                 if (data != null)
                 {
-                    DataTable rtnTable = new DataTable();
-                    rtnTable.Columns.Add("MAHV", typeof(string));
-                    rtnTable.Columns.Add("MALOP", typeof(string));
-                    rtnTable.Columns.Add("SOTIENDADONG", typeof(string));
-                    rtnTable.Columns.Add("SOTIENCONNO", typeof(string));
-                    rtnTable.Columns.Add("NGAYDONG", typeof(DateTime));
-
                     rtnTable.Rows.Add(data.MAHV, data.MALOP, data.SOTIENDADONG,data.SOTIENCONNO,data.NGAYDONG);
-                    return rtnTable;
                 }
-
             }
-            return null;
+            return rtnTable;
         }
 
         public DataTable getAll()
         {
+            DataTable rtnTable = new DataTable();
+            rtnTable.Columns.Add("MAHV", typeof(string));
+            rtnTable.Columns.Add("MALOP", typeof(string));
+            rtnTable.Columns.Add("SOTIENDADONG", typeof(string));
+            rtnTable.Columns.Add("SOTIENCONNO", typeof(string));
+            rtnTable.Columns.Add("NGAYDONG", typeof(DateTime));
             using (QLTTEntities qltt = new QLTTEntities())
             {
                 var dataList = from r in qltt.THONGTINHOCPHIs select r;
-                DataTable rtnTable = new DataTable();
-                rtnTable.Columns.Add("MAHV", typeof(string));
-                rtnTable.Columns.Add("MALOP", typeof(string));
-                rtnTable.Columns.Add("SOTIENDADONG", typeof(string));
-                rtnTable.Columns.Add("SOTIENCONNO", typeof(string));
-                rtnTable.Columns.Add("NGAYDONG", typeof(DateTime));
+               
 
                 foreach (THONGTINHOCPHI data in dataList)
                 {
                     rtnTable.Rows.Add(data.MAHV, data.MALOP, data.SOTIENDADONG, data.SOTIENCONNO, data.NGAYDONG);
                 }
-
-                if (rtnTable.Rows[0][0] == DBNull.Value)
-                    return null;
-                else
-                    return rtnTable;
-
-
             }
+            return rtnTable;
         }
         public int insert(string mahv,string malop,string sotiendadong,string sotienconno,DateTime ngaydong)
         {

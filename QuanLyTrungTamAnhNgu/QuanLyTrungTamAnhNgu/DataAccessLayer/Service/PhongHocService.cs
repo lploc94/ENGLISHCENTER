@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Service
 {
-    public class PhongHocService : IService
+    public class PhongHocService
     {
         public int delete(string code)
         {
@@ -26,60 +26,60 @@ namespace DataAccessLayer.Service
 
         public DataTable get(string code)
         {
+            DataTable rtnTable = new DataTable();
+            rtnTable.Columns.Add("MAPHONG", typeof(string));
+            rtnTable.Columns.Add("TANG", typeof(int));
+            rtnTable.Columns.Add("SOPHONG", typeof(int));
             using (QLTTEntities qltt = new QLTTEntities())
             {
                 PHONGHOC ph = qltt.PHONGHOCs.Where(p => p.MAPHONG.ToString() == code).FirstOrDefault();
                 if ( ph != null)
                 {
-                    DataTable rtnTable = new DataTable();
-                    rtnTable.Columns.Add("MAPHONG", typeof(string));
-                    rtnTable.Columns.Add("TANG", typeof(int));
-                    rtnTable.Columns.Add("SOPHONG", typeof(int));
+                    
                     rtnTable.Rows.Add(ph.MAPHONG,ph.TANG,ph.SOPHONG);
-                    return rtnTable;
+                    
                 }
             }
-            return null;
+            return rtnTable;
         }
 
         public DataTable getAll()
         {
+            DataTable rtnTable = new DataTable();
+            rtnTable.Columns.Add("MAPHONG", typeof(string));
+            rtnTable.Columns.Add("TANG", typeof(int));
+            rtnTable.Columns.Add("SOPHONG", typeof(int));
             using (QLTTEntities qltt = new QLTTEntities())
             {
                 var phList = from r in qltt.PHONGHOCs select r;
-                DataTable rtnTable = new DataTable();
-                rtnTable.Columns.Add("MAPHONG", typeof(string));
-                rtnTable.Columns.Add("TANG", typeof(int));
-                rtnTable.Columns.Add("SOPHONG", typeof(int));
+                
                
                 foreach (PHONGHOC ph in phList)
                 {
                     rtnTable.Rows.Add(ph.MAPHONG, ph.TANG, ph.SOPHONG);
                 }
-                if (rtnTable.Rows[0][0] == DBNull.Value)
-                    return null;
-                else
-                    return rtnTable;
+                
+                   
             }
-            
+            return rtnTable;
+
         }
         public DataTable getAllId()
         {
+            DataTable rtnTable = new DataTable();
+            rtnTable.Columns.Add("MAPHONG", typeof(string));
             using (QLTTEntities qltt = new QLTTEntities())
             {
                 var maPhongList = from r in qltt.PHONGHOCs select r.MAPHONG;
-                DataTable rtnTable = new DataTable();
-                rtnTable.Columns.Add("MAPHONG", typeof(string));
+                
 
                 foreach (int maPhong in maPhongList)
                 {
                     rtnTable.Rows.Add(maPhong);
                 }
-                if (rtnTable.Rows[0][0] == DBNull.Value)
-                    return null;
-                else
-                    return rtnTable;
+                
             }
+            return rtnTable;
 
         }
         public int insert(int maphong,int tang,int sophong)

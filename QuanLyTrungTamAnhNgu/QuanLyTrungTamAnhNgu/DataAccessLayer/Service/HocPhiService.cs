@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Service
 {
-    public class HocPhiService : IService
+    public class HocPhiService
     {
         public int delete(string code)
         {
@@ -26,41 +26,41 @@ namespace DataAccessLayer.Service
 
         public DataTable get(string code)
         {
+            DataTable rtnTable = new DataTable();
+            rtnTable.Columns.Add("MAHP", typeof(string));
+            rtnTable.Columns.Add("TENHP", typeof(string));
+            rtnTable.Columns.Add("SOTIEN", typeof(string));
             using (QLTTEntities qltt = new QLTTEntities())
             {
                 HOCPHI hp = qltt.HOCPHIs.Where(p => p.MAHP == code).FirstOrDefault();
                 if (hp != null)
                 {
-                    DataTable rtnTable = new DataTable();
-                    rtnTable.Columns.Add("MAHP", typeof(string));
-                    rtnTable.Columns.Add("TENHP", typeof(string));
-                    rtnTable.Columns.Add("SOTIEN", typeof(string));
+                    
                     rtnTable.Rows.Add(hp.MAHP, hp.TENHP, hp.SOTIEN);
-                    return rtnTable;
+                    
                 }
             }
-            return null;
+            return rtnTable;
         }
 
         public DataTable getAll()
         {
+            DataTable rtnTable = new DataTable();
+            rtnTable.Columns.Add("MAHP", typeof(string));
+            rtnTable.Columns.Add("TENHP", typeof(string));
+            rtnTable.Columns.Add("SOTIEN", typeof(string));
             using (QLTTEntities qltt = new QLTTEntities())
             {
                 var hpList = from r in qltt.HOCPHIs select r;
-                DataTable rtnTable = new DataTable();
-                rtnTable.Columns.Add("MAHP", typeof(string));
-                rtnTable.Columns.Add("TENHP", typeof(string));
-                rtnTable.Columns.Add("SOTIEN", typeof(string));
+                
                 foreach (HOCPHI hp in hpList)
                 {
                     rtnTable.Rows.Add(hp.MAHP, hp.TENHP, hp.SOTIEN);
                 }
-                if (rtnTable.Rows[0][0] == DBNull.Value)
-                    return null;
-                else
-                    return rtnTable;
+               
+             
             }
-
+            return rtnTable;
         }
         public int insert(string mahp, string tenhp, string sotien)
         {

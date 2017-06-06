@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Service
 {
-    public class GiangVienService : IService
+    public class GiangVienService
     {
         
         public int delete(string code)
@@ -29,48 +29,50 @@ namespace DataAccessLayer.Service
 
         public DataTable get(string code)
         {
+            DataTable rtnTable = new DataTable();
+            rtnTable.Columns.Add("MAGV", typeof(string));
+            rtnTable.Columns.Add("TENGV", typeof(string));
+            rtnTable.Columns.Add("GIOITINH", typeof(int));
+            rtnTable.Columns.Add("NGSINH", typeof(DateTime));
+            rtnTable.Columns.Add("DIACHI", typeof(string));
+            rtnTable.Columns.Add("SDT", typeof(string));
+            rtnTable.Columns.Add("EMAIL", typeof(string));
+            rtnTable.Columns.Add("TRINHDO", typeof(string));
+            rtnTable.Columns.Add("BANGCAP", typeof(string));
+            rtnTable.Columns.Add("NGAYVL", typeof(DateTime));
+            rtnTable.Columns.Add("HESO", typeof(double));
             using (QLTTEntities qltt = new QLTTEntities())
             {
                 GIANGVIEN gv = qltt.GIANGVIENs.Where(p => p.MAGV == code).FirstOrDefault();
                 if (gv != null)
                 {
-                    DataTable rtnTable = new DataTable();
-                    rtnTable.Columns.Add("MAGV", typeof(string));
-                    rtnTable.Columns.Add("TENGV", typeof(string));
-                    rtnTable.Columns.Add("GIOITINH", typeof(int));
-                    rtnTable.Columns.Add("NGSINH", typeof(DateTime));
-                    rtnTable.Columns.Add("DIACHI", typeof(string));
-                    rtnTable.Columns.Add("SDT", typeof(string));
-                    rtnTable.Columns.Add("EMAIL", typeof(string));
-                    rtnTable.Columns.Add("TRINHDO", typeof(string));
-                    rtnTable.Columns.Add("BANGCAP", typeof(string));
-                    rtnTable.Columns.Add("NGAYVL", typeof(DateTime));
-                    rtnTable.Columns.Add("HESO", typeof(double));
+                   
 
                     rtnTable.Rows.Add(gv.MAGV, gv.TENGV, gv.GIOITINH, gv.NGSINH, gv.DIACHI, gv.SDT, gv.EMAIL, gv.TRINHDO, gv.BANGCAP, gv.NGAYVL, gv.HESO);
-                    return rtnTable;
+                    
                 }
 
             }
-            return null;
+            return rtnTable;
         }
         public DataTable getAll()
         {
+            
+            DataTable rtnTable = new DataTable();
+            rtnTable.Columns.Add("MAGV", typeof(string));
+            rtnTable.Columns.Add("TENGV", typeof(string));
+            rtnTable.Columns.Add("GIOITINH", typeof(int));
+            rtnTable.Columns.Add("NGSINH", typeof(DateTime));
+            rtnTable.Columns.Add("DIACHI", typeof(string));
+            rtnTable.Columns.Add("SDT", typeof(string));
+            rtnTable.Columns.Add("EMAIL", typeof(string));
+            rtnTable.Columns.Add("TRINHDO", typeof(string));
+            rtnTable.Columns.Add("BANGCAP", typeof(string));
+            rtnTable.Columns.Add("NGAYVL", typeof(DateTime));
+            rtnTable.Columns.Add("HESO", typeof(double));
             using (QLTTEntities qltt = new QLTTEntities())
             {
-                var GvList =from r in qltt.GIANGVIENs select r;
-                DataTable rtnTable = new DataTable();
-                rtnTable.Columns.Add("MAGV", typeof(string));
-                rtnTable.Columns.Add("TENGV", typeof(string));
-                rtnTable.Columns.Add("GIOITINH", typeof(int));
-                rtnTable.Columns.Add("NGSINH", typeof(DateTime));
-                rtnTable.Columns.Add("DIACHI", typeof(string));
-                rtnTable.Columns.Add("SDT", typeof(string));
-                rtnTable.Columns.Add("EMAIL", typeof(string));
-                rtnTable.Columns.Add("TRINHDO", typeof(string));
-                rtnTable.Columns.Add("BANGCAP", typeof(string));
-                rtnTable.Columns.Add("NGAYVL", typeof(DateTime));
-                rtnTable.Columns.Add("HESO", typeof(double));
+                var GvList = from r in qltt.GIANGVIENs select r;
                 foreach (GIANGVIEN gv in GvList)
                 {
                     if (gv.MAGV == "null")
@@ -78,12 +80,10 @@ namespace DataAccessLayer.Service
 
                     rtnTable.Rows.Add(gv.MAGV, gv.TENGV, gv.GIOITINH, gv.NGSINH, gv.DIACHI, gv.SDT, gv.EMAIL, gv.TRINHDO, gv.BANGCAP, gv.NGAYVL, gv.HESO);
                 }
-                if (rtnTable.Rows[0][0] == DBNull.Value)
-                    return null;
-                else
-                    return rtnTable;
             }
-            
+            return rtnTable;
+
+
         }
         public int insert(string magv, string tengv, int gioitinh, DateTime ngaysinh, string diachi, string sdt, string email, string trinhdo, string bangcap, DateTime ngayvaolam, double heso)
         {

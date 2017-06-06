@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Service
 {
-    public class KhoaHocService : IService
+    public class KhoaHocService 
     {
         public int delete(string code)
         {
@@ -26,51 +26,46 @@ namespace DataAccessLayer.Service
 
         public DataTable get(string code)
         {
+            DataTable rtnTable = new DataTable();
+            rtnTable.Columns.Add("MAKH", typeof(string));
+            rtnTable.Columns.Add("TENKH", typeof(string));
+            rtnTable.Columns.Add("MOTA", typeof(string));
+            rtnTable.Columns.Add("TAILIEU", typeof(string));
+            rtnTable.Columns.Add("THOIGIAN", typeof(int));
             using (QLTTEntities qltt = new QLTTEntities())
             {
                 KHOAHOC data = qltt.KHOAHOCs.Where(p => p.MAKH == code).FirstOrDefault();
                 if (data != null)
                 {
-                    DataTable rtnTable = new DataTable();
-                    rtnTable.Columns.Add("MAKH", typeof(string));
-                    rtnTable.Columns.Add("TENKH", typeof(string));
-                    rtnTable.Columns.Add("MOTA", typeof(string));
-                    rtnTable.Columns.Add("TAILIEU", typeof(string));
-                    rtnTable.Columns.Add("THOIGIAN", typeof(int));
 
                     rtnTable.Rows.Add(data.MAKH, data.TENKH, data.MOTA, data.TAILIEU, data.THOIGIAN);
-                    return rtnTable;
+                    
                 }
 
             }
-            return null;
+            return rtnTable;
         }
 
         public DataTable getAll()
         {
+            DataTable rtnTable = new DataTable();
+            rtnTable.Columns.Add("MAKH", typeof(string));
+            rtnTable.Columns.Add("TENKH", typeof(string));
+            rtnTable.Columns.Add("MOTA", typeof(string));
+            rtnTable.Columns.Add("TAILIEU", typeof(string));
+            rtnTable.Columns.Add("THOIGIAN", typeof(int));
             using (QLTTEntities qltt = new QLTTEntities())
             {
                 var dataList = from r in qltt.KHOAHOCs select r;
-                DataTable rtnTable = new DataTable();
-                rtnTable.Columns.Add("MAKH", typeof(string));
-                rtnTable.Columns.Add("TENKH", typeof(string));
-                rtnTable.Columns.Add("MOTA", typeof(string));
-                rtnTable.Columns.Add("TAILIEU", typeof(string));
-                rtnTable.Columns.Add("THOIGIAN", typeof(int));
+                
 
              
                 foreach (KHOAHOC data in dataList)
                 {
                     rtnTable.Rows.Add(data.MAKH, data.TENKH, data.MOTA, data.TAILIEU, data.THOIGIAN);
                 }
-
-                if (rtnTable.Rows[0][0] == DBNull.Value)
-                    return null;
-                else
-                    return rtnTable;
-
-
             }
+            return rtnTable;
         }
         public int insert(string makh,string tenkh,string mota,string tailieu,int thoigian)
         {

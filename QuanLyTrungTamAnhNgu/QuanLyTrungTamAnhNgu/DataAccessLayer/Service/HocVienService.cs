@@ -8,7 +8,7 @@ using DataAccessLayer.Service;
 
 namespace DataAccessLayer.Service
 {
-    public class HocVienService : IService
+    public class HocVienService 
     {
         /// <summary>
         /// delete học viên với code = mã học viên
@@ -37,55 +37,54 @@ namespace DataAccessLayer.Service
         /// <returns></returns>
         public DataTable get(string code)
         {
+            DataTable rtnTable = new DataTable();
+            rtnTable.Columns.Add("MAHV", typeof(string));
+            rtnTable.Columns.Add("HOTEN", typeof(string));
+            rtnTable.Columns.Add("GIOITINH", typeof(int));
+            rtnTable.Columns.Add("NGSINH", typeof(DateTime));
+            rtnTable.Columns.Add("DIACHI", typeof(string));
+            rtnTable.Columns.Add("SDT", typeof(string));
+            rtnTable.Columns.Add("EMAIL", typeof(string));
+            rtnTable.Columns.Add("NGAYDK", typeof(DateTime));
+            rtnTable.Columns.Add("TINHTRANG", typeof(int));
             using (QLTTEntities qltt = new QLTTEntities())
             {
                 HOCVIEN hv = qltt.HOCVIENs.Where(p => p.MAHV == code).FirstOrDefault();
                 if (hv != null)
                 {
-                    DataTable rtnTable = new DataTable();
-                    rtnTable.Columns.Add("MAHV", typeof(string));
-                    rtnTable.Columns.Add("HOTEN", typeof(string));
-                    rtnTable.Columns.Add("GIOITINH", typeof(int));
-                    rtnTable.Columns.Add("NGSINH", typeof(DateTime));
-                    rtnTable.Columns.Add("DIACHI", typeof(string));
-                    rtnTable.Columns.Add("SDT", typeof(string));
-                    rtnTable.Columns.Add("EMAIL", typeof(string));
-                    rtnTable.Columns.Add("NGAYDK", typeof(DateTime));
-                    rtnTable.Columns.Add("TINHTRANG", typeof(int));
+                    
                     rtnTable.Rows.Add(hv.MAHV, hv.HOTEN, hv.GIOITINH, hv.NGSINH, hv.DIACHI, hv.SDT, hv.EMAIL, hv.NGAYDK, hv.TINHTRANG);
 
-                    return rtnTable;
+                    
                 }
 
             }
-            return null;
+            return rtnTable;
         }
 
         public DataTable getAll()
         {
+            DataTable rtnTable = new DataTable();
+            rtnTable.Columns.Add("MAHV", typeof(string));
+            rtnTable.Columns.Add("HOTEN", typeof(string));
+            rtnTable.Columns.Add("GIOITINH", typeof(int));
+            rtnTable.Columns.Add("NGSINH", typeof(DateTime));
+            rtnTable.Columns.Add("DIACHI", typeof(string));
+            rtnTable.Columns.Add("SDT", typeof(string));
+            rtnTable.Columns.Add("EMAIL", typeof(string));
+            rtnTable.Columns.Add("NGAYDK", typeof(DateTime));
+            rtnTable.Columns.Add("TINHTRANG", typeof(int));
             using (QLTTEntities qltt = new QLTTEntities())
             {
                 var hvList = from r in qltt.HOCVIENs select r;
-                DataTable rtnTable = new DataTable();
-                rtnTable.Columns.Add("MAHV", typeof(string));
-                rtnTable.Columns.Add("HOTEN", typeof(string));
-                rtnTable.Columns.Add("GIOITINH", typeof(int));
-                rtnTable.Columns.Add("NGSINH", typeof(DateTime));
-                rtnTable.Columns.Add("DIACHI", typeof(string));
-                rtnTable.Columns.Add("SDT", typeof(string));
-                rtnTable.Columns.Add("EMAIL", typeof(string));
-                rtnTable.Columns.Add("NGAYDK", typeof(DateTime));
-                rtnTable.Columns.Add("TINHTRANG", typeof(int));
+                
                 foreach (HOCVIEN hv in hvList)
                 {
                     rtnTable.Rows.Add(hv.MAHV, hv.HOTEN, hv.GIOITINH, hv.NGSINH, hv.DIACHI, hv.SDT, hv.EMAIL, hv.NGAYDK, hv.TINHTRANG);
                 }
-                if (rtnTable.Rows[0][0] == DBNull.Value)
-                    return null;
-                else
-                    return rtnTable;
+               
             }
-
+            return rtnTable;
         }
 
         public int insert(string mahv, string hoten, int gioitinh, string diachi, string sdt, string email, DateTime ngaydk, int tinhtrang,DateTime ngaysinh)

@@ -39,6 +39,7 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.traCuuDiemThiButton = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bangDiemGridView)).BeginInit();
             this.SuspendLayout();
@@ -146,11 +147,20 @@
             this.traCuuDiemThiButton.UseVisualStyleBackColor = true;
             this.traCuuDiemThiButton.Click += new System.EventHandler(this.traCuuDiemThiButton_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(264, 20);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(0, 13);
+            this.label2.TabIndex = 4;
+            // 
             // TraCuuDiemThiMotLop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(733, 446);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.traCuuDiemThiButton);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.maLopComboBox);
@@ -178,5 +188,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.Label label2;
     }
 }

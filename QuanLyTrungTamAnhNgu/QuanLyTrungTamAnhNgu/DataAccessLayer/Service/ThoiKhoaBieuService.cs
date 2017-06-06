@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Service
 {
-    public class ThoiKhoaBieuService : IService
+    public class ThoiKhoaBieuService
     {
         public int delete(string code)
         {
@@ -41,46 +41,43 @@ namespace DataAccessLayer.Service
 
         public DataTable get(string code)
         {
+            DataTable rtnTable = new DataTable();
+            rtnTable.Columns.Add("MALOP", typeof(string));
+            rtnTable.Columns.Add("MAPHONG", typeof(int));
+            rtnTable.Columns.Add("MALH", typeof(string));
             using (QLTTEntities qltt = new QLTTEntities())
             {
                 TKB data = qltt.TKBs.Where(p => p.MALH == code).FirstOrDefault();
                 if (data != null)
                 {
-                    DataTable rtnTable = new DataTable();
-                    rtnTable.Columns.Add("MALOP", typeof(string));
-                    rtnTable.Columns.Add("MAPHONG", typeof(int));
-                    rtnTable.Columns.Add("MALH", typeof(string));
+                    
 
                     rtnTable.Rows.Add(data.MALOP, data.MAPHONG, data.MALH);
-                    return rtnTable;
+                   
                 }
 
             }
-            return null;
+            return rtnTable;
         }
 
         public DataTable getAll()
         {
+            DataTable rtnTable = new DataTable();
+            rtnTable.Columns.Add("MALOP", typeof(string));
+            rtnTable.Columns.Add("MAPHONG", typeof(int));
+            rtnTable.Columns.Add("MALH", typeof(string));
             using (QLTTEntities qltt = new QLTTEntities())
             {
                 var dataList = from r in qltt.TKBs select r;
-                DataTable rtnTable = new DataTable();
-                rtnTable.Columns.Add("MALOP", typeof(string));
-                rtnTable.Columns.Add("MAPHONG", typeof(int));
-                rtnTable.Columns.Add("MALH", typeof(string));
+                
 
                 foreach (TKB data in dataList)
                 {
                     rtnTable.Rows.Add(data.MALOP, data.MAPHONG, data.MALH);
                 }
 
-                if (rtnTable.Rows[0][0] == DBNull.Value)
-                    return null;
-                else
-                    return rtnTable;
-
-
             }
+            return rtnTable;
         }
         public int insert(string malop,int maphong,string malh)
         {

@@ -112,8 +112,42 @@ namespace QuanLyTrungTamAnhNgu.QuanLyGiangDay
         {
             lbMain.Text = "Chọn mã lớp";
             PopulateMaLop();
+            {
+                string maLop = cbMain.Text;
 
+                if (thi == null)
+                    thi = new Thi();
+
+                DataTable dt = thi.findDiemThiByMaLop(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword(), maLop);
+
+                // sửa cột kết quả
+
+                int endColumn = dt.Columns.Count - 1;
+                //dt.Columns[endColumn].DataType = typeof(string);
+                dt.Columns.Add("Kết quả", typeof(string));
+
+                DataRowCollection rows = dt.Rows;
+                for (int i = 0; i < rows.Count; i++)
+                {
+                    if (rows[i].Field<int>(endColumn).Equals(0))
+                    {
+                        rows[i].SetField(endColumn + 1, "rớt");
+                    }
+                    else
+                    {
+                        rows[i].SetField(endColumn + 1, "đậu");
+                    }
+                }
+
+                dt.Columns.RemoveAt(endColumn);
+
+                DateTime today = DateTime.Today;
+                name = today.Month + "-" + today.Day + "-" + today.Year + "_KetQuaHocTap_" + maLop;
+
+                ShowTable(dt);
+            }
             cbMain.SelectedIndexChanged += maLop_SelectedIndexChanged;
+
 
         }
 
