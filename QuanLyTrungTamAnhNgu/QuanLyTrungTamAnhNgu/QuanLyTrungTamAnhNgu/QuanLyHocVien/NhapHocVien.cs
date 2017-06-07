@@ -105,7 +105,7 @@ namespace QuanLyTrungTamAnhNgu.QuanLyHocVien
                 //hiển thị mã học viên
                 DataTable tb_hv = new DataTable();
                 tb_hv = hv.getAll(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword());
-                txtMaHV.Text = "HV" + (Convert.ToInt32(tb_hv.Rows[tb.Rows.Count][0].ToString().Remove(0, 2)) + 1).ToString();
+                txtMaHV.Text = "HV" + (Convert.ToInt32(tb_hv.Rows[tb.Rows.Count-1][0].ToString().Remove(0, 2)) + 1).ToString();
 
                 //đưa dữ liệu vào trong combox lớp học
                 DataTable lophoc = lh.getAll(AccountHelper.getAccountId(), AccountHelper.getAccoutPassword());

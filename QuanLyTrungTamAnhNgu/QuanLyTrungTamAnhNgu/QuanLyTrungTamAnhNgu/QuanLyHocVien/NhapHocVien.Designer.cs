@@ -197,7 +197,6 @@
             // 
             // txtMaHV
             // 
-            this.txtMaHV.Enabled = false;
             this.txtMaHV.Location = new System.Drawing.Point(93, 22);
             this.txtMaHV.Name = "txtMaHV";
             this.txtMaHV.Size = new System.Drawing.Size(156, 21);
